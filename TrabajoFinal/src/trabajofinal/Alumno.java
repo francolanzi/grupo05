@@ -2,8 +2,11 @@ package trabajofinal;
 
 public class Alumno
 {
-    public Alumno()
-    {
-        super();
-    }
+    
+    private String legajo;
+    private String apellido;
+    private String nombre;
+    private Domicilio domicilio;
+    private String email;
+    
 }
