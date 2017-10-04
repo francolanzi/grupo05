@@ -1,5 +1,7 @@
 package trabajofinal;
 
+import java.util.TreeMap;
+
 public class Cursada
 {
     
@@ -8,5 +10,7 @@ public class Cursada
     private String periodo;
     private String dia;
     private String hora;
+    private TreeMap<String, Profesor> profesores;
+    private TreeMap<String, Alumno> alumnos;
     
 }
