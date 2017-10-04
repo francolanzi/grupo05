@@ -3,7 +3,7 @@ package trabajofinal;
 public class Alumno
 {
     
-    private String leg;
+    private String legajo;
     private String apellido;
     private String nombre;
     private Domicilio domicilio;
