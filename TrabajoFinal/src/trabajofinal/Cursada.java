@@ -5,12 +5,27 @@ import java.util.TreeMap;
 public class Cursada
 {
     
+    private static int sigIdentificacion = 0;
+    private static final String prefijo = "CUR";
+    
     private String identificacion;
     private Asignatura asignatura;
     private String periodo;
     private String dia;
     private String hora;
-    private TreeMap<String, Profesor> profesores;
-    private TreeMap<String, Alumno> alumnos;
-    
+    private ObserverTreeMap<Profesor> profesores;
+    private ObserverTreeMap<Alumno> alumnos;
+
+
+    public Cursada(Asignatura asignatura, String periodo, String dia, String hora)
+    {
+        this.identificacion = Identificador.genIdentificador(sigIdentificacion++, prefijo);
+        this.asignatura = asignatura;
+        this.periodo = periodo;
+        this.dia = dia;
+        this.hora = hora;
+        this.profesores = new ObserverTreeMap<Profesor>();
+        this.alumnos = new ObserverTreeMap<Alumno>();
+    }
+
 }
