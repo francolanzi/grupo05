@@ -18,5 +18,16 @@ public class Asignatura
         this.nombre = nombre;
         this.correlatividades = new ObserverTreeMap<Asignatura>();
     }
+
+    public String getIdentificacion() {
+        return identificacion;
+    }
     
+    public boolean equals (Object obj) {
+        Asignatura asi= (Asignatura) obj;
+        if (this.nombre==asi.nombre)
+            return true;     
+        else       
+            return false;
+    }
 }

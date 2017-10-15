@@ -1,4 +1,4 @@
-package trabajofinal;
+    package trabajofinal;
 
 import java.util.TreeMap;
 
@@ -24,5 +24,19 @@ public class Alumno
         this.email = email;
         this.historia = new ObserverTreeMap<Asignatura>();
     }
+
+
+    public String getLegajo() {
+        return legajo;
+    }
     
+    public boolean equals (Object obj) {
+        Alumno alu= (Alumno) obj;
+        if (this.nombre==alu.nombre && this.apellido==alu.apellido && this.email==alu.email && this.domicilio.getCalle()==alu.domicilio.getCalle() && this.domicilio.getNumero()==alu.domicilio.getNumero())
+            return true;     
+        else       
+            return false;
+    }
+
+
 }

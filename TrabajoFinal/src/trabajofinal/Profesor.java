@@ -27,4 +27,16 @@ public class Profesor
         this.competencia = new ObserverTreeMap<Asignatura>();
     }
 
+    public String getLegajo() {
+        return legajo;
+    }
+    
+    public boolean equals (Object obj) {
+        Profesor pro= (Profesor) obj;
+        if (this.nombre==pro.nombre && this.apellido==pro.apellido && this.email==pro.email && this.domicilio.getCalle()==pro.domicilio.getCalle() && this.domicilio.getNumero()==pro.domicilio.getNumero() && this.telefono== pro.telefono)
+            return true;     
+        else       
+            return false;
+    }
+
 }
