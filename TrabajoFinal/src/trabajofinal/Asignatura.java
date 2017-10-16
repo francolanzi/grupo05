@@ -2,7 +2,7 @@ package trabajofinal;
 
 import java.util.TreeMap;
 
-public class Asignatura
+public class Asignatura implements Entidad
 {
     
     private static int sigIdentificacion = 0;
@@ -14,12 +14,14 @@ public class Asignatura
 
     public Asignatura(String nombre)
     {
-        this.identificacion = Identificador.genIdentificador(sigIdentificacion++, prefijo);
+        this.identificacion = Mascaras.genId(sigIdentificacion++, prefijo);
         this.nombre = nombre;
         this.correlatividades = new ObserverTreeMap<Asignatura>();
     }
 
-    public String getIdentificacion() {
+    @Override
+    public String getId()
+    {
         return identificacion;
     }
     
@@ -27,7 +29,7 @@ public class Asignatura
         Asignatura asi= (Asignatura) obj;
         if (this.nombre==asi.nombre)
             return true;     
-        else       
+        else
             return false;
     }
 }

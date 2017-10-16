@@ -22,4 +22,37 @@ public class Domicilio
         return this.numero;
     }
 
+    @Override
+    public boolean equals(Object object)
+    {
+        if (this == object)
+        {
+            return true;
+        }
+        if (!(object instanceof Domicilio))
+        {
+            return false;
+        }
+        final Domicilio other = (Domicilio) object;
+        if (!(calle == null? other.calle == null: calle.equals(other.calle)))
+        {
+            return false;
+        }
+        if (numero != other.numero)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        final int PRIME = 37;
+        int result = 1;
+        result = PRIME * result + ((calle == null)? 0: calle.hashCode());
+        result = PRIME * result + numero;
+        return result;
+    }
+
 }

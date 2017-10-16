@@ -2,7 +2,7 @@ package trabajofinal;
 
 import java.util.TreeMap;
 
-public class Profesor
+public class Profesor implements Entidad
 {
     
     private static int sigLegajo = 0;
@@ -16,18 +16,23 @@ public class Profesor
     private String email;
     private ObserverTreeMap<Asignatura> competencia;
 
-    public Profesor(String apellido, String nombre, Domicilio domicilio, String telefono, String email)
+    public Profesor(String apellido, String nombre, Domicilio domicilio, String telefono, String email) throws EmailInvalidoException
     {
-        this.legajo = Identificador.genIdentificador(sigLegajo++, prefijo);
+        if (Mascaras.emailValido(email))
+            this.email = email;
+        else
+            throw new EmailInvalidoException(email);
+        this.legajo = Mascaras.genId(sigLegajo++, prefijo);
         this.apellido = apellido;
         this.nombre = nombre;
         this.domicilio = domicilio;
         this.telefono = telefono;
-        this.email = email;
         this.competencia = new ObserverTreeMap<Asignatura>();
     }
 
-    public String getLegajo() {
+    @Override
+    public String getId()
+    {
         return legajo;
     }
     

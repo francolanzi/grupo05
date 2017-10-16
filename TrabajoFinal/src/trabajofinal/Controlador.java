@@ -28,31 +28,28 @@ public class Controlador extends Observable
         return controlador;
     }
     
-    public void altaAlumno(Alumno alu) throws Exception_Entidad_Existente{
-        if (alumnos.containsValue(alu))
-            throw new Exception_Entidad_Existente("El alumno ya fue registrado");
-        else{
-            alumnos.put(alu.getLegajo(), alu);
-            //exception con mensaje de alta ok?
-        }
+    public void altaAlumno(Alumno alumno) throws OperacionException
+    {
+        if (alumnos.containsValue(alumno))
+            throw new OperacionException(alumno, OperacionException.ALTA);
+        else
+            alumnos.put(alumno.getId(), alumno);
     }
     
-    public void altaProfesor(Profesor prof) throws Exception_Entidad_Existente{
-        if (profesores.containsValue(prof))
-            throw new Exception_Entidad_Existente("El profesor ya fue registrado");
-        else{
-            profesores.put(prof.getLegajo(), prof);
-            //exception con mensaje de alta ok?
-        }
+    public void altaProfesor(Profesor profesor) throws OperacionException
+    {
+        if (profesores.containsValue(profesor))
+            throw new OperacionException(profesor, OperacionException.ALTA);
+        else
+            profesores.put(profesor.getId(), profesor);
     }
     
-    public void altaAsignatura(Asignatura asi) throws Exception_Entidad_Existente{
-        if (asignaturas.containsValue(asi))
-            throw new Exception_Entidad_Existente("La asignatura ya fue registrada");
-        else{
-            asignaturas.put(asi.getIdentificacion(), asi);
-            //exception con mensaje de alta ok?
-        }
+    public void altaAsignatura(Asignatura asignatura) throws OperacionException
+    {
+        if (asignaturas.containsValue(asignatura))
+            throw new OperacionException(asignatura, OperacionException.ALTA);
+        else
+            asignaturas.put(asignatura.getId(), asignatura);
     }
 
     public TreeMap<String, Alumno> getAlumnos() {

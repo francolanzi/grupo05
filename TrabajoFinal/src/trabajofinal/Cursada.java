@@ -19,7 +19,7 @@ public class Cursada
 
     public Cursada(Asignatura asignatura, String periodo, String dia, String hora)
     {
-        this.identificacion = Identificador.genIdentificador(sigIdentificacion++, prefijo);
+        this.identificacion = Mascaras.genId(sigIdentificacion++, prefijo);
         this.asignatura = asignatura;
         this.periodo = periodo;
         this.dia = dia;
