@@ -140,9 +140,9 @@ public class Controlador extends Observable
     public Iterator<Asignatura> ubicaAsignatura(String nombre)
     {
         TreeMap<String, Asignatura> coleccion= new TreeMap<String, Asignatura>();
-        Iterator iterator= asignaturas.keySet().iterator();
+        Iterator<Asignatura> iterator= asignaturas.values().iterator();
         while(iterator.hasNext()){
-            Asignatura otro = (Asignatura) iterator.next();
+            Asignatura otro = iterator.next();
             if (otro.getNombre().equals(nombre))
                 coleccion.put(otro.getId(), otro);
         }
@@ -152,9 +152,9 @@ public class Controlador extends Observable
     public Iterator<Cursada> ubicaCursada(String nombre)
     {
         TreeMap<String, Cursada> coleccion= new TreeMap<String, Cursada>();
-        Iterator iterator= cursadas.keySet().iterator();
+        Iterator<Cursada> iterator= cursadas.values().iterator();
         while(iterator.hasNext()){
-            Cursada otro = (Cursada) iterator.next();
+            Cursada otro = iterator.next();
             if (otro.getAsignatura().equals(nombre))
                 coleccion.put(otro.getId(), otro);
         }
