@@ -17,12 +17,8 @@ public class Alumno implements Entidad
 
     public Alumno(String apellido, String nombre, String calle, int numero, String email) throws EmailInvalidoException
     {
-        if (!Mascaras.emailValido(email))
-            throw new EmailInvalidoException(email);
+        this.modificar(apellido, nombre, calle, numero, email);
         this.legajo = Mascaras.genId(sigLegajo++, prefijo);
-        this.apellido = apellido;
-        this.nombre = nombre;
-        this.domicilio = new Domicilio(calle, numero);
         this.historia = new ObserverTreeMap<Asignatura>();
     }
 
@@ -30,6 +26,16 @@ public class Alumno implements Entidad
     public String getId()
     {
         return legajo;
+    }
+
+    public void modificar(String apellido, String nombre, String calle, int numero, String email) throws EmailInvalidoException
+    {
+        if (!Mascaras.emailValido(email))
+            throw new EmailInvalidoException(email);
+        this.apellido = apellido;
+        this.nombre = nombre;
+        this.domicilio = new Domicilio(calle, numero);
+        this.email = email;
     }
 
     @Override

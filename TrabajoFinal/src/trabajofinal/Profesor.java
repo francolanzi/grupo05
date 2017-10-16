@@ -18,13 +18,8 @@ public class Profesor implements Entidad
 
     public Profesor(String apellido, String nombre, String calle, int numero, String telefono, String email) throws EmailInvalidoException
     {
-        if (!Mascaras.emailValido(email))
-            throw new EmailInvalidoException(email);
+        this.modificar(apellido, nombre, calle, numero, telefono, email);
         this.legajo = Mascaras.genId(sigLegajo++, prefijo);
-        this.apellido = apellido;
-        this.nombre = nombre;
-        this.domicilio = new Domicilio(calle, numero);
-        this.telefono = telefono;
         this.competencia = new ObserverTreeMap<Asignatura>();
     }
 
@@ -32,6 +27,17 @@ public class Profesor implements Entidad
     public String getId()
     {
         return legajo;
+    }
+    
+    public void modificar(String apellido, String nombre, String calle, int numero, String telefono, String email) throws EmailInvalidoException
+    {
+        if (!Mascaras.emailValido(email))
+            throw new EmailInvalidoException(email);
+        this.apellido = apellido;
+        this.nombre = nombre;
+        this.domicilio = new Domicilio(calle, numero);
+        this.telefono = telefono;
+        this.email = email;
     }
 
     @Override

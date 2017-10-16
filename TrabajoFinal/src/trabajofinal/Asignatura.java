@@ -15,7 +15,7 @@ public class Asignatura implements Entidad
     public Asignatura(String nombre)
     {
         this.identificacion = Mascaras.genId(sigIdentificacion++, prefijo);
-        this.nombre = nombre;
+        this.setNombre(nombre);
         this.correlatividades = new ObserverTreeMap<Asignatura>();
     }
 
@@ -23,6 +23,11 @@ public class Asignatura implements Entidad
     public String getId()
     {
         return identificacion;
+    }
+    
+    public void setNombre(String nombre)
+    {
+        this.nombre = nombre;
     }
 
     @Override
