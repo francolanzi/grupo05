@@ -18,7 +18,11 @@ public class ObserverTreeMap<T> implements Observer
     @Override
     public void update(Observable observable, Object object)
     {
-        // TODO Implement this method
+        if (observable == Controlador.getInstance())
+        {
+            String id = (String) object;
+            this.coleccion.remove(id);
+        }
     }
     
 }

@@ -1,11 +1,11 @@
 package trabajofinal;
 
-public class BajaException extends Exception
+public class IdNoExistenteException extends Exception
 {
     
     private String id;
 
-    public BajaException(String id)
+    public IdNoExistenteException(String id)
     {
         this.id = id;
     }

@@ -2,7 +2,7 @@ package trabajofinal;
 
 import java.util.TreeMap;
 
-public class Cursada
+public class Cursada implements Entidad
 {
     
     private static int sigIdentificacion = 0;
@@ -16,9 +16,12 @@ public class Cursada
     private ObserverTreeMap<Profesor> profesores;
     private ObserverTreeMap<Alumno> alumnos;
 
-
-    public Cursada(Asignatura asignatura, String periodo, String dia, String hora)
+    public Cursada(Asignatura asignatura, String periodo, String dia, String hora) throws PeriodoInvalidoException, HoraInvalidaException
     {
+        if (!Mascaras.periodoValido(periodo))
+            throw new PeriodoInvalidoException(periodo);
+        if (!Mascaras.horaValida(hora))
+            throw new HoraInvalidaException(hora);
         this.identificacion = Mascaras.genId(sigIdentificacion++, prefijo);
         this.asignatura = asignatura;
         this.periodo = periodo;
@@ -27,5 +30,11 @@ public class Cursada
         this.profesores = new ObserverTreeMap<Profesor>();
         this.alumnos = new ObserverTreeMap<Alumno>();
     }
-    
+
+    @Override
+    public String getId()
+    {
+        return this.identificacion;
+    }
+
 }
