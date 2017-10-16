@@ -1,11 +1,11 @@
 package trabajofinal;
 
-public class AltaException extends Exception
+public class EntidadExistenteException extends Exception
 {
     
     private Entidad entidad;
 
-    public AltaException(Entidad entidad)
+    public EntidadExistenteException(Entidad entidad)
     {
         this.entidad = entidad;
     }
