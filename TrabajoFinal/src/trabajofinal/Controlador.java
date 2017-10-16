@@ -30,38 +30,50 @@ public class Controlador extends Observable
     
     public void altaAlumno(Alumno alumno) throws AltaException
     {
-        if (alumnos.containsValue(alumno))
+        if (this.alumnos.containsValue(alumno))
             throw new AltaException(alumno);
         else
-            alumnos.put(alumno.getId(), alumno);
+            this.alumnos.put(alumno.getId(), alumno);
     }
     
     public void altaProfesor(Profesor profesor) throws AltaException
     {
-        if (profesores.containsValue(profesor))
+        if (this.profesores.containsValue(profesor))
             throw new AltaException(profesor);
         else
-            profesores.put(profesor.getId(), profesor);
+            this.profesores.put(profesor.getId(), profesor);
     }
     
     public void altaAsignatura(Asignatura asignatura) throws AltaException
     {
-        if (asignaturas.containsValue(asignatura))
+        if (this.asignaturas.containsValue(asignatura))
             throw new AltaException(asignatura);
         else
-            asignaturas.put(asignatura.getId(), asignatura);
+            this.asignaturas.put(asignatura.getId(), asignatura);
     }
-
-    public TreeMap<String, Alumno> getAlumnos() {
-        return alumnos;
+    
+    public void bajaAlumno(String legajo) throws BajaException
+    {
+        if (!this.alumnos.containsKey(legajo))
+            throw new BajaException(legajo);
+        else
+            this.alumnos.remove(legajo);
     }
-
-    public TreeMap<String, Profesor> getProfesores() {
-        return profesores;
+    
+    public void bajaProfesor(String legajo) throws BajaException
+    {
+        if (!this.profesores.containsKey(legajo))
+            throw new BajaException(legajo);
+        else
+            this.profesores.remove(legajo);
     }
-
-    public TreeMap<String, Asignatura> getAsignaturas() {
-        return asignaturas;
+    
+    public void bajaAsignatura(String identificacion) throws BajaException
+    {
+        if (!this.asignaturas.containsKey(identificacion))
+            throw new BajaException(identificacion);
+        else
+            this.asignaturas.remove(identificacion);
     }
 
 }
