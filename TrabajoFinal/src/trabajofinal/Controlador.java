@@ -57,8 +57,8 @@ public class Controlador extends Observable
     {
         if (this.asignaturas.containsValue(cursada))
             throw new EntidadExistenteException(cursada);
-        if (!cursada.horarioViable(this.cursadas.values().iterator()))
-            throw new HorarioNoViableException(cursada);
+        if (!Cursada.horarioViable(cursada.getPeriodo(), cursada.getDia(), cursada.getHora(), this.cursadas.values().iterator()))
+            throw new HorarioNoViableException(cursada.getPeriodo(), cursada.getDia(), cursada.getHora());
         this.cursadas.put(cursada.getId(), cursada);
     }
     
@@ -110,7 +110,8 @@ public class Controlador extends Observable
         }
     }
     
-    public void modificaAlumno(String legajo, String apellido, String nombre, String calle, int numero, String email) throws IdNoExistenteException, EmailInvalidoException
+    public void modificaAlumno(String legajo, String apellido, String nombre, String calle, int numero, String email)
+    throws IdNoExistenteException, EmailInvalidoException
     {
         if(!this.alumnos.containsKey(legajo))
             throw new IdNoExistenteException(legajo);
@@ -118,7 +119,8 @@ public class Controlador extends Observable
             this.alumnos.get(legajo).modificar(apellido, nombre, calle, numero, email);
     }
     
-    public void modificaProfesor(String legajo, String apellido, String nombre, String calle, int numero, String telefono, String email) throws IdNoExistenteException, EmailInvalidoException
+    public void modificaProfesor(String legajo, String apellido, String nombre, String calle, int numero, String telefono, String email)
+    throws IdNoExistenteException, EmailInvalidoException
     {
         if(!this.profesores.containsKey(legajo))
             throw new IdNoExistenteException(legajo);
@@ -132,6 +134,16 @@ public class Controlador extends Observable
             throw new IdNoExistenteException(identificacion);
         else
             this.asignaturas.get(identificacion).setNombre(nombre);
+    }
+    
+    public void modificaCursada(String identificacion, Asignatura asignatura, String periodo, String dia, String hora)
+    throws IdNoExistenteException, HorarioNoViableException,PeriodoInvalidoException, HoraInvalidaException
+    {
+        if (!this.cursadas.containsKey(identificacion))
+            throw new IdNoExistenteException(identificacion);
+        if (!Cursada.horarioViable(periodo, dia, hora, this.cursadas.values().iterator()))
+            throw new HorarioNoViableException(periodo, dia, hora);
+        this.cursadas.get(identificacion).modificar(asignatura, periodo, dia, hora);
     }
     
     public Iterator<Alumno> ubicaAlumno(String apellido, String nombre)

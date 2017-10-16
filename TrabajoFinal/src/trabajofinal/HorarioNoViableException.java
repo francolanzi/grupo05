@@ -3,11 +3,16 @@ package trabajofinal;
 public class HorarioNoViableException extends Exception
 {
     
-    private Cursada cursada;
+    private String periodo;
+    private String dia;
+    private String hora;
 
-    public HorarioNoViableException(Cursada cursada)
+    public HorarioNoViableException(String periodo, String dia, String hora)
     {
-        this.cursada = cursada;
+        super();
+        this.periodo = periodo;
+        this.dia = dia;
+        this.hora = hora;
     }
 
 }
