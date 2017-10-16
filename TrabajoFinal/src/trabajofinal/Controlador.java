@@ -75,5 +75,7 @@ public class Controlador extends Observable
         else
             this.asignaturas.remove(identificacion);
     }
+    
+    
 
 }
