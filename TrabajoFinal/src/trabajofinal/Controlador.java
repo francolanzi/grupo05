@@ -57,7 +57,11 @@ public class Controlador extends Observable
         if (!this.alumnos.containsKey(legajo))
             throw new BajaException(legajo);
         else
+        {
             this.alumnos.remove(legajo);
+            setChanged();
+            notifyObservers(legajo);
+        }
     }
     
     public void bajaProfesor(String legajo) throws BajaException
@@ -65,7 +69,11 @@ public class Controlador extends Observable
         if (!this.profesores.containsKey(legajo))
             throw new BajaException(legajo);
         else
+        {
             this.profesores.remove(legajo);
+            setChanged();
+            notifyObservers(legajo);
+        }
     }
     
     public void bajaAsignatura(String identificacion) throws BajaException
@@ -73,7 +81,11 @@ public class Controlador extends Observable
         if (!this.asignaturas.containsKey(identificacion))
             throw new BajaException(identificacion);
         else
+        {
             this.asignaturas.remove(identificacion);
+            setChanged();
+            notifyObservers(identificacion);
+        }
     }
 
 }
