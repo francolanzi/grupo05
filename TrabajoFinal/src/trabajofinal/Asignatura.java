@@ -57,5 +57,9 @@ public class Asignatura implements Entidad
         result = PRIME * result + ((nombre == null)? 0: nombre.hashCode());
         return result;
     }
-    
+
+    public String getNombre() {
+        return nombre;
+    }
+
 }

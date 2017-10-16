@@ -1,5 +1,6 @@
 package trabajofinal;
 
+import java.util.Iterator;
 import java.util.Observable;
 import java.util.TreeMap;
 
@@ -112,6 +113,80 @@ public class Controlador extends Observable
             this.asignaturas.get(identificacion).setNombre(nombre);
     }
     
+    public TreeMap<String, Alumno> ubicaAlumno(String apellido, String nombre) throws EntidadNoEncontradaException{
+        TreeMap<String, Alumno> coleccion= new TreeMap<String, Alumno>();
+        if (!alumnos.isEmpty()){
+            Iterator iterator= alumnos.keySet().iterator();
+            while(iterator.hasNext()){
+                Alumno otro = (Alumno) iterator.next();
+                if (otro.getApellido().equals(apellido) && otro.getNombre().equals(nombre))
+                        coleccion.put(otro.getId(), otro);
+            }
+            if (coleccion.isEmpty())
+                throw new EntidadNoEncontradaException(apellido,nombre);
+            else
+                return coleccion;
+        }
+        else{
+            throw new EntidadNoEncontradaException(apellido,nombre);
+        }
+    }
+
+    public TreeMap<String, Profesor> ubicaProfesor(String apellido, String nombre) throws EntidadNoEncontradaException{
+        TreeMap<String, Profesor> coleccion= new TreeMap<String, Profesor>();
+        if (!profesores.isEmpty()){
+            Iterator iterator= profesores.keySet().iterator();
+            while(iterator.hasNext()){
+                Profesor otro = (Profesor) iterator.next();
+                if (otro.getApellido().equals(apellido) && otro.getNombre().equals(nombre))
+                        coleccion.put(otro.getId(), otro);
+            }
+            if (coleccion.isEmpty())
+                throw new EntidadNoEncontradaException(apellido,nombre);
+            else
+                return coleccion;
+        }
+        else{
+            throw new EntidadNoEncontradaException(apellido,nombre);
+        }
+    }
     
+    public TreeMap<String, Asignatura> ubicaAsignatura(String nombre) throws EntidadNoEncontradaException{
+        TreeMap<String, Asignatura> coleccion= new TreeMap<String, Asignatura>();
+        if (!asignaturas.isEmpty()){
+            Iterator iterator= asignaturas.keySet().iterator();
+            while(iterator.hasNext()){
+                Asignatura otro = (Asignatura) iterator.next();
+                if (otro.getNombre().equals(nombre))
+                    coleccion.put(otro.getId(), otro);
+            }
+            if (coleccion.isEmpty())
+                throw new EntidadNoEncontradaException(nombre);
+            else
+                return coleccion;
+        }
+        else{
+            throw new EntidadNoEncontradaException(nombre);
+        }
+    }
+    
+    public TreeMap<String, Cursada> ubicaCursada(String nombre) throws EntidadNoEncontradaException{
+        TreeMap<String, Cursada> coleccion= new TreeMap<String, Cursada>();
+        if (!cursadas.isEmpty()){
+            Iterator iterator= cursadas.keySet().iterator();
+            while(iterator.hasNext()){
+                Cursada otro = (Cursada) iterator.next();
+                if (otro.getAsignatura().equals(nombre))
+                    coleccion.put(otro.getId(), otro);
+            }
+            if (coleccion.isEmpty())
+                throw new EntidadNoEncontradaException(nombre);
+            else
+                return coleccion;
+        }
+        else{
+            throw new EntidadNoEncontradaException(nombre);
+        }
+    }
 
 }

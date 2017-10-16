@@ -80,6 +80,15 @@ public class Alumno implements Entidad
         result = PRIME * result + ((email == null)? 0: email.hashCode());
         return result;
     }
-    
 
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+    
+    
 }

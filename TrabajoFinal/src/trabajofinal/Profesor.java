@@ -88,4 +88,11 @@ public class Profesor implements Entidad
         return result;
     }
 
+    public String getApellido() {
+        return apellido;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
 }

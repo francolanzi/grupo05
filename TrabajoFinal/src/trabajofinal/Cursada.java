@@ -37,4 +37,8 @@ public class Cursada implements Entidad
         return this.identificacion;
     }
 
+
+    public Asignatura getAsignatura() {
+        return asignatura;
+    }
 }
