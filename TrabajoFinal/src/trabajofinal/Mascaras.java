@@ -16,9 +16,9 @@ public class Mascaras
     
     public static boolean emailValido(String email)
     {
-        int i = 0;
-        while (i < email.length() && email.charAt(i) != '@')
+        int i = 0, max = email.length() - 1;
+        while (i < max && email.charAt(i) != '@')
             i++;
-        return i < email.length() - 1;
+        return i < max;
     }
 }
