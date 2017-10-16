@@ -24,12 +24,33 @@ public class Asignatura implements Entidad
     {
         return identificacion;
     }
-    
-    public boolean equals (Object obj) {
-        Asignatura asi= (Asignatura) obj;
-        if (this.nombre==asi.nombre)
-            return true;     
-        else
+
+    @Override
+    public boolean equals(Object object)
+    {
+        if (this == object)
+        {
+            return true;
+        }
+        if (!(object instanceof Asignatura))
+        {
             return false;
+        }
+        final Asignatura other = (Asignatura) object;
+        if (!(nombre == null? other.nombre == null: nombre.equals(other.nombre)))
+        {
+            return false;
+        }
+        return true;
     }
+
+    @Override
+    public int hashCode()
+    {
+        final int PRIME = 37;
+        int result = 1;
+        result = PRIME * result + ((nombre == null)? 0: nombre.hashCode());
+        return result;
+    }
+    
 }

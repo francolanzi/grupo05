@@ -28,26 +28,26 @@ public class Controlador extends Observable
         return controlador;
     }
     
-    public void altaAlumno(Alumno alumno) throws OperacionException
+    public void altaAlumno(Alumno alumno) throws AltaException
     {
         if (alumnos.containsValue(alumno))
-            throw new OperacionException(alumno, OperacionException.ALTA);
+            throw new AltaException(alumno);
         else
             alumnos.put(alumno.getId(), alumno);
     }
     
-    public void altaProfesor(Profesor profesor) throws OperacionException
+    public void altaProfesor(Profesor profesor) throws AltaException
     {
         if (profesores.containsValue(profesor))
-            throw new OperacionException(profesor, OperacionException.ALTA);
+            throw new AltaException(profesor);
         else
             profesores.put(profesor.getId(), profesor);
     }
     
-    public void altaAsignatura(Asignatura asignatura) throws OperacionException
+    public void altaAsignatura(Asignatura asignatura) throws AltaException
     {
         if (asignaturas.containsValue(asignatura))
-            throw new OperacionException(asignatura, OperacionException.ALTA);
+            throw new AltaException(asignatura);
         else
             asignaturas.put(asignatura.getId(), asignatura);
     }

@@ -16,16 +16,14 @@ public class Profesor implements Entidad
     private String email;
     private ObserverTreeMap<Asignatura> competencia;
 
-    public Profesor(String apellido, String nombre, Domicilio domicilio, String telefono, String email) throws EmailInvalidoException
+    public Profesor(String apellido, String nombre, String calle, int numero, String telefono, String email) throws EmailInvalidoException
     {
-        if (Mascaras.emailValido(email))
-            this.email = email;
-        else
+        if (!Mascaras.emailValido(email))
             throw new EmailInvalidoException(email);
         this.legajo = Mascaras.genId(sigLegajo++, prefijo);
         this.apellido = apellido;
         this.nombre = nombre;
-        this.domicilio = domicilio;
+        this.domicilio = new Domicilio(calle, numero);
         this.telefono = telefono;
         this.competencia = new ObserverTreeMap<Asignatura>();
     }
@@ -35,13 +33,53 @@ public class Profesor implements Entidad
     {
         return legajo;
     }
-    
-    public boolean equals (Object obj) {
-        Profesor pro= (Profesor) obj;
-        if (this.nombre==pro.nombre && this.apellido==pro.apellido && this.email==pro.email && this.domicilio.getCalle()==pro.domicilio.getCalle() && this.domicilio.getNumero()==pro.domicilio.getNumero() && this.telefono== pro.telefono)
-            return true;     
-        else       
+
+    @Override
+    public boolean equals(Object object)
+    {
+        if (this == object)
+        {
+            return true;
+        }
+        if (!(object instanceof Profesor))
+        {
             return false;
+        }
+        final Profesor other = (Profesor) object;
+        if (!(apellido == null? other.apellido == null: apellido.equals(other.apellido)))
+        {
+            return false;
+        }
+        if (!(nombre == null? other.nombre == null: nombre.equals(other.nombre)))
+        {
+            return false;
+        }
+        if (!(domicilio == null? other.domicilio == null: domicilio.equals(other.domicilio)))
+        {
+            return false;
+        }
+        if (!(telefono == null? other.telefono == null: telefono.equals(other.telefono)))
+        {
+            return false;
+        }
+        if (!(email == null? other.email == null: email.equals(other.email)))
+        {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        final int PRIME = 37;
+        int result = 1;
+        result = PRIME * result + ((apellido == null)? 0: apellido.hashCode());
+        result = PRIME * result + ((nombre == null)? 0: nombre.hashCode());
+        result = PRIME * result + ((domicilio == null)? 0: domicilio.hashCode());
+        result = PRIME * result + ((telefono == null)? 0: telefono.hashCode());
+        result = PRIME * result + ((email == null)? 0: email.hashCode());
+        return result;
     }
 
 }

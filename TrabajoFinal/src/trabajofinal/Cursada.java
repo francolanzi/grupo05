@@ -2,7 +2,7 @@ package trabajofinal;
 
 import java.util.TreeMap;
 
-public class Cursada
+public class Cursada implements Entidad
 {
     
     private static int sigIdentificacion = 0;
@@ -28,4 +28,10 @@ public class Cursada
         this.alumnos = new ObserverTreeMap<Alumno>();
     }
 
+    @Override
+    public String getId()
+    {
+        return this.identificacion;
+    }
+    
 }

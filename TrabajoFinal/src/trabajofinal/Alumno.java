@@ -15,16 +15,14 @@ public class Alumno implements Entidad
     private String email;
     private ObserverTreeMap<Asignatura> historia;
 
-    public Alumno(String apellido, String nombre, Domicilio domicilio, String email) throws EmailInvalidoException
+    public Alumno(String apellido, String nombre, String calle, int numero, String email) throws EmailInvalidoException
     {
-        if (Mascaras.emailValido(email))
-            this.email = email;
-        else
+        if (!Mascaras.emailValido(email))
             throw new EmailInvalidoException(email);
         this.legajo = Mascaras.genId(sigLegajo++, prefijo);
         this.apellido = apellido;
         this.nombre = nombre;
-        this.domicilio = domicilio;
+        this.domicilio = new Domicilio(calle, numero);
         this.historia = new ObserverTreeMap<Asignatura>();
     }
 
