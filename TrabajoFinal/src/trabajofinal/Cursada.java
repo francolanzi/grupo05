@@ -1,5 +1,6 @@
 package trabajofinal;
 
+import java.util.Iterator;
 import java.util.TreeMap;
 
 public class Cursada implements Entidad
@@ -37,8 +38,19 @@ public class Cursada implements Entidad
         return this.identificacion;
     }
 
-
     public Asignatura getAsignatura() {
-        return asignatura;
+        return this.asignatura;
+    }
+    
+    public boolean horarioViable(Iterator<Cursada> cursadas)
+    {
+        boolean retorno = true;
+        while (retorno && cursadas.hasNext())
+        {
+            Cursada cursada = cursadas.next();
+            retorno = !this.periodo.equals(cursada.periodo) ||
+            !this.dia.equals(cursada.dia) || !this.hora.equals(cursada.hora);
+        }
+        return retorno;
     }
 }

@@ -53,6 +53,15 @@ public class Controlador extends Observable
             this.asignaturas.put(asignatura.getId(), asignatura);
     }
     
+    public void altaCursada(Cursada cursada) throws EntidadExistenteException, HorarioNoViableException
+    {
+        if (this.asignaturas.containsValue(cursada))
+            throw new EntidadExistenteException(cursada);
+        if (!cursada.horarioViable(this.cursadas.values().iterator()))
+            throw new HorarioNoViableException(cursada);
+        this.cursadas.put(cursada.getId(), cursada);
+    }
+    
     public void bajaAlumno(String legajo) throws IdNoExistenteException
     {
         if (!this.alumnos.containsKey(legajo))
@@ -84,6 +93,18 @@ public class Controlador extends Observable
         else
         {
             this.asignaturas.remove(identificacion);
+            setChanged();
+            notifyObservers(identificacion);
+        }
+    }
+    
+    public void bajaCursada(String identificacion) throws IdNoExistenteException
+    {
+        if (!this.cursadas.containsKey(identificacion))
+            throw new IdNoExistenteException(identificacion);
+        else
+        {
+            this.cursadas.remove(identificacion);
             setChanged();
             notifyObservers(identificacion);
         }
