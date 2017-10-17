@@ -37,6 +37,11 @@ public class Alumno implements Entidad
         this.domicilio = new Domicilio(calle, numero);
         this.email = email;
     }
+    
+    public void aprobarAsignatura(Asignatura asignatura) throws EntidadExistenteException
+    {
+        this.historia.add(asignatura);
+    }
 
     @Override
     public boolean equals(Object object)
