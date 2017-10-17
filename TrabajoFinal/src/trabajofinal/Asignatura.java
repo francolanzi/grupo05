@@ -59,7 +59,7 @@ public class Asignatura implements Entidad
     }
 
     public String getNombre() {
-        return nombre;
+        return this.nombre;
     }
 
 }

@@ -53,6 +53,15 @@ public class Controlador extends Observable
             this.asignaturas.put(asignatura.getId(), asignatura);
     }
     
+    public void altaCursada(Cursada cursada) throws EntidadExistenteException, HorarioNoViableException
+    {
+        if (this.asignaturas.containsValue(cursada))
+            throw new EntidadExistenteException(cursada);
+        if (!Cursada.horarioViable(cursada.getPeriodo(), cursada.getDia(), cursada.getHora(), this.cursadas.values().iterator()))
+            throw new HorarioNoViableException(cursada.getPeriodo(), cursada.getDia(), cursada.getHora());
+        this.cursadas.put(cursada.getId(), cursada);
+    }
+    
     public void bajaAlumno(String legajo) throws IdNoExistenteException
     {
         if (!this.alumnos.containsKey(legajo))
@@ -89,7 +98,20 @@ public class Controlador extends Observable
         }
     }
     
-    public void modificaAlumno(String legajo, String apellido, String nombre, String calle, int numero, String email) throws IdNoExistenteException, EmailInvalidoException
+    public void bajaCursada(String identificacion) throws IdNoExistenteException
+    {
+        if (!this.cursadas.containsKey(identificacion))
+            throw new IdNoExistenteException(identificacion);
+        else
+        {
+            this.cursadas.remove(identificacion);
+            setChanged();
+            notifyObservers(identificacion);
+        }
+    }
+    
+    public void modificaAlumno(String legajo, String apellido, String nombre, String calle, int numero, String email)
+    throws IdNoExistenteException, EmailInvalidoException
     {
         if(!this.alumnos.containsKey(legajo))
             throw new IdNoExistenteException(legajo);
@@ -97,7 +119,8 @@ public class Controlador extends Observable
             this.alumnos.get(legajo).modificar(apellido, nombre, calle, numero, email);
     }
     
-    public void modificaProfesor(String legajo, String apellido, String nombre, String calle, int numero, String telefono, String email) throws IdNoExistenteException, EmailInvalidoException
+    public void modificaProfesor(String legajo, String apellido, String nombre, String calle, int numero, String telefono, String email)
+    throws IdNoExistenteException, EmailInvalidoException
     {
         if(!this.profesores.containsKey(legajo))
             throw new IdNoExistenteException(legajo);
@@ -113,80 +136,62 @@ public class Controlador extends Observable
             this.asignaturas.get(identificacion).setNombre(nombre);
     }
     
-    public TreeMap<String, Alumno> ubicaAlumno(String apellido, String nombre) throws EntidadNoEncontradaException{
+    public void modificaCursada(String identificacion, Asignatura asignatura, String periodo, String dia, String hora)
+    throws IdNoExistenteException, HorarioNoViableException,PeriodoInvalidoException, HoraInvalidaException
+    {
+        if (!this.cursadas.containsKey(identificacion))
+            throw new IdNoExistenteException(identificacion);
+        if (!Cursada.horarioViable(periodo, dia, hora, this.cursadas.values().iterator()))
+            throw new HorarioNoViableException(periodo, dia, hora);
+        this.cursadas.get(identificacion).modificar(asignatura, periodo, dia, hora);
+    }
+    
+    public Iterator<Alumno> ubicaAlumno(String apellido, String nombre)
+    {
         TreeMap<String, Alumno> coleccion= new TreeMap<String, Alumno>();
-        if (!alumnos.isEmpty()){
-            Iterator iterator= alumnos.keySet().iterator();
-            while(iterator.hasNext()){
-                Alumno otro = (Alumno) iterator.next();
-                if (otro.getApellido().equals(apellido) && otro.getNombre().equals(nombre))
-                        coleccion.put(otro.getId(), otro);
-            }
-            if (coleccion.isEmpty())
-                throw new EntidadNoEncontradaException(apellido,nombre);
-            else
-                return coleccion;
+        Iterator<Alumno> iterator= alumnos.values().iterator();
+        while(iterator.hasNext()){
+            Alumno otro = iterator.next();
+            if (otro.getApellido().equals(apellido) && otro.getNombre().equals(nombre))
+                coleccion.put(otro.getId(), otro);
         }
-        else{
-            throw new EntidadNoEncontradaException(apellido,nombre);
-        }
+        return coleccion.values().iterator();
     }
 
-    public TreeMap<String, Profesor> ubicaProfesor(String apellido, String nombre) throws EntidadNoEncontradaException{
+    public Iterator<Profesor> ubicaProfesor(String apellido, String nombre)
+    {
         TreeMap<String, Profesor> coleccion= new TreeMap<String, Profesor>();
-        if (!profesores.isEmpty()){
-            Iterator iterator= profesores.keySet().iterator();
-            while(iterator.hasNext()){
-                Profesor otro = (Profesor) iterator.next();
-                if (otro.getApellido().equals(apellido) && otro.getNombre().equals(nombre))
-                        coleccion.put(otro.getId(), otro);
-            }
-            if (coleccion.isEmpty())
-                throw new EntidadNoEncontradaException(apellido,nombre);
-            else
-                return coleccion;
+        Iterator<Profesor> iterator= profesores.values().iterator();
+        while(iterator.hasNext()){
+            Profesor otro = iterator.next();
+            if (otro.getApellido().equals(apellido) && otro.getNombre().equals(nombre))
+                coleccion.put(otro.getId(), otro);
         }
-        else{
-            throw new EntidadNoEncontradaException(apellido,nombre);
-        }
+        return coleccion.values().iterator();
     }
     
-    public TreeMap<String, Asignatura> ubicaAsignatura(String nombre) throws EntidadNoEncontradaException{
+    public Iterator<Asignatura> ubicaAsignatura(String nombre)
+    {
         TreeMap<String, Asignatura> coleccion= new TreeMap<String, Asignatura>();
-        if (!asignaturas.isEmpty()){
-            Iterator iterator= asignaturas.keySet().iterator();
-            while(iterator.hasNext()){
-                Asignatura otro = (Asignatura) iterator.next();
-                if (otro.getNombre().equals(nombre))
-                    coleccion.put(otro.getId(), otro);
-            }
-            if (coleccion.isEmpty())
-                throw new EntidadNoEncontradaException(nombre);
-            else
-                return coleccion;
+        Iterator<Asignatura> iterator= asignaturas.values().iterator();
+        while(iterator.hasNext()){
+            Asignatura otro = iterator.next();
+            if (otro.getNombre().equals(nombre))
+                coleccion.put(otro.getId(), otro);
         }
-        else{
-            throw new EntidadNoEncontradaException(nombre);
-        }
+        return coleccion.values().iterator();
     }
     
-    public TreeMap<String, Cursada> ubicaCursada(String nombre) throws EntidadNoEncontradaException{
+    public Iterator<Cursada> ubicaCursada(String nombre)
+    {
         TreeMap<String, Cursada> coleccion= new TreeMap<String, Cursada>();
-        if (!cursadas.isEmpty()){
-            Iterator iterator= cursadas.keySet().iterator();
-            while(iterator.hasNext()){
-                Cursada otro = (Cursada) iterator.next();
-                if (otro.getAsignatura().equals(nombre))
-                    coleccion.put(otro.getId(), otro);
-            }
-            if (coleccion.isEmpty())
-                throw new EntidadNoEncontradaException(nombre);
-            else
-                return coleccion;
+        Iterator<Cursada> iterator= cursadas.values().iterator();
+        while(iterator.hasNext()){
+            Cursada otro = iterator.next();
+            if (otro.getAsignatura().equals(nombre))
+                coleccion.put(otro.getId(), otro);
         }
-        else{
-            throw new EntidadNoEncontradaException(nombre);
-        }
+        return coleccion.values().iterator();
     }
 
 }

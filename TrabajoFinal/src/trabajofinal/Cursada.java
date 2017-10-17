@@ -1,5 +1,6 @@
 package trabajofinal;
 
+import java.util.Iterator;
 import java.util.TreeMap;
 
 public class Cursada implements Entidad
@@ -18,15 +19,8 @@ public class Cursada implements Entidad
 
     public Cursada(Asignatura asignatura, String periodo, String dia, String hora) throws PeriodoInvalidoException, HoraInvalidaException
     {
-        if (!Mascaras.periodoValido(periodo))
-            throw new PeriodoInvalidoException(periodo);
-        if (!Mascaras.horaValida(hora))
-            throw new HoraInvalidaException(hora);
+        this.modificar(asignatura, periodo, dia, hora);
         this.identificacion = Mascaras.genId(sigIdentificacion++, prefijo);
-        this.asignatura = asignatura;
-        this.periodo = periodo;
-        this.dia = dia;
-        this.hora = hora;
         this.profesores = new ObserverTreeMap<Profesor>();
         this.alumnos = new ObserverTreeMap<Alumno>();
     }
@@ -37,8 +31,46 @@ public class Cursada implements Entidad
         return this.identificacion;
     }
 
-
     public Asignatura getAsignatura() {
-        return asignatura;
+        return this.asignatura;
+    }
+
+    public String getPeriodo()
+    {
+        return this.periodo;
+    }
+
+    public String getDia()
+    {
+        return this.dia;
+    }
+
+    public String getHora()
+    {
+        return this.hora;
+    }
+
+    public void modificar(Asignatura asignatura, String periodo, String dia, String hora) throws PeriodoInvalidoException, HoraInvalidaException
+    {
+        if (!Mascaras.periodoValido(periodo))
+            throw new PeriodoInvalidoException(periodo);
+        if (!Mascaras.horaValida(hora))
+            throw new HoraInvalidaException(hora);
+        this.asignatura = asignatura;
+        this.periodo = periodo;
+        this.dia = dia;
+        this.hora = hora;
+    }
+    
+    public static boolean horarioViable(String periodo, String dia, String hora, Iterator<Cursada> cursadas)
+    {
+        boolean retorno = true;
+        while (retorno && cursadas.hasNext())
+        {
+            Cursada cursada = cursadas.next();
+            retorno = !periodo.equals(cursada.periodo) ||
+            !dia.equals(cursada.dia) || !hora.equals(cursada.hora);
+        }
+        return retorno;
     }
 }
