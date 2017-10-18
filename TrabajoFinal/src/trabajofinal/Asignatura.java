@@ -10,13 +10,23 @@ public class Asignatura implements Entidad
     
     private String identificacion;
     private String nombre;
-    private ObserverTreeMap<Asignatura> correlatividades;
+    private ObserverTreeMap<Asignatura> correlativas;
 
     public Asignatura(String nombre)
     {
         this.identificacion = Mascaras.genId(sigIdentificacion++, prefijo);
         this.setNombre(nombre);
-        this.correlatividades = new ObserverTreeMap<Asignatura>();
+        this.correlativas = new ObserverTreeMap<Asignatura>();
+    }
+    
+    public void addCorrelativa(Asignatura correlativa) throws EntidadExistenteException
+    {
+        this.correlativas.add(correlativa);
+    }
+    
+    public void removeCorrelativa(String identificacion) throws IdNoExistenteException
+    {
+        this.correlativas.remove(identificacion);
     }
 
     @Override

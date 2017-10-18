@@ -33,32 +33,27 @@ public class Controlador extends Observable
     {
         if (this.alumnos.containsValue(alumno))
             throw new EntidadExistenteException(alumno);
-        else
-            this.alumnos.put(alumno.getId(), alumno);
+        this.alumnos.put(alumno.getId(), alumno);
     }
     
     public void altaProfesor(Profesor profesor) throws EntidadExistenteException
     {
         if (this.profesores.containsValue(profesor))
             throw new EntidadExistenteException(profesor);
-        else
-            this.profesores.put(profesor.getId(), profesor);
+        this.profesores.put(profesor.getId(), profesor);
     }
     
     public void altaAsignatura(Asignatura asignatura) throws EntidadExistenteException
     {
         if (this.asignaturas.containsValue(asignatura))
             throw new EntidadExistenteException(asignatura);
-        else
-            this.asignaturas.put(asignatura.getId(), asignatura);
+        this.asignaturas.put(asignatura.getId(), asignatura);
     }
     
     public void altaCursada(Cursada cursada) throws EntidadExistenteException, HorarioNoViableException
     {
         if (this.asignaturas.containsValue(cursada))
             throw new EntidadExistenteException(cursada);
-        if (!Cursada.horarioViable(cursada.getPeriodo(), cursada.getDia(), cursada.getHora(), this.cursadas.values().iterator()))
-            throw new HorarioNoViableException(cursada.getPeriodo(), cursada.getDia(), cursada.getHora());
         this.cursadas.put(cursada.getId(), cursada);
     }
     
@@ -66,48 +61,36 @@ public class Controlador extends Observable
     {
         if (!this.alumnos.containsKey(legajo))
             throw new IdNoExistenteException(legajo);
-        else
-        {
-            this.alumnos.remove(legajo);
-            setChanged();
-            notifyObservers(legajo);
-        }
+        this.alumnos.remove(legajo);
+        setChanged();
+        notifyObservers(legajo);
     }
     
     public void bajaProfesor(String legajo) throws IdNoExistenteException
     {
         if (!this.profesores.containsKey(legajo))
             throw new IdNoExistenteException(legajo);
-        else
-        {
-            this.profesores.remove(legajo);
-            setChanged();
-            notifyObservers(legajo);
-        }
+        this.profesores.remove(legajo);
+        setChanged();
+        notifyObservers(legajo);
     }
     
     public void bajaAsignatura(String identificacion) throws IdNoExistenteException
     {
         if (!this.asignaturas.containsKey(identificacion))
             throw new IdNoExistenteException(identificacion);
-        else
-        {
-            this.asignaturas.remove(identificacion);
-            setChanged();
-            notifyObservers(identificacion);
-        }
+        this.asignaturas.remove(identificacion);
+        setChanged();
+        notifyObservers(identificacion);
     }
     
     public void bajaCursada(String identificacion) throws IdNoExistenteException
     {
         if (!this.cursadas.containsKey(identificacion))
             throw new IdNoExistenteException(identificacion);
-        else
-        {
-            this.cursadas.remove(identificacion);
-            setChanged();
-            notifyObservers(identificacion);
-        }
+        this.cursadas.remove(identificacion);
+        setChanged();
+        notifyObservers(identificacion);
     }
     
     public void modificaAlumno(String legajo, String apellido, String nombre, String calle, int numero, String email)
@@ -115,8 +98,7 @@ public class Controlador extends Observable
     {
         if(!this.alumnos.containsKey(legajo))
             throw new IdNoExistenteException(legajo);
-        else
-            this.alumnos.get(legajo).modificar(apellido, nombre, calle, numero, email);
+        this.alumnos.get(legajo).modificar(apellido, nombre, calle, numero, email);
     }
     
     public void modificaProfesor(String legajo, String apellido, String nombre, String calle, int numero, String telefono, String email)
@@ -124,25 +106,21 @@ public class Controlador extends Observable
     {
         if(!this.profesores.containsKey(legajo))
             throw new IdNoExistenteException(legajo);
-        else
-            this.profesores.get(legajo).modificar(apellido, nombre, calle, numero, telefono, email);
+        this.profesores.get(legajo).modificar(apellido, nombre, calle, numero, telefono, email);
     }
     
     public void modificaAsignatura(String identificacion, String nombre) throws IdNoExistenteException
     {
         if(!this.asignaturas.containsKey(identificacion))
             throw new IdNoExistenteException(identificacion);
-        else
-            this.asignaturas.get(identificacion).setNombre(nombre);
+        this.asignaturas.get(identificacion).setNombre(nombre);
     }
     
     public void modificaCursada(String identificacion, Asignatura asignatura, String periodo, String dia, String hora)
-    throws IdNoExistenteException, HorarioNoViableException,PeriodoInvalidoException, HoraInvalidaException
+    throws IdNoExistenteException, PeriodoInvalidoException, HoraInvalidaException
     {
         if (!this.cursadas.containsKey(identificacion))
             throw new IdNoExistenteException(identificacion);
-        if (!Cursada.horarioViable(periodo, dia, hora, this.cursadas.values().iterator()))
-            throw new HorarioNoViableException(periodo, dia, hora);
         this.cursadas.get(identificacion).modificar(asignatura, periodo, dia, hora);
     }
     
@@ -192,6 +170,77 @@ public class Controlador extends Observable
                 coleccion.put(otro.getId(), otro);
         }
         return coleccion.values().iterator();
+    }
+    
+    public void aprobarAlumno(String legajo, String identificacion) throws IdNoExistenteException, EntidadExistenteException
+    {
+        if (!this.cursadas.containsKey(identificacion))
+            throw new IdNoExistenteException(identificacion);
+        this.cursadas.get(identificacion).aprobarAlumno(legajo);
+    }
+    
+    public void addCompetencia(String legajo, String identificacion) throws IdNoExistenteException, EntidadExistenteException
+    {
+        if (!this.profesores.containsKey(legajo))
+            throw new IdNoExistenteException(legajo);
+        if (!this.asignaturas.containsKey(identificacion))
+            throw new IdNoExistenteException(identificacion);
+        this.profesores.get(legajo).addCompetencia(this.asignaturas.get(identificacion));
+    }
+    
+    public void removeCompetencia(String legajo, String identificacion) throws IdNoExistenteException
+    {
+        if (!this.profesores.containsKey(legajo))
+            throw new IdNoExistenteException(legajo);
+        this.profesores.get(legajo).removeCompetencia(identificacion);
+    }
+    
+    public void addCorrelativa(String idAsignatura, String idCorrelativa) throws IdNoExistenteException, EntidadExistenteException
+    {
+        if (!this.asignaturas.containsKey(idAsignatura))
+            throw new IdNoExistenteException(idAsignatura);
+        if (!this.asignaturas.containsKey(idCorrelativa))
+            throw new IdNoExistenteException(idCorrelativa);
+        this.asignaturas.get(idAsignatura).addCorrelativa(this.asignaturas.get(idCorrelativa));
+    }
+    
+    public void removeCorrelativa(String idAsignatura, String idCorrelativa) throws IdNoExistenteException
+    {
+        if (!this.asignaturas.containsKey(idAsignatura))
+            throw new IdNoExistenteException(idAsignatura);
+        this.asignaturas.get(idAsignatura).removeCorrelativa(idCorrelativa);
+    }
+    
+    public void addAlumnoCursada(String legajo, String identificacion) throws IdNoExistenteException, EntidadExistenteException
+    {
+        if (!this.alumnos.containsKey(legajo))
+            throw new IdNoExistenteException(legajo);
+        if (!this.cursadas.containsKey(identificacion))
+            throw new IdNoExistenteException(identificacion);
+        this.cursadas.get(identificacion).addAlumno(this.alumnos.get(legajo));
+    }
+    
+    public void removeAlumnoCursada(String legajo, String identificacion) throws IdNoExistenteException
+    {
+        if (!this.cursadas.containsKey(identificacion))
+            throw new IdNoExistenteException(identificacion);
+        this.cursadas.get(identificacion).removeAlumno(legajo);
+    }
+    
+    public void addProfesorCursada(String legajo, String identificacion) throws IdNoExistenteException, EntidadExistenteException
+    {
+        if (!this.profesores.containsKey(legajo))
+            throw new IdNoExistenteException(legajo);
+        if (!this.cursadas.containsKey(identificacion))
+            throw new IdNoExistenteException(identificacion);
+        this.cursadas.get(identificacion).addProfesor(this.profesores.get(legajo));
+    }
+    
+    public void removeProfesorCursada(String legajo, String identificacion) throws IdNoExistenteException
+    {
+        if (!this.cursadas.containsKey(identificacion))
+            throw new IdNoExistenteException(identificacion);
+        this.cursadas.get(identificacion).removeProfesor(legajo);
     }
 
 }

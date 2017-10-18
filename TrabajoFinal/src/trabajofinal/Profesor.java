@@ -14,13 +14,23 @@ public class Profesor implements Entidad
     private Domicilio domicilio;
     private String telefono;
     private String email;
-    private ObserverTreeMap<Asignatura> competencia;
+    private ObserverTreeMap<Asignatura> competencias;
 
     public Profesor(String apellido, String nombre, String calle, int numero, String telefono, String email) throws EmailInvalidoException
     {
         this.modificar(apellido, nombre, calle, numero, telefono, email);
         this.legajo = Mascaras.genId(sigLegajo++, prefijo);
-        this.competencia = new ObserverTreeMap<Asignatura>();
+        this.competencias = new ObserverTreeMap<Asignatura>();
+    }
+    
+    public void addCompetencia(Asignatura competencia) throws EntidadExistenteException
+    {
+        this.competencias.add(competencia);
+    }
+    
+    public void removeCompetencia(String identificacion) throws IdNoExistenteException
+    {
+        this.competencias.remove(identificacion);
     }
 
     @Override

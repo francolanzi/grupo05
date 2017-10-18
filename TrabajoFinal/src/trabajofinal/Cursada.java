@@ -24,6 +24,26 @@ public class Cursada implements Entidad
         this.profesores = new ObserverTreeMap<Profesor>();
         this.alumnos = new ObserverTreeMap<Alumno>();
     }
+    
+    public void addAlumno(Alumno alumno) throws EntidadExistenteException
+    {
+        this.alumnos.add(alumno);
+    }
+    
+    public void addProfesor(Profesor profesor) throws EntidadExistenteException
+    {
+        this.profesores.add(profesor);
+    }
+    
+    public void removeAlumno(String legajo) throws IdNoExistenteException
+    {
+        this.alumnos.remove(legajo);
+    }
+    
+    public void removeProfesor(String legajo) throws IdNoExistenteException
+    {
+        this.profesores.remove(legajo);
+    }
 
     @Override
     public String getId()
@@ -31,23 +51,9 @@ public class Cursada implements Entidad
         return this.identificacion;
     }
 
-    public Asignatura getAsignatura() {
+    public Asignatura getAsignatura()
+    {
         return this.asignatura;
-    }
-
-    public String getPeriodo()
-    {
-        return this.periodo;
-    }
-
-    public String getDia()
-    {
-        return this.dia;
-    }
-
-    public String getHora()
-    {
-        return this.hora;
     }
 
     public void modificar(Asignatura asignatura, String periodo, String dia, String hora) throws PeriodoInvalidoException, HoraInvalidaException
@@ -62,15 +68,9 @@ public class Cursada implements Entidad
         this.hora = hora;
     }
     
-    public static boolean horarioViable(String periodo, String dia, String hora, Iterator<Cursada> cursadas)
+    public void aprobarAlumno(String legajo) throws IdNoExistenteException, EntidadExistenteException
     {
-        boolean retorno = true;
-        while (retorno && cursadas.hasNext())
-        {
-            Cursada cursada = cursadas.next();
-            retorno = !periodo.equals(cursada.periodo) ||
-            !dia.equals(cursada.dia) || !hora.equals(cursada.hora);
-        }
-        return retorno;
+        this.alumnos.remove(legajo).aprobarAsignatura(asignatura);
     }
+    
 }
