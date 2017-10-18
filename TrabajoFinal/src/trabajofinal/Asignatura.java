@@ -1,5 +1,6 @@
 package trabajofinal;
 
+import java.util.Iterator;
 import java.util.TreeMap;
 
 public class Asignatura implements Entidad
@@ -42,6 +43,11 @@ public class Asignatura implements Entidad
     public void setNombre(String nombre)
     {
         this.nombre = nombre;
+    }
+    
+    public Iterator<Asignatura> getCorrealtivas()
+    {
+        return this.correlativas.getIterator();
     }
 
     @Override

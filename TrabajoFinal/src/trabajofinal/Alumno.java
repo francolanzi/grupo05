@@ -1,5 +1,6 @@
     package trabajofinal;
 
+import java.util.Iterator;
 import java.util.TreeMap;
 
 public class Alumno implements Entidad
@@ -34,6 +35,11 @@ public class Alumno implements Entidad
     public String getId()
     {
         return legajo;
+    }
+    
+    public Iterator<Asignatura> getHistoria()
+    {
+        return this.historia.getIterator();
     }
 
     public void modificar(String apellido, String nombre, String calle, int numero, String email) throws EmailInvalidoException

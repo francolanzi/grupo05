@@ -173,6 +173,34 @@ public class Controlador extends Observable
         return coleccion.values().iterator();
     }
     
+    public Alumno consultaAlumno(String legajo) throws IdNoExistenteException
+    {
+        if (!this.alumnos.containsKey(legajo))
+            throw new IdNoExistenteException(legajo);
+        return this.alumnos.get(legajo);
+    }
+    
+    public Profesor consultaProfesor(String legajo) throws IdNoExistenteException
+    {
+        if (!this.profesores.containsKey(legajo))
+            throw new IdNoExistenteException(legajo);
+        return this.profesores.get(legajo);
+    }
+    
+    public Asignatura consultaAsignatura(String identificacion) throws IdNoExistenteException
+    {
+        if (!this.asignaturas.containsKey(identificacion))
+            throw new IdNoExistenteException(identificacion);
+        return this.asignaturas.get(identificacion);
+    }
+    
+    public Cursada consultaCursada(String identificacion) throws IdNoExistenteException
+    {
+        if (!this.cursadas.containsKey(identificacion))
+            throw new IdNoExistenteException(identificacion);
+        return this.cursadas.get(identificacion);
+    }
+    
     public void aprobarAlumno(String legajo, String identificacion) throws IdNoExistenteException, EntidadExistenteException
     {
         if (!this.cursadas.containsKey(identificacion))

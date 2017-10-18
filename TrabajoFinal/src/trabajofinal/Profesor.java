@@ -1,5 +1,6 @@
 package trabajofinal;
 
+import java.util.Iterator;
 import java.util.TreeMap;
 
 public class Profesor implements Entidad
@@ -32,11 +33,24 @@ public class Profesor implements Entidad
     {
         this.competencias.remove(identificacion);
     }
+    
+    public String getApellido() {
+        return this.apellido;
+    }
+
+    public String getNombre() {
+        return this.nombre;
+    }
 
     @Override
     public String getId()
     {
         return legajo;
+    }
+    
+    public Iterator<Asignatura> getCompetencias()
+    {
+        return this.competencias.getIterator();
     }
     
     public void modificar(String apellido, String nombre, String calle, int numero, String telefono, String email) throws EmailInvalidoException
@@ -77,12 +91,5 @@ public class Profesor implements Entidad
         result = PRIME * result + ((legajo == null)? 0: legajo.hashCode());
         return result;
     }
-
-    public String getApellido() {
-        return this.apellido;
-    }
-
-    public String getNombre() {
-        return this.nombre;
-    }
+    
 }

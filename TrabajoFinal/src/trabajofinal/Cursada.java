@@ -1,9 +1,11 @@
 package trabajofinal;
 
 import java.util.Iterator;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.TreeMap;
 
-public class Cursada implements Entidad
+public class Cursada implements Entidad, Observer
 {
     
     private static int sigIdentificacion = 0;
@@ -24,6 +26,7 @@ public class Cursada implements Entidad
         this.identificacion = Mascaras.genId(sigIdentificacion++, prefijo);
         this.profesores = new ObserverTreeMap<Profesor>();
         this.alumnos = new ObserverTreeMap<Alumno>();
+        Controlador.getInstance().addObserver(this);
     }
     
     public void addAlumno(Alumno alumno) throws EntidadExistenteException
@@ -55,6 +58,16 @@ public class Cursada implements Entidad
     public Asignatura getAsignatura()
     {
         return this.asignatura;
+    }
+    
+    public Iterator<Profesor> getProfesores()
+    {
+        return this.profesores.getIterator();
+    }
+    
+    public Iterator<Alumno> getAlumno()
+    {
+        return this.alumnos.getIterator();
     }
 
     public void modificar(Asignatura asignatura, String periodo, String dia, String horaInicio, String horaFin) throws PeriodoInvalidoException, HoraInvalidaException
@@ -105,4 +118,14 @@ public class Cursada implements Entidad
         return result;
     }
 
+    @Override
+    public void update(Observable observable, Object object)
+    {
+        if (observable == Controlador.getInstance() && this.asignatura.getId().equals(object))
+            try
+            {
+                Controlador.getInstance().bajaCursada(this.identificacion);
+            }
+            catch (IdNoExistenteException e){}
+    }
 }
