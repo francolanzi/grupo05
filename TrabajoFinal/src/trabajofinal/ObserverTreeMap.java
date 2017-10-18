@@ -1,5 +1,6 @@
 package trabajofinal;
 
+import java.util.Iterator;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.TreeMap;
@@ -34,6 +35,11 @@ public class ObserverTreeMap<T extends Entidad> implements Observer
         if (!this.coleccion.containsKey(id))
             throw new IdNoExistenteException(id);
         return this.coleccion.remove(id);
+    }
+    
+    public Iterator<T> getIterator()
+    {
+        return this.coleccion.values().iterator();
     }
 
     @Override
