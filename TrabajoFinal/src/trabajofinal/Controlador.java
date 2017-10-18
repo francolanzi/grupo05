@@ -117,7 +117,7 @@ public class Controlador extends Observable
     }
     
     public void modificaCursada(String identificacion, Asignatura asignatura, String periodo, String dia, String hora)
-    throws IdNoExistenteException, HorarioNoViableException, PeriodoInvalidoException, HoraInvalidaException
+    throws IdNoExistenteException, PeriodoInvalidoException, HoraInvalidaException
     {
         if (!this.cursadas.containsKey(identificacion))
             throw new IdNoExistenteException(identificacion);
@@ -170,6 +170,77 @@ public class Controlador extends Observable
                 coleccion.put(otro.getId(), otro);
         }
         return coleccion.values().iterator();
+    }
+    
+    public void aprobarAlumno(String legajo, String identificacion) throws IdNoExistenteException, EntidadExistenteException
+    {
+        if (!this.cursadas.containsKey(identificacion))
+            throw new IdNoExistenteException(identificacion);
+        this.cursadas.get(identificacion).aprobarAlumno(legajo);
+    }
+    
+    public void addCompetencia(String legajo, String identificacion) throws IdNoExistenteException, EntidadExistenteException
+    {
+        if (!this.profesores.containsKey(legajo))
+            throw new IdNoExistenteException(legajo);
+        if (!this.asignaturas.containsKey(identificacion))
+            throw new IdNoExistenteException(identificacion);
+        this.profesores.get(legajo).addCompetencia(this.asignaturas.get(identificacion));
+    }
+    
+    public void removeCompetencia(String legajo, String identificacion) throws IdNoExistenteException
+    {
+        if (!this.profesores.containsKey(legajo))
+            throw new IdNoExistenteException(legajo);
+        this.profesores.get(legajo).removeCompetencia(identificacion);
+    }
+    
+    public void addCorrelativa(String idAsignatura, String idCorrelativa) throws IdNoExistenteException, EntidadExistenteException
+    {
+        if (!this.asignaturas.containsKey(idAsignatura))
+            throw new IdNoExistenteException(idAsignatura);
+        if (!this.asignaturas.containsKey(idCorrelativa))
+            throw new IdNoExistenteException(idCorrelativa);
+        this.asignaturas.get(idAsignatura).addCorrelativa(this.asignaturas.get(idCorrelativa));
+    }
+    
+    public void removeCorrelativa(String idAsignatura, String idCorrelativa) throws IdNoExistenteException
+    {
+        if (!this.asignaturas.containsKey(idAsignatura))
+            throw new IdNoExistenteException(idAsignatura);
+        this.asignaturas.get(idAsignatura).removeCorrelativa(idCorrelativa);
+    }
+    
+    public void addAlumnoCursada(String legajo, String identificacion) throws IdNoExistenteException, EntidadExistenteException
+    {
+        if (!this.alumnos.containsKey(legajo))
+            throw new IdNoExistenteException(legajo);
+        if (!this.cursadas.containsKey(identificacion))
+            throw new IdNoExistenteException(identificacion);
+        this.cursadas.get(identificacion).addAlumno(this.alumnos.get(legajo));
+    }
+    
+    public void removeAlumnoCursada(String legajo, String identificacion) throws IdNoExistenteException
+    {
+        if (!this.cursadas.containsKey(identificacion))
+            throw new IdNoExistenteException(identificacion);
+        this.cursadas.get(identificacion).removeAlumno(legajo);
+    }
+    
+    public void addProfesorCursada(String legajo, String identificacion) throws IdNoExistenteException, EntidadExistenteException
+    {
+        if (!this.profesores.containsKey(legajo))
+            throw new IdNoExistenteException(legajo);
+        if (!this.cursadas.containsKey(identificacion))
+            throw new IdNoExistenteException(identificacion);
+        this.cursadas.get(identificacion).addProfesor(this.profesores.get(legajo));
+    }
+    
+    public void removeProfesorCursada(String legajo, String identificacion) throws IdNoExistenteException
+    {
+        if (!this.cursadas.containsKey(identificacion))
+            throw new IdNoExistenteException(identificacion);
+        this.cursadas.get(identificacion).removeProfesor(legajo);
     }
 
 }
