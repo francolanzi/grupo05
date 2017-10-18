@@ -13,13 +13,14 @@ public class Cursada implements Entidad
     private Asignatura asignatura;
     private String periodo;
     private String dia;
-    private String hora;
+    private String horaInicio;
+    private String horaFin;
     private ObserverTreeMap<Profesor> profesores;
     private ObserverTreeMap<Alumno> alumnos;
 
-    public Cursada(Asignatura asignatura, String periodo, String dia, String hora) throws PeriodoInvalidoException, HoraInvalidaException
+    public Cursada(Asignatura asignatura, String periodo, String dia, String horaInicio, String horaFin) throws PeriodoInvalidoException, HoraInvalidaException
     {
-        this.modificar(asignatura, periodo, dia, hora);
+        this.modificar(asignatura, periodo, dia, horaInicio, horaFin);
         this.identificacion = Mascaras.genId(sigIdentificacion++, prefijo);
         this.profesores = new ObserverTreeMap<Profesor>();
         this.alumnos = new ObserverTreeMap<Alumno>();
@@ -56,21 +57,52 @@ public class Cursada implements Entidad
         return this.asignatura;
     }
 
-    public void modificar(Asignatura asignatura, String periodo, String dia, String hora) throws PeriodoInvalidoException, HoraInvalidaException
+    public void modificar(Asignatura asignatura, String periodo, String dia, String horaInicio, String horaFin) throws PeriodoInvalidoException, HoraInvalidaException
     {
         if (!Mascaras.periodoValido(periodo))
             throw new PeriodoInvalidoException(periodo);
-        if (!Mascaras.horaValida(hora))
-            throw new HoraInvalidaException(hora);
+        if (!Mascaras.horaValida(horaInicio))
+            throw new HoraInvalidaException(horaInicio);
+        if (!Mascaras.horaValida(horaFin))
+            throw new HoraInvalidaException(horaFin);
         this.asignatura = asignatura;
         this.periodo = periodo;
         this.dia = dia;
-        this.hora = hora;
+        this.horaInicio = horaInicio;
+        this.horaFin = horaFin;
     }
     
     public void aprobarAlumno(String legajo) throws IdNoExistenteException, EntidadExistenteException
     {
         this.alumnos.remove(legajo).aprobarAsignatura(asignatura);
     }
-    
+
+    @Override
+    public boolean equals(Object object)
+    {
+        if (this == object)
+        {
+            return true;
+        }
+        if (!(object instanceof Cursada))
+        {
+            return false;
+        }
+        final Cursada other = (Cursada) object;
+        if (!(identificacion == null? other.identificacion == null: identificacion.equals(other.identificacion)))
+        {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        final int PRIME = 37;
+        int result = 1;
+        result = PRIME * result + ((identificacion == null)? 0: identificacion.hashCode());
+        return result;
+    }
+
 }

@@ -21,6 +21,14 @@ public class Alumno implements Entidad
         this.legajo = Mascaras.genId(sigLegajo++, prefijo);
         this.historia = new ObserverTreeMap<Asignatura>();
     }
+    
+    public String getApellido() {
+        return this.apellido;
+    }
+
+    public String getNombre() {
+        return this.nombre;
+    }
 
     @Override
     public String getId()
@@ -55,19 +63,7 @@ public class Alumno implements Entidad
             return false;
         }
         final Alumno other = (Alumno) object;
-        if (!(apellido == null? other.apellido == null: apellido.equals(other.apellido)))
-        {
-            return false;
-        }
-        if (!(nombre == null? other.nombre == null: nombre.equals(other.nombre)))
-        {
-            return false;
-        }
-        if (!(domicilio == null? other.domicilio == null: domicilio.equals(other.domicilio)))
-        {
-            return false;
-        }
-        if (!(email == null? other.email == null: email.equals(other.email)))
+        if (!(legajo == null? other.legajo == null: legajo.equals(other.legajo)))
         {
             return false;
         }
@@ -79,21 +75,8 @@ public class Alumno implements Entidad
     {
         final int PRIME = 37;
         int result = 1;
-        result = PRIME * result + ((apellido == null)? 0: apellido.hashCode());
-        result = PRIME * result + ((nombre == null)? 0: nombre.hashCode());
-        result = PRIME * result + ((domicilio == null)? 0: domicilio.hashCode());
-        result = PRIME * result + ((email == null)? 0: email.hashCode());
+        result = PRIME * result + ((legajo == null)? 0: legajo.hashCode());
         return result;
-    }
-
-
-    public String getApellido() {
-        return this.apellido;
-    }
-
-    public String getNombre() {
-        return this.nombre;
-    }
-    
+    } 
     
 }

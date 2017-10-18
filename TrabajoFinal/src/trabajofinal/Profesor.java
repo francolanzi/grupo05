@@ -62,23 +62,7 @@ public class Profesor implements Entidad
             return false;
         }
         final Profesor other = (Profesor) object;
-        if (!(apellido == null? other.apellido == null: apellido.equals(other.apellido)))
-        {
-            return false;
-        }
-        if (!(nombre == null? other.nombre == null: nombre.equals(other.nombre)))
-        {
-            return false;
-        }
-        if (!(domicilio == null? other.domicilio == null: domicilio.equals(other.domicilio)))
-        {
-            return false;
-        }
-        if (!(telefono == null? other.telefono == null: telefono.equals(other.telefono)))
-        {
-            return false;
-        }
-        if (!(email == null? other.email == null: email.equals(other.email)))
+        if (!(legajo == null? other.legajo == null: legajo.equals(other.legajo)))
         {
             return false;
         }
@@ -90,11 +74,7 @@ public class Profesor implements Entidad
     {
         final int PRIME = 37;
         int result = 1;
-        result = PRIME * result + ((apellido == null)? 0: apellido.hashCode());
-        result = PRIME * result + ((nombre == null)? 0: nombre.hashCode());
-        result = PRIME * result + ((domicilio == null)? 0: domicilio.hashCode());
-        result = PRIME * result + ((telefono == null)? 0: telefono.hashCode());
-        result = PRIME * result + ((email == null)? 0: email.hashCode());
+        result = PRIME * result + ((legajo == null)? 0: legajo.hashCode());
         return result;
     }
 

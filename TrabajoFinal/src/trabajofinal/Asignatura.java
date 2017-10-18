@@ -35,6 +35,10 @@ public class Asignatura implements Entidad
         return identificacion;
     }
     
+    public String getNombre() {
+        return this.nombre;
+    }
+    
     public void setNombre(String nombre)
     {
         this.nombre = nombre;
@@ -52,7 +56,7 @@ public class Asignatura implements Entidad
             return false;
         }
         final Asignatura other = (Asignatura) object;
-        if (!(nombre == null? other.nombre == null: nombre.equals(other.nombre)))
+        if (!(identificacion == null? other.identificacion == null: identificacion.equals(other.identificacion)))
         {
             return false;
         }
@@ -64,12 +68,8 @@ public class Asignatura implements Entidad
     {
         final int PRIME = 37;
         int result = 1;
-        result = PRIME * result + ((nombre == null)? 0: nombre.hashCode());
+        result = PRIME * result + ((identificacion == null)? 0: identificacion.hashCode());
         return result;
-    }
-
-    public String getNombre() {
-        return this.nombre;
     }
 
 }

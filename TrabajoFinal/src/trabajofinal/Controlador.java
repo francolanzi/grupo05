@@ -29,31 +29,30 @@ public class Controlador extends Observable
         return controlador;
     }
     
-    public void altaAlumno(Alumno alumno) throws EntidadExistenteException
+    public void altaAlumno(String apellido, String nombre, String calle, int numero, String email) throws EmailInvalidoException
     {
-        if (this.alumnos.containsValue(alumno))
-            throw new EntidadExistenteException(alumno);
+        Alumno alumno = new Alumno(apellido, nombre, calle, numero, email);
         this.alumnos.put(alumno.getId(), alumno);
     }
     
-    public void altaProfesor(Profesor profesor) throws EntidadExistenteException
+    public void altaProfesor(String apellido, String nombre, String calle, int numero, String telefono, String email) throws EmailInvalidoException
     {
-        if (this.profesores.containsValue(profesor))
-            throw new EntidadExistenteException(profesor);
+        Profesor profesor = new Profesor(apellido, nombre, calle, numero, telefono, email);
         this.profesores.put(profesor.getId(), profesor);
     }
     
-    public void altaAsignatura(Asignatura asignatura) throws EntidadExistenteException
+    public void altaAsignatura(String nombre)
     {
-        if (this.asignaturas.containsValue(asignatura))
-            throw new EntidadExistenteException(asignatura);
+        Asignatura asignatura = new Asignatura(nombre);
         this.asignaturas.put(asignatura.getId(), asignatura);
     }
     
-    public void altaCursada(Cursada cursada) throws EntidadExistenteException, HorarioNoViableException
+    public void altaCursada(String identificacion, String periodo, String dia, String horaInicio, String horaFin)
+    throws IdNoExistenteException, PeriodoInvalidoException, HoraInvalidaException
     {
-        if (this.asignaturas.containsValue(cursada))
-            throw new EntidadExistenteException(cursada);
+        if (!this.asignaturas.containsKey(identificacion))
+            throw new IdNoExistenteException(identificacion);
+        Cursada cursada = new Cursada(this.asignaturas.get(identificacion), periodo, dia, horaInicio, horaFin);
         this.cursadas.put(cursada.getId(), cursada);
     }
     
@@ -116,12 +115,14 @@ public class Controlador extends Observable
         this.asignaturas.get(identificacion).setNombre(nombre);
     }
     
-    public void modificaCursada(String identificacion, Asignatura asignatura, String periodo, String dia, String hora)
+    public void modificaCursada(String idCursada, String idAsignatura, String periodo, String dia, String horaInicio, String horaFin)
     throws IdNoExistenteException, PeriodoInvalidoException, HoraInvalidaException
     {
-        if (!this.cursadas.containsKey(identificacion))
-            throw new IdNoExistenteException(identificacion);
-        this.cursadas.get(identificacion).modificar(asignatura, periodo, dia, hora);
+        if (!this.cursadas.containsKey(idCursada))
+            throw new IdNoExistenteException(idCursada);
+        if (!this.cursadas.containsKey(idAsignatura))
+            throw new IdNoExistenteException(idAsignatura);
+        this.cursadas.get(idCursada).modificar(this.asignaturas.get(idAsignatura), periodo, dia, horaInicio, horaFin);
     }
     
     public Iterator<Alumno> ubicaAlumno(String apellido, String nombre)
