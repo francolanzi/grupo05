@@ -20,12 +20,12 @@ public class Asignatura implements Entidad
         this.correlativas = new ObserverTreeMap<Asignatura>();
     }
     
-    public void addCorrelativa(Asignatura correlativa) throws EntidadExistenteException
+    public void addCorrelativa(Asignatura correlativa) throws EntidadInvalidaException
     {
         this.correlativas.add(correlativa);
     }
     
-    public void removeCorrelativa(String identificacion) throws IdNoExistenteException
+    public void removeCorrelativa(String identificacion) throws IdInvalidoException
     {
         this.correlativas.remove(identificacion);
     }
@@ -45,7 +45,7 @@ public class Asignatura implements Entidad
         this.nombre = nombre;
     }
     
-    public Iterator<Asignatura> getCorrealtivas()
+    public Iterator<Asignatura> getCorrelativas()
     {
         return this.correlativas.getIterator();
     }

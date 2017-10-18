@@ -1,11 +1,11 @@
 package trabajofinal;
 
-public class EntidadExistenteException extends Exception
+public class EntidadInvalidaException extends Exception
 {
     
     private Entidad entidad;
 
-    public EntidadExistenteException(Entidad entidad)
+    public EntidadInvalidaException(Entidad entidad)
     {
         this.entidad = entidad;
     }

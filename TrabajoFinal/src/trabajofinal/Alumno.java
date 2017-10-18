@@ -52,7 +52,7 @@ public class Alumno implements Entidad
         this.email = email;
     }
     
-    public void aprobarAsignatura(Asignatura asignatura) throws EntidadExistenteException
+    public void aprobarAsignatura(Asignatura asignatura) throws EntidadInvalidaException
     {
         this.historia.add(asignatura);
     }

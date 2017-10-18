@@ -29,22 +29,49 @@ public class Cursada implements Entidad, Observer
         Controlador.getInstance().addObserver(this);
     }
     
-    public void addAlumno(Alumno alumno) throws EntidadExistenteException
+    public void addAlumno(Alumno alumno) throws EntidadInvalidaException
     {
+        Iterator<Asignatura> historia = alumno.getHistoria();
+        Iterator<Asignatura> correlativas = this.asignatura.getCorrelativas();
+        int cantCorrelativas = 0;
+        while (correlativas.hasNext())
+        {
+            correlativas.next();
+            cantCorrelativas++;
+        }
+        while (historia.hasNext() && cantCorrelativas > 0)
+        {
+            Asignatura asignatura = historia.next();
+            correlativas = this.asignatura.getCorrelativas();
+            boolean aprobada = false;
+            while (correlativas.hasNext() && !aprobada)
+                aprobada = correlativas.next().equals(asignatura);
+            if (aprobada)
+                cantCorrelativas--;
+            
+        }
+        if (cantCorrelativas > 0)
+            throw new EntidadInvalidaException(alumno);
         this.alumnos.add(alumno);
     }
     
-    public void addProfesor(Profesor profesor) throws EntidadExistenteException
+    public void addProfesor(Profesor profesor) throws EntidadInvalidaException
     {
+        Iterator<Asignatura> competencias = profesor.getCompetencias();
+        boolean competente = false;
+        while (competencias.hasNext() && !competente)
+            competente = competencias.next().getId().equals(this.asignatura.getId());
+        if (!competente)
+            throw new EntidadInvalidaException(profesor);
         this.profesores.add(profesor);
     }
     
-    public void removeAlumno(String legajo) throws IdNoExistenteException
+    public void removeAlumno(String legajo) throws IdInvalidoException
     {
         this.alumnos.remove(legajo);
     }
     
-    public void removeProfesor(String legajo) throws IdNoExistenteException
+    public void removeProfesor(String legajo) throws IdInvalidoException
     {
         this.profesores.remove(legajo);
     }
@@ -85,7 +112,7 @@ public class Cursada implements Entidad, Observer
         this.horaFin = horaFin;
     }
     
-    public void aprobarAlumno(String legajo) throws IdNoExistenteException, EntidadExistenteException
+    public void aprobarAlumno(String legajo) throws IdInvalidoException, EntidadInvalidaException
     {
         this.alumnos.remove(legajo).aprobarAsignatura(asignatura);
     }
@@ -126,6 +153,6 @@ public class Cursada implements Entidad, Observer
             {
                 Controlador.getInstance().bajaCursada(this.identificacion);
             }
-            catch (IdNoExistenteException e){}
+            catch (IdInvalidoException e){}
     }
 }

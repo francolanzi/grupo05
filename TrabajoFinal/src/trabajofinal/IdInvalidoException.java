@@ -1,11 +1,11 @@
 package trabajofinal;
 
-public class IdNoExistenteException extends Exception
+public class IdInvalidoException extends Exception
 {
     
     private String id;
 
-    public IdNoExistenteException(String id)
+    public IdInvalidoException(String id)
     {
         this.id = id;
     }

@@ -24,12 +24,12 @@ public class Profesor implements Entidad
         this.competencias = new ObserverTreeMap<Asignatura>();
     }
     
-    public void addCompetencia(Asignatura competencia) throws EntidadExistenteException
+    public void addCompetencia(Asignatura competencia) throws EntidadInvalidaException
     {
         this.competencias.add(competencia);
     }
     
-    public void removeCompetencia(String identificacion) throws IdNoExistenteException
+    public void removeCompetencia(String identificacion) throws IdInvalidoException
     {
         this.competencias.remove(identificacion);
     }
