@@ -31,37 +31,18 @@ public class Cursada implements Entidad, Observer
     
     public void addAlumno(Alumno alumno) throws EntidadInvalidaException
     {
-        Iterator<Asignatura> historia = alumno.getHistoria();
+        boolean agregar = true;
         Iterator<Asignatura> correlativas = this.asignatura.getCorrelativas();
-        int cantCorrelativas = 0;
-        while (correlativas.hasNext())
-        {
-            correlativas.next();
-            cantCorrelativas++;
-        }
-        while (historia.hasNext() && cantCorrelativas > 0)
-        {
-            Asignatura asignatura = historia.next();
-            correlativas = this.asignatura.getCorrelativas();
-            boolean aprobada = false;
-            while (correlativas.hasNext() && !aprobada)
-                aprobada = correlativas.next().equals(asignatura);
-            if (aprobada)
-                cantCorrelativas--;
-            
-        }
-        if (cantCorrelativas > 0)
+        while (agregar && correlativas.hasNext())
+            agregar = alumno.isAprobada(correlativas.next().getId());
+        if (!agregar)
             throw new EntidadInvalidaException(alumno);
         this.alumnos.add(alumno);
     }
     
     public void addProfesor(Profesor profesor) throws EntidadInvalidaException
     {
-        Iterator<Asignatura> competencias = profesor.getCompetencias();
-        boolean competente = false;
-        while (competencias.hasNext() && !competente)
-            competente = competencias.next().getId().equals(this.asignatura.getId());
-        if (!competente)
+        if (!profesor.isCompetente(this.asignatura.getId()))
             throw new EntidadInvalidaException(profesor);
         this.profesores.add(profesor);
     }
@@ -92,9 +73,19 @@ public class Cursada implements Entidad, Observer
         return this.profesores.getIterator();
     }
     
-    public Iterator<Alumno> getAlumno()
+    public Iterator<Alumno> getAlumnos()
     {
         return this.alumnos.getIterator();
+    }
+    
+    public boolean hasAlumno(String legajo)
+    {
+        return this.alumnos.contains(legajo);
+    }
+    
+    public boolean hasProfesor(String legajo)
+    {
+        return this.profesores.contains(legajo);
     }
 
     public void modificar(Asignatura asignatura, String periodo, String dia, String horaInicio, String horaFin) throws PeriodoInvalidoException, HoraInvalidaException
@@ -155,4 +146,25 @@ public class Cursada implements Entidad, Observer
             }
             catch (IdInvalidoException e){}
     }
+
+    public String getPeriodo()
+    {
+        return this.periodo;
+    }
+
+    public String getDia()
+    {
+        return this.dia;
+    }
+
+    public String getHoraInicio()
+    {
+        return this.horaInicio;
+    }
+
+    public String getHoraFin()
+    {
+        return this.horaFin;
+    }
+    
 }

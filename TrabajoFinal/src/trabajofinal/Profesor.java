@@ -48,6 +48,11 @@ public class Profesor implements Entidad
         return legajo;
     }
     
+    public boolean isCompetente(String identificacion)
+    {
+        return this.competencias.contains(identificacion);
+    }
+    
     public Iterator<Asignatura> getCompetencias()
     {
         return this.competencias.getIterator();

@@ -29,6 +29,11 @@ public class Asignatura implements Entidad
     {
         this.correlativas.remove(identificacion);
     }
+    
+    public boolean isCorrelativa(String identificacion)
+    {
+        return this.correlativas.contains(identificacion);
+    }
 
     @Override
     public String getId()

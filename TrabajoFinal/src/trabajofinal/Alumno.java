@@ -56,6 +56,11 @@ public class Alumno implements Entidad
     {
         this.historia.add(asignatura);
     }
+    
+    public boolean isAprobada(String identificacion)
+    {
+        return this.historia.contains(identificacion);
+    }
 
     @Override
     public boolean equals(Object object)

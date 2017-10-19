@@ -240,13 +240,32 @@ public class Controlador extends Observable
         this.asignaturas.get(idAsignatura).removeCorrelativa(idCorrelativa);
     }
     
-    public void addAlumnoCursada(String legajo, String identificacion) throws IdInvalidoException, EntidadInvalidaException
+    private boolean compatibilidadHorariaAlumno(String legajo, Cursada cursada)
+    {
+        Iterator<Cursada> cursadas = this.cursadas.values().iterator();
+        boolean retorno = true;
+        while (retorno && cursadas.hasNext())
+        {
+            Cursada otra = cursadas.next();
+            retorno = !(otra.hasAlumno(legajo) && otra.getPeriodo().equals(cursada.getPeriodo()) &&
+            otra.getDia().equals(cursada.getDia()) && otra.getHoraInicio().compareTo(cursada.getHoraFin()) < 0
+            && otra.getHoraFin().compareTo(cursada.getHoraInicio()) > 0);
+        }
+        return retorno;
+    }
+    
+    public void addAlumnoCursada(String legajo, String identificacion)
+    throws IdInvalidoException, EntidadInvalidaException, HorarioNoViableException
     {
         if (!this.alumnos.containsKey(legajo))
             throw new IdInvalidoException(legajo);
         if (!this.cursadas.containsKey(identificacion))
             throw new IdInvalidoException(identificacion);
-        this.cursadas.get(identificacion).addAlumno(this.alumnos.get(legajo));
+        Cursada cursada = this.cursadas.get(identificacion);
+        Alumno alumno = this.alumnos.get(legajo);
+        if (!this.compatibilidadHorariaAlumno(legajo, this.cursadas.get(identificacion)))
+            throw new HorarioNoViableException(alumno, cursada);
+        cursada.addAlumno(alumno);
     }
     
     public void removeAlumnoCursada(String legajo, String identificacion) throws IdInvalidoException
@@ -256,12 +275,31 @@ public class Controlador extends Observable
         this.cursadas.get(identificacion).removeAlumno(legajo);
     }
     
-    public void addProfesorCursada(String legajo, String identificacion) throws IdInvalidoException, EntidadInvalidaException
+    private boolean compatibilidadHorariaProfesor(String legajo, Cursada cursada)
+    {
+        Iterator<Cursada> cursadas = this.cursadas.values().iterator();
+        boolean retorno = true;
+        while (retorno && cursadas.hasNext())
+        {
+            Cursada otra = cursadas.next();
+            retorno = !(otra.hasProfesor(legajo) && otra.getPeriodo().equals(cursada.getPeriodo()) &&
+            otra.getDia().equals(cursada.getDia()) && otra.getHoraInicio().compareTo(cursada.getHoraFin()) < 0
+            && otra.getHoraFin().compareTo(cursada.getHoraInicio()) > 0);
+        }
+        return retorno;
+    }
+    
+    public void addProfesorCursada(String legajo, String identificacion)
+    throws IdInvalidoException, EntidadInvalidaException, HorarioNoViableException
     {
         if (!this.profesores.containsKey(legajo))
             throw new IdInvalidoException(legajo);
         if (!this.cursadas.containsKey(identificacion))
             throw new IdInvalidoException(identificacion);
+        Cursada cursada = this.cursadas.get(identificacion);
+        Profesor profesor = this.profesores.get(legajo);
+        if (!this.compatibilidadHorariaProfesor(legajo, this.cursadas.get(identificacion)))
+            throw new HorarioNoViableException(profesor, cursada);
         this.cursadas.get(identificacion).addProfesor(this.profesores.get(legajo));
     }
     

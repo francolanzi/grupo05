@@ -41,6 +41,11 @@ public class ObserverTreeMap<T extends Entidad> implements Observer
     {
         return this.coleccion.values().iterator();
     }
+    
+    public boolean contains(String id)
+    {
+        return this.coleccion.containsKey(id);
+    }
 
     @Override
     public void update(Observable observable, Object object)
