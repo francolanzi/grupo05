@@ -45,7 +45,7 @@ public class Alumno implements Entidad
     public void modificar(String apellido, String nombre, String calle, int numero, String email) throws EmailInvalidoException
     {
         if (!Mascaras.emailValido(email))
-            throw new EmailInvalidoException(email);
+            throw new EmailInvalidoException(email, "El email ingresado es invalido");
         this.apellido = apellido;
         this.nombre = nombre;
         this.domicilio = new Domicilio(calle, numero);
@@ -54,7 +54,14 @@ public class Alumno implements Entidad
     
     public void aprobarAsignatura(Asignatura asignatura) throws EntidadInvalidaException
     {
-        this.historia.add(asignatura);
+        try
+        {
+            this.historia.add(asignatura);
+        }
+        catch (EntidadInvalidaException e)
+        {
+            throw new EntidadInvalidaException(e.getEntidad(), "El alumno ya ha aprobado la asignatura");
+        }
     }
     
     public boolean isAprobada(String identificacion)

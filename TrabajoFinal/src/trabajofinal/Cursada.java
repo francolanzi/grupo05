@@ -20,7 +20,8 @@ public class Cursada implements Entidad, Observer
     private ObserverTreeMap<Profesor> profesores;
     private ObserverTreeMap<Alumno> alumnos;
 
-    public Cursada(Asignatura asignatura, String periodo, String dia, String horaInicio, String horaFin) throws PeriodoInvalidoException, HoraInvalidaException
+    public Cursada(Asignatura asignatura, String periodo, String dia, String horaInicio, String horaFin)
+    throws PeriodoInvalidoException, HoraInvalidaException
     {
         this.modificar(asignatura, periodo, dia, horaInicio, horaFin);
         this.identificacion = Mascaras.genId(sigIdentificacion++, prefijo);
@@ -36,25 +37,40 @@ public class Cursada implements Entidad, Observer
         while (agregar && correlativas.hasNext())
             agregar = alumno.isAprobada(correlativas.next().getId());
         if (!agregar)
-            throw new EntidadInvalidaException(alumno);
+            throw new EntidadInvalidaException(alumno, "El alumno no esta habilitado a cursar la materia");
         this.alumnos.add(alumno);
     }
     
-    public void addProfesor(Profesor profesor) throws EntidadInvalidaException
+    public void addProfesor(Profesor profesor)
+    throws EntidadInvalidaException
     {
         if (!profesor.isCompetente(this.asignatura.getId()))
-            throw new EntidadInvalidaException(profesor);
+            throw new EntidadInvalidaException(profesor, "El profesor no es competente");
         this.profesores.add(profesor);
     }
     
     public void removeAlumno(String legajo) throws IdInvalidoException
     {
-        this.alumnos.remove(legajo);
+        try
+        {
+            this.alumnos.remove(legajo);
+        }
+        catch (IdInvalidoException e)
+        {
+            throw new IdInvalidoException(e.getId(), "El alumno no esta en la cursada");
+        }
     }
     
     public void removeProfesor(String legajo) throws IdInvalidoException
     {
-        this.profesores.remove(legajo);
+        try
+        {
+            this.profesores.remove(legajo);
+        }
+        catch (IdInvalidoException e)
+        {
+            throw new IdInvalidoException(e.getId(), "El profesor no esta en la cursada");
+        }
     }
 
     @Override
@@ -88,14 +104,17 @@ public class Cursada implements Entidad, Observer
         return this.profesores.contains(legajo);
     }
 
-    public void modificar(Asignatura asignatura, String periodo, String dia, String horaInicio, String horaFin) throws PeriodoInvalidoException, HoraInvalidaException
+    public void modificar(Asignatura asignatura, String periodo, String dia, String horaInicio, String horaFin)
+    throws PeriodoInvalidoException, HoraInvalidaException
     {
         if (!Mascaras.periodoValido(periodo))
-            throw new PeriodoInvalidoException(periodo);
+            throw new PeriodoInvalidoException(periodo, "El periodo ingresado es invalido");
         if (!Mascaras.horaValida(horaInicio))
-            throw new HoraInvalidaException(horaInicio);
+            throw new HoraInvalidaException(horaInicio, "La hora de inicio es invalida");
         if (!Mascaras.horaValida(horaFin))
-            throw new HoraInvalidaException(horaFin);
+            throw new HoraInvalidaException(horaFin, "La hora de finalizacion es invalida");
+        if (horaFin.compareTo(horaInicio) < 0)
+            throw new HoraInvalidaException(horaFin, "La hora de finalizacion es menor a la de inicio");
         this.asignatura = asignatura;
         this.periodo = periodo;
         this.dia = dia;
@@ -105,7 +124,14 @@ public class Cursada implements Entidad, Observer
     
     public void aprobarAlumno(String legajo) throws IdInvalidoException, EntidadInvalidaException
     {
-        this.alumnos.remove(legajo).aprobarAsignatura(asignatura);
+        try
+        {
+            this.alumnos.remove(legajo).aprobarAsignatura(asignatura);
+        }
+        catch (IdInvalidoException e)
+        {
+            throw new IdInvalidoException(e.getId(), "El alumno ingresado no existe");
+        }
     }
 
     @Override

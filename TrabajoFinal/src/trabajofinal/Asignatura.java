@@ -22,12 +22,27 @@ public class Asignatura implements Entidad
     
     public void addCorrelativa(Asignatura correlativa) throws EntidadInvalidaException
     {
-        this.correlativas.add(correlativa);
+        try
+        {
+            this.correlativas.add(correlativa);
+        }
+        catch (EntidadInvalidaException e)
+        {
+            throw new EntidadInvalidaException(e.getEntidad(), "La asignatura ya posee la correlativa");
+        }
     }
     
-    public void removeCorrelativa(String identificacion) throws IdInvalidoException
+    public void removeCorrelativa(String identificacion)
+    throws IdInvalidoException
     {
-        this.correlativas.remove(identificacion);
+        try
+        {
+            this.correlativas.remove(identificacion);
+        }
+        catch (IdInvalidoException e)
+        {
+            throw new IdInvalidoException(e.getId(), "La asignatura no posee la correlativa");
+        }
     }
     
     public boolean isCorrelativa(String identificacion)

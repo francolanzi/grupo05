@@ -17,21 +17,38 @@ public class Profesor implements Entidad
     private String email;
     private ObserverTreeMap<Asignatura> competencias;
 
-    public Profesor(String apellido, String nombre, String calle, int numero, String telefono, String email) throws EmailInvalidoException
+    public Profesor(String apellido, String nombre, String calle, int numero, String telefono, String email)
+    throws EmailInvalidoException
     {
         this.modificar(apellido, nombre, calle, numero, telefono, email);
         this.legajo = Mascaras.genId(sigLegajo++, prefijo);
         this.competencias = new ObserverTreeMap<Asignatura>();
     }
     
-    public void addCompetencia(Asignatura competencia) throws EntidadInvalidaException
+    public void addCompetencia(Asignatura competencia)
+    throws EntidadInvalidaException
     {
-        this.competencias.add(competencia);
+        try
+        {
+            this.competencias.add(competencia);
+        }
+        catch (EntidadInvalidaException e)
+        {
+            throw new EntidadInvalidaException(e.getEntidad(), "El profesor ya posee la competencia");
+        }
     }
     
-    public void removeCompetencia(String identificacion) throws IdInvalidoException
+    public void removeCompetencia(String identificacion)
+    throws IdInvalidoException
     {
-        this.competencias.remove(identificacion);
+        try
+        {
+            this.competencias.remove(identificacion);
+        }
+        catch (IdInvalidoException e)
+        {
+            throw new IdInvalidoException(e.getId(), "El profesor no posee la competencia");
+        }
     }
     
     public String getApellido() {
@@ -61,7 +78,7 @@ public class Profesor implements Entidad
     public void modificar(String apellido, String nombre, String calle, int numero, String telefono, String email) throws EmailInvalidoException
     {
         if (!Mascaras.emailValido(email))
-            throw new EmailInvalidoException(email);
+            throw new EmailInvalidoException(email, "El email ingresado es invalido");
         this.apellido = apellido;
         this.nombre = nombre;
         this.domicilio = new Domicilio(calle, numero);
