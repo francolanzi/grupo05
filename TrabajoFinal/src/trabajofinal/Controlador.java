@@ -281,6 +281,8 @@ public class Controlador extends Observable
         Alumno alumno = this.alumnos.get(legajo);
         if (!this.compatibilidadHorariaAlumno(legajo, this.cursadas.get(identificacion)))
             throw new HorarioNoViableException(alumno, cursada, "El alumno no puede cursar en ese horario");
+        if (alumno.isAprobada(cursada.getAsignatura().getId()))
+            throw new EntidadInvalidaException(alumno, "El alumno ya ha aprobado la asignatura");
         cursada.addAlumno(alumno);
     }
     
