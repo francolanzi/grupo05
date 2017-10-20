@@ -8,10 +8,9 @@ import javax.swing.table.DefaultTableModel;
 import trabajofinal.Alumno;
 import trabajofinal.Controlador;
 import trabajofinal.Cursada;
-import trabajofinal.EntidadExistenteException;
 import trabajofinal.EntidadInvalidaException;
 import trabajofinal.IdInvalidoException;
-import trabajofinal.IdNoExistenteException;
+import trabajofinal.IdInvalidoException;
 
 /**
  *
@@ -296,8 +295,6 @@ public class VAlumnoModifica extends javax.swing.JFrame {
             Cursada curs=controlador.consultaCursada(Cursadas.getSelectedItem().toString());
             String[] datos= {curs.getId(),curs.getAsignatura().toString()};
             modelo.addRow(datos);
-        } catch (EntidadExistenteException | IdNoExistenteException e) {
-            e.getMessage();
         } catch (EntidadInvalidaException | IdInvalidoException e) {
             e.getMessage();
         }

@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 
 import trabajofinal.Asignatura;
 import trabajofinal.Controlador;
-import trabajofinal.EntidadExistenteException;
+import trabajofinal.EntidadInvalidaException;
 
 /**
  *
@@ -225,7 +225,7 @@ public class VAsignaturaAlta extends javax.swing.JFrame {
         Asignatura asignatura = new Asignatura(TNombre.getText());
         try {
             controlador.altaAsignatura(asignatura.getNombre());
-        } catch (EntidadExistenteException e) {
+        } catch (EntidadInvalidaException e) {
             e.getMessage();
         }
     }//GEN-LAST:event_GrabarActionPerformed

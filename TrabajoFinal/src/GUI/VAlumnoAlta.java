@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 import trabajofinal.Alumno;
 import trabajofinal.Controlador;
 import trabajofinal.EmailInvalidoException;
-import trabajofinal.EntidadExistenteException;
+import trabajofinal.EntidadInvalidaException;
 
 /**
  *
@@ -261,7 +261,7 @@ public class VAlumnoAlta extends javax.swing.JFrame {
             try{
                 controlador.altaAlumno(TApellido.getText(), TNombre.getText(), TCalle.getText(), Integer.parseInt(TNumero.getText()),
                            TEmail.getText());
-            } catch (EntidadExistenteException e) {
+            } catch (EntidadInvalidaException e) {
                 e.getMessage();
             } catch (EmailInvalidoException e) {
                 e.getMessage();
