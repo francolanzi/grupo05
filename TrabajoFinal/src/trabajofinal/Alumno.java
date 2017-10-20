@@ -1,5 +1,6 @@
     package trabajofinal;
 
+import java.util.Iterator;
 import java.util.TreeMap;
 
 public class Alumno implements Entidad
@@ -21,26 +22,51 @@ public class Alumno implements Entidad
         this.legajo = Mascaras.genId(sigLegajo++, prefijo);
         this.historia = new ObserverTreeMap<Asignatura>();
     }
+    
+    public String getApellido() {
+        return this.apellido;
+    }
+
+    public String getNombre() {
+        return this.nombre;
+    }
 
     @Override
     public String getId()
     {
         return legajo;
     }
+    
+    public Iterator<Asignatura> getHistoria()
+    {
+        return this.historia.getIterator();
+    }
 
     public void modificar(String apellido, String nombre, String calle, int numero, String email) throws EmailInvalidoException
     {
         if (!Mascaras.emailValido(email))
-            throw new EmailInvalidoException(email);
+            throw new EmailInvalidoException(email, "El email ingresado es invalido");
         this.apellido = apellido;
         this.nombre = nombre;
         this.domicilio = new Domicilio(calle, numero);
         this.email = email;
     }
     
-    public void aprobarAsignatura(Asignatura asignatura) throws EntidadExistenteException
+    public void aprobarAsignatura(Asignatura asignatura) throws EntidadInvalidaException
     {
-        this.historia.add(asignatura);
+        try
+        {
+            this.historia.add(asignatura);
+        }
+        catch (EntidadInvalidaException e)
+        {
+            throw new EntidadInvalidaException(e.getEntidad(), "El alumno ya ha aprobado la asignatura");
+        }
+    }
+    
+    public boolean isAprobada(String identificacion)
+    {
+        return this.historia.contains(identificacion);
     }
 
     @Override
@@ -55,19 +81,7 @@ public class Alumno implements Entidad
             return false;
         }
         final Alumno other = (Alumno) object;
-        if (!(apellido == null? other.apellido == null: apellido.equals(other.apellido)))
-        {
-            return false;
-        }
-        if (!(nombre == null? other.nombre == null: nombre.equals(other.nombre)))
-        {
-            return false;
-        }
-        if (!(domicilio == null? other.domicilio == null: domicilio.equals(other.domicilio)))
-        {
-            return false;
-        }
-        if (!(email == null? other.email == null: email.equals(other.email)))
+        if (!(legajo == null? other.legajo == null: legajo.equals(other.legajo)))
         {
             return false;
         }
@@ -79,21 +93,8 @@ public class Alumno implements Entidad
     {
         final int PRIME = 37;
         int result = 1;
-        result = PRIME * result + ((apellido == null)? 0: apellido.hashCode());
-        result = PRIME * result + ((nombre == null)? 0: nombre.hashCode());
-        result = PRIME * result + ((domicilio == null)? 0: domicilio.hashCode());
-        result = PRIME * result + ((email == null)? 0: email.hashCode());
+        result = PRIME * result + ((legajo == null)? 0: legajo.hashCode());
         return result;
-    }
-
-
-    public String getApellido() {
-        return this.apellido;
-    }
-
-    public String getNombre() {
-        return this.nombre;
-    }
-    
+    } 
     
 }

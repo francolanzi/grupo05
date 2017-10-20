@@ -1,5 +1,6 @@
 package trabajofinal;
 
+import java.util.Iterator;
 import java.util.TreeMap;
 
 public class Profesor implements Entidad
@@ -16,21 +17,46 @@ public class Profesor implements Entidad
     private String email;
     private ObserverTreeMap<Asignatura> competencias;
 
-    public Profesor(String apellido, String nombre, String calle, int numero, String telefono, String email) throws EmailInvalidoException
+    public Profesor(String apellido, String nombre, String calle, int numero, String telefono, String email)
+    throws EmailInvalidoException
     {
         this.modificar(apellido, nombre, calle, numero, telefono, email);
         this.legajo = Mascaras.genId(sigLegajo++, prefijo);
         this.competencias = new ObserverTreeMap<Asignatura>();
     }
     
-    public void addCompetencia(Asignatura competencia) throws EntidadExistenteException
+    public void addCompetencia(Asignatura competencia)
+    throws EntidadInvalidaException
     {
-        this.competencias.add(competencia);
+        try
+        {
+            this.competencias.add(competencia);
+        }
+        catch (EntidadInvalidaException e)
+        {
+            throw new EntidadInvalidaException(e.getEntidad(), "El profesor ya posee la competencia");
+        }
     }
     
-    public void removeCompetencia(String identificacion) throws IdNoExistenteException
+    public void removeCompetencia(String identificacion)
+    throws IdInvalidoException
     {
-        this.competencias.remove(identificacion);
+        try
+        {
+            this.competencias.remove(identificacion);
+        }
+        catch (IdInvalidoException e)
+        {
+            throw new IdInvalidoException(e.getId(), "El profesor no posee la competencia");
+        }
+    }
+    
+    public String getApellido() {
+        return this.apellido;
+    }
+
+    public String getNombre() {
+        return this.nombre;
     }
 
     @Override
@@ -39,10 +65,20 @@ public class Profesor implements Entidad
         return legajo;
     }
     
+    public boolean isCompetente(String identificacion)
+    {
+        return this.competencias.contains(identificacion);
+    }
+    
+    public Iterator<Asignatura> getCompetencias()
+    {
+        return this.competencias.getIterator();
+    }
+    
     public void modificar(String apellido, String nombre, String calle, int numero, String telefono, String email) throws EmailInvalidoException
     {
         if (!Mascaras.emailValido(email))
-            throw new EmailInvalidoException(email);
+            throw new EmailInvalidoException(email, "El email ingresado es invalido");
         this.apellido = apellido;
         this.nombre = nombre;
         this.domicilio = new Domicilio(calle, numero);
@@ -62,23 +98,7 @@ public class Profesor implements Entidad
             return false;
         }
         final Profesor other = (Profesor) object;
-        if (!(apellido == null? other.apellido == null: apellido.equals(other.apellido)))
-        {
-            return false;
-        }
-        if (!(nombre == null? other.nombre == null: nombre.equals(other.nombre)))
-        {
-            return false;
-        }
-        if (!(domicilio == null? other.domicilio == null: domicilio.equals(other.domicilio)))
-        {
-            return false;
-        }
-        if (!(telefono == null? other.telefono == null: telefono.equals(other.telefono)))
-        {
-            return false;
-        }
-        if (!(email == null? other.email == null: email.equals(other.email)))
+        if (!(legajo == null? other.legajo == null: legajo.equals(other.legajo)))
         {
             return false;
         }
@@ -90,19 +110,8 @@ public class Profesor implements Entidad
     {
         final int PRIME = 37;
         int result = 1;
-        result = PRIME * result + ((apellido == null)? 0: apellido.hashCode());
-        result = PRIME * result + ((nombre == null)? 0: nombre.hashCode());
-        result = PRIME * result + ((domicilio == null)? 0: domicilio.hashCode());
-        result = PRIME * result + ((telefono == null)? 0: telefono.hashCode());
-        result = PRIME * result + ((email == null)? 0: email.hashCode());
+        result = PRIME * result + ((legajo == null)? 0: legajo.hashCode());
         return result;
     }
-
-    public String getApellido() {
-        return this.apellido;
-    }
-
-    public String getNombre() {
-        return this.nombre;
-    }
+    
 }

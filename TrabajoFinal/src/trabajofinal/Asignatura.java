@@ -1,5 +1,6 @@
 package trabajofinal;
 
+import java.util.Iterator;
 import java.util.TreeMap;
 
 public class Asignatura implements Entidad
@@ -19,14 +20,34 @@ public class Asignatura implements Entidad
         this.correlativas = new ObserverTreeMap<Asignatura>();
     }
     
-    public void addCorrelativa(Asignatura correlativa) throws EntidadExistenteException
+    public void addCorrelativa(Asignatura correlativa) throws EntidadInvalidaException
     {
-        this.correlativas.add(correlativa);
+        try
+        {
+            this.correlativas.add(correlativa);
+        }
+        catch (EntidadInvalidaException e)
+        {
+            throw new EntidadInvalidaException(e.getEntidad(), "La asignatura ya posee la correlativa");
+        }
     }
     
-    public void removeCorrelativa(String identificacion) throws IdNoExistenteException
+    public void removeCorrelativa(String identificacion)
+    throws IdInvalidoException
     {
-        this.correlativas.remove(identificacion);
+        try
+        {
+            this.correlativas.remove(identificacion);
+        }
+        catch (IdInvalidoException e)
+        {
+            throw new IdInvalidoException(e.getId(), "La asignatura no posee la correlativa");
+        }
+    }
+    
+    public boolean isCorrelativa(String identificacion)
+    {
+        return this.correlativas.contains(identificacion);
     }
 
     @Override
@@ -35,9 +56,18 @@ public class Asignatura implements Entidad
         return identificacion;
     }
     
+    public String getNombre() {
+        return this.nombre;
+    }
+    
     public void setNombre(String nombre)
     {
         this.nombre = nombre;
+    }
+    
+    public Iterator<Asignatura> getCorrelativas()
+    {
+        return this.correlativas.getIterator();
     }
 
     @Override
@@ -52,7 +82,7 @@ public class Asignatura implements Entidad
             return false;
         }
         final Asignatura other = (Asignatura) object;
-        if (!(nombre == null? other.nombre == null: nombre.equals(other.nombre)))
+        if (!(identificacion == null? other.identificacion == null: identificacion.equals(other.identificacion)))
         {
             return false;
         }
@@ -64,12 +94,8 @@ public class Asignatura implements Entidad
     {
         final int PRIME = 37;
         int result = 1;
-        result = PRIME * result + ((nombre == null)? 0: nombre.hashCode());
+        result = PRIME * result + ((identificacion == null)? 0: identificacion.hashCode());
         return result;
-    }
-
-    public String getNombre() {
-        return this.nombre;
     }
 
 }

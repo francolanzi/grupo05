@@ -16,30 +16,35 @@ public class ObserverTreeMap<T extends Entidad> implements Observer
         Controlador.getInstance().addObserver(this);
     }
     
-    public void add(T elemento) throws EntidadExistenteException
+    public void add(T elemento) throws EntidadInvalidaException
     {
         if (this.coleccion.containsValue(elemento))
-            throw new EntidadExistenteException(elemento);
+            throw new EntidadInvalidaException(elemento);
         this.coleccion.put(elemento.getId(), elemento);
     }
     
-    public T get(String id) throws IdNoExistenteException
+    public T get(String id) throws IdInvalidoException
     {
         if (!this.coleccion.containsKey(id))
-            throw new IdNoExistenteException(id);
+            throw new IdInvalidoException(id);
         return this.coleccion.get(id);
     }
     
-    public T remove(String id) throws IdNoExistenteException
+    public T remove(String id) throws IdInvalidoException
     {
         if (!this.coleccion.containsKey(id))
-            throw new IdNoExistenteException(id);
+            throw new IdInvalidoException(id);
         return this.coleccion.remove(id);
     }
     
     public Iterator<T> getIterator()
     {
         return this.coleccion.values().iterator();
+    }
+    
+    public boolean contains(String id)
+    {
+        return this.coleccion.containsKey(id);
     }
 
     @Override
