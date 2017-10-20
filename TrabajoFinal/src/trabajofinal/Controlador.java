@@ -329,6 +329,16 @@ public class Controlador extends Observable
             throw new IdInvalidoException(identificacion, "La cursada ingresada no existe");
         this.cursadas.get(identificacion).removeProfesor(legajo);
     }
+    
+    public Iterator<Alumno> getAlumnosIterator()
+    {
+        return this.alumnos.values().iterator();
+    }
+    
+    public Iterator<Profesor> getProfesoresIterator()
+    {
+        return this.profesores.values().iterator();
+    }
 
     public static void setControlador(Controlador controlador)
     {

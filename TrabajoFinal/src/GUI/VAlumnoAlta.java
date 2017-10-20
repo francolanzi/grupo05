@@ -261,8 +261,6 @@ public class VAlumnoAlta extends javax.swing.JFrame {
             try{
                 controlador.altaAlumno(TApellido.getText(), TNombre.getText(), TCalle.getText(), Integer.parseInt(TNumero.getText()),
                            TEmail.getText());
-            } catch (EntidadInvalidaException e) {
-                e.getMessage();
             } catch (EmailInvalidoException e) {
                 e.getMessage();
             }
