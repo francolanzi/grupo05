@@ -50,7 +50,7 @@ public class VProfesorAlta extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Profesor - Nuevo");
-        setPreferredSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(1000, 800));
 
         Cabecera.setBackground(new java.awt.Color(204, 255, 255));
         Cabecera.setPreferredSize(new java.awt.Dimension(400, 50));

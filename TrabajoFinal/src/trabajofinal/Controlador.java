@@ -58,7 +58,7 @@ public class Controlador extends Observable
         this.cursadas.put(cursada.getId(), cursada);
     }
     
-    public void bajaAlumno(String legajo)
+    public void bajaAlumno(String legajo) 
     throws IdInvalidoException
     {
         if (!this.alumnos.containsKey(legajo))
