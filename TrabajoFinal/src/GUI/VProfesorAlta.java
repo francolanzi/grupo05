@@ -1,6 +1,9 @@
 
 package GUI;
 
+import trabajofinal.Alumno;
+import trabajofinal.Profesor;
+
 /**
  *
  * @author Usuario
@@ -10,6 +13,7 @@ public class VProfesorAlta extends javax.swing.JFrame {
     /** Creates new form Profesor */
     public VProfesorAlta() {
         initComponents();
+        TLegajo.setText("PRO"+ String.valueOf(Profesor.getSigLegajo()));
     }
 
     /** This method is called from within the constructor to
@@ -21,7 +25,7 @@ public class VProfesorAlta extends javax.swing.JFrame {
     private void initComponents() {//GEN-BEGIN:initComponents
 
         Cabecera = new javax.swing.JPanel();
-        Profesor = new javax.swing.JLabel();
+        lProfesor = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         Grilla = new javax.swing.JPanel();
@@ -55,8 +59,8 @@ public class VProfesorAlta extends javax.swing.JFrame {
         Cabecera.setBackground(new java.awt.Color(204, 255, 255));
         Cabecera.setPreferredSize(new java.awt.Dimension(400, 50));
 
-        Profesor.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        Profesor.setText("Profesor -");
+        lProfesor.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lProfesor.setText("Profesor -");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Imagenes/aa0c19c7-d3a7-43d8-8664-2f08e5d0ca90.png"))); // NOI18N
 
@@ -70,7 +74,7 @@ public class VProfesorAlta extends javax.swing.JFrame {
             CabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CabeceraLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(Profesor)
+                .addComponent(lProfesor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 202, Short.MAX_VALUE)
@@ -82,7 +86,7 @@ public class VProfesorAlta extends javax.swing.JFrame {
             .addGroup(CabeceraLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(CabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Profesor)
+                    .addComponent(lProfesor)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -113,6 +117,7 @@ public class VProfesorAlta extends javax.swing.JFrame {
         Historia.setText("Competencias");
 
         TLegajo.setEditable(false);
+        TLegajo.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         TLegajo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         TNombre.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -422,7 +427,6 @@ public class VProfesorAlta extends javax.swing.JFrame {
     private javax.swing.JLabel Legajo;
     private javax.swing.JLabel Nombre;
     private javax.swing.JLabel Numero;
-    private javax.swing.JLabel Profesor;
     private javax.swing.JTextField TApellido;
     private javax.swing.JTextField TCalle;
     private javax.swing.JTextField TEmail;
@@ -436,6 +440,7 @@ public class VProfesorAlta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lProfesor;
     // End of variables declaration//GEN-END:variables
 
 }

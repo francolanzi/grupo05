@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import trabajofinal.Alumno;
 import trabajofinal.Controlador;
 import trabajofinal.Cursada;
+import trabajofinal.EmailInvalidoException;
 import trabajofinal.EntidadInvalidaException;
 import trabajofinal.IdInvalidoException;
 import trabajofinal.IdInvalidoException;
@@ -24,6 +25,8 @@ public class VAlumnoModifica extends javax.swing.JFrame {
     /** Creates new form AltaAlumno */
     public VAlumnoModifica(Alumno alumno) {
         initComponents();
+        
+        
     }
 
     /** This method is called from within the constructor to
@@ -322,6 +325,13 @@ public class VAlumnoModifica extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Ingrese Numero");
         if (TEmail.getText().equals(""))
             JOptionPane.showMessageDialog(null,"Ingrese Mail");
+        try {
+            controlador.modificaAlumno(TLegajo.getText().toString(), TApellido.getText().toString(),
+                                       TNombre.getText().toString(), TCalle.getText().toString(),
+                                       Integer.parseInt(TNumero.getText()), TEmail.getText().toString());
+        } catch (EmailInvalidoException | IdInvalidoException e) {
+            e.getMessage();
+        }
     }//GEN-LAST:event_GrabarActionPerformed
 
     private void TNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNombreKeyTyped
