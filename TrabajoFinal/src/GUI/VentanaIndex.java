@@ -3,9 +3,7 @@ package GUI;
 
 import java.util.Iterator;
 
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
-import javax.swing.RowFilter;
 
 import trabajofinal.Alumno;
 import trabajofinal.Asignatura;
