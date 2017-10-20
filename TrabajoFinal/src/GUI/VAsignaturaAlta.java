@@ -222,12 +222,7 @@ public class VAsignaturaAlta extends javax.swing.JFrame {
     private void GrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GrabarActionPerformed
         if (TNombre.getText().equals(""))
         JOptionPane.showMessageDialog(null,"Ingrese Nombre");
-        Asignatura asignatura = new Asignatura(TNombre.getText());
-        try {
-            controlador.altaAsignatura(asignatura.getNombre());
-        } catch (EntidadInvalidaException e) {
-            e.getMessage();
-        }
+        controlador.altaAsignatura(TNombre.getText());
     }//GEN-LAST:event_GrabarActionPerformed
 
     /**
