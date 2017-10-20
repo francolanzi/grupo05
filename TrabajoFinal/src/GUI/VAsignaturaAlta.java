@@ -206,7 +206,6 @@ public class VAsignaturaAlta extends javax.swing.JFrame {
     }//GEN-END:initComponents
 
     private void AsignaturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsignaturasActionPerformed
-
         Asignaturas.setModel(new DefaultComboBoxModel<>());
     }//GEN-LAST:event_AsignaturasActionPerformed
 
@@ -225,7 +224,7 @@ public class VAsignaturaAlta extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null,"Ingrese Nombre");
         Asignatura asignatura = new Asignatura(TNombre.getText());
         try {
-            controlador.altaAsignatura(asignatura);
+            controlador.altaAsignatura(asignatura.getNombre());
         } catch (EntidadExistenteException e) {
             e.getMessage();
         }

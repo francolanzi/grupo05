@@ -1,6 +1,8 @@
 
 package GUI;
 
+import trabajofinal.Profesor;
+
 /**
  *
  * @author Usuario
@@ -8,7 +10,7 @@ package GUI;
 public class VProfesorModifica extends javax.swing.JFrame {
 
     /** Creates new form VProfesorModifica */
-    public VProfesorModifica() {
+    public VProfesorModifica(Profesor profesor) {
         initComponents();
     }
 
@@ -46,6 +48,7 @@ public class VProfesorModifica extends javax.swing.JFrame {
         TTelefono = new javax.swing.JTextField();
         Grabar = new javax.swing.JButton();
         Cancelar = new javax.swing.JButton();
+        AgregarCompetencia1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Profesor - Edición");
@@ -182,6 +185,11 @@ public class VProfesorModifica extends javax.swing.JFrame {
         Grabar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grabar.setText("GRABAR");
         Grabar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Grabar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GrabarActionPerformed(evt);
+            }
+        });
 
         Cancelar.setBackground(new java.awt.Color(0, 153, 153));
         Cancelar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -189,6 +197,13 @@ public class VProfesorModifica extends javax.swing.JFrame {
         Cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CancelarActionPerformed(evt);
+            }
+        });
+
+        AgregarCompetencia1.setText("Quitar");
+        AgregarCompetencia1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgregarCompetencia1ActionPerformed(evt);
             }
         });
 
@@ -230,7 +245,9 @@ public class VProfesorModifica extends javax.swing.JFrame {
                                 .addComponent(TNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(Grabar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(Cancelar)
+                .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Cancelar)
+                    .addComponent(AgregarCompetencia1))
                 .addContainerGap(187, Short.MAX_VALUE))
         );
         GrillaLayout.setVerticalGroup(
@@ -269,11 +286,14 @@ public class VProfesorModifica extends javax.swing.JFrame {
                         .addComponent(Asignatura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(Historia)))
                 .addGap(18, 18, 18)
-                .addComponent(THistoria, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Grabar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(GrillaLayout.createSequentialGroup()
+                        .addComponent(THistoria, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Grabar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(AgregarCompetencia1))
                 .addContainerGap(145, Short.MAX_VALUE))
         );
 
@@ -323,6 +343,14 @@ public class VProfesorModifica extends javax.swing.JFrame {
         if (!Character.isDigit(TipoDeTecla))
             evt.consume();
     }//GEN-LAST:event_TTelefonoKeyTyped
+
+    private void AgregarCompetencia1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarCompetencia1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AgregarCompetencia1ActionPerformed
+
+    private void GrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GrabarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_GrabarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -395,6 +423,7 @@ public class VProfesorModifica extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AgregarCompetencia;
+    private javax.swing.JButton AgregarCompetencia1;
     private javax.swing.JLabel Apellido;
     private javax.swing.JComboBox<String> Asignatura;
     private javax.swing.JLabel Calle;

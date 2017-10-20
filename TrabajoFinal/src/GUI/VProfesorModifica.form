@@ -163,7 +163,10 @@
                       <Component id="Grabar" alignment="1" min="-2" pref="73" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="Cancelar" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="Cancelar" min="-2" max="-2" attributes="0"/>
+                      <Component id="AgregarCompetencia1" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace pref="187" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -212,11 +215,16 @@
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="THistoria" min="-2" pref="84" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Cancelar" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="Grabar" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="THistoria" min="-2" pref="84" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="Cancelar" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="Grabar" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Component id="AgregarCompetencia1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="145" max="32767" attributes="0"/>
               </Group>
@@ -381,6 +389,9 @@
               </Border>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GrabarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="Cancelar">
           <Properties>
@@ -394,6 +405,14 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CancelarActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="AgregarCompetencia1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Quitar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AgregarCompetencia1ActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

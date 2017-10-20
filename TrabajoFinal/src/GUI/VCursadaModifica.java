@@ -1,6 +1,8 @@
 
 package GUI;
 
+import trabajofinal.Cursada;
+
 /**
  *
  * @author Usuario
@@ -8,7 +10,7 @@ package GUI;
 public class VCursadaModifica extends javax.swing.JFrame {
 
     /** Creates new form VCursadaModifica */
-    public VCursadaModifica() {
+    public VCursadaModifica(Cursada cursada) {
         initComponents();
     }
 
@@ -51,6 +53,8 @@ public class VCursadaModifica extends javax.swing.JFrame {
         AgregarAlumno = new javax.swing.JButton();
         TAlumnos = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        quitarAlumno = new javax.swing.JButton();
+        quitarProfesor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cursada - Edición");
@@ -203,6 +207,20 @@ public class VCursadaModifica extends javax.swing.JFrame {
         ));
         TAlumnos.setViewportView(jTable2);
 
+        quitarAlumno.setText("Quitar");
+        quitarAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quitarAlumnoActionPerformed(evt);
+            }
+        });
+
+        quitarProfesor.setText("Quitar");
+        quitarProfesor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quitarProfesorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout GrillaLayout = new javax.swing.GroupLayout(Grilla);
         Grilla.setLayout(GrillaLayout);
         GrillaLayout.setHorizontalGroup(
@@ -227,8 +245,14 @@ public class VCursadaModifica extends javax.swing.JFrame {
                         .addGap(160, 160, 160))
                     .addGroup(GrillaLayout.createSequentialGroup()
                         .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TProfesores, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(GrillaLayout.createSequentialGroup()
+                                .addComponent(TAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(quitarAlumno))
+                            .addGroup(GrillaLayout.createSequentialGroup()
+                                .addComponent(TProfesores, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(quitarProfesor))
                             .addGroup(GrillaLayout.createSequentialGroup()
                                 .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(TPeriodo, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
@@ -258,7 +282,7 @@ public class VCursadaModifica extends javax.swing.JFrame {
                                 .addComponent(CAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(AgregarAlumno)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(21, Short.MAX_VALUE))))
         );
         GrillaLayout.setVerticalGroup(
             GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,14 +317,18 @@ public class VCursadaModifica extends javax.swing.JFrame {
                             .addComponent(AgregarProfesor)))
                     .addComponent(Profesores))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(TProfesores, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TProfesores, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(quitarProfesor))
                 .addGap(32, 32, 32)
                 .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(AgregarAlumno)
                     .addComponent(Alumnos))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(TAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(quitarAlumno))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Grabar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -338,6 +366,14 @@ public class VCursadaModifica extends javax.swing.JFrame {
     private void AgregarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarAlumnoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_AgregarAlumnoActionPerformed
+
+    private void quitarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitarAlumnoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_quitarAlumnoActionPerformed
+
+    private void quitarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitarProfesorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_quitarProfesorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -440,6 +476,8 @@ public class VCursadaModifica extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JButton quitarAlumno;
+    private javax.swing.JButton quitarProfesor;
     // End of variables declaration//GEN-END:variables
 
 }

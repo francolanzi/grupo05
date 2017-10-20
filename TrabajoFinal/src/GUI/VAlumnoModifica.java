@@ -3,8 +3,14 @@ package GUI;
 
 import javax.swing.JOptionPane;
 
+import javax.swing.table.DefaultTableModel;
+
+import trabajofinal.Alumno;
 import trabajofinal.Controlador;
+import trabajofinal.Cursada;
 import trabajofinal.EntidadExistenteException;
+import trabajofinal.EntidadInvalidaException;
+import trabajofinal.IdInvalidoException;
 import trabajofinal.IdNoExistenteException;
 
 /**
@@ -13,9 +19,11 @@ import trabajofinal.IdNoExistenteException;
  */
 public class VAlumnoModifica extends javax.swing.JFrame {
     private Controlador controlador;
+    DefaultTableModel modelo= new DefaultTableModel();
+    String[] col={"Identificador","Nombre"};
 
     /** Creates new form AltaAlumno */
-    public VAlumnoModifica() {
+    public VAlumnoModifica(Alumno alumno) {
         initComponents();
     }
 
@@ -46,7 +54,7 @@ public class VAlumnoModifica extends javax.swing.JFrame {
         Numero = new javax.swing.JLabel();
         TNumero = new javax.swing.JTextField();
         THistoria = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TablaHistoria = new javax.swing.JTable();
         Cursadas = new javax.swing.JComboBox<>();
         AgregarHistoria = new javax.swing.JButton();
         Grabar = new javax.swing.JButton();
@@ -150,18 +158,9 @@ public class VAlumnoModifica extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Identificador", "Nombre"
-            }
-        ));
-        THistoria.setViewportView(jTable1);
+        modelo.setColumnIdentifiers(col);
+        TablaHistoria.setModel(modelo);
+        THistoria.setViewportView(TablaHistoria);
 
         Cursadas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         Cursadas.addActionListener(new java.awt.event.ActionListener() {
@@ -294,8 +293,12 @@ public class VAlumnoModifica extends javax.swing.JFrame {
     private void AgregarHistoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarHistoriaActionPerformed
         try {
             controlador.aprobarAlumno(Legajo.getText(), Cursadas.getSelectedItem().toString());
-            THistoria.setRowHeaderView(Cursadas.getSelectedIndex());
+            Cursada curs=controlador.consultaCursada(Cursadas.getSelectedItem().toString());
+            String[] datos= {curs.getId(),curs.getAsignatura().toString()};
+            modelo.addRow(datos);
         } catch (EntidadExistenteException | IdNoExistenteException e) {
+            e.getMessage();
+        } catch (EntidadInvalidaException | IdInvalidoException e) {
             e.getMessage();
         }
     }//GEN-LAST:event_AgregarHistoriaActionPerformed
@@ -430,11 +433,11 @@ public class VAlumnoModifica extends javax.swing.JFrame {
     private javax.swing.JTextField TLegajo;
     private javax.swing.JTextField TNombre;
     private javax.swing.JTextField TNumero;
+    private javax.swing.JTable TablaHistoria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
 }

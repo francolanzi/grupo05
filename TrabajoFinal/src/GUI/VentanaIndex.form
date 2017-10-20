@@ -22,7 +22,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,4,16,0,0,3,32"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,4,16,0,0,3,36"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
@@ -223,10 +223,14 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
-                                  <Component id="Alumno" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="CampoParaNombre4" pref="251" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                                  <Component id="nombreAlumno" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                  <Component id="CampoParaNombreAlumno" min="-2" pref="126" max="-2" attributes="0"/>
+                                  <EmptySpace pref="17" max="32767" attributes="0"/>
+                                  <Component id="apellidoAlumno" min="-2" pref="45" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                                  <Component id="CampoParaApellidoAlumno" min="-2" pref="126" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="Buscar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
@@ -238,9 +242,11 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace pref="24" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="Alumno" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="CampoParaNombre4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="nombreAlumno" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="CampoParaNombreAlumno" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="Buscar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="apellidoAlumno" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="CampoParaApellidoAlumno" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                               </Group>
@@ -248,14 +254,15 @@
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
-                        <Component class="javax.swing.JLabel" name="Alumno">
+                        <Component class="javax.swing.JLabel" name="nombreAlumno">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Alumno"/>
+                            <Property name="text" type="java.lang.String" value="Nombre"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="CampoParaNombre4">
+                        <Component class="javax.swing.JTextField" name="CampoParaNombreAlumno">
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CampoParaNombre4ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CampoParaNombreAlumnoActionPerformed"/>
+                            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CampoParaNombreAlumnoKeyTyped"/>
                           </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="Buscar">
@@ -264,6 +271,17 @@
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BuscarActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="apellidoAlumno">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Apellido"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="CampoParaApellidoAlumno">
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CampoParaApellidoAlumnoActionPerformed"/>
+                            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CampoParaApellidoAlumnoKeyTyped"/>
                           </Events>
                         </Component>
                       </SubComponents>
@@ -286,7 +304,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                                   <Component id="jScrollPane1" min="-2" pref="498" max="-2" attributes="0"/>
-                                  <EmptySpace pref="56" max="32767" attributes="0"/>
+                                  <EmptySpace pref="60" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -308,7 +326,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="javax.swing.JTable" name="jTable1">
+                            <Component class="javax.swing.JTable" name="tablaAlumnos">
                               <Properties>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                                   <Table columnCount="6" rowCount="10">
@@ -363,11 +381,15 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
-                                  <Component id="Profesor" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                                  <Component id="nombreProfesor" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                                  <Component id="CampoParaNombreProfesor" min="-2" pref="125" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="CampoParaNombre1" pref="245" max="32767" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="apellidoProfesor" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="CampoParaApellidoProfesor" min="-2" pref="125" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="PBuscar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
                               </Group>
@@ -378,9 +400,11 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace pref="24" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="Profesor" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="CampoParaNombre1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="nombreProfesor" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="CampoParaNombreProfesor" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="PBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="apellidoProfesor" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="CampoParaApellidoProfesor" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                               </Group>
@@ -388,14 +412,15 @@
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
-                        <Component class="javax.swing.JLabel" name="Profesor">
+                        <Component class="javax.swing.JLabel" name="nombreProfesor">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Profesor"/>
+                            <Property name="text" type="java.lang.String" value="Nombre"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="CampoParaNombre1">
+                        <Component class="javax.swing.JTextField" name="CampoParaNombreProfesor">
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CampoParaNombre1ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CampoParaNombreProfesorActionPerformed"/>
+                            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CampoParaNombreProfesorKeyTyped"/>
                           </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="PBuscar">
@@ -404,6 +429,17 @@
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PBuscarActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="apellidoProfesor">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Apellido"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="CampoParaApellidoProfesor">
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CampoParaApellidoProfesorActionPerformed"/>
+                            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CampoParaApellidoProfesorKeyTyped"/>
                           </Events>
                         </Component>
                       </SubComponents>
@@ -426,7 +462,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                                   <Component id="jScrollPane2" min="-2" pref="498" max="-2" attributes="0"/>
-                                  <EmptySpace pref="56" max="32767" attributes="0"/>
+                                  <EmptySpace pref="60" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -448,7 +484,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="javax.swing.JTable" name="jTable2">
+                            <Component class="javax.swing.JTable" name="tablaProfesores">
                               <Properties>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                                   <Table columnCount="7" rowCount="10">
@@ -500,7 +536,7 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="595" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="599" max="32767" attributes="0"/>
                               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -541,7 +577,7 @@
                                       <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
                                       <Component id="Asignatura" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="CampoParaNombre2" pref="234" max="32767" attributes="0"/>
+                                      <Component id="CampoParaNombreAsignatura" pref="234" max="32767" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="ABuscar" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
@@ -554,7 +590,7 @@
                                       <EmptySpace pref="24" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="Asignatura" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="CampoParaNombre2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="CampoParaNombreAsignatura" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="ABuscar" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
@@ -568,9 +604,9 @@
                                 <Property name="text" type="java.lang.String" value="Asignatura"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="CampoParaNombre2">
+                            <Component class="javax.swing.JTextField" name="CampoParaNombreAsignatura">
                               <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CampoParaNombre2ActionPerformed"/>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CampoParaNombreAsignaturaActionPerformed"/>
                               </Events>
                             </Component>
                             <Component class="javax.swing.JButton" name="ABuscar">
@@ -603,7 +639,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                                   <Component id="jScrollPane3" min="-2" pref="498" max="-2" attributes="0"/>
-                                  <EmptySpace pref="56" max="32767" attributes="0"/>
+                                  <EmptySpace pref="60" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -625,7 +661,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="javax.swing.JTable" name="jTable3">
+                            <Component class="javax.swing.JTable" name="tablaAsignaturas">
                               <Properties>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                                   <Table columnCount="2" rowCount="10">
@@ -679,7 +715,7 @@
                                   <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
                                   <Component id="Cursada" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="CampoParaNombre3" pref="246" max="32767" attributes="0"/>
+                                  <Component id="CampoParaNombreCursada" pref="250" max="32767" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="CBuscar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
@@ -692,7 +728,7 @@
                                   <EmptySpace pref="24" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="Cursada" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="CampoParaNombre3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="CampoParaNombreCursada" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="CBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
@@ -706,9 +742,9 @@
                             <Property name="text" type="java.lang.String" value="Cursada"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="CampoParaNombre3">
+                        <Component class="javax.swing.JTextField" name="CampoParaNombreCursada">
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CampoParaNombre3ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CampoParaNombreCursadaActionPerformed"/>
                           </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="CBuscar">
@@ -739,7 +775,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                                   <Component id="jScrollPane4" min="-2" pref="498" max="-2" attributes="0"/>
-                                  <EmptySpace pref="56" max="32767" attributes="0"/>
+                                  <EmptySpace pref="60" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -761,7 +797,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="javax.swing.JTable" name="jTable4">
+                            <Component class="javax.swing.JTable" name="tablaCursadas">
                               <Properties>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                                   <Table columnCount="6" rowCount="10">

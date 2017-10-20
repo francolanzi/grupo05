@@ -1,6 +1,8 @@
 
 package GUI;
 
+import trabajofinal.Asignatura;
+
 /**
  *
  * @author Usuario
@@ -8,7 +10,7 @@ package GUI;
 public class VAsignaturaConsulta extends javax.swing.JFrame {
 
     /** Creates new form VAsignaturaConsulta */
-    public VAsignaturaConsulta() {
+    public VAsignaturaConsulta(Asignatura asignatura) {
         initComponents();
     }
 

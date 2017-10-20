@@ -1,6 +1,8 @@
 
 package GUI;
 
+import trabajofinal.Cursada;
+
 /**
  *
  * @author Usuario
@@ -8,7 +10,7 @@ package GUI;
 public class VCursadaConsulta extends javax.swing.JFrame {
 
     /** Creates new form VCursadaConsulta */
-    public VCursadaConsulta() {
+    public VCursadaConsulta(Cursada cursada) {
         initComponents();
     }
 

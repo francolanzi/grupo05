@@ -330,4 +330,20 @@ public class Controlador extends Observable
         this.cursadas.get(identificacion).removeProfesor(legajo);
     }
 
+
+    public TreeMap<String, Alumno> getAlumnos() {
+        return alumnos;
+    }
+
+    public TreeMap<String, Profesor> getProfesores() {
+        return profesores;
+    }
+
+    public TreeMap<String, Asignatura> getAsignaturas() {
+        return asignaturas;
+    }
+
+    public TreeMap<String, Cursada> getCursadas() {
+        return cursadas;
+    }
 }

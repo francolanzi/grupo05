@@ -258,19 +258,14 @@ public class VAlumnoAlta extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null,"Ingrese Numero");
         if (TEmail.getText().equals(""))
         JOptionPane.showMessageDialog(null,"Ingrese Mail");
-        Alumno alumno;
-        try {
-            alumno = new Alumno(TApellido.getText(), TNombre.getText(), TCalle.getText(), (int) TNumero.getText(),
-                           TEmail.getText());
             try{
-                controlador.altaAlumno(alumno);
+                controlador.altaAlumno(TApellido.getText(), TNombre.getText(), TCalle.getText(), Integer.parseInt(TNumero.getText()),
+                           TEmail.getText());
             } catch (EntidadExistenteException e) {
                 e.getMessage();
+            } catch (EmailInvalidoException e) {
+                e.getMessage();
             }
-        }
-        catch (EmailInvalidoException e) {
-            e.getMessage();
-        }
     }//GEN-LAST:event_GrabarActionPerformed
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed

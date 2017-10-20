@@ -1,16 +1,26 @@
 
 package GUI;
 
+import java.util.Vector;
+
 import javax.swing.JOptionPane;
+
+import javax.swing.table.DefaultTableModel;
+
+import trabajofinal.Alumno;
+import trabajofinal.Controlador;
 
 /**
  *
  * @author Usuario
  */
 public class VAlumnoConsulta extends javax.swing.JFrame {
+    private Controlador controlador;
+    DefaultTableModel historia= new DefaultTableModel();
+    
 
     /** Creates new form VAlumnoConsulta */
-    public VAlumnoConsulta() {
+    public VAlumnoConsulta(Alumno alumno) {
         initComponents();
     }
 
@@ -41,7 +51,7 @@ public class VAlumnoConsulta extends javax.swing.JFrame {
         Numero = new javax.swing.JLabel();
         TNumero = new javax.swing.JTextField();
         THistoria = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TablaHistoria = new javax.swing.JTable();
         Cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -134,18 +144,12 @@ public class VAlumnoConsulta extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Identificador", "Nombre"
-            }
-        ));
-        THistoria.setViewportView(jTable1);
+        Vector filas= new Vector();
+        Vector fila= new Vector();
+
+        filas.add(fila);
+        TablaHistoria.setModel(new DefaultTableModel());
+        THistoria.setViewportView(TablaHistoria);
 
         Cancelar.setBackground(new java.awt.Color(0, 153, 153));
         Cancelar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -327,11 +331,11 @@ public class VAlumnoConsulta extends javax.swing.JFrame {
     private javax.swing.JTextField TLegajo;
     private javax.swing.JTextField TNombre;
     private javax.swing.JTextField TNumero;
+    private javax.swing.JTable TablaHistoria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
 }

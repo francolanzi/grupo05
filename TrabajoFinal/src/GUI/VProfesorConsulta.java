@@ -1,6 +1,8 @@
 
 package GUI;
 
+import trabajofinal.Profesor;
+
 /**
  *
  * @author Usuario
@@ -8,7 +10,7 @@ package GUI;
 public class VProfesorConsulta extends javax.swing.JFrame {
 
     /** Creates new form VProfesorConsulta */
-    public VProfesorConsulta() {
+    public VProfesorConsulta(Profesor profesor) {
         initComponents();
     }
 
