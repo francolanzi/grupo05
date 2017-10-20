@@ -16,6 +16,13 @@ public class PeriodoInvalidoException extends Exception
         this.periodo = periodo;
     }
 
+    public PeriodoInvalidoException(){}
+
+    public void setPeriodo(String periodo)
+    {
+        this.periodo = periodo;
+    }
+
     public String getPeriodo()
     {
         return this.periodo;

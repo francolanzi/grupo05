@@ -49,6 +49,11 @@ public class Asignatura implements Entidad
     {
         return this.correlativas.contains(identificacion);
     }
+    
+    public Iterator<Asignatura> getCorrelativasIterator()
+    {
+        return this.correlativas.getIterator();
+    }
 
     @Override
     public String getId()
@@ -63,11 +68,6 @@ public class Asignatura implements Entidad
     public void setNombre(String nombre)
     {
         this.nombre = nombre;
-    }
-    
-    public Iterator<Asignatura> getCorrelativas()
-    {
-        return this.correlativas.getIterator();
     }
 
     @Override
@@ -96,6 +96,38 @@ public class Asignatura implements Entidad
         int result = 1;
         result = PRIME * result + ((identificacion == null)? 0: identificacion.hashCode());
         return result;
+    }
+    
+    public Asignatura(){}
+
+    public static void setSigIdentificacion(int sigIdentificacion)
+    {
+        Asignatura.sigIdentificacion = sigIdentificacion;
+    }
+
+    public static int getSigIdentificacion()
+    {
+        return Asignatura.sigIdentificacion;
+    }
+
+    public void setIdentificacion(String identificacion)
+    {
+        this.identificacion = identificacion;
+    }
+    
+    public String getIdentificacion()
+    {
+        return this.identificacion;
+    }
+
+    public void setCorrelativas(ObserverTreeMap<Asignatura> correlativas)
+    {
+        this.correlativas = correlativas;
+    }
+
+    public ObserverTreeMap<Asignatura> getCorrelativas()
+    {
+        return this.correlativas;
     }
 
 }

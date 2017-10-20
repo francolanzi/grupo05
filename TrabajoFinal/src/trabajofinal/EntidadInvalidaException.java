@@ -16,6 +16,13 @@ public class EntidadInvalidaException extends Exception
         this.entidad = entidad;
     }
 
+    public EntidadInvalidaException(){}
+
+    public void setEntidad(Entidad entidad)
+    {
+        this.entidad = entidad;
+    }
+
     public Entidad getEntidad()
     {
         return this.entidad;

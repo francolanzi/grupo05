@@ -33,7 +33,7 @@ public class Cursada implements Entidad, Observer
     public void addAlumno(Alumno alumno) throws EntidadInvalidaException
     {
         boolean agregar = true;
-        Iterator<Asignatura> correlativas = this.asignatura.getCorrelativas();
+        Iterator<Asignatura> correlativas = this.asignatura.getCorrelativasIterator();
         while (agregar && correlativas.hasNext())
             agregar = alumno.isAprobada(correlativas.next().getId());
         if (!agregar)
@@ -77,21 +77,6 @@ public class Cursada implements Entidad, Observer
     public String getId()
     {
         return this.identificacion;
-    }
-
-    public Asignatura getAsignatura()
-    {
-        return this.asignatura;
-    }
-    
-    public Iterator<Profesor> getProfesores()
-    {
-        return this.profesores.getIterator();
-    }
-    
-    public Iterator<Alumno> getAlumnos()
-    {
-        return this.alumnos.getIterator();
     }
     
     public boolean hasAlumno(String legajo)
@@ -173,9 +158,51 @@ public class Cursada implements Entidad, Observer
             catch (IdInvalidoException e){}
     }
 
+    public Cursada(){}
+
+    public static void setSigIdentificacion(int sigIdentificacion)
+    {
+        Cursada.sigIdentificacion = sigIdentificacion;
+    }
+
+    public static int getSigIdentificacion()
+    {
+        return Cursada.sigIdentificacion;
+    }
+
+    public void setIdentificacion(String identificacion)
+    {
+        this.identificacion = identificacion;
+    }
+    
+    public String getIdentificacion()
+    {
+        return this.identificacion;
+    }
+
+    public void setAsignatura(Asignatura asignatura)
+    {
+        this.asignatura = asignatura;
+    }
+
+    public Asignatura getAsignatura()
+    {
+        return this.asignatura;
+    }
+
+    public void setPeriodo(String periodo)
+    {
+        this.periodo = periodo;
+    }
+
     public String getPeriodo()
     {
         return this.periodo;
+    }
+
+    public void setDia(String dia)
+    {
+        this.dia = dia;
     }
 
     public String getDia()
@@ -183,14 +210,44 @@ public class Cursada implements Entidad, Observer
         return this.dia;
     }
 
+    public void setHoraInicio(String horaInicio)
+    {
+        this.horaInicio = horaInicio;
+    }
+
     public String getHoraInicio()
     {
         return this.horaInicio;
+    }
+
+    public void setHoraFin(String horaFin)
+    {
+        this.horaFin = horaFin;
     }
 
     public String getHoraFin()
     {
         return this.horaFin;
     }
-    
+
+    public void setProfesores(ObserverTreeMap<Profesor> profesores)
+    {
+        this.profesores = profesores;
+    }
+
+    public ObserverTreeMap<Profesor> getProfesores()
+    {
+        return this.profesores;
+    }
+
+    public void setAlumnos(ObserverTreeMap<Alumno> alumnos)
+    {
+        this.alumnos = alumnos;
+    }
+
+    public ObserverTreeMap<Alumno> getAlumnos()
+    {
+        return this.alumnos;
+    }
+
 }

@@ -14,7 +14,7 @@ public class Controlador extends Observable
     private TreeMap<String, Asignatura> asignaturas;
     private TreeMap<String, Cursada> cursadas;
     
-    private Controlador()
+    public Controlador()
     {
         this.alumnos = new TreeMap<String, Alumno>();
         this.profesores = new TreeMap<String, Profesor>();
@@ -328,6 +328,56 @@ public class Controlador extends Observable
         if (!this.cursadas.containsKey(identificacion))
             throw new IdInvalidoException(identificacion, "La cursada ingresada no existe");
         this.cursadas.get(identificacion).removeProfesor(legajo);
+    }
+
+    public static void setControlador(Controlador controlador)
+    {
+        Controlador.controlador = controlador;
+    }
+    
+    public static Controlador getControlador()
+    {
+        return Controlador.controlador;
+    }
+
+    public void setAlumnos(TreeMap<String, Alumno> alumnos)
+    {
+        this.alumnos = alumnos;
+    }
+
+    public TreeMap<String, Alumno> getAlumnos()
+    {
+        return this.alumnos;
+    }
+
+    public void setProfesores(TreeMap<String, Profesor> profesores)
+    {
+        this.profesores = profesores;
+    }
+
+    public TreeMap<String, Profesor> getProfesores()
+    {
+        return this.profesores;
+    }
+
+    public void setAsignaturas(TreeMap<String, Asignatura> asignaturas)
+    {
+        this.asignaturas = asignaturas;
+    }
+
+    public TreeMap<String, Asignatura> getAsignaturas()
+    {
+        return this.asignaturas;
+    }
+
+    public void setCursadas(TreeMap<String, Cursada> cursadas)
+    {
+        this.cursadas = cursadas;
+    }
+
+    public TreeMap<String, Cursada> getCursadas()
+    {
+        return this.cursadas;
     }
 
 }

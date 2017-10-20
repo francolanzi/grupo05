@@ -15,7 +15,14 @@ public class HoraInvalidaException extends Exception
     {
         this.hora = hora;
     }
+    
+    public HoraInvalidaException(){}
 
+    public void setHora(String hora)
+    {
+        this.hora = hora;
+    }
+    
     public String getHora()
     {
         return this.hora;

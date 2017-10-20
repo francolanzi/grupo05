@@ -56,5 +56,15 @@ public class ObserverTreeMap<T extends Entidad> implements Observer
             this.coleccion.remove(id);
         }
     }
-    
+
+    public void setColeccion(TreeMap<String, T> coleccion)
+    {
+        this.coleccion = coleccion;
+    }
+
+    public TreeMap<String, T> getColeccion()
+    {
+        return this.coleccion;
+    }
+
 }

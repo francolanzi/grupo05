@@ -12,16 +12,6 @@ public class Domicilio
         this.numero = numero;
     }
 
-    public String getCalle()
-    {
-        return this.calle;
-    }
-
-    public int getNumero()
-    {
-        return this.numero;
-    }
-
     @Override
     public boolean equals(Object object)
     {
@@ -53,6 +43,28 @@ public class Domicilio
         result = PRIME * result + ((calle == null)? 0: calle.hashCode());
         result = PRIME * result + numero;
         return result;
+    }
+    
+    public Domicilio(){}
+
+    public void setCalle(String calle)
+    {
+        this.calle = calle;
+    }
+
+    public String getCalle()
+    {
+        return this.calle;
+    }
+
+    public void setNumero(int numero)
+    {
+        this.numero = numero;
+    }
+
+    public int getNumero()
+    {
+        return this.numero;
     }
 
 }

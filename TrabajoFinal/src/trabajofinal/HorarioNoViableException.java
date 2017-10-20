@@ -19,9 +19,21 @@ public class HorarioNoViableException extends Exception
         this.cursada = cursada;
     }
 
+    public HorarioNoViableException(){}
+
+    public void setEntidad(Entidad entidad)
+    {
+        this.entidad = entidad;
+    }
+
     public Entidad getEntidad()
     {
         return this.entidad;
+    }
+
+    public void setCursada(Cursada cursada)
+    {
+        this.cursada = cursada;
     }
 
     public Cursada getCursada()

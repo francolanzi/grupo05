@@ -22,25 +22,6 @@ public class Alumno implements Entidad
         this.legajo = Mascaras.genId(sigLegajo++, prefijo);
         this.historia = new ObserverTreeMap<Asignatura>();
     }
-    
-    public String getApellido() {
-        return this.apellido;
-    }
-
-    public String getNombre() {
-        return this.nombre;
-    }
-
-    @Override
-    public String getId()
-    {
-        return legajo;
-    }
-    
-    public Iterator<Asignatura> getHistoria()
-    {
-        return this.historia.getIterator();
-    }
 
     public void modificar(String apellido, String nombre, String calle, int numero, String email) throws EmailInvalidoException
     {
@@ -95,6 +76,84 @@ public class Alumno implements Entidad
         int result = 1;
         result = PRIME * result + ((legajo == null)? 0: legajo.hashCode());
         return result;
-    } 
+    }
+    
+    public Alumno(){}
+
+    public static void setSigLegajo(int sigLegajo)
+    {
+        Alumno.sigLegajo = sigLegajo;
+    }
+
+    public static int getSigLegajo()
+    {
+        return Alumno.sigLegajo;
+    }
+
+    public void setLegajo(String legajo)
+    {
+        this.legajo = legajo;
+    }
+    
+    public String getLegajo()
+    {
+        return this.legajo;
+    }
+
+    public void setApellido(String apellido)
+    {
+        this.apellido = apellido;
+    }
+
+    public String getApellido()
+    {
+        return this.apellido;
+    }
+
+    public void setNombre(String nombre)
+    {
+        this.nombre = nombre;
+    }
+
+    public String getNombre()
+    {
+        return this.nombre;
+    }
+
+    public void setDomicilio(Domicilio domicilio)
+    {
+        this.domicilio = domicilio;
+    }
+
+    public Domicilio getDomicilio()
+    {
+        return this.domicilio;
+    }
+
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
+
+    public String getEmail()
+    {
+        return this.email;
+    }
+
+    public void setHistoria(ObserverTreeMap<Asignatura> historia)
+    {
+        this.historia = historia;
+    }
+
+    public ObserverTreeMap<Asignatura> getHistoria()
+    {
+        return this.historia;
+    }
+
+    @Override
+    public String getId()
+    {
+        return this.legajo;
+    }
     
 }

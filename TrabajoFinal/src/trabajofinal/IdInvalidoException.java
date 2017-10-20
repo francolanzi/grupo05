@@ -16,6 +16,13 @@ public class IdInvalidoException extends Exception
         this.id = id;
     }
 
+    public IdInvalidoException(){}
+
+    public void setId(String id)
+    {
+        this.id = id;
+    }
+
     public String getId()
     {
         return this.id;

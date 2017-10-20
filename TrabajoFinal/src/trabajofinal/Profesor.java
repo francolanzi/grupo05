@@ -50,14 +50,6 @@ public class Profesor implements Entidad
             throw new IdInvalidoException(e.getId(), "El profesor no posee la competencia");
         }
     }
-    
-    public String getApellido() {
-        return this.apellido;
-    }
-
-    public String getNombre() {
-        return this.nombre;
-    }
 
     @Override
     public String getId()
@@ -114,4 +106,86 @@ public class Profesor implements Entidad
         return result;
     }
     
+    public Profesor(){}
+
+    public static void setSigLegajo(int sigLegajo)
+    {
+        Profesor.sigLegajo = sigLegajo;
+    }
+
+    public static int getSigLegajo()
+    {
+        return Profesor.sigLegajo;
+    }
+
+    public void setLegajo(String legajo)
+    {
+        this.legajo = legajo;
+    }
+    
+    public String getLegajo()
+    {
+        return this.legajo;
+    }
+
+    public void setApellido(String apellido)
+    {
+        this.apellido = apellido;
+    }
+
+    public String getApellido()
+    {
+        return this.apellido;
+    }
+
+    public void setNombre(String nombre)
+    {
+        this.nombre = nombre;
+    }
+
+    public String getNombre()
+    {
+        return this.nombre;
+    }
+
+    public void setDomicilio(Domicilio domicilio)
+    {
+        this.domicilio = domicilio;
+    }
+
+    public Domicilio getDomicilio()
+    {
+        return this.domicilio;
+    }
+
+    public void setTelefono(String telefono)
+    {
+        this.telefono = telefono;
+    }
+
+    public String getTelefono()
+    {
+        return this.telefono;
+    }
+
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
+
+    public String getEmail()
+    {
+        return this.email;
+    }
+
+    public void setCompetencias(ObserverTreeMap<Asignatura> competencias)
+    {
+        this.competencias = competencias;
+    }
+
+    public ObserverTreeMap<Asignatura> getCompetencias1()
+    {
+        return this.competencias;
+    }
+
 }
