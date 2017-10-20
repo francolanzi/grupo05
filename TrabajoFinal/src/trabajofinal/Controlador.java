@@ -138,7 +138,7 @@ public class Controlador extends Observable
         Iterator<Alumno> iterator = alumnos.values().iterator();
         while(iterator.hasNext()){
             Alumno otro = iterator.next();
-            if (otro.getApellido().equals(apellido) && otro.getNombre().equals(nombre))
+            if (otro.getApellido().contains(apellido) && otro.getNombre().contains(nombre))
                 coleccion.put(otro.getId(), otro);
         }
         return coleccion.values().iterator();
@@ -150,7 +150,7 @@ public class Controlador extends Observable
         Iterator<Profesor> iterator = profesores.values().iterator();
         while(iterator.hasNext()){
             Profesor otro = iterator.next();
-            if (otro.getApellido().equals(apellido) && otro.getNombre().equals(nombre))
+            if (otro.getApellido().contains(apellido) && otro.getNombre().contains(nombre))
                 coleccion.put(otro.getId(), otro);
         }
         return coleccion.values().iterator();
@@ -162,7 +162,7 @@ public class Controlador extends Observable
         Iterator<Asignatura> iterator = asignaturas.values().iterator();
         while(iterator.hasNext()){
             Asignatura otro = iterator.next();
-            if (otro.getNombre().equals(nombre))
+            if (otro.getNombre().contains(nombre))
                 coleccion.put(otro.getId(), otro);
         }
         return coleccion.values().iterator();
@@ -174,7 +174,7 @@ public class Controlador extends Observable
         Iterator<Cursada> iterator = cursadas.values().iterator();
         while(iterator.hasNext()){
             Cursada otro = iterator.next();
-            if (otro.getAsignatura().equals(nombre))
+            if (otro.getAsignatura().getNombre().contains(nombre))
                 coleccion.put(otro.getId(), otro);
         }
         return coleccion.values().iterator();
