@@ -330,6 +330,7 @@ public class Controlador extends Observable
         this.cursadas.get(identificacion).removeProfesor(legajo);
     }
     
+    
     public Iterator<Alumno> getAlumnosIterator()
     {
         return this.alumnos.values().iterator();

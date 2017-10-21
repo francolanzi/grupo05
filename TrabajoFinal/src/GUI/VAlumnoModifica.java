@@ -1,11 +1,14 @@
 
 package GUI;
 
+import java.util.Iterator;
+
 import javax.swing.JOptionPane;
 
 import javax.swing.table.DefaultTableModel;
 
 import trabajofinal.Alumno;
+import trabajofinal.Asignatura;
 import trabajofinal.Controlador;
 import trabajofinal.Cursada;
 import trabajofinal.EmailInvalidoException;
@@ -25,10 +28,19 @@ public class VAlumnoModifica extends javax.swing.JFrame {
     /** Creates new form AltaAlumno */
     public VAlumnoModifica(Alumno alumno) {
         initComponents();
-        
-        
+        setTablaHistoria(alumno); 
     }
 
+    private void setTablaHistoria(Alumno alumno){
+        Iterator it=alumno.getHistoria().getIterator();
+        while (it.hasNext()){
+            Asignatura asi= (Asignatura)it.next();
+            String[] datos= {asi.getId(),asi.getNombre()};
+            modelo.addRow(datos);
+        }
+    }
+    
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
