@@ -332,6 +332,7 @@ public class VAsignaturaModifica extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null,"Ingrese nombre de la Asignatura");
         try {
             Controlador.getInstance().modificaAsignatura(TIdentificador.getText(), TNombre.getText());
+            JOptionPane.showMessageDialog(null, "La asignatura ha sido modificada exitosamente");
         } catch (IdInvalidoException e) {
             e.getMessage();
         }

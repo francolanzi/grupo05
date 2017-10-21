@@ -420,6 +420,7 @@ public class VAlumnoModifica extends javax.swing.JFrame {
             Controlador.getInstance().modificaAlumno(TLegajo.getText().toString(), TApellido.getText().toString(),
                                        TNombre.getText().toString(), TCalle.getText().toString(),
                                        Integer.parseInt(TNumero.getText()), TEmail.getText().toString());
+            JOptionPane.showMessageDialog(null, "El alumno ha sido modificado exitosamente");
         } catch (EmailInvalidoException | IdInvalidoException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }

@@ -473,7 +473,9 @@ public class VProfesorModifica extends javax.swing.JFrame {
         try {
             Controlador.getInstance().modificaProfesor(TLegajo.getText().toString(), TApellido.getText().toString(),
                                        TNombre.getText().toString(), TCalle.getText().toString(),
-                                       Integer.parseInt(TNumero.getText()),TNumero.getText().toString(), TEmail.getText().toString());
+                                       Integer.parseInt(TNumero.getText()),TNumero.getText().toString(),
+                                        TEmail.getText().toString());
+            JOptionPane.showMessageDialog(null, "El profesor ha sido modificado exitosamente");
         } catch (EmailInvalidoException | IdInvalidoException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
