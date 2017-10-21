@@ -35,8 +35,17 @@ public class VCursadaAlta extends javax.swing.JFrame {
     public VCursadaAlta() {
         initComponents();
         this.addWindowListener(WindowSerializador.getInstance());
-        TIdentificador.setText(Mascaras.genId(Cursada.getSigIdentificacion(), Cursada.prefijo));
+        vaciaCampos();
         CDia.setModel(new DefaultComboBoxModel<>(new String[] { "Lunes", "Martes","Miercoles","Jueves","Viernes" }));; 
+    }
+    
+    private void vaciaCampos()
+    {
+        TIdentificador.setText(Mascaras.genId(Cursada.getSigIdentificacion(), Cursada.prefijo));
+        TPeriodo.setText("");
+        TAsignatura.setText("");
+        THoraInicio.setText("");
+        THoraFin.setText("");
     }
     
 
@@ -431,6 +440,8 @@ public class VCursadaAlta extends javax.swing.JFrame {
                 Controlador.getInstance().altaCursada(TAsignatura.getText().toString(),
                                            TPeriodo.getText().toString(), CDia.getSelectedItem().toString(),
                                            THoraInicio.getText().toString(), THoraFin.getText().toString());
+                vaciaCampos();
+                JOptionPane.showMessageDialog(null, "La cursada ha sido dada de alta exitosamente");
             } catch (HoraInvalidaException | IdInvalidoException | PeriodoInvalidoException e) {
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }

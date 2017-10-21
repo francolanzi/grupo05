@@ -110,7 +110,7 @@
     </object>
    </void>
    <void method="put">
-    <string>CUR0001</string>
+    <string>CUR0002</string>
     <object class="trabajofinal.Cursada">
      <void property="alumnos">
       <object class="trabajofinal.ObserverTreeMap"/>
@@ -122,16 +122,16 @@
       <string>Lunes</string>
      </void>
      <void property="horaFin">
-      <string>19:30</string>
+      <string>10:00</string>
      </void>
      <void property="horaInicio">
-      <string>17:30</string>
+      <string>08:00</string>
      </void>
      <void property="identificacion">
-      <string>CUR0001</string>
+      <string>CUR0002</string>
      </void>
      <void property="periodo">
-      <string>01-1996</string>
+      <string>02-2008</string>
      </void>
      <void property="profesores">
       <object class="trabajofinal.ObserverTreeMap"/>
@@ -143,6 +143,6 @@
  <int>3</int>
  <int>1</int>
  <object idref="Controlador0"/>
- <int>2</int>
+ <int>3</int>
  <int>0</int>
 </java>
