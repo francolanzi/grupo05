@@ -1,6 +1,12 @@
 
 package GUI;
 
+import java.util.Iterator;
+
+import javax.swing.table.DefaultTableModel;
+
+import trabajofinal.Alumno;
+import trabajofinal.Asignatura;
 import trabajofinal.Profesor;
 
 /**
@@ -8,13 +14,31 @@ import trabajofinal.Profesor;
  * @author Usuario
  */
 public class VProfesorConsulta extends javax.swing.JFrame {
+    DefaultTableModel modelo= new DefaultTableModel();
+    String[] col={"Identificador","Nombre"};
 
     /** Creates new form VProfesorConsulta */
     public VProfesorConsulta(Profesor profesor) {
         initComponents();
-        this.addWindowListener(WindowSerializador.getInstance());
+        TLegajo.setText(profesor.getId());
+        TNombre.setText(profesor.getNombre());
+        TApellido.setText(profesor.getApellido());
+        TCalle.setText(profesor.getDomicilio().getCalle());
+        TNumero.setText(Integer.toString(profesor.getDomicilio().getNumero()));
+        TTelefono.setText(profesor.getTelefono());
+        TEmail.setText(profesor.getEmail());
+        setCompetencias(profesor);
     }
 
+    private void setCompetencias(Profesor profesor){
+        Iterator it=profesor.getCompetencias();
+        while (it.hasNext()){
+            Asignatura asi= (Asignatura)it.next();
+            String[] datos= {asi.getId(),asi.getNombre()};
+            modelo.addRow(datos);
+        }
+    }
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -42,8 +66,8 @@ public class VProfesorConsulta extends javax.swing.JFrame {
         TEmail = new javax.swing.JTextField();
         Numero = new javax.swing.JLabel();
         TNumero = new javax.swing.JTextField();
-        THistoria = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tCompetencias = new javax.swing.JScrollPane();
+        tablaCompetencias = new javax.swing.JTable();
         Telefono = new javax.swing.JLabel();
         TTelefono = new javax.swing.JTextField();
         Cancelar = new javax.swing.JButton();
@@ -137,20 +161,8 @@ public class VProfesorConsulta extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][]
-            {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String []
-            {
-                "Identificador", "Nombre"
-            }
-        ));
-        THistoria.setViewportView(jTable1);
+        tablaCompetencias.setModel(modelo);
+        tCompetencias.setViewportView(tablaCompetencias);
 
         Telefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Telefono.setText("Teléfono");
@@ -185,7 +197,7 @@ public class VProfesorConsulta extends javax.swing.JFrame {
                     .addComponent(Historia))
                 .addGap(24, 24, 24)
                 .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(THistoria, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tCompetencias, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(GrillaLayout.createSequentialGroup()
                         .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(TTelefono, javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,7 +246,7 @@ public class VProfesorConsulta extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Historia)
-                    .addComponent(THistoria, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tCompetencias, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(57, 57, 57)
                 .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
@@ -270,7 +282,6 @@ public class VProfesorConsulta extends javax.swing.JFrame {
     private javax.swing.JTextField TApellido;
     private javax.swing.JTextField TCalle;
     private javax.swing.JTextField TEmail;
-    private javax.swing.JScrollPane THistoria;
     private javax.swing.JTextField TLegajo;
     private javax.swing.JTextField TNombre;
     private javax.swing.JTextField TNumero;
@@ -279,7 +290,8 @@ public class VProfesorConsulta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane tCompetencias;
+    private javax.swing.JTable tablaCompetencias;
     // End of variables declaration//GEN-END:variables
 
 }

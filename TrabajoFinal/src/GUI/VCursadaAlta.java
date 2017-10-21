@@ -1,9 +1,6 @@
+import GUI.VentanaIndex;
+import GUI.WindowSerializador;
 
-package GUI;
-
-import trabajofinal.Alumno;
-import trabajofinal.Cursada;
-import trabajofinal.Mascaras;
 
 /**
  *

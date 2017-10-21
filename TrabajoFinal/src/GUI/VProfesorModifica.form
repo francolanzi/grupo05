@@ -140,7 +140,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="THistoria" alignment="0" min="-2" pref="340" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="Asignatura" min="-2" pref="125" max="-2" attributes="0"/>
+                                  <Component id="cAsignatura" min="-2" pref="125" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="AgregarCompetencia" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -165,7 +165,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="Cancelar" min="-2" max="-2" attributes="0"/>
-                      <Component id="AgregarCompetencia1" min="-2" max="-2" attributes="0"/>
+                      <Component id="quitarCompetencia" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="187" max="32767" attributes="0"/>
               </Group>
@@ -210,7 +210,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="AgregarCompetencia" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="Asignatura" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cAsignatura" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="Historia" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -224,7 +224,7 @@
                               <Component id="Grabar" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Component id="AgregarCompetencia1" min="-2" max="-2" attributes="0"/>
+                      <Component id="quitarCompetencia" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="145" max="32767" attributes="0"/>
               </Group>
@@ -323,7 +323,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="jTable1">
+            <Component class="javax.swing.JTable" name="tablaCompetencias">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="2" rowCount="4">
@@ -335,7 +335,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JComboBox" name="Asignatura">
+        <Component class="javax.swing.JComboBox" name="cAsignatura">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
@@ -347,7 +347,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AsignaturaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cAsignaturaActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -407,12 +407,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CancelarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="AgregarCompetencia1">
+        <Component class="javax.swing.JButton" name="quitarCompetencia">
           <Properties>
             <Property name="text" type="java.lang.String" value="Quitar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AgregarCompetencia1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quitarCompetenciaActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
