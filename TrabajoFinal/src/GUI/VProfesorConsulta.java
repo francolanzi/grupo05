@@ -29,15 +29,17 @@ public class VProfesorConsulta extends javax.swing.JFrame {
         TNumero.setText(Integer.toString(profesor.getDomicilio().getNumero()));
         TTelefono.setText(profesor.getTelefono());
         TEmail.setText(profesor.getEmail());
-        setCompetencias(profesor);
+        setTablaCompetencias(profesor);
     }
 
-    private void setCompetencias(Profesor profesor){
-        Iterator it=profesor.getCompetencias();
-        while (it.hasNext()){
-            Asignatura asi= (Asignatura)it.next();
-            String[] datos= {asi.getId(),asi.getNombre()};
-            modelo.addRow(datos);
+    private void setTablaCompetencias(Profesor profesor)
+    {
+        DefaultTableModel model = (DefaultTableModel) tablaCompetencias.getModel();
+        Iterator<Asignatura> competencias = profesor.getCompetenciasIterator();
+        while (competencias.hasNext())
+        {
+            Asignatura competencia = competencias.next();
+            model.addRow(new Object[] {competencia.getId(), competencia.getNombre()});
         }
     }
     
@@ -163,8 +165,42 @@ public class VProfesorConsulta extends javax.swing.JFrame {
             }
         });
 
-        tablaCompetencias.setModel(modelo);
+        tablaCompetencias.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][]
+            {
+
+            },
+            new String []
+            {
+                "Identificador", "Nombre"
+            }
+        )
+        {
+            Class[] types = new Class []
+            {
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean []
+            {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex)
+            {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
+                return canEdit [columnIndex];
+            }
+        });
         tCompetencias.setViewportView(tablaCompetencias);
+        if (tablaCompetencias.getColumnModel().getColumnCount() > 0)
+        {
+            tablaCompetencias.getColumnModel().getColumn(0).setHeaderValue("Identificador");
+            tablaCompetencias.getColumnModel().getColumn(1).setHeaderValue("Nombre");
+        }
 
         Telefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Telefono.setText("Teléfono");

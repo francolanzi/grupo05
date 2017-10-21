@@ -62,7 +62,7 @@ public class Profesor implements Entidad
         return this.competencias.contains(identificacion);
     }
     
-    public Iterator<Asignatura> getCompetencias()
+    public Iterator<Asignatura> getCompetenciasIterator()
     {
         return this.competencias.getIterator();
     }
@@ -183,7 +183,7 @@ public class Profesor implements Entidad
         this.competencias = competencias;
     }
 
-    public ObserverTreeMap<Asignatura> getCompetencias1()
+    public ObserverTreeMap<Asignatura> getCompetencias()
     {
         return this.competencias;
     }

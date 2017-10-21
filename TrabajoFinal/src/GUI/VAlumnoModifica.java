@@ -13,8 +13,10 @@ import trabajofinal.Controlador;
 import trabajofinal.Cursada;
 import trabajofinal.EmailInvalidoException;
 import trabajofinal.EntidadInvalidaException;
+import trabajofinal.HorarioNoViableException;
 import trabajofinal.IdInvalidoException;
 import trabajofinal.IdInvalidoException;
+import trabajofinal.Profesor;
 
 /**
  *
@@ -35,18 +37,31 @@ public class VAlumnoModifica extends javax.swing.JFrame {
         TCalle.setText(alumno.getDomicilio().getCalle());
         TNumero.setText(Integer.toString(alumno.getDomicilio().getNumero()));
         TEmail.setText(alumno.getEmail());
-        setTablaHistoria(alumno); 
+        setTablaHistoria(alumno);
+        cargaHistoria();
     }
 
-    private void setTablaHistoria(Alumno alumno){
-        Iterator it=alumno.getHistoria().getIterator();
-        while (it.hasNext()){
-            Asignatura asi= (Asignatura)it.next();
-            String[] datos= {asi.getId(),asi.getNombre()};
-            modelo.addRow(datos);
+    private void setTablaHistoria(Alumno alumno)
+    {
+        DefaultTableModel model = (DefaultTableModel) tablaHistoria.getModel();
+        Iterator<Asignatura> historia = alumno.getHistoriaIterator();
+        while (historia.hasNext())
+        {
+            Asignatura asignatura = historia.next();
+            model.addRow(new Object[] {asignatura.getId(), asignatura.getNombre()});
         }
     }
     
+    private void cargaHistoria()
+    {
+        Iterator<Cursada> cursadas = Controlador.getInstance().getCursadasIterator();
+        while (cursadas.hasNext())
+        {
+            Cursada cursada = cursadas.next();
+            ComboItem item = new ComboItem(cursada.getId(), cursada.getAsignatura().getNombre());
+            CHistoria.addItem(item);
+        }
+    }
     
     /** This method is called from within the constructor to
      * initialize the form.
@@ -76,9 +91,9 @@ public class VAlumnoModifica extends javax.swing.JFrame {
         Numero = new javax.swing.JLabel();
         TNumero = new javax.swing.JTextField();
         THistoria = new javax.swing.JScrollPane();
-        TablaHistoria = new javax.swing.JTable();
-        Cursadas = new javax.swing.JComboBox<>();
-        AgregarHistoria = new javax.swing.JButton();
+        tablaHistoria = new javax.swing.JTable();
+        CHistoria = new javax.swing.JComboBox<>();
+        Aprobar = new javax.swing.JButton();
         Grabar = new javax.swing.JButton();
         Cancelar = new javax.swing.JButton();
 
@@ -191,24 +206,58 @@ public class VAlumnoModifica extends javax.swing.JFrame {
         });
 
         modelo.setColumnIdentifiers(col);
-        TablaHistoria.setModel(modelo);
-        THistoria.setViewportView(TablaHistoria);
+        tablaHistoria.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][]
+            {
 
-        Cursadas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        Cursadas.addActionListener(new java.awt.event.ActionListener()
+            },
+            new String []
+            {
+                "Identificacion", "Nombre"
+            }
+        )
+        {
+            Class[] types = new Class []
+            {
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean []
+            {
+                true, false
+            };
+
+            public Class getColumnClass(int columnIndex)
+            {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
+                return canEdit [columnIndex];
+            }
+        });
+        THistoria.setViewportView(tablaHistoria);
+        if (tablaHistoria.getColumnModel().getColumnCount() > 0)
+        {
+            tablaHistoria.getColumnModel().getColumn(0).setHeaderValue("Identificacion");
+            tablaHistoria.getColumnModel().getColumn(1).setHeaderValue("Nombre");
+        }
+
+        CHistoria.setModel(new javax.swing.DefaultComboBoxModel<>(new ComboItem[] {}));
+        CHistoria.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                CursadasActionPerformed(evt);
+                CHistoriaActionPerformed(evt);
             }
         });
 
-        AgregarHistoria.setText("Agregar");
-        AgregarHistoria.addActionListener(new java.awt.event.ActionListener()
+        Aprobar.setText("Aprobar");
+        Aprobar.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                AgregarHistoriaActionPerformed(evt);
+                AprobarActionPerformed(evt);
             }
         });
 
@@ -240,12 +289,10 @@ public class VAlumnoModifica extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(319, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap(653, Short.MAX_VALUE)
-                        .addComponent(Grabar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap(319, Short.MAX_VALUE)
+                    .addComponent(Grabar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(Email, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -258,9 +305,9 @@ public class VAlumnoModifica extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(THistoria, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(Cursadas, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(CHistoria, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(AgregarHistoria))
+                                .addComponent(Aprobar))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(TEmail, javax.swing.GroupLayout.Alignment.LEADING)
@@ -304,8 +351,8 @@ public class VAlumnoModifica extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Historia)
-                    .addComponent(Cursadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AgregarHistoria))
+                    .addComponent(CHistoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Aprobar))
                 .addGap(16, 16, 16)
                 .addComponent(THistoria, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -326,20 +373,27 @@ public class VAlumnoModifica extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TNumeroActionPerformed
 
-    private void CursadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CursadasActionPerformed
+    private void CHistoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CHistoriaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CursadasActionPerformed
+    }//GEN-LAST:event_CHistoriaActionPerformed
 
-    private void AgregarHistoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarHistoriaActionPerformed
-        try {
-            Controlador.getInstance().aprobarAlumno(Legajo.getText(), Cursadas.getSelectedItem().toString());
-            Cursada curs=Controlador.getInstance().consultaCursada(Cursadas.getSelectedItem().toString());
-            String[] datos= {curs.getId(),curs.getAsignatura().toString()};
-            modelo.addRow(datos);
-        } catch (EntidadInvalidaException | IdInvalidoException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+    private void AprobarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AprobarActionPerformed
+        if (CHistoria.getItemCount() > 0)
+        {
+            DefaultTableModel model = (DefaultTableModel) tablaHistoria.getModel();
+            ComboItem item = (ComboItem) CHistoria.getSelectedItem();
+            try
+            {
+                Controlador.getInstance().aprobarAlumno(TLegajo.getText(), item.getId());
+                Asignatura asignatura = Controlador.getInstance().consultaCursada(item.getId()).getAsignatura();
+                model.addRow(new Object[] { asignatura.getId(), asignatura.getNombre() });
+            }
+            catch (IdInvalidoException | EntidadInvalidaException e)
+            {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
         }
-    }//GEN-LAST:event_AgregarHistoriaActionPerformed
+    }//GEN-LAST:event_AprobarActionPerformed
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
         this.dispose();
@@ -366,6 +420,7 @@ public class VAlumnoModifica extends javax.swing.JFrame {
             Controlador.getInstance().modificaAlumno(TLegajo.getText().toString(), TApellido.getText().toString(),
                                        TNombre.getText().toString(), TCalle.getText().toString(),
                                        Integer.parseInt(TNumero.getText()), TEmail.getText().toString());
+            JOptionPane.showMessageDialog(null, "El alumno ha sido modificado exitosamente");
         } catch (EmailInvalidoException | IdInvalidoException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -391,12 +446,12 @@ public class VAlumnoModifica extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AgregarHistoria;
     private javax.swing.JLabel Alumno;
     private javax.swing.JLabel Apellido;
+    private javax.swing.JButton Aprobar;
+    private javax.swing.JComboBox<ComboItem> CHistoria;
     private javax.swing.JLabel Calle;
     private javax.swing.JButton Cancelar;
-    private javax.swing.JComboBox<String> Cursadas;
     private javax.swing.JLabel Email;
     private javax.swing.JButton Grabar;
     private javax.swing.JLabel Historia;
@@ -410,11 +465,11 @@ public class VAlumnoModifica extends javax.swing.JFrame {
     private javax.swing.JTextField TLegajo;
     private javax.swing.JTextField TNombre;
     private javax.swing.JTextField TNumero;
-    private javax.swing.JTable TablaHistoria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTable tablaHistoria;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -49,6 +49,11 @@ public class Alumno implements Entidad
     {
         return this.historia.contains(identificacion);
     }
+    
+    public Iterator<Asignatura> getHistoriaIterator()
+    {
+        return this.historia.getIterator();
+    }
 
     @Override
     public boolean equals(Object object)

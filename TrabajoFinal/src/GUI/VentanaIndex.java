@@ -269,7 +269,27 @@ public class VentanaIndex extends javax.swing.JFrame {
             {
                 "Legajo", "Nombre", "Apellido", "Calle", "Numero", "Mail"
             }
-        ));
+        )
+        {
+            Class[] types = new Class []
+            {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean []
+            {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex)
+            {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tablaAlumnos);
 
         javax.swing.GroupLayout PanelGrillaLayout = new javax.swing.GroupLayout(PanelGrilla);
@@ -385,7 +405,27 @@ public class VentanaIndex extends javax.swing.JFrame {
             {
                 "Legajo", "Nombre", "Apellido", "Calle", "Numero", "Telefono", "Mail"
             }
-        ));
+        )
+        {
+            Class[] types = new Class []
+            {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean []
+            {
+                false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex)
+            {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(tablaProfesores);
 
         javax.swing.GroupLayout PPanelGrillaLayout = new javax.swing.GroupLayout(PPanelGrilla);
@@ -494,7 +534,27 @@ public class VentanaIndex extends javax.swing.JFrame {
             {
                 "Identificacion", "Nombre"
             }
-        ));
+        )
+        {
+            Class[] types = new Class []
+            {
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean []
+            {
+                true, false
+            };
+
+            public Class getColumnClass(int columnIndex)
+            {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane3.setViewportView(tablaAsignaturas);
 
         javax.swing.GroupLayout APanelGrillaLayout = new javax.swing.GroupLayout(APanelGrilla);
@@ -580,7 +640,27 @@ public class VentanaIndex extends javax.swing.JFrame {
             {
                 "Identificacion", "Asignatura", "Periodo", "Dia", "Hora Inicio", "Hora Fin"
             }
-        ));
+        )
+        {
+            Class[] types = new Class []
+            {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean []
+            {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex)
+            {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane4.setViewportView(tablaCursadas);
 
         javax.swing.GroupLayout CPanelGrillaLayout = new javax.swing.GroupLayout(CPanelGrilla);
@@ -870,7 +950,7 @@ public class VentanaIndex extends javax.swing.JFrame {
         else if (SolapaCursadas.isShowing())
         {
             Cursada cursada;
-            if (tablaAsignaturas.getSelectedRows().length == 1){
+            if (tablaCursadas.getSelectedRows().length == 1){
                 try
                 {
                     cursada =

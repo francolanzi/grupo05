@@ -122,14 +122,12 @@ public class Controlador extends Observable
         this.asignaturas.get(identificacion).setNombre(nombre);
     }
     
-    public void modificaCursada(String idCursada, String idAsignatura, String periodo, String dia, String horaInicio, String horaFin)
+    public void modificaCursada(String identificacion, String periodo, String dia, String horaInicio, String horaFin)
     throws IdInvalidoException, PeriodoInvalidoException, HoraInvalidaException
     {
-        if (!this.cursadas.containsKey(idCursada))
-            throw new IdInvalidoException(idCursada, "La cursada ingresada no existe");
-        if (!this.asignaturas.containsKey(idAsignatura))
-            throw new IdInvalidoException(idAsignatura, "La cursada ingresada no existe");
-        this.cursadas.get(idCursada).modificar(this.asignaturas.get(idAsignatura), periodo, dia, horaInicio, horaFin);
+        if (!this.cursadas.containsKey(identificacion))
+            throw new IdInvalidoException(identificacion, "La cursada ingresada no existe");
+        this.cursadas.get(identificacion).modificar(periodo, dia, horaInicio, horaFin);
     }
     
     public Iterator<Alumno> ubicaAlumno(String apellido, String nombre)
@@ -339,6 +337,16 @@ public class Controlador extends Observable
     public Iterator<Profesor> getProfesoresIterator()
     {
         return this.profesores.values().iterator();
+    }
+    
+    public Iterator<Asignatura> getAsignaturasIterator()
+    {
+        return this.asignaturas.values().iterator();
+    }
+    
+    public Iterator<Cursada> getCursadasIterator()
+    {
+        return this.cursadas.values().iterator();
     }
 
     public static void setControlador(Controlador controlador)
