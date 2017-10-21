@@ -29,6 +29,7 @@ public class VCursadaModifica extends javax.swing.JFrame {
     public VCursadaModifica(Cursada cursada) {
         initComponents();
         TIdentificador.setText(cursada.getId());
+        TAsignatura.setText(cursada.getAsignatura().getNombre());
         TPeriodo.setText(cursada.getPeriodo());
         THoraInicio.setText(cursada.getHoraInicio());
         THoraFin.setText(cursada.getHoraFin());
@@ -37,8 +38,6 @@ public class VCursadaModifica extends javax.swing.JFrame {
         setTablaAlumnos(cursada);
         cargaAlumnos();
         cargaProfesores();
-        cargaAsignaturas();
-        CAsignatura.setSelectedItem(buscaAsignatura(cursada.getAsignatura().getId()));
     }
     
     private void setTablaProfesores(Cursada cursada)
@@ -84,26 +83,6 @@ public class VCursadaModifica extends javax.swing.JFrame {
             CAlumnos.addItem(item);
         }
     }
-    
-    private void cargaAsignaturas()
-    {
-        Iterator<Asignatura> asignaturas = Controlador.getInstance().getAsignaturasIterator();
-        while (asignaturas.hasNext())
-        {
-            Asignatura asignatura = asignaturas.next();
-            ComboItem item = new ComboItem(asignatura.getId(), asignatura.getNombre());
-            CAsignatura.addItem(item);
-        }
-    }
-    
-    private ComboItem buscaAsignatura(String id)
-    {
-        int i = 0;
-        ComboItem item = (ComboItem) CAsignatura.getItemAt(0);
-        while (!item.getId().equals(id))
-            item = (ComboItem) CAsignatura.getItemAt(++i);
-        return item;
-    }
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -144,7 +123,7 @@ public class VCursadaModifica extends javax.swing.JFrame {
         tablaAlumnos = new javax.swing.JTable();
         quitarAlumno = new javax.swing.JButton();
         quitarProfesor = new javax.swing.JButton();
-        CAsignatura = new javax.swing.JComboBox<>();
+        TAsignatura = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cursada - Edición");
@@ -376,7 +355,7 @@ public class VCursadaModifica extends javax.swing.JFrame {
             }
         });
 
-        CAsignatura.setModel(new javax.swing.DefaultComboBoxModel<>(new ComboItem[] {}));
+        TAsignatura.setEditable(false);
 
         javax.swing.GroupLayout GrillaLayout = new javax.swing.GroupLayout(Grilla);
         Grilla.setLayout(GrillaLayout);
@@ -423,7 +402,7 @@ public class VCursadaModifica extends javax.swing.JFrame {
                                     .addGroup(GrillaLayout.createSequentialGroup()
                                         .addComponent(NAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(CAsignatura, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(TAsignatura))
                                     .addGroup(GrillaLayout.createSequentialGroup()
                                         .addComponent(HoraFin)
                                         .addGap(43, 43, 43)
@@ -446,7 +425,7 @@ public class VCursadaModifica extends javax.swing.JFrame {
                     .addComponent(Identificador, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(NAsignatura)
-                    .addComponent(CAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Periodo)
@@ -477,7 +456,7 @@ public class VCursadaModifica extends javax.swing.JFrame {
                 .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(TAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(quitarAlumno))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Grabar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -580,24 +559,27 @@ public class VCursadaModifica extends javax.swing.JFrame {
     }//GEN-LAST:event_CDiaActionPerformed
 
     private void GrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GrabarActionPerformed
-        if (CAsignatura.getItemCount() == 0)
-            JOptionPane.showMessageDialog(null,"Ingrese Asignatura");
         if (TPeriodo.getText().equals(""))
             JOptionPane.showMessageDialog(null,"Ingrese Periodo");
-        if (CDia.getSelectedItem().equals(""))
+        else if (CDia.getSelectedItem().equals(""))
             JOptionPane.showMessageDialog(null,"Ingrese Dia");
-        if (THoraInicio.getText().equals(""))
+        else if (THoraInicio.getText().equals(""))
             JOptionPane.showMessageDialog(null,"Ingrese Hora Inicio");
-        if (THoraFin.getText().equals(""))
+        else if (THoraFin.getText().equals(""))
             JOptionPane.showMessageDialog(null,"Ingrese Hora Fin");
-        try {
-            ComboItem item = (ComboItem) CAsignatura.getSelectedItem();
-            Controlador.getInstance().modificaCursada(TIdentificador.getText(), item.getId(),
-                                       TPeriodo.getText(), (String) CDia.getSelectedItem(),
-                                       THoraInicio.getText(), THoraFin.getText());
-            JOptionPane.showMessageDialog(null, "La cursada ha sido modificada exitosamente");
-        } catch (HoraInvalidaException | IdInvalidoException | PeriodoInvalidoException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+        else
+        {
+            try
+            {
+                Controlador.getInstance().modificaCursada(TIdentificador.getText(),
+                                           TPeriodo.getText(), (String) CDia.getSelectedItem(),
+                                           THoraInicio.getText(), THoraFin.getText());
+                JOptionPane.showMessageDialog(null, "La cursada ha sido modificada exitosamente");
+            }
+            catch (HoraInvalidaException | IdInvalidoException | PeriodoInvalidoException e)
+            {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
         } 
     }//GEN-LAST:event_GrabarActionPerformed
     
@@ -611,7 +593,6 @@ public class VCursadaModifica extends javax.swing.JFrame {
     private javax.swing.JButton AgregarProfesor;
     private javax.swing.JLabel Alumnos;
     private javax.swing.JComboBox<ComboItem> CAlumnos;
-    private javax.swing.JComboBox<ComboItem> CAsignatura;
     private javax.swing.JComboBox<String> CDia;
     private javax.swing.JComboBox<ComboItem> CProfesores;
     private javax.swing.JPanel Cabecera;
@@ -627,6 +608,7 @@ public class VCursadaModifica extends javax.swing.JFrame {
     private javax.swing.JLabel Periodo;
     private javax.swing.JLabel Profesores;
     private javax.swing.JScrollPane TAlumnos;
+    private javax.swing.JTextField TAsignatura;
     private javax.swing.JTextField THoraFin;
     private javax.swing.JTextField THoraInicio;
     private javax.swing.JTextField TIdentificador;

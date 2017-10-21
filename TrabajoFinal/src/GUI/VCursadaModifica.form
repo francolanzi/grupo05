@@ -165,7 +165,7 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="NAsignatura" min="-2" pref="75" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="CAsignatura" max="32767" attributes="0"/>
+                                          <Component id="TAsignatura" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="HoraFin" min="-2" max="-2" attributes="0"/>
@@ -199,7 +199,7 @@
                       <Component id="Identificador" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                       <Component id="TIdentificador" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="NAsignatura" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="CAsignatura" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="TAsignatura" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -237,7 +237,7 @@
                       <Component id="TAlumnos" min="-2" pref="84" max="-2" attributes="0"/>
                       <Component id="quitarAlumno" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="30" max="32767" attributes="0"/>
+                  <EmptySpace pref="31" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="Grabar" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                       <Component id="Cancelar" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
@@ -517,15 +517,10 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quitarProfesorActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JComboBox" name="CAsignatura">
+        <Component class="javax.swing.JTextField" name="TAsignatura">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new ComboItem[] {})" type="code"/>
-            </Property>
+            <Property name="editable" type="boolean" value="false"/>
           </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;ComboItem&gt;"/>
-          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

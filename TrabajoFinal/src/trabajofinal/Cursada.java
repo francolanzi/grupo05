@@ -23,8 +23,9 @@ public class Cursada implements Entidad, Observer
     public Cursada(Asignatura asignatura, String periodo, String dia, String horaInicio, String horaFin)
     throws PeriodoInvalidoException, HoraInvalidaException
     {
-        this.modificar(asignatura, periodo, dia, horaInicio, horaFin);
+        this.modificar(periodo, dia, horaInicio, horaFin);
         this.identificacion = Mascaras.genId(sigIdentificacion++, prefijo);
+        this.asignatura = asignatura;
         this.profesores = new ObserverTreeMap<Profesor>();
         this.alumnos = new ObserverTreeMap<Alumno>();
         Controlador.getInstance().addObserver(this);
@@ -89,7 +90,7 @@ public class Cursada implements Entidad, Observer
         return this.profesores.contains(legajo);
     }
 
-    public void modificar(Asignatura asignatura, String periodo, String dia, String horaInicio, String horaFin)
+    public void modificar(String periodo, String dia, String horaInicio, String horaFin)
     throws PeriodoInvalidoException, HoraInvalidaException
     {
         if (!Mascaras.periodoValido(periodo))
@@ -100,7 +101,6 @@ public class Cursada implements Entidad, Observer
             throw new HoraInvalidaException(horaFin, "La hora de finalizacion es invalida");
         if (horaFin.compareTo(horaInicio) < 0)
             throw new HoraInvalidaException(horaFin, "La hora de finalizacion es menor a la de inicio");
-        this.asignatura = asignatura;
         this.periodo = periodo;
         this.dia = dia;
         this.horaInicio = horaInicio;
