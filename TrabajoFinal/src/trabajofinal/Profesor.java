@@ -7,7 +7,7 @@ public class Profesor implements Entidad
 {
     
     private static int sigLegajo = 0;
-    private static final String prefijo = "PRO";
+    public static final String prefijo = "PRO";
     
     private String legajo;
     private String apellido;

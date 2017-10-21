@@ -7,7 +7,7 @@ public class Asignatura implements Entidad
 {
     
     private static int sigIdentificacion = 0;
-    private static final String prefijo = "ASI";
+    public static final String prefijo = "ASI";
     
     private String identificacion;
     private String nombre;

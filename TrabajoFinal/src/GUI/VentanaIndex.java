@@ -26,10 +26,6 @@ public class VentanaIndex extends javax.swing.JFrame {
     /** Creates new form VentanIndex */
     public VentanaIndex() {
         initComponents();
-        excepcionAlumno.setVisible(false);
-        excepcionProfesor.setVisible(false);
-        excepcionAsignatura.setVisible(false);
-        excepcionCursada.setVisible(false);
     }
 
     /** This method is called from within the constructor to
@@ -60,7 +56,6 @@ public class VentanaIndex extends javax.swing.JFrame {
         PanelGrilla = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaAlumnos = new javax.swing.JTable();
-        excepcionAlumno = new javax.swing.JTextField();
         SolapaProfesores = new javax.swing.JPanel();
         PPanelCabecera = new javax.swing.JPanel();
         nombreProfesor = new javax.swing.JLabel();
@@ -71,7 +66,6 @@ public class VentanaIndex extends javax.swing.JFrame {
         PPanelGrilla = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaProfesores = new javax.swing.JTable();
-        excepcionProfesor = new javax.swing.JTextField();
         SolapaAsignaturas = new javax.swing.JPanel();
         APanelCabecera = new javax.swing.JPanel();
         APanelCabecera1 = new javax.swing.JPanel();
@@ -81,7 +75,6 @@ public class VentanaIndex extends javax.swing.JFrame {
         APanelGrilla = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tablaAsignaturas = new javax.swing.JTable();
-        excepcionAsignatura = new javax.swing.JTextField();
         SolapaCursadas = new javax.swing.JPanel();
         CPanelCabecera = new javax.swing.JPanel();
         Cursada = new javax.swing.JLabel();
@@ -90,7 +83,6 @@ public class VentanaIndex extends javax.swing.JFrame {
         CPanelGrilla = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tablaCursadas = new javax.swing.JTable();
-        excepcionCursada = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PGA-Programa de Gestion de Asignaturas");
@@ -232,7 +224,7 @@ public class VentanaIndex extends javax.swing.JFrame {
                 .addComponent(nombreAlumno)
                 .addGap(10, 10, 10)
                 .addComponent(CampoParaNombreAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(apellidoAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
                 .addComponent(CampoParaApellidoAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -269,26 +261,19 @@ public class VentanaIndex extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaAlumnos);
 
-        excepcionAlumno.setEditable(false);
-        excepcionAlumno.setForeground(new java.awt.Color(255, 0, 0));
-
         javax.swing.GroupLayout PanelGrillaLayout = new javax.swing.GroupLayout(PanelGrilla);
         PanelGrilla.setLayout(PanelGrillaLayout);
         PanelGrillaLayout.setHorizontalGroup(
             PanelGrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelGrillaLayout.createSequentialGroup()
                 .addGap(41, 41, 41)
-                .addGroup(PanelGrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
-                    .addComponent(excepcionAlumno))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(99, Short.MAX_VALUE))
         );
         PanelGrillaLayout.setVerticalGroup(
             PanelGrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelGrillaLayout.createSequentialGroup()
-                .addGap(7, 7, 7)
-                .addComponent(excepcionAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(44, 44, 44)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(722, Short.MAX_VALUE))
         );
@@ -401,26 +386,19 @@ public class VentanaIndex extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tablaProfesores);
 
-        excepcionProfesor.setEditable(false);
-        excepcionProfesor.setForeground(new java.awt.Color(255, 0, 0));
-
         javax.swing.GroupLayout PPanelGrillaLayout = new javax.swing.GroupLayout(PPanelGrilla);
         PPanelGrilla.setLayout(PPanelGrillaLayout);
         PPanelGrillaLayout.setHorizontalGroup(
             PPanelGrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PPanelGrillaLayout.createSequentialGroup()
                 .addGap(41, 41, 41)
-                .addGroup(PPanelGrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(excepcionProfesor)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(99, Short.MAX_VALUE))
         );
         PPanelGrillaLayout.setVerticalGroup(
             PPanelGrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PPanelGrillaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(excepcionProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
+                .addGap(42, 42, 42)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(724, Short.MAX_VALUE))
         );
@@ -484,7 +462,7 @@ public class VentanaIndex extends javax.swing.JFrame {
         APanelCabecera.setLayout(APanelCabeceraLayout);
         APanelCabeceraLayout.setHorizontalGroup(
             APanelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 599, Short.MAX_VALUE)
+            .addGap(0, 638, Short.MAX_VALUE)
             .addGroup(APanelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(APanelCabeceraLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -526,26 +504,19 @@ public class VentanaIndex extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(tablaAsignaturas);
 
-        excepcionAsignatura.setEditable(false);
-        excepcionAsignatura.setForeground(new java.awt.Color(255, 0, 0));
-
         javax.swing.GroupLayout APanelGrillaLayout = new javax.swing.GroupLayout(APanelGrilla);
         APanelGrilla.setLayout(APanelGrillaLayout);
         APanelGrillaLayout.setHorizontalGroup(
             APanelGrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(APanelGrillaLayout.createSequentialGroup()
                 .addGap(41, 41, 41)
-                .addGroup(APanelGrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(excepcionAsignatura)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(99, Short.MAX_VALUE))
         );
         APanelGrillaLayout.setVerticalGroup(
             APanelGrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(APanelGrillaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(excepcionAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(49, 49, 49)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(717, Short.MAX_VALUE))
         );
@@ -587,7 +558,7 @@ public class VentanaIndex extends javax.swing.JFrame {
                 .addGap(103, 103, 103)
                 .addComponent(Cursada)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(CampoParaNombreCursada, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                .addComponent(CampoParaNombreCursada, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(CBuscar)
                 .addGap(130, 130, 130))
@@ -628,26 +599,19 @@ public class VentanaIndex extends javax.swing.JFrame {
         ));
         jScrollPane4.setViewportView(tablaCursadas);
 
-        excepcionCursada.setEditable(false);
-        excepcionCursada.setForeground(new java.awt.Color(255, 0, 0));
-
         javax.swing.GroupLayout CPanelGrillaLayout = new javax.swing.GroupLayout(CPanelGrilla);
         CPanelGrilla.setLayout(CPanelGrillaLayout);
         CPanelGrillaLayout.setHorizontalGroup(
             CPanelGrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CPanelGrillaLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addGroup(CPanelGrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(excepcionCursada)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(100, Short.MAX_VALUE))
         );
         CPanelGrillaLayout.setVerticalGroup(
             CPanelGrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CPanelGrillaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(excepcionCursada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(49, 49, 49)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(717, Short.MAX_VALUE))
         );
@@ -755,19 +719,21 @@ public class VentanaIndex extends javax.swing.JFrame {
         {
             Alumno alumno;
             if (tablaAlumnos.getSelectedRows().length == 1){
-                try {
+                try
+                {
                     alumno =
                         Controlador.getInstance().consultaAlumno(tablaAlumnos.getValueAt(tablaAlumnos.getSelectedRow(), 0).toString());
                     VAlumnoModifica ventanaModifica = new VAlumnoModifica(alumno);
                     ventanaModifica.setVisible(true);
-                } catch (IdInvalidoException e) {
-                    e.getMessage();
+                }
+                catch (IdInvalidoException e)
+                {
+                    JOptionPane.showMessageDialog(null, e.getMessage());
                 }
             }
             else{
-                JOptionPane.showMessageDialog(null,"Debe seleccionar un registro"); 
-                VentanaIndex principal= new VentanaIndex();
-                principal.setVisible(true);
+                JOptionPane.showMessageDialog(null,"Debe seleccionar un registro");
+                return;
             }     
         }
         else if (SolapaProfesores.isShowing())
@@ -783,7 +749,7 @@ public class VentanaIndex extends javax.swing.JFrame {
                         ventanaModifica.setVisible(true);
                 } catch (IdInvalidoException e)
                 {
-                    e.getMessage();
+                    JOptionPane.showMessageDialog(null, e.getMessage()); 
                 }
             }
             else{
@@ -796,7 +762,8 @@ public class VentanaIndex extends javax.swing.JFrame {
         {
             Asignatura asignatura;
             if (tablaAsignaturas.getSelectedRows().length ==1){
-                try {
+                try
+                {
                     asignatura =
                         Controlador.getInstance().consultaAsignatura(tablaAsignaturas.getValueAt(tablaAsignaturas.getSelectedRow(), 0)
                         .toString());
@@ -805,7 +772,7 @@ public class VentanaIndex extends javax.swing.JFrame {
                 }
                 catch (IdInvalidoException e)
                 {
-                    e.getMessage();
+                    JOptionPane.showMessageDialog(null, e.getMessage());
                 }
             }
             else{
@@ -828,7 +795,7 @@ public class VentanaIndex extends javax.swing.JFrame {
                 }
                 catch (IdInvalidoException e)
                 {
-                    e.getMessage();
+                    JOptionPane.showMessageDialog(null, e.getMessage());
                 } 
             }
             else{
@@ -1162,10 +1129,6 @@ public class VentanaIndex extends javax.swing.JFrame {
     private javax.swing.JPanel SolapaProfesores;
     private javax.swing.JLabel apellidoAlumno;
     private javax.swing.JLabel apellidoProfesor;
-    private javax.swing.JTextField excepcionAlumno;
-    private javax.swing.JTextField excepcionAsignatura;
-    private javax.swing.JTextField excepcionCursada;
-    private javax.swing.JTextField excepcionProfesor;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

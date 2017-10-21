@@ -7,7 +7,7 @@ public class Alumno implements Entidad
 {
     
     private static int sigLegajo = 0;
-    private static final String prefijo = "ALU";
+    public static final String prefijo = "ALU";
     
     private String legajo;
     private String apellido;
