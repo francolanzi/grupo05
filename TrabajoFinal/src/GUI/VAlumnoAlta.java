@@ -13,7 +13,6 @@ import trabajofinal.EntidadInvalidaException;
  * @author Usuario
  */
 public class VAlumnoAlta extends javax.swing.JFrame {
-    private Controlador controlador;
 
     /** Creates new form VAlumnoAlta */
     public VAlumnoAlta() {
@@ -249,21 +248,27 @@ public class VAlumnoAlta extends javax.swing.JFrame {
 
     private void GrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GrabarActionPerformed
         if (TNombre.getText().equals(""))
-        JOptionPane.showMessageDialog(null,"Ingrese Nombre");
-        if (TApellido.getText().equals(""))
-        JOptionPane.showMessageDialog(null,"Ingrese Apellido");
-        if (TCalle.getText().equals(""))
-        JOptionPane.showMessageDialog(null,"Ingrese Calle");
-        if (TNumero.getText().equals(""))
-        JOptionPane.showMessageDialog(null,"Ingrese Numero");
-        if (TEmail.getText().equals(""))
-        JOptionPane.showMessageDialog(null,"Ingrese Mail");
-            try{
-                controlador.altaAlumno(TApellido.getText(), TNombre.getText(), TCalle.getText(), Integer.parseInt(TNumero.getText()),
-                           TEmail.getText());
-            } catch (EmailInvalidoException e) {
+            JOptionPane.showMessageDialog(null,"Ingrese Nombre");
+        else if (TApellido.getText().equals(""))
+            JOptionPane.showMessageDialog(null,"Ingrese Apellido");
+        else if (TCalle.getText().equals(""))
+            JOptionPane.showMessageDialog(null,"Ingrese Calle");
+        else if (TNumero.getText().equals(""))
+            JOptionPane.showMessageDialog(null,"Ingrese Numero");
+        else if (TEmail.getText().equals(""))
+            JOptionPane.showMessageDialog(null,"Ingrese Mail");
+        else
+        {
+            try
+            {
+                Controlador.getInstance().altaAlumno(TApellido.getText(), TNombre.getText(), TCalle.getText(),
+                    Integer.parseInt(TNumero.getText()), TEmail.getText());
+            }
+            catch (EmailInvalidoException e)
+            {
                 e.getMessage();
             }
+        }
     }//GEN-LAST:event_GrabarActionPerformed
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
