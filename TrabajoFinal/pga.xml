@@ -259,13 +259,59 @@
      </void>
     </object>
    </void>
+   <void method="put">
+    <string>ASI0006</string>
+    <object class="trabajofinal.Asignatura" id="Asignatura5">
+     <void property="correlativas">
+      <object class="trabajofinal.ObserverTreeMap" id="ObserverTreeMap5">
+       <void property="coleccion">
+        <void method="put">
+         <string>ASI0000</string>
+         <object idref="Asignatura0"/>
+        </void>
+       </void>
+      </object>
+     </void>
+     <void property="identificacion">
+      <string>ASI0006</string>
+     </void>
+     <void property="nombre">
+      <string>Estadistica</string>
+     </void>
+    </object>
+   </void>
+   <void method="put">
+    <string>ASI0007</string>
+    <object class="trabajofinal.Asignatura">
+     <void property="correlativas">
+      <object class="trabajofinal.ObserverTreeMap" id="ObserverTreeMap6">
+       <void property="coleccion">
+        <void method="put">
+         <string>ASI0005</string>
+         <object idref="Asignatura4"/>
+        </void>
+        <void method="put">
+         <string>ASI0006</string>
+         <object idref="Asignatura5"/>
+        </void>
+       </void>
+      </object>
+     </void>
+     <void property="identificacion">
+      <string>ASI0007</string>
+     </void>
+     <void property="nombre">
+      <string>Teoria de la Informacion</string>
+     </void>
+    </object>
+   </void>
   </void>
   <void property="cursadas">
    <void method="put">
     <string>CUR0000</string>
     <object class="trabajofinal.Cursada">
      <void property="alumnos">
-      <object class="trabajofinal.ObserverTreeMap" id="ObserverTreeMap5">
+      <object class="trabajofinal.ObserverTreeMap" id="ObserverTreeMap7">
        <void property="coleccion">
         <void method="put">
          <string>ALU0001</string>
@@ -309,7 +355,7 @@
     <string>CUR0001</string>
     <object class="trabajofinal.Cursada">
      <void property="alumnos">
-      <object class="trabajofinal.ObserverTreeMap" id="ObserverTreeMap6">
+      <object class="trabajofinal.ObserverTreeMap" id="ObserverTreeMap8">
        <void property="coleccion">
         <void method="put">
          <string>ALU0001</string>
@@ -345,7 +391,7 @@
     <string>CUR0002</string>
     <object class="trabajofinal.Cursada">
      <void property="alumnos">
-      <object class="trabajofinal.ObserverTreeMap" id="ObserverTreeMap7">
+      <object class="trabajofinal.ObserverTreeMap" id="ObserverTreeMap9">
        <void property="coleccion">
         <void method="put">
          <string>ALU0000</string>
@@ -406,57 +452,129 @@
      </void>
     </object>
    </void>
-  </void>
-  <void property="profesores">
    <void method="put">
-    <string>PRO0000</string>
-    <object class="trabajofinal.Profesor">
-     <void property="apellido">
-      <string>Viau</string>
-     </void>
-     <void property="competencias">
-      <object class="trabajofinal.ObserverTreeMap" id="ObserverTreeMap8">
+    <string>CUR0005</string>
+    <object class="trabajofinal.Cursada">
+     <void property="alumnos">
+      <object class="trabajofinal.ObserverTreeMap" id="ObserverTreeMap10">
        <void property="coleccion">
         <void method="put">
-         <string>ASI0000</string>
-         <object idref="Asignatura0"/>
+         <string>ALU0000</string>
+         <object idref="Alumno0"/>
         </void>
+       </void>
+      </object>
+     </void>
+     <void property="asignatura">
+      <object idref="Asignatura2"/>
+     </void>
+     <void property="dia">
+      <string>Martes</string>
+     </void>
+     <void property="horaFin">
+      <string>10:00</string>
+     </void>
+     <void property="horaInicio">
+      <string>08:00</string>
+     </void>
+     <void property="identificacion">
+      <string>CUR0005</string>
+     </void>
+     <void property="periodo">
+      <string>02-2017</string>
+     </void>
+     <void property="profesores">
+      <object class="trabajofinal.ObserverTreeMap" id="ObserverTreeMap11">
+       <void property="coleccion">
         <void method="put">
-         <string>ASI0002</string>
-         <object idref="Asignatura2"/>
+         <string>PRO0000</string>
+         <object class="trabajofinal.Profesor" id="Profesor0">
+          <void property="apellido">
+           <string>Viau</string>
+          </void>
+          <void property="competencias">
+           <object class="trabajofinal.ObserverTreeMap" id="ObserverTreeMap12">
+            <void property="coleccion">
+             <void method="put">
+              <string>ASI0000</string>
+              <object idref="Asignatura0"/>
+             </void>
+             <void method="put">
+              <string>ASI0002</string>
+              <object idref="Asignatura2"/>
+             </void>
+            </void>
+           </object>
+          </void>
+          <void property="domicilio">
+           <object class="trabajofinal.Domicilio">
+            <void property="calle">
+             <string>Alguna</string>
+            </void>
+            <void property="numero">
+             <int>1234</int>
+            </void>
+           </object>
+          </void>
+          <void property="email">
+           <string>javier@viau</string>
+          </void>
+          <void property="legajo">
+           <string>PRO0000</string>
+          </void>
+          <void property="nombre">
+           <string>Javier</string>
+          </void>
+          <void property="telefono">
+           <string>12345678</string>
+          </void>
+         </object>
         </void>
        </void>
       </object>
      </void>
-     <void property="domicilio">
-      <object class="trabajofinal.Domicilio">
-       <void property="calle">
-        <string>Alguna</string>
-       </void>
-       <void property="numero">
-        <int>1234</int>
-       </void>
-      </object>
+    </object>
+   </void>
+   <void method="put">
+    <string>CUR0006</string>
+    <object class="trabajofinal.Cursada">
+     <void property="alumnos">
+      <object class="trabajofinal.ObserverTreeMap"/>
      </void>
-     <void property="email">
-      <string>javier@viau</string>
+     <void property="asignatura">
+      <object idref="Asignatura2"/>
      </void>
-     <void property="legajo">
-      <string>PRO0000</string>
+     <void property="dia">
+      <string>Martes</string>
      </void>
-     <void property="nombre">
-      <string>Javier</string>
+     <void property="horaFin">
+      <string>10:00</string>
      </void>
-     <void property="telefono">
-      <string>12345678</string>
+     <void property="horaInicio">
+      <string>08:00</string>
+     </void>
+     <void property="identificacion">
+      <string>CUR0006</string>
+     </void>
+     <void property="periodo">
+      <string>02-2017</string>
+     </void>
+     <void property="profesores">
+      <object class="trabajofinal.ObserverTreeMap"/>
      </void>
     </object>
    </void>
   </void>
+  <void property="profesores">
+   <void method="put">
+    <string>PRO0000</string>
+    <object idref="Profesor0"/>
+   </void>
+  </void>
  </object>
  <int>4</int>
- <int>6</int>
+ <int>8</int>
  <object idref="Controlador0"/>
- <int>5</int>
+ <int>7</int>
  <int>1</int>
 </java>
