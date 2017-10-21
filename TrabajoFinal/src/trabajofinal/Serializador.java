@@ -16,33 +16,42 @@ public class Serializador
     
     private Serializador(){}
     
-    public static void serializar()
+    public static void serializar(Controlador controlador)
     {
-        XMLEncoder encoder = null;
         try
         {
-            encoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(ARCH_NAME)));
+            XMLEncoder encoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(ARCH_NAME)));
+            encoder.writeObject(controlador);
+            encoder.writeObject(Alumno.getSigLegajo());
+            encoder.writeObject(Asignatura.getSigIdentificacion());
+            encoder.writeObject(Controlador.getControlador());
+            encoder.writeObject(Cursada.getSigIdentificacion());
+            encoder.writeObject(Profesor.getSigLegajo());
+            encoder.close();
         }
         catch (FileNotFoundException e)
         {
             throw new InternalError();
         }
-        encoder.writeObject(Controlador.getInstance());
-        encoder.close();
     }
     
     public static Controlador deserializar()
     {
-        XMLDecoder decoder = null;
         try
         {
-            decoder = new XMLDecoder(new BufferedInputStream(new FileInputStream(ARCH_NAME)));
+            XMLDecoder decoder = new XMLDecoder(new BufferedInputStream(new FileInputStream(ARCH_NAME)));
+            Controlador controlador = (Controlador) decoder.readObject();
+            Alumno.setSigLegajo((int) decoder.readObject());
+            Asignatura.setSigIdentificacion((int) decoder.readObject());
+            Controlador.setControlador((Controlador) decoder.readObject());
+            Cursada.setSigIdentificacion((int) decoder.readObject());
+            Profesor.setSigLegajo((int) decoder.readObject());
+            return controlador;
         }
         catch (FileNotFoundException e)
         {
-            throw new InternalError();
+            return Controlador.getInstance();
         }
-        return (Controlador) decoder.readObject();
     }  
     
 }

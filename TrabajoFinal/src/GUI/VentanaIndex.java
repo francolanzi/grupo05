@@ -3,6 +3,8 @@ package GUI;
 
 import java.awt.Component;
 
+import java.awt.event.WindowAdapter;
+
 import java.util.Iterator;
 
 import javax.swing.JOptionPane;
@@ -15,6 +17,7 @@ import trabajofinal.Controlador;
 import trabajofinal.Cursada;
 import trabajofinal.IdInvalidoException;
 import trabajofinal.Profesor;
+import trabajofinal.Serializador;
 
 /**
  *
@@ -26,6 +29,13 @@ public class VentanaIndex extends javax.swing.JFrame {
     /** Creates new form VentanIndex */
     public VentanaIndex() {
         initComponents();
+        this.addWindowListener(new WindowAdapter()
+        {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                Serializador.serializar(Controlador.getInstance());
+            }
+        });
     }
 
     /** This method is called from within the constructor to
@@ -1030,6 +1040,7 @@ public class VentanaIndex extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
+        Serializador.deserializar();
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing
                                                                    .UIManager
