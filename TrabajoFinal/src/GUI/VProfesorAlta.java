@@ -388,20 +388,31 @@ public class VProfesorAlta extends javax.swing.JFrame {
     private void CCompetenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CCompetenciaActionPerformed
 
     }//GEN-LAST:event_CCompetenciaActionPerformed
-
+    
+    private boolean isInTable(String id)
+    {
+        int i = 0;
+        while (i < tablaCompetencias.getRowCount() && !tablaCompetencias.getValueAt(i, 0).equals(id))
+            i++;
+        return i < tablaCompetencias.getRowCount();
+    }
+    
     private void AgregarCompetenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarCompetenciaActionPerformed
         if (CCompetencia.getItemCount() > 0)
         {
             DefaultTableModel model = (DefaultTableModel) tablaCompetencias.getModel();
             ComboItem item = (ComboItem) CCompetencia.getSelectedItem();
-            try
+            if (!isInTable(item.getId()))
             {
-                Asignatura competencia = Controlador.getInstance().consultaAsignatura(item.getId());
-                model.addRow(new Object[] { competencia.getId(), competencia.getNombre() });
-            }
-            catch (IdInvalidoException e)
-            {
-                JOptionPane.showMessageDialog(null, e.getMessage());
+                try
+                {
+                    Asignatura competencia = Controlador.getInstance().consultaAsignatura(item.getId());
+                    model.addRow(new Object[] { competencia.getId(), competencia.getNombre() });
+                }
+                catch (IdInvalidoException e)
+                {
+                    JOptionPane.showMessageDialog(null, e.getMessage());
+                }
             }
         }
     }//GEN-LAST:event_AgregarCompetenciaActionPerformed

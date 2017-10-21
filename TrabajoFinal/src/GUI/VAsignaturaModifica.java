@@ -329,12 +329,18 @@ public class VAsignaturaModifica extends javax.swing.JFrame {
 
     private void GrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GrabarActionPerformed
         if (TNombre.getText().equals(""))
-        JOptionPane.showMessageDialog(null,"Ingrese nombre de la Asignatura");
-        try {
-            Controlador.getInstance().modificaAsignatura(TIdentificador.getText(), TNombre.getText());
-            JOptionPane.showMessageDialog(null, "La asignatura ha sido modificada exitosamente");
-        } catch (IdInvalidoException e) {
-            e.getMessage();
+            JOptionPane.showMessageDialog(null,"Ingrese nombre de la Asignatura");
+        else
+        {
+            try
+            {
+                Controlador.getInstance().modificaAsignatura(TIdentificador.getText(), TNombre.getText());
+                JOptionPane.showMessageDialog(null, "La asignatura ha sido modificada exitosamente");
+            }
+            catch (IdInvalidoException e)
+            {
+                e.getMessage();
+            }
         }
     }//GEN-LAST:event_GrabarActionPerformed
 

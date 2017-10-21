@@ -5,6 +5,7 @@ import java.util.Iterator;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import trabajofinal.Alumno;
@@ -508,21 +509,32 @@ public class VCursadaAlta extends javax.swing.JFrame
     {//GEN-HEADEREND:event_CProfesoresActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CProfesoresActionPerformed
-
+    
+    private boolean isInTable(String id, JTable table)
+    {
+        int i = 0;
+        while (i < table.getRowCount() && !table.getValueAt(i, 0).equals(id))
+            i++;
+        return i < table.getRowCount();
+    }
+    
     private void AgregarProfesorActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_AgregarProfesorActionPerformed
     {//GEN-HEADEREND:event_AgregarProfesorActionPerformed
         if (CProfesores.getItemCount() > 0)
         {
             DefaultTableModel model = (DefaultTableModel) tablaProfesores.getModel();
             ComboItem item = (ComboItem) CProfesores.getSelectedItem();
-            try
+            if (!isInTable(item.getId(), tablaProfesores))
             {
-                Profesor profesor = Controlador.getInstance().consultaProfesor(item.getId());
-                model.addRow(new Object[] { profesor.getId(), profesor.getNombre(), profesor.getApellido() });
-            }
-            catch (IdInvalidoException e)
-            {
-                JOptionPane.showMessageDialog(null, e.getMessage());
+                try
+                {
+                    Profesor profesor = Controlador.getInstance().consultaProfesor(item.getId());
+                    model.addRow(new Object[] { profesor.getId(), profesor.getNombre(), profesor.getApellido() });
+                }
+                catch (IdInvalidoException e)
+                {
+                    JOptionPane.showMessageDialog(null, e.getMessage());
+                }
             }
         }
     }//GEN-LAST:event_AgregarProfesorActionPerformed
@@ -614,14 +626,17 @@ public class VCursadaAlta extends javax.swing.JFrame
         {
             DefaultTableModel model = (DefaultTableModel) tablaAlumnos.getModel();
             ComboItem item = (ComboItem) CAlumnos.getSelectedItem();
-            try
+            if (!isInTable(item.getId(), tablaAlumnos))
             {
-                Alumno alumno = Controlador.getInstance().consultaAlumno(item.getId());
-                model.addRow(new Object[] { alumno.getId(), alumno.getNombre(), alumno.getApellido() });
-            }
-            catch (IdInvalidoException e)
-            {
-                JOptionPane.showMessageDialog(null, e.getMessage());
+                try
+                {
+                    Alumno alumno = Controlador.getInstance().consultaAlumno(item.getId());
+                    model.addRow(new Object[] { alumno.getId(), alumno.getNombre(), alumno.getApellido() });
+                }
+                catch (IdInvalidoException e)
+                {
+                    JOptionPane.showMessageDialog(null, e.getMessage());
+                }
             }
         }
     }//GEN-LAST:event_AgregarAlumnoActionPerformed

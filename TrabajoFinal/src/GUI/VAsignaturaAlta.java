@@ -278,20 +278,31 @@ public class VAsignaturaAlta extends javax.swing.JFrame {
     private void CCorrelativaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CCorrelativaActionPerformed
     
     }//GEN-LAST:event_CCorrelativaActionPerformed
-
+    
+    private boolean isInTable(String id)
+    {
+        int i = 0;
+        while (i < tablaCorrelativas.getRowCount() && !tablaCorrelativas.getValueAt(i, 0).equals(id))
+            i++;
+        return i < tablaCorrelativas.getRowCount();
+    }
+    
     private void AgregarCorrelativaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarCorrelativaActionPerformed
         if (CCorrelativa.getItemCount() > 0)
         {
             DefaultTableModel model = (DefaultTableModel) tablaCorrelativas.getModel();
             ComboItem item = (ComboItem) CCorrelativa.getSelectedItem();
-            try
+            if (!isInTable(item.getId()))
             {
-                Asignatura correlativa = Controlador.getInstance().consultaAsignatura(item.getId());
-                model.addRow(new Object[] { correlativa.getId(), correlativa.getNombre() });
-            }
-            catch (IdInvalidoException e)
-            {
-                JOptionPane.showMessageDialog(null, e.getMessage());
+                try
+                {
+                    Asignatura correlativa = Controlador.getInstance().consultaAsignatura(item.getId());
+                    model.addRow(new Object[] { correlativa.getId(), correlativa.getNombre() });
+                }
+                catch (IdInvalidoException e)
+                {
+                    JOptionPane.showMessageDialog(null, e.getMessage());
+                }
             }
         }
     }//GEN-LAST:event_AgregarCorrelativaActionPerformed
