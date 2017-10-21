@@ -25,7 +25,7 @@ import trabajofinal.Profesor;
  * @author Usuario
  */
 public class VCursadaAlta extends javax.swing.JFrame {
-    private Controlador controlador;
+    
     DefaultTableModel modelo1= new DefaultTableModel();
     String[] col1={"Identificador","Nombre","Apellido"};
     DefaultTableModel modelo2= new DefaultTableModel();
@@ -372,7 +372,7 @@ public class VCursadaAlta extends javax.swing.JFrame {
     }//GEN-LAST:event_THoraFinActionPerformed
 
     private void CProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CProfesoresActionPerformed
-        Iterator it =controlador.getProfesores().values().iterator();
+        Iterator it =Controlador.getInstance().getProfesores().values().iterator();
         while (it.hasNext()){
             Profesor profesor= (Profesor)it.next();
             CProfesores.addItem(profesor.getNombre());
@@ -382,8 +382,8 @@ public class VCursadaAlta extends javax.swing.JFrame {
     private void AgregarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarProfesorActionPerformed
         Profesor profesor;
         try {
-            profesor = (Profesor) controlador.consultaProfesor(CProfesores.getSelectedItem().toString());
-            controlador.addProfesorCursada(profesor.getLegajo(), TIdentificador.getText().toString());
+            profesor = (Profesor) Controlador.getInstance().consultaProfesor(CProfesores.getSelectedItem().toString());
+            Controlador.getInstance().addProfesorCursada(profesor.getLegajo(), TIdentificador.getText().toString());
             String []dato= {profesor.getId(),profesor.getNombre(),profesor.getApellido()};
             modelo1.addRow(dato);
         } catch (IdInvalidoException e) {
@@ -408,8 +408,8 @@ public class VCursadaAlta extends javax.swing.JFrame {
     private void AgregarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarAlumnoActionPerformed
         Alumno alumno;
         try {
-            alumno = (Alumno) controlador.consultaAlumno(CAlumnos.getSelectedItem().toString());
-            controlador.addAlumnoCursada(alumno.getLegajo(), TIdentificador.getText().toString());
+            alumno = (Alumno) Controlador.getInstance().consultaAlumno(CAlumnos.getSelectedItem().toString());
+            Controlador.getInstance().addAlumnoCursada(alumno.getLegajo(), TIdentificador.getText().toString());
             String []dato= {alumno.getId(),alumno.getNombre(),alumno.getApellido()};
             modelo2.addRow(dato);
         } catch (IdInvalidoException | EntidadInvalidaException | HorarioNoViableException e) {
@@ -432,7 +432,7 @@ public class VCursadaAlta extends javax.swing.JFrame {
         else
         {
             try {
-                controlador.altaCursada(TAsignatura.getText().toString(),
+                Controlador.getInstance().altaCursada(TAsignatura.getText().toString(),
                                            TPeriodo.getText().toString(), CDia.getSelectedItem().toString(),
                                            THoraInicio.getText().toString(), THoraFin.getText().toString());
             } catch (HoraInvalidaException | IdInvalidoException | PeriodoInvalidoException e) {
@@ -444,7 +444,7 @@ public class VCursadaAlta extends javax.swing.JFrame {
     private void quitarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitarAlumnoActionPerformed
         if(tablaAlumnos.getSelectedRows().length ==1){
             try {
-                controlador.removeAlumnoCursada(TIdentificador.getText(),
+                Controlador.getInstance().removeAlumnoCursada(TIdentificador.getText(),
                                               tablaAlumnos.getValueAt(tablaAlumnos.getSelectedRow(), 0)
                                               .toString());
                 modelo2.removeRow(tablaAlumnos.getSelectedRow());
@@ -457,7 +457,7 @@ public class VCursadaAlta extends javax.swing.JFrame {
     private void quitarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitarProfesorActionPerformed
         if(tablaProfesores.getSelectedRows().length ==1){
             try {
-                controlador.removeProfesorCursada(TIdentificador.getText(),
+                Controlador.getInstance().removeProfesorCursada(TIdentificador.getText(),
                                               tablaProfesores.getValueAt(tablaProfesores.getSelectedRow(), 0)
                                               .toString());
                 modelo1.removeRow(tablaProfesores.getSelectedRow());
@@ -468,7 +468,7 @@ public class VCursadaAlta extends javax.swing.JFrame {
     }//GEN-LAST:event_quitarProfesorActionPerformed
 
     private void CAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CAlumnosActionPerformed
-        Iterator it =controlador.getAlumnos().values().iterator();
+        Iterator it =Controlador.getInstance().getAlumnos().values().iterator();
         while (it.hasNext()){
             Alumno alumno= (Alumno)it.next();
             CAlumnos.addItem(alumno.getNombre());

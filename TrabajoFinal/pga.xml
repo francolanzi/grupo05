@@ -63,10 +63,86 @@
     </object>
    </void>
   </void>
+  <void property="asignaturas">
+   <void method="put">
+    <string>ASI0000</string>
+    <object class="trabajofinal.Asignatura" id="Asignatura0">
+     <void property="correlativas">
+      <object class="trabajofinal.ObserverTreeMap"/>
+     </void>
+     <void property="identificacion">
+      <string>ASI0000</string>
+     </void>
+     <void property="nombre">
+      <string>Fisica</string>
+     </void>
+    </object>
+   </void>
+  </void>
+  <void property="cursadas">
+   <void method="put">
+    <string>CUR0000</string>
+    <object class="trabajofinal.Cursada">
+     <void property="alumnos">
+      <object class="trabajofinal.ObserverTreeMap"/>
+     </void>
+     <void property="asignatura">
+      <object idref="Asignatura0"/>
+     </void>
+     <void property="dia">
+      <string>Lunes</string>
+     </void>
+     <void property="horaFin">
+      <string>19:30</string>
+     </void>
+     <void property="horaInicio">
+      <string>17:30</string>
+     </void>
+     <void property="identificacion">
+      <string>CUR0000</string>
+     </void>
+     <void property="periodo">
+      <string>01-1996</string>
+     </void>
+     <void property="profesores">
+      <object class="trabajofinal.ObserverTreeMap"/>
+     </void>
+    </object>
+   </void>
+   <void method="put">
+    <string>CUR0001</string>
+    <object class="trabajofinal.Cursada">
+     <void property="alumnos">
+      <object class="trabajofinal.ObserverTreeMap"/>
+     </void>
+     <void property="asignatura">
+      <object idref="Asignatura0"/>
+     </void>
+     <void property="dia">
+      <string>Lunes</string>
+     </void>
+     <void property="horaFin">
+      <string>19:30</string>
+     </void>
+     <void property="horaInicio">
+      <string>17:30</string>
+     </void>
+     <void property="identificacion">
+      <string>CUR0001</string>
+     </void>
+     <void property="periodo">
+      <string>01-1996</string>
+     </void>
+     <void property="profesores">
+      <object class="trabajofinal.ObserverTreeMap"/>
+     </void>
+    </object>
+   </void>
+  </void>
  </object>
  <int>3</int>
- <int>0</int>
+ <int>1</int>
  <object idref="Controlador0"/>
- <int>0</int>
+ <int>2</int>
  <int>0</int>
 </java>

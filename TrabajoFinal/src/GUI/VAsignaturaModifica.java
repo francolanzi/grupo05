@@ -24,7 +24,7 @@ import trabajofinal.ObserverTreeMap;
  * @author Usuario
  */
 public class VAsignaturaModifica extends javax.swing.JFrame {
-    private Controlador controlador;
+    
     DefaultTableModel modelo= new DefaultTableModel();
     String[] col={"Identificador","Nombre"};
 
@@ -254,7 +254,7 @@ public class VAsignaturaModifica extends javax.swing.JFrame {
     }//GEN-END:initComponents
 
     private void AsignaturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsignaturasActionPerformed
-        Iterator it =controlador.getAsignaturas().values().iterator();
+        Iterator it =Controlador.getInstance().getAsignaturas().values().iterator();
         while (it.hasNext()){
             Asignatura asi= (Asignatura)it.next();
             Asignaturas.addItem(asi.getNombre());
@@ -264,8 +264,8 @@ public class VAsignaturaModifica extends javax.swing.JFrame {
     private void AgregarCorrelativaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarCorrelativaActionPerformed
         Asignatura asi;
         try {
-            asi = (Asignatura) controlador.consultaAsignatura(Asignaturas.getSelectedItem().toString());
-            controlador.addCorrelativa(TLegajo.getText().toString(), asi.getId());
+            asi = (Asignatura) Controlador.getInstance().consultaAsignatura(Asignaturas.getSelectedItem().toString());
+            Controlador.getInstance().addCorrelativa(TLegajo.getText().toString(), asi.getId());
             String []dato= {asi.getId(),asi.getNombre()};
             modelo.addRow(dato);
         } catch (IdInvalidoException e) {
@@ -279,7 +279,7 @@ public class VAsignaturaModifica extends javax.swing.JFrame {
         if (TNombre.getText().equals(""))
         JOptionPane.showMessageDialog(null,"Ingrese nombre de la Asignatura");
         try {
-            controlador.modificaAsignatura(TLegajo.getText(), TNombre.getText());
+            Controlador.getInstance().modificaAsignatura(TLegajo.getText(), TNombre.getText());
         } catch (IdInvalidoException e) {
             e.getMessage();
         }
@@ -294,7 +294,7 @@ public class VAsignaturaModifica extends javax.swing.JFrame {
     private void quitarCorrelativaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitarCorrelativaActionPerformed
         if(tablaCorrelatividades.getSelectedRows().length ==1){
             try {
-                controlador.removeCorrelativa(TLegajo.getText(),
+                Controlador.getInstance().removeCorrelativa(TLegajo.getText(),
                                               tablaCorrelatividades.getValueAt(tablaCorrelatividades.getSelectedRow(), 0)
                                               .toString());
                 modelo.removeRow(tablaCorrelatividades.getSelectedRow());

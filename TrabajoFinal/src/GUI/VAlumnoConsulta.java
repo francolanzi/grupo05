@@ -17,6 +17,7 @@ import trabajofinal.Controlador;
  * @author Usuario
  */
 public class VAlumnoConsulta extends javax.swing.JFrame {
+    
     DefaultTableModel modelo= new DefaultTableModel();
     String[] col={"Identificador","Nombre"};
     

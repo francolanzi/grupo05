@@ -21,9 +21,9 @@ import trabajofinal.Profesor;
  * @author Usuario
  */
 public class VProfesorAlta extends javax.swing.JFrame {
+    
     DefaultTableModel modelo= new DefaultTableModel();
     String[] col={"Identificador","Nombre"};
-    Controlador controlador;
 
 
     /** Creates new form Profesor */
@@ -337,7 +337,7 @@ public class VProfesorAlta extends javax.swing.JFrame {
     }//GEN-LAST:event_TNumeroActionPerformed
 
     private void AsignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsignaturaActionPerformed
-        Iterator it =controlador.getAsignaturas().values().iterator();
+        Iterator it =Controlador.getInstance().getAsignaturas().values().iterator();
         while (it.hasNext()){
             Asignatura asi= (Asignatura)it.next();
             Asignatura.addItem(asi.getNombre());
@@ -347,8 +347,8 @@ public class VProfesorAlta extends javax.swing.JFrame {
     private void AgregarCompetenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarCompetenciaActionPerformed
         Asignatura asi;
         try {
-            asi = (Asignatura) controlador.consultaAsignatura(Asignatura.getSelectedItem().toString());
-            controlador.addCompetencia(TLegajo.getText().toString(), asi.getId());
+            asi = (Asignatura) Controlador.getInstance().consultaAsignatura(Asignatura.getSelectedItem().toString());
+            Controlador.getInstance().addCompetencia(TLegajo.getText().toString(), asi.getId());
             String []dato= {asi.getId(),asi.getNombre()};
             modelo.addRow(dato);
         } catch (IdInvalidoException e) {
@@ -391,7 +391,7 @@ public class VProfesorAlta extends javax.swing.JFrame {
     private void quitarCompetenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitarCompetenciaActionPerformed
         if(tablaCompetencias.getSelectedRows().length ==1){
             try {
-                controlador.removeCompetencia(TLegajo.getText(),
+                Controlador.getInstance().removeCompetencia(TLegajo.getText(),
                                               tablaCompetencias.getValueAt(tablaCompetencias.getSelectedRow(), 0)
                                               .toString());
                 modelo.removeRow(tablaCompetencias.getSelectedRow());

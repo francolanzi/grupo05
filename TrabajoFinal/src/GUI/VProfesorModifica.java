@@ -20,7 +20,6 @@ import trabajofinal.Profesor;
 public class VProfesorModifica extends javax.swing.JFrame {
     DefaultTableModel modelo= new DefaultTableModel();
     String[] col={"Identificador","Nombre"};
-    Controlador controlador;
 
     /** Creates new form VProfesorModifica */
     public VProfesorModifica(Profesor profesor) {
@@ -337,7 +336,7 @@ public class VProfesorModifica extends javax.swing.JFrame {
     }//GEN-LAST:event_TNumeroActionPerformed
 
     private void cAsignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cAsignaturaActionPerformed
-        Iterator it =controlador.getAsignaturas().values().iterator();
+        Iterator it =Controlador.getInstance().getAsignaturas().values().iterator();
         while (it.hasNext()){
             Asignatura asi= (Asignatura)it.next();
             cAsignatura.addItem(asi.getNombre());
@@ -347,8 +346,8 @@ public class VProfesorModifica extends javax.swing.JFrame {
     private void AgregarCompetenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarCompetenciaActionPerformed
         Asignatura asi;
         try {
-            asi = (Asignatura) controlador.consultaAsignatura(cAsignatura.getSelectedItem().toString());
-            controlador.addCompetencia(TLegajo.getText().toString(), asi.getId());
+            asi = (Asignatura) Controlador.getInstance().consultaAsignatura(cAsignatura.getSelectedItem().toString());
+            Controlador.getInstance().addCompetencia(TLegajo.getText().toString(), asi.getId());
             String []dato= {asi.getId(),asi.getNombre()};
             modelo.addRow(dato);
         } catch (IdInvalidoException e) {
@@ -391,7 +390,7 @@ public class VProfesorModifica extends javax.swing.JFrame {
     private void quitarCompetenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitarCompetenciaActionPerformed
         if(tablaCompetencias.getSelectedRows().length ==1){
             try {
-                controlador.removeCompetencia(TLegajo.getText(),
+                Controlador.getInstance().removeCompetencia(TLegajo.getText(),
                                               tablaCompetencias.getValueAt(tablaCompetencias.getSelectedRow(), 0)
                                               .toString());
                 modelo.removeRow(tablaCompetencias.getSelectedRow());
@@ -415,7 +414,7 @@ public class VProfesorModifica extends javax.swing.JFrame {
         if (TEmail.getText().equals(""))
             JOptionPane.showMessageDialog(null,"Ingrese Mail");
         try {
-            controlador.modificaProfesor(TLegajo.getText().toString(), TApellido.getText().toString(),
+            Controlador.getInstance().modificaProfesor(TLegajo.getText().toString(), TApellido.getText().toString(),
                                        TNombre.getText().toString(), TCalle.getText().toString(),
                                        Integer.parseInt(TNumero.getText()),TNumero.getText().toString(), TEmail.getText().toString());
         } catch (EmailInvalidoException | IdInvalidoException e) {

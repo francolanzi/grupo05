@@ -22,7 +22,6 @@ import trabajofinal.IdInvalidoException;
  */
 public class VAlumnoModifica extends javax.swing.JFrame {
     
-    private Controlador controlador;
     DefaultTableModel modelo= new DefaultTableModel();
     String[] col={"Identificador","Nombre"};
 
@@ -333,8 +332,8 @@ public class VAlumnoModifica extends javax.swing.JFrame {
 
     private void AgregarHistoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarHistoriaActionPerformed
         try {
-            controlador.aprobarAlumno(Legajo.getText(), Cursadas.getSelectedItem().toString());
-            Cursada curs=controlador.consultaCursada(Cursadas.getSelectedItem().toString());
+            Controlador.getInstance().aprobarAlumno(Legajo.getText(), Cursadas.getSelectedItem().toString());
+            Cursada curs=Controlador.getInstance().consultaCursada(Cursadas.getSelectedItem().toString());
             String[] datos= {curs.getId(),curs.getAsignatura().toString()};
             modelo.addRow(datos);
         } catch (EntidadInvalidaException | IdInvalidoException e) {
@@ -364,7 +363,7 @@ public class VAlumnoModifica extends javax.swing.JFrame {
         if (TEmail.getText().equals(""))
             JOptionPane.showMessageDialog(null,"Ingrese Mail");
         try {
-            controlador.modificaAlumno(TLegajo.getText().toString(), TApellido.getText().toString(),
+            Controlador.getInstance().modificaAlumno(TLegajo.getText().toString(), TApellido.getText().toString(),
                                        TNombre.getText().toString(), TCalle.getText().toString(),
                                        Integer.parseInt(TNumero.getText()), TEmail.getText().toString());
         } catch (EmailInvalidoException | IdInvalidoException e) {
