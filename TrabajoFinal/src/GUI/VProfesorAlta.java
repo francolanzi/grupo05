@@ -370,9 +370,9 @@ public class VProfesorAlta extends javax.swing.JFrame {
     }//GEN-LAST:event_TApellidoKeyTyped
 
     private void TNumeroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNumeroKeyTyped
-    char TipoDeTecla = evt.getKeyChar();
-    if (!Character.isDigit(TipoDeTecla))
-        evt.consume();
+        char TipoDeTecla = evt.getKeyChar();
+        if (!Character.isDigit(TipoDeTecla))
+            evt.consume();
     }//GEN-LAST:event_TNumeroKeyTyped
 
     private void TTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TTelefonoKeyTyped
