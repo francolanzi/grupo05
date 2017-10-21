@@ -460,24 +460,30 @@ public class VProfesorModifica extends javax.swing.JFrame {
     private void GrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GrabarActionPerformed
         if (TNombre.getText().equals(""))
             JOptionPane.showMessageDialog(null,"Ingrese Nomnbre");
-        if (TApellido.getText().equals(""))
+        else if (TApellido.getText().equals(""))
             JOptionPane.showMessageDialog(null,"Ingrese Apellido");
-        if (TCalle.getText().equals(""))
+        else if (TCalle.getText().equals(""))
             JOptionPane.showMessageDialog(null,"Ingrese Calle");
-        if (TNumero.getText().equals(""))
+        else if (TNumero.getText().equals(""))
             JOptionPane.showMessageDialog(null,"Ingrese Numero");
-        if (TTelefono.getText().equals(""))
+        else if (TTelefono.getText().equals(""))
                 JOptionPane.showMessageDialog(null,"Ingrese Telefono");
-        if (TEmail.getText().equals(""))
+        else if (TEmail.getText().equals(""))
             JOptionPane.showMessageDialog(null,"Ingrese Mail");
-        try {
-            Controlador.getInstance().modificaProfesor(TLegajo.getText().toString(), TApellido.getText().toString(),
-                                       TNombre.getText().toString(), TCalle.getText().toString(),
-                                       Integer.parseInt(TNumero.getText()),TNumero.getText().toString(),
-                                        TEmail.getText().toString());
-            JOptionPane.showMessageDialog(null, "El profesor ha sido modificado exitosamente");
-        } catch (EmailInvalidoException | IdInvalidoException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+        else
+        {
+            try
+            {
+                Controlador.getInstance().modificaProfesor(TLegajo.getText().toString(), TApellido.getText().toString(),
+                                           TNombre.getText().toString(), TCalle.getText().toString(),
+                                           Integer.parseInt(TNumero.getText()),TNumero.getText().toString(),
+                                            TEmail.getText().toString());
+                JOptionPane.showMessageDialog(null, "El profesor ha sido modificado exitosamente");
+            }
+            catch (EmailInvalidoException | IdInvalidoException e)
+            {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
         }
     }//GEN-LAST:event_GrabarActionPerformed
 
