@@ -740,8 +740,7 @@ public class VentanaIndex extends javax.swing.JFrame {
             }
             else{
                 JOptionPane.showMessageDialog(null,"Debe seleccionar un registro"); 
-                VentanaIndex principal= new VentanaIndex();
-                principal.setVisible(true);
+                return;
             }
         }
         else if (SolapaAsignaturas.isShowing())
@@ -763,8 +762,7 @@ public class VentanaIndex extends javax.swing.JFrame {
             }
             else{
                 JOptionPane.showMessageDialog(null,"Debe seleccionar un registro"); 
-                VentanaIndex principal= new VentanaIndex();
-                principal.setVisible(true);
+                return;
             }
         }
         else if (SolapaCursadas.isShowing())
@@ -786,8 +784,7 @@ public class VentanaIndex extends javax.swing.JFrame {
             }
             else{
                 JOptionPane.showMessageDialog(null,"Debe seleccionar un registro"); 
-                VentanaIndex principal= new VentanaIndex();
-                principal.setVisible(true);
+                return;
             }
         }
         this.setVisible(false);
@@ -812,8 +809,7 @@ public class VentanaIndex extends javax.swing.JFrame {
             }
             else{
                 JOptionPane.showMessageDialog(null,"Debe seleccionar un registro"); 
-                VentanaIndex principal= new VentanaIndex();
-                principal.setVisible(true);
+                return;
             }
         }
         else if (SolapaProfesores.isShowing())
@@ -835,8 +831,7 @@ public class VentanaIndex extends javax.swing.JFrame {
             }
             else{
                 JOptionPane.showMessageDialog(null,"Debe seleccionar un registro"); 
-                VentanaIndex principal= new VentanaIndex();
-                principal.setVisible(true);
+                return;
             }
         }
         else if (SolapaAsignaturas.isShowing())
@@ -858,8 +853,7 @@ public class VentanaIndex extends javax.swing.JFrame {
             }
             else{
                 JOptionPane.showMessageDialog(null,"Debe seleccionar un registro"); 
-                VentanaIndex principal= new VentanaIndex();
-                principal.setVisible(true);
+                return;
             }
         }
         else if (SolapaCursadas.isShowing())
@@ -881,8 +875,7 @@ public class VentanaIndex extends javax.swing.JFrame {
             }
             else{
                 JOptionPane.showMessageDialog(null,"Debe seleccionar un registro"); 
-                VentanaIndex principal= new VentanaIndex();
-                principal.setVisible(true);
+                return;
             }
         }
         this.setVisible(false);
