@@ -263,6 +263,7 @@
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CampoParaNombreAlumnoActionPerformed"/>
                             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CampoParaNombreAlumnoKeyTyped"/>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CampoParaNombreAlumnoKeyPressed"/>
                           </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="Buscar">
@@ -282,6 +283,7 @@
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CampoParaApellidoAlumnoActionPerformed"/>
                             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CampoParaApellidoAlumnoKeyTyped"/>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="CampoParaApellidoAlumnoKeyPressed"/>
                           </Events>
                         </Component>
                       </SubComponents>
