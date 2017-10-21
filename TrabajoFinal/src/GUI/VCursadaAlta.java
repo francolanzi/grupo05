@@ -412,12 +412,8 @@ public class VCursadaAlta extends javax.swing.JFrame {
             controlador.addAlumnoCursada(alumno.getLegajo(), TIdentificador.getText().toString());
             String []dato= {alumno.getId(),alumno.getNombre(),alumno.getApellido()};
             modelo2.addRow(dato);
-        } catch (IdInvalidoException e) {
-            e.getMessage();
-        } catch (EntidadInvalidaException e) {
-            e.getMessage();
-        } catch (HorarioNoViableException e) {
-            e.getMessage();
+        } catch (IdInvalidoException | EntidadInvalidaException | HorarioNoViableException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }     
     }//GEN-LAST:event_AgregarAlumnoActionPerformed
 
@@ -425,20 +421,23 @@ public class VCursadaAlta extends javax.swing.JFrame {
     {//GEN-HEADEREND:event_GrabarActionPerformed
         if (TAsignatura.getText().equals(""))
             JOptionPane.showMessageDialog(null,"Ingrese Nomnbre");
-        if (TPeriodo.getText().equals(""))
+        else if (TPeriodo.getText().equals(""))
             JOptionPane.showMessageDialog(null,"Ingrese Periodo");
-        if (CDia.getSelectedItem().equals(""))
+        else if (CDia.getSelectedItem().equals(""))
             JOptionPane.showMessageDialog(null,"Ingrese Dia");
-        if (THoraInicio.getText().equals(""))
+        else if (THoraInicio.getText().equals(""))
             JOptionPane.showMessageDialog(null,"Ingrese Hora Inicio");
-        if (THoraFin.getText().equals(""))
+        else if (THoraFin.getText().equals(""))
             JOptionPane.showMessageDialog(null,"Ingrese Hora Fin");
-        try {
-            controlador.altaCursada(TAsignatura.getText().toString(),
-                                       TPeriodo.getText().toString(), CDia.getSelectedItem().toString(),
-                                       THoraInicio.getText().toString(), THoraFin.getText().toString());
-        } catch (HoraInvalidaException | IdInvalidoException | PeriodoInvalidoException e) {
-            e.getMessage();
+        else
+        {
+            try {
+                controlador.altaCursada(TAsignatura.getText().toString(),
+                                           TPeriodo.getText().toString(), CDia.getSelectedItem().toString(),
+                                           THoraInicio.getText().toString(), THoraFin.getText().toString());
+            } catch (HoraInvalidaException | IdInvalidoException | PeriodoInvalidoException e) {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
         }
     }//GEN-LAST:event_GrabarActionPerformed
 
@@ -450,7 +449,7 @@ public class VCursadaAlta extends javax.swing.JFrame {
                                               .toString());
                 modelo2.removeRow(tablaAlumnos.getSelectedRow());
             } catch (IdInvalidoException e) {
-                e.getMessage();
+                JOptionPane.showMessageDialog(null, e.getMessage());
             }
         }            
     }//GEN-LAST:event_quitarAlumnoActionPerformed
@@ -463,7 +462,7 @@ public class VCursadaAlta extends javax.swing.JFrame {
                                               .toString());
                 modelo1.removeRow(tablaProfesores.getSelectedRow());
             } catch (IdInvalidoException e) {
-                e.getMessage();
+                JOptionPane.showMessageDialog(null, e.getMessage());
             }
         }
     }//GEN-LAST:event_quitarProfesorActionPerformed
