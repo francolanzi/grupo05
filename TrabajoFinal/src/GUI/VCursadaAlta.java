@@ -477,7 +477,7 @@ public class VCursadaAlta extends javax.swing.JFrame {
 
     private void GrabarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_GrabarActionPerformed
     {//GEN-HEADEREND:event_GrabarActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_GrabarActionPerformed
 
     /**
