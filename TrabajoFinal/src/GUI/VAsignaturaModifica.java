@@ -11,6 +11,8 @@ import javax.swing.DefaultComboBoxModel;
 
 import javax.swing.JOptionPane;
 
+import javax.swing.table.DefaultTableModel;
+
 import trabajofinal.Asignatura;
 import trabajofinal.Controlador;
 import trabajofinal.IdInvalidoException;
@@ -22,13 +24,24 @@ import trabajofinal.ObserverTreeMap;
  */
 public class VAsignaturaModifica extends javax.swing.JFrame {
     private Controlador controlador;
+    DefaultTableModel modelo= new DefaultTableModel();
+    String[] col={"Identificador","Nombre"};
 
     /** Creates new form VAsignaturaModifica */
     public VAsignaturaModifica(Asignatura asignatura) {
         initComponents();
         TLegajo.setText(asignatura.getId());
         TNombre.setText(asignatura.getNombre());
-        // mostrar correlatividadestablaCorrelatividades.s
+        setTablaCorrelatividades(asignatura);
+    }
+        
+    private void setTablaCorrelatividades(Asignatura asignatura){
+        Iterator it=asignatura.getCorrelativasIterator();
+        while (it.hasNext()){
+            Asignatura asi= (Asignatura)it.next();
+            String[] datos= {asi.getId(),asi.getNombre()};
+            modelo.addRow(datos);
+        }
     }
 
     /** This method is called from within the constructor to
