@@ -4,6 +4,7 @@ package GUI;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
+import trabajofinal.Alumno;
 import trabajofinal.Asignatura;
 import trabajofinal.Controlador;
 import trabajofinal.EntidadInvalidaException;
@@ -18,6 +19,7 @@ public class VAsignaturaAlta extends javax.swing.JFrame {
     /** Creates new form Asignatura */
     public VAsignaturaAlta() {
         initComponents();
+        TLegajo.setText("ASI"+ String.valueOf(Asignatura.getSigIdentificacion()));
     }
 
     /** This method is called from within the constructor to
@@ -29,7 +31,7 @@ public class VAsignaturaAlta extends javax.swing.JFrame {
     private void initComponents() {//GEN-BEGIN:initComponents
 
         Cabecera = new javax.swing.JPanel();
-        Asignatura = new javax.swing.JLabel();
+        lAsignatura = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         Grilla = new javax.swing.JPanel();
@@ -52,8 +54,8 @@ public class VAsignaturaAlta extends javax.swing.JFrame {
         Cabecera.setBackground(new java.awt.Color(204, 255, 255));
         Cabecera.setPreferredSize(new java.awt.Dimension(400, 50));
 
-        Asignatura.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        Asignatura.setText("Asignatura -");
+        lAsignatura.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lAsignatura.setText("Asignatura -");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Imagenes/aa0c19c7-d3a7-43d8-8664-2f08e5d0ca90.png"))); // NOI18N
 
@@ -67,7 +69,7 @@ public class VAsignaturaAlta extends javax.swing.JFrame {
             CabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CabeceraLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(Asignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
@@ -78,7 +80,7 @@ public class VAsignaturaAlta extends javax.swing.JFrame {
             .addGroup(CabeceraLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(CabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Asignatura)
+                    .addComponent(lAsignatura)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -98,6 +100,7 @@ public class VAsignaturaAlta extends javax.swing.JFrame {
         Correlatividades.setText("Correlativas");
 
         TLegajo.setEditable(false);
+        TLegajo.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         TLegajo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -296,7 +299,6 @@ public class VAsignaturaAlta extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AgregarCorrelativa;
-    private javax.swing.JLabel Asignatura;
     private javax.swing.JComboBox<String> Asignaturas;
     private javax.swing.JPanel Cabecera;
     private javax.swing.JButton Cancelar;
@@ -311,6 +313,7 @@ public class VAsignaturaAlta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lAsignatura;
     // End of variables declaration//GEN-END:variables
 
 }

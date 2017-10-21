@@ -1,6 +1,9 @@
 
 package GUI;
 
+import trabajofinal.Alumno;
+import trabajofinal.Cursada;
+
 /**
  *
  * @author Usuario
@@ -10,6 +13,7 @@ public class VCursadaAlta extends javax.swing.JFrame {
     /** Creates new form Cursadas */
     public VCursadaAlta() {
         initComponents();
+        TIdentificador.setText("CUR"+ String.valueOf(Cursada.getSigIdentificacion()));
     }
 
     /** This method is called from within the constructor to
@@ -21,7 +25,7 @@ public class VCursadaAlta extends javax.swing.JFrame {
     private void initComponents() {//GEN-BEGIN:initComponents
 
         Cabecera = new javax.swing.JPanel();
-        Cursada = new javax.swing.JLabel();
+        lCursada = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         Grilla = new javax.swing.JPanel();
@@ -59,8 +63,8 @@ public class VCursadaAlta extends javax.swing.JFrame {
         Cabecera.setBackground(new java.awt.Color(204, 255, 255));
         Cabecera.setPreferredSize(new java.awt.Dimension(400, 50));
 
-        Cursada.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        Cursada.setText("Cursada -");
+        lCursada.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lCursada.setText("Cursada -");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Imagenes/aa0c19c7-d3a7-43d8-8664-2f08e5d0ca90.png"))); // NOI18N
 
@@ -74,7 +78,7 @@ public class VCursadaAlta extends javax.swing.JFrame {
             CabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CabeceraLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(Cursada)
+                .addComponent(lCursada)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 409, Short.MAX_VALUE)
@@ -85,7 +89,7 @@ public class VCursadaAlta extends javax.swing.JFrame {
             .addGroup(CabeceraLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(CabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Cursada)
+                    .addComponent(lCursada)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -116,6 +120,7 @@ public class VCursadaAlta extends javax.swing.JFrame {
         Profesores.setText("Profesores");
 
         TIdentificador.setEditable(false);
+        TIdentificador.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         TIdentificador.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         HoraFin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -417,7 +422,6 @@ public class VCursadaAlta extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> CProfesores;
     private javax.swing.JPanel Cabecera;
     private javax.swing.JButton Cancelar;
-    private javax.swing.JLabel Cursada;
     private javax.swing.JLabel Dia;
     private javax.swing.JLabel Email;
     private javax.swing.JButton Grabar;
@@ -440,6 +444,7 @@ public class VCursadaAlta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JLabel lCursada;
     // End of variables declaration//GEN-END:variables
 
 }
