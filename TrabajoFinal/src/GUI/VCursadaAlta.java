@@ -22,7 +22,7 @@ import trabajofinal.Profesor;
  *
  * @author Franco Lanzi
  */
-public class VCursadaAlta2 extends javax.swing.JFrame
+public class VCursadaAlta extends javax.swing.JFrame
 {
     
     DefaultTableModel modelo1= new DefaultTableModel();
@@ -31,7 +31,7 @@ public class VCursadaAlta2 extends javax.swing.JFrame
     String[] col2={"Identificador","Nombre","Apellido"};
 
     /** Creates new form VCursadaAlta2 */
-    public VCursadaAlta2()
+    public VCursadaAlta()
     {
         initComponents();
         this.addWindowListener(WindowSerializador.getInstance());
@@ -554,7 +554,7 @@ public class VCursadaAlta2 extends javax.swing.JFrame
             java.util
                 .logging
                 .Logger
-                .getLogger(VCursadaAlta2.class.getName())
+                .getLogger(VCursadaAlta.class.getName())
                 .log(java.util
                          .logging
                          .Level
@@ -565,7 +565,7 @@ public class VCursadaAlta2 extends javax.swing.JFrame
             java.util
                 .logging
                 .Logger
-                .getLogger(VCursadaAlta2.class.getName())
+                .getLogger(VCursadaAlta.class.getName())
                 .log(java.util
                          .logging
                          .Level
@@ -576,7 +576,7 @@ public class VCursadaAlta2 extends javax.swing.JFrame
             java.util
                 .logging
                 .Logger
-                .getLogger(VCursadaAlta2.class.getName())
+                .getLogger(VCursadaAlta.class.getName())
                 .log(java.util
                          .logging
                          .Level
@@ -587,7 +587,7 @@ public class VCursadaAlta2 extends javax.swing.JFrame
             java.util
                 .logging
                 .Logger
-                .getLogger(VCursadaAlta2.class.getName())
+                .getLogger(VCursadaAlta.class.getName())
                 .log(java.util
                          .logging
                          .Level
@@ -602,7 +602,7 @@ public class VCursadaAlta2 extends javax.swing.JFrame
             {
                 public void run()
                 {
-                    new VCursadaAlta2().setVisible(true);
+                    new VCursadaAlta().setVisible(true);
                 }
             });
     }
