@@ -896,7 +896,7 @@ public class VentanaIndex extends javax.swing.JFrame {
                 } 
                 catch (IdInvalidoException e)
                 {
-                    e.getMessage();
+                    JOptionPane.showMessageDialog(null, e.getMessage());
                 }
             }
             else{
@@ -918,7 +918,7 @@ public class VentanaIndex extends javax.swing.JFrame {
                 }
                 catch (IdInvalidoException e)
                 {
-                    e.getMessage();
+                    JOptionPane.showMessageDialog(null,e.getMessage()); 
                 }
             }
             else{
@@ -940,7 +940,7 @@ public class VentanaIndex extends javax.swing.JFrame {
                 }
                 catch (IdInvalidoException e)
                 {
-                    e.getMessage();
+                    JOptionPane.showMessageDialog(null,e.getMessage()); 
                 }
             }
             else{
@@ -962,7 +962,7 @@ public class VentanaIndex extends javax.swing.JFrame {
                 }
                 catch (IdInvalidoException e)
                 {
-                    e.getMessage();
+                    JOptionPane.showMessageDialog(null,e.getMessage()); 
                 }
             }
             else{
@@ -980,9 +980,9 @@ public class VentanaIndex extends javax.swing.JFrame {
     }//GEN-LAST:event_CampoParaApellidoProfesorActionPerformed
 
     private void CampoParaNombreAlumnoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CampoParaNombreAlumnoKeyTyped
-    char TipoDeTecla = evt.getKeyChar();
-    if (Character.isDigit(TipoDeTecla))
-        evt.consume();
+        char TipoDeTecla = evt.getKeyChar();
+        if (Character.isDigit(TipoDeTecla))
+            evt.consume();
     }//GEN-LAST:event_CampoParaNombreAlumnoKeyTyped
 
     private void CampoParaApellidoAlumnoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CampoParaApellidoAlumnoKeyTyped
