@@ -1,7 +1,11 @@
 
 package GUI;
 
+import javax.swing.JOptionPane;
+
 import trabajofinal.Alumno;
+import trabajofinal.Controlador;
+import trabajofinal.EmailInvalidoException;
 import trabajofinal.Mascaras;
 import trabajofinal.Profesor;
 
@@ -14,7 +18,18 @@ public class VProfesorAlta extends javax.swing.JFrame {
     /** Creates new form Profesor */
     public VProfesorAlta() {
         initComponents();
+        vaciaCampos();
+    }
+    
+    private void vaciaCampos()
+    {
         TLegajo.setText(Mascaras.genId(Profesor.getSigLegajo(), Profesor.prefijo));
+        TNombre.setText("");
+        TApellido.setText("");
+        TCalle.setText("");
+        TNumero.setText("");
+        TTelefono.setText("");
+        TEmail.setText("");
     }
 
     /** This method is called from within the constructor to
@@ -159,10 +174,7 @@ public class VProfesorAlta extends javax.swing.JFrame {
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String []
             {
@@ -204,6 +216,13 @@ public class VProfesorAlta extends javax.swing.JFrame {
         Grabar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grabar.setText("GRABAR");
         Grabar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Grabar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                GrabarActionPerformed(evt);
+            }
+        });
 
         Cancelar.setBackground(new java.awt.Color(0, 153, 153));
         Cancelar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -365,6 +384,36 @@ public class VProfesorAlta extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void GrabarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_GrabarActionPerformed
+    {//GEN-HEADEREND:event_GrabarActionPerformed
+        if (TNombre.getText().equals(""))
+            JOptionPane.showMessageDialog(null,"Ingrese Nombre");
+        else if (TApellido.getText().equals(""))
+            JOptionPane.showMessageDialog(null,"Ingrese Apellido");
+        else if (TCalle.getText().equals(""))
+            JOptionPane.showMessageDialog(null,"Ingrese Calle");
+        else if (TNumero.getText().equals(""))
+            JOptionPane.showMessageDialog(null,"Ingrese Numero");
+        else if (TTelefono.getText().equals(""))
+            JOptionPane.showMessageDialog(null,"Ingrese Telefono");
+        else if (TEmail.getText().equals(""))
+            JOptionPane.showMessageDialog(null,"Ingrese Mail");
+        else
+        {
+            try
+            {
+                Controlador.getInstance().altaProfesor(TApellido.getText(), TNombre.getText(), TCalle.getText(),
+                    Integer.parseInt(TNumero.getText()), TTelefono.getText(), TEmail.getText());
+                vaciaCampos();
+                JOptionPane.showMessageDialog(null, "El profesor ha sido dado de alta exitosamente");
+            }
+            catch (EmailInvalidoException e)
+            {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
+        }
+    }//GEN-LAST:event_GrabarActionPerformed
 
     /**
      * @param args the command line arguments
