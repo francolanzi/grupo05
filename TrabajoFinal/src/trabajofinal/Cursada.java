@@ -9,7 +9,7 @@ public class Cursada implements Entidad, Observer
 {
     
     private static int sigIdentificacion = 0;
-    private static final String prefijo = "CUR";
+    public static final String prefijo = "CUR";
     
     private String identificacion;
     private Asignatura asignatura;

@@ -7,18 +7,18 @@ import trabajofinal.Alumno;
 import trabajofinal.Controlador;
 import trabajofinal.EmailInvalidoException;
 import trabajofinal.EntidadInvalidaException;
+import trabajofinal.Mascaras;
 
 /**
  *
  * @author Usuario
  */
 public class VAlumnoAlta extends javax.swing.JFrame {
-    private Controlador controlador;
 
     /** Creates new form VAlumnoAlta */
     public VAlumnoAlta() {
         initComponents();
-        TLegajo.setText("ALU"+ String.valueOf(Alumno.getSigLegajo()));
+        TLegajo.setText(Mascaras.genId(Alumno.getSigLegajo(), Alumno.prefijo));
         excepcionAlumno.setVisible(false);
     }
 
@@ -262,21 +262,28 @@ public class VAlumnoAlta extends javax.swing.JFrame {
 
     private void GrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GrabarActionPerformed
         if (TNombre.getText().equals(""))
-        JOptionPane.showMessageDialog(null,"Ingrese Nombre");
-        if (TApellido.getText().equals(""))
-        JOptionPane.showMessageDialog(null,"Ingrese Apellido");
-        if (TCalle.getText().equals(""))
-        JOptionPane.showMessageDialog(null,"Ingrese Calle");
-        if (TNumero.getText().equals(""))
-        JOptionPane.showMessageDialog(null,"Ingrese Numero");
-        if (TEmail.getText().equals(""))
-        JOptionPane.showMessageDialog(null,"Ingrese Mail");
-            try{
-                controlador.altaAlumno(TApellido.getText(), TNombre.getText(), TCalle.getText(), Integer.parseInt(TNumero.getText()),
-                           TEmail.getText());
-            } catch (EmailInvalidoException e) {
-                e.getMessage();
+            JOptionPane.showMessageDialog(null,"Ingrese Nombre");
+        else if (TApellido.getText().equals(""))
+            JOptionPane.showMessageDialog(null,"Ingrese Apellido");
+        else if (TCalle.getText().equals(""))
+            JOptionPane.showMessageDialog(null,"Ingrese Calle");
+        else if (TNumero.getText().equals(""))
+            JOptionPane.showMessageDialog(null,"Ingrese Numero");
+        else if (TEmail.getText().equals(""))
+            JOptionPane.showMessageDialog(null,"Ingrese Mail");
+        else
+        {
+            try
+            {
+                Controlador.getInstance().altaAlumno(TApellido.getText(), TNombre.getText(), TCalle.getText(),
+                    Integer.parseInt(TNumero.getText()), TEmail.getText());
+                JOptionPane.showMessageDialog(null, "El alumno ha sido dado de alta exitosamente");
             }
+            catch (EmailInvalidoException e)
+            {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
+        }
     }//GEN-LAST:event_GrabarActionPerformed
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
@@ -307,74 +314,6 @@ public class VAlumnoAlta extends javax.swing.JFrame {
             evt.consume();
     }//GEN-LAST:event_TNumeroKeyTyped
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing
-                                                                   .UIManager
-                                                                   .getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing
-                         .UIManager
-                         .setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util
-                .logging
-                .Logger
-                .getLogger(VAlumnoAlta.class.getName())
-                .log(java.util
-                         .logging
-                         .Level
-                         .SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util
-                .logging
-                .Logger
-                .getLogger(VAlumnoAlta.class.getName())
-                .log(java.util
-                         .logging
-                         .Level
-                         .SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util
-                .logging
-                .Logger
-                .getLogger(VAlumnoAlta.class.getName())
-                .log(java.util
-                         .logging
-                         .Level
-                         .SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util
-                .logging
-                .Logger
-                .getLogger(VAlumnoAlta.class.getName())
-                .log(java.util
-                         .logging
-                         .Level
-                         .SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt
-            .EventQueue
-            .invokeLater(new Runnable() {
-                public void run() {
-                    new VAlumnoAlta().setVisible(true);
-                }
-            });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Apellido;
