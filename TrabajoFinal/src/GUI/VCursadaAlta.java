@@ -1,19 +1,43 @@
-import GUI.VentanaIndex;
-import GUI.WindowSerializador;
 
+package GUI;
+
+import java.util.Iterator;
+
+import javax.swing.DefaultComboBoxModel;
+
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+import trabajofinal.Alumno;
+import trabajofinal.Asignatura;
+import trabajofinal.Controlador;
+import trabajofinal.Cursada;
+import trabajofinal.EntidadInvalidaException;
+import trabajofinal.HoraInvalidaException;
+import trabajofinal.HorarioNoViableException;
+import trabajofinal.IdInvalidoException;
+import trabajofinal.Mascaras;
+import trabajofinal.PeriodoInvalidoException;
+import trabajofinal.Profesor;
 
 /**
  *
  * @author Usuario
  */
 public class VCursadaAlta extends javax.swing.JFrame {
+    private Controlador controlador;
+    DefaultTableModel modelo1= new DefaultTableModel();
+    String[] col1={"Identificador","Nombre","Apellido"};
+    DefaultTableModel modelo2= new DefaultTableModel();
+    String[] col2={"Identificador","Nombre","Apellido"};
 
     /** Creates new form Cursadas */
     public VCursadaAlta() {
         initComponents();
-        this.addWindowListener(WindowSerializador.getInstance());
         TIdentificador.setText(Mascaras.genId(Cursada.getSigIdentificacion(), Cursada.prefijo));
+        CDia.setModel(new DefaultComboBoxModel<>(new String[] { "Lunes", "Martes","Miercoles","Jueves","Viernes" }));; 
     }
+    
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -33,16 +57,14 @@ public class VCursadaAlta extends javax.swing.JFrame {
         NAsignatura = new javax.swing.JLabel();
         Periodo = new javax.swing.JLabel();
         Dia = new javax.swing.JLabel();
-        Email = new javax.swing.JLabel();
         Profesores = new javax.swing.JLabel();
         TIdentificador = new javax.swing.JTextField();
         TAsignatura = new javax.swing.JTextField();
         TPeriodo = new javax.swing.JTextField();
-        TEmail = new javax.swing.JTextField();
         HoraFin = new javax.swing.JLabel();
         THoraFin = new javax.swing.JTextField();
         TProfesores = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaProfesores = new javax.swing.JTable();
         CProfesores = new javax.swing.JComboBox<>();
         AgregarProfesor = new javax.swing.JButton();
         HoraInicio = new javax.swing.JLabel();
@@ -54,7 +76,9 @@ public class VCursadaAlta extends javax.swing.JFrame {
         CAlumnos = new javax.swing.JComboBox<>();
         AgregarAlumno = new javax.swing.JButton();
         TAlumnos = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tablaAlumnos = new javax.swing.JTable();
+        quitarProfesor = new javax.swing.JButton();
+        quitarAlumno = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cursada - Nuevo");
@@ -113,9 +137,6 @@ public class VCursadaAlta extends javax.swing.JFrame {
         Dia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Dia.setText("Día");
 
-        Email.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Email.setText("Email");
-
         Profesores.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Profesores.setText("Profesores");
 
@@ -134,17 +155,13 @@ public class VCursadaAlta extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][]
-            {
-
-            },
-            new String []
-            {
-                "Identificador", "Nombre", "Apellido"
-            }
-        ));
-        TProfesores.setViewportView(jTable1);
+        tablaProfesores.setModel(modelo1);
+        TProfesores.setViewportView(tablaProfesores);
+        if (tablaProfesores.getColumnModel().getColumnCount() > 0) {
+            tablaProfesores.getColumnModel().getColumn(0).setHeaderValue("Identificador");
+            tablaProfesores.getColumnModel().getColumn(1).setHeaderValue("Nombre");
+            tablaProfesores.getColumnModel().getColumn(2).setHeaderValue("Apellido");
+        }
 
         CProfesores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         CProfesores.addActionListener(new java.awt.event.ActionListener()
@@ -171,10 +188,8 @@ public class VCursadaAlta extends javax.swing.JFrame {
         Grabar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grabar.setText("GRABAR");
         Grabar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        Grabar.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        Grabar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 GrabarActionPerformed(evt);
             }
         });
@@ -203,6 +218,11 @@ public class VCursadaAlta extends javax.swing.JFrame {
         Alumnos.setText("Alumnos");
 
         CAlumnos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        CAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CAlumnosActionPerformed(evt);
+            }
+        });
 
         AgregarAlumno.setText("Agregar");
         AgregarAlumno.addActionListener(new java.awt.event.ActionListener()
@@ -213,20 +233,22 @@ public class VCursadaAlta extends javax.swing.JFrame {
             }
         });
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][]
-            {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String []
-            {
-                "Identificador", "Nombre", "Apellido"
+        tablaAlumnos.setModel(modelo2);
+        TAlumnos.setViewportView(tablaAlumnos);
+
+        quitarProfesor.setText("Quitar");
+        quitarProfesor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quitarProfesorActionPerformed(evt);
             }
-        ));
-        TAlumnos.setViewportView(jTable2);
+        });
+
+        quitarAlumno.setText("Quitar");
+        quitarAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quitarAlumnoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout GrillaLayout = new javax.swing.GroupLayout(Grilla);
         Grilla.setLayout(GrillaLayout);
@@ -236,7 +258,6 @@ public class VCursadaAlta extends javax.swing.JFrame {
                 .addGap(64, 64, 64)
                 .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(Email, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Identificador, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Periodo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(HoraInicio)
@@ -252,85 +273,92 @@ public class VCursadaAlta extends javax.swing.JFrame {
                         .addGap(160, 160, 160))
                     .addGroup(GrillaLayout.createSequentialGroup()
                         .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TProfesores, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(GrillaLayout.createSequentialGroup()
-                                .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(TPeriodo, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-                                    .addComponent(THoraInicio)
-                                    .addComponent(TIdentificador))
-                                .addGap(30, 30, 30)
-                                .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(GrillaLayout.createSequentialGroup()
-                                        .addComponent(Dia)
-                                        .addGap(74, 74, 74)
-                                        .addComponent(CDia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(GrillaLayout.createSequentialGroup()
-                                        .addComponent(NAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(TAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(GrillaLayout.createSequentialGroup()
-                                        .addComponent(HoraFin)
-                                        .addGap(43, 43, 43)
-                                        .addComponent(THoraFin, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(GrillaLayout.createSequentialGroup()
-                                .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(TEmail, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(CProfesores, javax.swing.GroupLayout.Alignment.LEADING, 0, 125, Short.MAX_VALUE))
+                                .addComponent(TAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(AgregarProfesor))
+                                .addComponent(quitarAlumno))
+                            .addGroup(GrillaLayout.createSequentialGroup()
+                                .addComponent(TProfesores, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(quitarProfesor))
+                            .addGroup(GrillaLayout.createSequentialGroup()
+                                .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(CProfesores, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(TPeriodo, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                                        .addComponent(THoraInicio)
+                                        .addComponent(TIdentificador)))
+                                .addGap(27, 27, 27)
+                                .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(GrillaLayout.createSequentialGroup()
+                                            .addComponent(Dia)
+                                            .addGap(74, 74, 74)
+                                            .addComponent(CDia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(GrillaLayout.createSequentialGroup()
+                                            .addComponent(NAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(TAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(GrillaLayout.createSequentialGroup()
+                                            .addComponent(HoraFin)
+                                            .addGap(43, 43, 43)
+                                            .addComponent(THoraFin, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(GrillaLayout.createSequentialGroup()
+                                        .addComponent(AgregarProfesor)
+                                        .addGap(168, 168, 168))))
                             .addGroup(GrillaLayout.createSequentialGroup()
                                 .addComponent(CAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addGap(31, 31, 31)
                                 .addComponent(AgregarAlumno)))
-                        .addContainerGap(286, Short.MAX_VALUE))))
+                        .addContainerGap(257, Short.MAX_VALUE))))
         );
         GrillaLayout.setVerticalGroup(
             GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(GrillaLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(GrillaLayout.createSequentialGroup()
-                        .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Identificador, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(NAsignatura)
-                            .addComponent(TAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Periodo)
-                            .addComponent(TPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Dia)
-                            .addComponent(CDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(HoraInicio)
-                            .addComponent(THoraInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(HoraFin)
-                            .addComponent(THoraFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(CProfesores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(AgregarProfesor)))
-                    .addComponent(Profesores))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(TProfesores, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Identificador, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NAsignatura)
+                    .addComponent(TAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Periodo)
+                    .addComponent(TPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Dia)
+                    .addComponent(CDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(HoraInicio)
+                    .addComponent(THoraInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(HoraFin)
+                    .addComponent(THoraFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
+                .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Profesores)
+                    .addComponent(CProfesores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AgregarProfesor))
+                .addGap(18, 18, 18)
+                .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TProfesores, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(quitarProfesor))
+                .addGap(29, 29, 29)
                 .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(AgregarAlumno)
                     .addComponent(Alumnos))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(TAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
-                .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Grabar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30))
+                .addGap(18, 18, 18)
+                .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(GrillaLayout.createSequentialGroup()
+                        .addComponent(TAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
+                        .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Grabar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30))
+                    .addGroup(GrillaLayout.createSequentialGroup()
+                        .addComponent(quitarAlumno)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         getContentPane().add(Grilla, java.awt.BorderLayout.CENTER);
@@ -343,11 +371,27 @@ public class VCursadaAlta extends javax.swing.JFrame {
     }//GEN-LAST:event_THoraFinActionPerformed
 
     private void CProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CProfesoresActionPerformed
-        // TODO add your handling code here:
+        Iterator it =controlador.getProfesores().values().iterator();
+        while (it.hasNext()){
+            Profesor profesor= (Profesor)it.next();
+            CProfesores.addItem(profesor.getNombre());
+        }
     }//GEN-LAST:event_CProfesoresActionPerformed
 
     private void AgregarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarProfesorActionPerformed
-        // TODO add your handling code here:
+        Profesor profesor;
+        try {
+            profesor = (Profesor) controlador.consultaProfesor(CProfesores.getSelectedItem().toString());
+            controlador.addProfesorCursada(profesor.getLegajo(), TIdentificador.getText().toString());
+            String []dato= {profesor.getId(),profesor.getNombre(),profesor.getApellido()};
+            modelo1.addRow(dato);
+        } catch (IdInvalidoException e) {
+            e.getMessage();
+        } catch (EntidadInvalidaException e) {
+            e.getMessage();
+        } catch (HorarioNoViableException e) {
+            e.getMessage();
+        }
     }//GEN-LAST:event_AgregarProfesorActionPerformed
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
@@ -361,12 +405,79 @@ public class VCursadaAlta extends javax.swing.JFrame {
     }//GEN-LAST:event_CDiaActionPerformed
 
     private void AgregarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarAlumnoActionPerformed
-        // TODO add your handling code here:
+        Alumno alumno;
+        try {
+            alumno = (Alumno) controlador.consultaAlumno(CAlumnos.getSelectedItem().toString());
+            controlador.addAlumnoCursada(alumno.getLegajo(), TIdentificador.getText().toString());
+            String []dato= {alumno.getId(),alumno.getNombre(),alumno.getApellido()};
+            modelo2.addRow(dato);
+        } catch (IdInvalidoException e) {
+            e.getMessage();
+        } catch (EntidadInvalidaException e) {
+            e.getMessage();
+        } catch (HorarioNoViableException e) {
+            e.getMessage();
+        }     
     }//GEN-LAST:event_AgregarAlumnoActionPerformed
 
     private void GrabarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_GrabarActionPerformed
     {//GEN-HEADEREND:event_GrabarActionPerformed
-        // TODO add your handling code here:
+        if (TAsignatura.getText().equals(""))
+            JOptionPane.showMessageDialog(null,"Ingrese Nomnbre");
+        if (TPeriodo.getText().equals(""))
+            JOptionPane.showMessageDialog(null,"Ingrese Periodo");
+        if (CDia.getSelectedItem().equals(""))
+            JOptionPane.showMessageDialog(null,"Ingrese Dia");
+        if (THoraInicio.getText().equals(""))
+            JOptionPane.showMessageDialog(null,"Ingrese Hora Inicio");
+        if (THoraFin.getText().equals(""))
+            JOptionPane.showMessageDialog(null,"Ingrese Hora Fin");
+        try {
+            controlador.altaCursada(TAsignatura.getText().toString(),
+                                       TPeriodo.getText().toString(), CDia.getSelectedItem().toString(),
+                                       THoraInicio.getText().toString(), THoraFin.getText().toString());
+        } catch (HoraInvalidaException | IdInvalidoException | PeriodoInvalidoException e) {
+            e.getMessage();
+        }
+    }//GEN-LAST:event_GrabarActionPerformed
+
+    private void quitarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitarAlumnoActionPerformed
+        if(tablaAlumnos.getSelectedRows().length ==1){
+            try {
+                controlador.removeAlumnoCursada(TIdentificador.getText(),
+                                              tablaAlumnos.getValueAt(tablaAlumnos.getSelectedRow(), 0)
+                                              .toString());
+                modelo2.removeRow(tablaAlumnos.getSelectedRow());
+            } catch (IdInvalidoException e) {
+                e.getMessage();
+            }
+        }            
+    }//GEN-LAST:event_quitarAlumnoActionPerformed
+
+    private void quitarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitarProfesorActionPerformed
+        if(tablaProfesores.getSelectedRows().length ==1){
+            try {
+                controlador.removeProfesorCursada(TIdentificador.getText(),
+                                              tablaProfesores.getValueAt(tablaProfesores.getSelectedRow(), 0)
+                                              .toString());
+                modelo1.removeRow(tablaProfesores.getSelectedRow());
+            } catch (IdInvalidoException e) {
+                e.getMessage();
+            }
+        }
+    }//GEN-LAST:event_quitarProfesorActionPerformed
+
+    private void CAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CAlumnosActionPerformed
+        Iterator it =controlador.getAlumnos().values().iterator();
+        while (it.hasNext()){
+            Alumno alumno= (Alumno)it.next();
+            CAlumnos.addItem(alumno.getNombre());
+        }
+    }//GEN-LAST:event_CAlumnosActionPerformed
+
+    private void GrabarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_GrabarActionPerformed
+    {//GEN-HEADEREND:event_GrabarActionPerformed
+
     }//GEN-LAST:event_GrabarActionPerformed
 
     /**
@@ -448,7 +559,6 @@ public class VCursadaAlta extends javax.swing.JFrame {
     private javax.swing.JPanel Cabecera;
     private javax.swing.JButton Cancelar;
     private javax.swing.JLabel Dia;
-    private javax.swing.JLabel Email;
     private javax.swing.JButton Grabar;
     private javax.swing.JPanel Grilla;
     private javax.swing.JLabel HoraFin;
@@ -459,7 +569,6 @@ public class VCursadaAlta extends javax.swing.JFrame {
     private javax.swing.JLabel Profesores;
     private javax.swing.JScrollPane TAlumnos;
     private javax.swing.JTextField TAsignatura;
-    private javax.swing.JTextField TEmail;
     private javax.swing.JTextField THoraFin;
     private javax.swing.JTextField THoraInicio;
     private javax.swing.JTextField TIdentificador;
@@ -467,9 +576,8 @@ public class VCursadaAlta extends javax.swing.JFrame {
     private javax.swing.JScrollPane TProfesores;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JLabel lCursada;
-    // End of variables declaration//GEN-END:variables
-
-}
+    private javax.swing.JButton quitarAlumno;
+    private javax.swing.JButton quitarProfesor;
+    private javax.swing.JTable tablaAlumnos;
+    private javax.swing.JTable tablaProfesores;

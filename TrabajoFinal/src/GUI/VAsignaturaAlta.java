@@ -1,8 +1,12 @@
 
 package GUI;
 
+import java.util.Iterator;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+
+import javax.swing.table.DefaultTableModel;
 
 import trabajofinal.Alumno;
 import trabajofinal.Asignatura;
@@ -10,6 +14,7 @@ import trabajofinal.Controlador;
 import trabajofinal.Cursada;
 import trabajofinal.EmailInvalidoException;
 import trabajofinal.EntidadInvalidaException;
+import trabajofinal.IdInvalidoException;
 import trabajofinal.Mascaras;
 
 /**
@@ -18,6 +23,8 @@ import trabajofinal.Mascaras;
  */
 public class VAsignaturaAlta extends javax.swing.JFrame {
     private Controlador controlador;
+    DefaultTableModel modelo= new DefaultTableModel();
+    String[] col={"Identificador","Nombre"};
 
     /** Creates new form Asignatura */
     public VAsignaturaAlta() {
@@ -229,11 +236,25 @@ public class VAsignaturaAlta extends javax.swing.JFrame {
     }//GEN-END:initComponents
 
     private void AsignaturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsignaturasActionPerformed
-        Asignaturas.setModel(new DefaultComboBoxModel<>());
+        Iterator it =controlador.getAsignaturas().values().iterator();
+        while (it.hasNext()){
+            Asignatura asi= (Asignatura)it.next();
+            Asignaturas.addItem(asi.getNombre());
+        }
     }//GEN-LAST:event_AsignaturasActionPerformed
 
     private void AgregarCorrelativaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarCorrelativaActionPerformed
-        // TODO add your handling code here:
+        Asignatura asi;
+        try {
+            asi = (Asignatura) controlador.consultaAsignatura(Asignaturas.getSelectedItem().toString());
+            controlador.addCorrelativa(TIdentificador.getText().toString(), asi.getId());
+            String []dato= {asi.getId(),asi.getNombre()};
+            modelo.addRow(dato);
+        } catch (IdInvalidoException e) {
+            e.getMessage();
+        } catch (EntidadInvalidaException e) {
+            e.getMessage();
+        }
     }//GEN-LAST:event_AgregarCorrelativaActionPerformed
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
