@@ -459,7 +459,7 @@ public class VProfesorModifica extends javax.swing.JFrame {
 
     private void GrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GrabarActionPerformed
         if (TNombre.getText().equals(""))
-            JOptionPane.showMessageDialog(null,"Ingrese Nomnbre");
+            JOptionPane.showMessageDialog(null,"Ingrese Nombre");
         if (TApellido.getText().equals(""))
             JOptionPane.showMessageDialog(null,"Ingrese Apellido");
         if (TCalle.getText().equals(""))
