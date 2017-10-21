@@ -25,6 +25,7 @@ public class VProfesorModifica extends javax.swing.JFrame {
     /** Creates new form VProfesorModifica */
     public VProfesorModifica(Profesor profesor) {
         initComponents();
+        this.addWindowListener(WindowSerializador.getInstance());
         TLegajo.setText(profesor.getId());
         TNombre.setText(profesor.getNombre());
         TApellido.setText(profesor.getApellido());

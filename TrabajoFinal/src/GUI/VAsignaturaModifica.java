@@ -31,6 +31,7 @@ public class VAsignaturaModifica extends javax.swing.JFrame {
     /** Creates new form VAsignaturaModifica */
     public VAsignaturaModifica(Asignatura asignatura) {
         initComponents();
+        this.addWindowListener(WindowSerializador.getInstance());
         TLegajo.setText(asignatura.getId());
         TNombre.setText(asignatura.getNombre());
         setTablaCorrelatividades(asignatura);
