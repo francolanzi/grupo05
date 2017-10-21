@@ -8,6 +8,7 @@ import trabajofinal.Alumno;
 import trabajofinal.Asignatura;
 import trabajofinal.Controlador;
 import trabajofinal.Cursada;
+import trabajofinal.EmailInvalidoException;
 import trabajofinal.EntidadInvalidaException;
 import trabajofinal.Mascaras;
 
@@ -22,6 +23,12 @@ public class VAsignaturaAlta extends javax.swing.JFrame {
     public VAsignaturaAlta() {
         initComponents();
         TIdentificador.setText(Mascaras.genId(Asignatura.getSigIdentificacion(), Asignatura.prefijo));
+    }
+    
+    private void vaciaCampos()
+    {
+        TIdentificador.setText(Mascaras.genId(Asignatura.getSigIdentificacion(), Asignatura.prefijo));
+        TNombre.setText("");
     }
 
     /** This method is called from within the constructor to
@@ -237,8 +244,13 @@ public class VAsignaturaAlta extends javax.swing.JFrame {
 
     private void GrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GrabarActionPerformed
         if (TNombre.getText().equals(""))
-        JOptionPane.showMessageDialog(null,"Ingrese Nombre");
-        controlador.altaAsignatura(TNombre.getText());
+            JOptionPane.showMessageDialog(null,"Ingrese Nombre");
+        else
+        {
+            Controlador.getInstance().altaAsignatura(TNombre.getText());
+            vaciaCampos();
+            JOptionPane.showMessageDialog(null, "La asignatura ha sido dada de alta exitosamente");
+        }
     }//GEN-LAST:event_GrabarActionPerformed
 
     /**

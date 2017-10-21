@@ -139,10 +139,7 @@ public class VCursadaAlta extends javax.swing.JFrame {
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String []
             {
@@ -176,6 +173,13 @@ public class VCursadaAlta extends javax.swing.JFrame {
         Grabar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Grabar.setText("GRABAR");
         Grabar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Grabar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                GrabarActionPerformed(evt);
+            }
+        });
 
         Cancelar.setBackground(new java.awt.Color(0, 153, 153));
         Cancelar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -361,6 +365,11 @@ public class VCursadaAlta extends javax.swing.JFrame {
     private void AgregarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarAlumnoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_AgregarAlumnoActionPerformed
+
+    private void GrabarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_GrabarActionPerformed
+    {//GEN-HEADEREND:event_GrabarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_GrabarActionPerformed
 
     /**
      * @param args the command line arguments
