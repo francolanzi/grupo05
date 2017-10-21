@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="1.8.0_60" class="java.beans.XMLDecoder">
- <object class="trabajofinal.Controlador" id="Controlador0">
-  <void property="asignaturas">
-   <void method="put">
-    <string>ASI0000</string>
-    <object class="trabajofinal.Asignatura">
-     <void property="correlativas">
-      <object class="trabajofinal.ObserverTreeMap"/>
-     </void>
-     <void property="identificacion">
-      <string>ASI0000</string>
-     </void>
-     <void property="nombre">
-      <string>Dib</string>
-     </void>
-    </object>
-   </void>
-  </void>
- </object>
+<java version="1.8.0_131" class="java.beans.XMLDecoder">
+ <object class="trabajofinal.Controlador" id="Controlador0"/>
+ <int>0</int>
  <int>0</int>
  <int>1</int>
  <object idref="Controlador0"/>
