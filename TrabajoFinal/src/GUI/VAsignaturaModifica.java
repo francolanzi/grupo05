@@ -27,6 +27,7 @@ public class VAsignaturaModifica extends javax.swing.JFrame {
     private Controlador controlador;
     DefaultTableModel modelo= new DefaultTableModel();
     String[] col={"Identificador","Nombre"};
+    DefaultComboBoxModel combo= new DefaultComboBoxModel();
 
     /** Creates new form VAsignaturaModifica */
     public VAsignaturaModifica(Asignatura asignatura) {
@@ -35,6 +36,16 @@ public class VAsignaturaModifica extends javax.swing.JFrame {
         TLegajo.setText(asignatura.getId());
         TNombre.setText(asignatura.getNombre());
         setTablaCorrelatividades(asignatura);
+        setCombo(asignatura);
+    }
+        
+        
+    private void setCombo(Asignatura asignatura){
+        Iterator it =controlador.getAsignaturas().values().iterator();
+        while (it.hasNext()){
+            Asignatura asi= (Asignatura)it.next();
+            Asignaturas.addItem(asi.getNombre());
+        }
     }
         
     private void setTablaCorrelatividades(Asignatura asignatura){
@@ -145,7 +156,7 @@ public class VAsignaturaModifica extends javax.swing.JFrame {
         ));
         TCorrelatividades.setViewportView(tablaCorrelatividades);
 
-        Asignaturas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Asignaturas.setModel(combo);
         Asignaturas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 AsignaturasMouseClicked(evt);

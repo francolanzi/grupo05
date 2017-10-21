@@ -1,71 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="1.8.0_131" class="java.beans.XMLDecoder">
+<java version="1.8.0_60" class="java.beans.XMLDecoder">
  <object class="trabajofinal.Controlador" id="Controlador0">
-  <void property="alumnos">
+  <void property="asignaturas">
    <void method="put">
-    <string>ALU0000</string>
-    <object class="trabajofinal.Alumno">
-     <void property="apellido">
-      <string>Lanzillotta</string>
-     </void>
-     <void property="domicilio">
-      <object class="trabajofinal.Domicilio">
-       <void property="calle">
-        <string>Chubut</string>
-       </void>
-       <void property="numero">
-        <int>1953</int>
-       </void>
-      </object>
-     </void>
-     <void property="email">
-      <string>franco@gmail</string>
-     </void>
-     <void property="historia">
+    <string>ASI0000</string>
+    <object class="trabajofinal.Asignatura">
+     <void property="correlativas">
       <object class="trabajofinal.ObserverTreeMap"/>
      </void>
-     <void property="legajo">
-      <string>ALU0000</string>
+     <void property="identificacion">
+      <string>ASI0000</string>
      </void>
      <void property="nombre">
-      <string>Franco</string>
-     </void>
-    </object>
-   </void>
-   <void method="put">
-    <string>ALU0002</string>
-    <object class="trabajofinal.Alumno">
-     <void property="apellido">
-      <string>Vilchez</string>
-     </void>
-     <void property="domicilio">
-      <object class="trabajofinal.Domicilio">
-       <void property="calle">
-        <string>Alguna</string>
-       </void>
-       <void property="numero">
-        <int>1234</int>
-       </void>
-      </object>
-     </void>
-     <void property="email">
-      <string>sol@gmail</string>
-     </void>
-     <void property="historia">
-      <object class="trabajofinal.ObserverTreeMap"/>
-     </void>
-     <void property="legajo">
-      <string>ALU0002</string>
-     </void>
-     <void property="nombre">
-      <string>Sol</string>
+      <string>Dib</string>
      </void>
     </object>
    </void>
   </void>
  </object>
- <int>3</int>
  <int>0</int>
+ <int>1</int>
  <object idref="Controlador0"/>
  <int>0</int>
  <int>0</int>

@@ -3,6 +3,7 @@ package GUI;
 
 import java.util.Iterator;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,6 +21,7 @@ import trabajofinal.Profesor;
 public class VProfesorModifica extends javax.swing.JFrame {
     DefaultTableModel modelo= new DefaultTableModel();
     String[] col={"Identificador","Nombre"};
+    DefaultComboBoxModel combo= new DefaultComboBoxModel();
     Controlador controlador;
 
     /** Creates new form VProfesorModifica */
@@ -82,7 +84,6 @@ public class VProfesorModifica extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Profesor - Edición");
-        setPreferredSize(new java.awt.Dimension(800, 600));
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(400, 50));
@@ -188,7 +189,7 @@ public class VProfesorModifica extends javax.swing.JFrame {
         ));
         THistoria.setViewportView(tablaCompetencias);
 
-        cAsignatura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cAsignatura.setModel(combo);
         cAsignatura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cAsignaturaActionPerformed(evt);

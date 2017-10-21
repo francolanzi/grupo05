@@ -30,6 +30,9 @@ public class VCursadaAlta extends javax.swing.JFrame {
     String[] col1={"Identificador","Nombre","Apellido"};
     DefaultTableModel modelo2= new DefaultTableModel();
     String[] col2={"Identificador","Nombre","Apellido"};
+    DefaultComboBoxModel combo1= new DefaultComboBoxModel();
+    DefaultComboBoxModel combo2= new DefaultComboBoxModel();
+
 
     /** Creates new form Cursadas */
     public VCursadaAlta() {

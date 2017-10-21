@@ -3,6 +3,7 @@ package GUI;
 
 import java.util.Iterator;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 import javax.swing.table.DefaultTableModel;
@@ -21,9 +22,10 @@ import trabajofinal.Profesor;
  * @author Usuario
  */
 public class VProfesorAlta extends javax.swing.JFrame {
+    Controlador controlador;
     DefaultTableModel modelo= new DefaultTableModel();
     String[] col={"Identificador","Nombre"};
-    Controlador controlador;
+    DefaultComboBoxModel combo= new DefaultComboBoxModel();
 
 
     /** Creates new form Profesor */
@@ -82,7 +84,6 @@ public class VProfesorAlta extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Profesor - Nuevo");
-        setPreferredSize(new java.awt.Dimension(1000, 800));
 
         Cabecera.setBackground(new java.awt.Color(204, 255, 255));
         Cabecera.setPreferredSize(new java.awt.Dimension(400, 50));
@@ -188,7 +189,7 @@ public class VProfesorAlta extends javax.swing.JFrame {
             tablaCompetencias.getColumnModel().getColumn(1).setHeaderValue("Nombre");
         }
 
-        Asignatura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Asignatura.setModel(combo);
         Asignatura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AsignaturaActionPerformed(evt);
@@ -341,6 +342,10 @@ public class VProfesorAlta extends javax.swing.JFrame {
         while (it.hasNext()){
             Asignatura asi= (Asignatura)it.next();
             Asignatura.addItem(asi.getNombre());
+        if (Asignatura.getItemCount() >1)
+            Asignatura.setEditable(true);
+        else
+            Asignatura.setEditable(false);
         }
     }//GEN-LAST:event_AsignaturaActionPerformed
 
