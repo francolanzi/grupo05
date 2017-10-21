@@ -187,6 +187,10 @@ public class VentanaIndex extends javax.swing.JFrame {
             {
                 CampoParaNombreAlumnoKeyTyped(evt);
             }
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
+                CampoParaNombreAlumnoKeyPressed(evt);
+            }
         });
 
         Buscar.setText("Buscar");
@@ -212,6 +216,10 @@ public class VentanaIndex extends javax.swing.JFrame {
             public void keyTyped(java.awt.event.KeyEvent evt)
             {
                 CampoParaApellidoAlumnoKeyTyped(evt);
+            }
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
+                CampoParaApellidoAlumnoKeyPressed(evt);
             }
         });
 
@@ -978,7 +986,7 @@ public class VentanaIndex extends javax.swing.JFrame {
     private void CampoParaApellidoProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoParaApellidoProfesorActionPerformed
 
     }//GEN-LAST:event_CampoParaApellidoProfesorActionPerformed
-
+    
     private void CampoParaNombreAlumnoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CampoParaNombreAlumnoKeyTyped
         char TipoDeTecla = evt.getKeyChar();
         if (Character.isDigit(TipoDeTecla))
@@ -1002,6 +1010,16 @@ public class VentanaIndex extends javax.swing.JFrame {
         if (Character.isDigit(TipoDeTecla))
             evt.consume();
     }//GEN-LAST:event_CampoParaApellidoProfesorKeyTyped
+
+    private void CampoParaNombreAlumnoKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_CampoParaNombreAlumnoKeyPressed
+    {//GEN-HEADEREND:event_CampoParaNombreAlumnoKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CampoParaNombreAlumnoKeyPressed
+
+    private void CampoParaApellidoAlumnoKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_CampoParaApellidoAlumnoKeyPressed
+    {//GEN-HEADEREND:event_CampoParaApellidoAlumnoKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CampoParaApellidoAlumnoKeyPressed
 
     /**
      * @param args the command line arguments
