@@ -25,17 +25,10 @@ import trabajofinal.Serializador;
  */
 public class VentanaIndex extends javax.swing.JFrame {
     
-
     /** Creates new form VentanIndex */
     public VentanaIndex() {
         initComponents();
-        this.addWindowListener(new WindowAdapter()
-        {
-            @Override
-            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                Serializador.serializar(Controlador.getInstance());
-            }
-        });
+        this.addWindowListener(WindowSerializador.getInstance());
     }
 
     /** This method is called from within the constructor to

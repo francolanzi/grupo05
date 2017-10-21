@@ -22,6 +22,7 @@ public class VAsignaturaAlta extends javax.swing.JFrame {
     /** Creates new form Asignatura */
     public VAsignaturaAlta() {
         initComponents();
+        this.addWindowListener(WindowSerializador.getInstance());
         TIdentificador.setText(Mascaras.genId(Asignatura.getSigIdentificacion(), Asignatura.prefijo));
     }
     

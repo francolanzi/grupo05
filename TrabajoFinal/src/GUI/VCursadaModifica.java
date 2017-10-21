@@ -12,6 +12,7 @@ public class VCursadaModifica extends javax.swing.JFrame {
     /** Creates new form VCursadaModifica */
     public VCursadaModifica(Cursada cursada) {
         initComponents();
+        this.addWindowListener(WindowSerializador.getInstance());
     }
 
     /** This method is called from within the constructor to

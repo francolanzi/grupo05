@@ -14,6 +14,7 @@ public class VCursadaAlta extends javax.swing.JFrame {
     /** Creates new form Cursadas */
     public VCursadaAlta() {
         initComponents();
+        this.addWindowListener(WindowSerializador.getInstance());
         TIdentificador.setText(Mascaras.genId(Cursada.getSigIdentificacion(), Cursada.prefijo));
     }
 
