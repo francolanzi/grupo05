@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
 
 import trabajofinal.Asignatura;
 import trabajofinal.Controlador;
+import trabajofinal.EntidadInvalidaException;
 import trabajofinal.IdInvalidoException;
 import trabajofinal.ObserverTreeMap;
 
@@ -124,6 +125,11 @@ public class VAsignaturaModifica extends javax.swing.JFrame {
 
         TLegajo.setEditable(false);
         TLegajo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        TLegajo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TLegajoActionPerformed(evt);
+            }
+        });
 
         tablaCorrelatividades.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -139,6 +145,11 @@ public class VAsignaturaModifica extends javax.swing.JFrame {
         TCorrelatividades.setViewportView(tablaCorrelatividades);
 
         Asignaturas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Asignaturas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AsignaturasMouseClicked(evt);
+            }
+        });
         Asignaturas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AsignaturasActionPerformed(evt);
@@ -242,17 +253,25 @@ public class VAsignaturaModifica extends javax.swing.JFrame {
     }//GEN-END:initComponents
 
     private void AsignaturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsignaturasActionPerformed
-        TreeMap<String,Asignatura> asignaturas= controlador.getAsignaturas();
-        Iterator itr= asignaturas.entrySet().iterator();
-        while (itr.hasNext()){
-            Asignatura e = (Asignatura)itr.next();
-            Asignaturas.addItem(e.getNombre());
+        Iterator it =controlador.getAsignaturas().values().iterator();
+        while (it.hasNext()){
+            Asignatura asi= (Asignatura)it.next();
+            Asignaturas.addItem(asi.getNombre());
         }
     }//GEN-LAST:event_AsignaturasActionPerformed
 
     private void AgregarCorrelativaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarCorrelativaActionPerformed
-        //String[] dato={controlador.ubicaAsignatura(nombre) ,Asignaturas.getSelectedItem().toString()};
-        //agregar a la tabla
+        Asignatura asi;
+        try {
+            asi = (Asignatura) controlador.consultaAsignatura(Asignaturas.getSelectedItem().toString());
+            controlador.addCorrelativa(TLegajo.getText().toString(), asi.getId());
+            String []dato= {asi.getId(),asi.getNombre()};
+            modelo.addRow(dato);
+        } catch (IdInvalidoException e) {
+            e.getMessage();
+        } catch (EntidadInvalidaException e) {
+            e.getMessage();
+        }
     }//GEN-LAST:event_AgregarCorrelativaActionPerformed
 
     private void GrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GrabarActionPerformed
@@ -272,14 +291,25 @@ public class VAsignaturaModifica extends javax.swing.JFrame {
     }//GEN-LAST:event_CancelarActionPerformed
 
     private void quitarCorrelativaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitarCorrelativaActionPerformed
-        try {
-            controlador.removeCorrelativa(TLegajo.getText(),
-                                          tablaCorrelatividades.getValueAt(tablaCorrelatividades.getSelectedRow(), 0)
-                                          .toString());
-        } catch (IdInvalidoException e) {
-            e.getMessage();
+        if(tablaCorrelatividades.getSelectedRows().length ==1){
+            try {
+                controlador.removeCorrelativa(TLegajo.getText(),
+                                              tablaCorrelatividades.getValueAt(tablaCorrelatividades.getSelectedRow(), 0)
+                                              .toString());
+                modelo.removeRow(tablaCorrelatividades.getSelectedRow());
+            } catch (IdInvalidoException e) {
+                e.getMessage();
+            }
         }
     }//GEN-LAST:event_quitarCorrelativaActionPerformed
+
+    private void AsignaturasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AsignaturasMouseClicked
+        
+    }//GEN-LAST:event_AsignaturasMouseClicked
+
+    private void TLegajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TLegajoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TLegajoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

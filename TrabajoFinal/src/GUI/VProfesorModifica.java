@@ -1,6 +1,16 @@
 
 package GUI;
 
+import java.util.Iterator;
+
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+import trabajofinal.Asignatura;
+import trabajofinal.Controlador;
+import trabajofinal.EmailInvalidoException;
+import trabajofinal.EntidadInvalidaException;
+import trabajofinal.IdInvalidoException;
 import trabajofinal.Profesor;
 
 /**
@@ -8,12 +18,31 @@ import trabajofinal.Profesor;
  * @author Usuario
  */
 public class VProfesorModifica extends javax.swing.JFrame {
+    DefaultTableModel modelo= new DefaultTableModel();
+    String[] col={"Identificador","Nombre"};
+    Controlador controlador;
 
     /** Creates new form VProfesorModifica */
     public VProfesorModifica(Profesor profesor) {
         initComponents();
+        TLegajo.setText(profesor.getId());
+        TNombre.setText(profesor.getNombre());
+        TApellido.setText(profesor.getApellido());
+        TCalle.setText(profesor.getDomicilio().getCalle());
+        TNumero.setText(Integer.toString(profesor.getDomicilio().getNumero()));
+        TTelefono.setText(profesor.getTelefono());
+        TEmail.setText(profesor.getEmail());
+        setCompetencias(profesor);
     }
 
+    private void setCompetencias(Profesor profesor){
+        Iterator it=profesor.getCompetencias();
+        while (it.hasNext()){
+            Asignatura asi= (Asignatura)it.next();
+            String[] datos= {asi.getId(),asi.getNombre()};
+            modelo.addRow(datos);
+        }
+    }
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -41,14 +70,14 @@ public class VProfesorModifica extends javax.swing.JFrame {
         Numero = new javax.swing.JLabel();
         TNumero = new javax.swing.JTextField();
         THistoria = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        Asignatura = new javax.swing.JComboBox<>();
+        tablaCompetencias = new javax.swing.JTable();
+        cAsignatura = new javax.swing.JComboBox<>();
         AgregarCompetencia = new javax.swing.JButton();
         Telefono = new javax.swing.JLabel();
         TTelefono = new javax.swing.JTextField();
         Grabar = new javax.swing.JButton();
         Cancelar = new javax.swing.JButton();
-        AgregarCompetencia1 = new javax.swing.JButton();
+        quitarCompetencia = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Profesor - Edición");
@@ -145,7 +174,7 @@ public class VProfesorModifica extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaCompetencias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -156,12 +185,12 @@ public class VProfesorModifica extends javax.swing.JFrame {
                 "Identificador", "Nombre"
             }
         ));
-        THistoria.setViewportView(jTable1);
+        THistoria.setViewportView(tablaCompetencias);
 
-        Asignatura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        Asignatura.addActionListener(new java.awt.event.ActionListener() {
+        cAsignatura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cAsignatura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AsignaturaActionPerformed(evt);
+                cAsignaturaActionPerformed(evt);
             }
         });
 
@@ -200,10 +229,10 @@ public class VProfesorModifica extends javax.swing.JFrame {
             }
         });
 
-        AgregarCompetencia1.setText("Quitar");
-        AgregarCompetencia1.addActionListener(new java.awt.event.ActionListener() {
+        quitarCompetencia.setText("Quitar");
+        quitarCompetencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AgregarCompetencia1ActionPerformed(evt);
+                quitarCompetenciaActionPerformed(evt);
             }
         });
 
@@ -228,7 +257,7 @@ public class VProfesorModifica extends javax.swing.JFrame {
                         .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(THistoria, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(GrillaLayout.createSequentialGroup()
-                                .addComponent(Asignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(AgregarCompetencia))
                             .addGroup(GrillaLayout.createSequentialGroup()
@@ -247,7 +276,7 @@ public class VProfesorModifica extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Cancelar)
-                    .addComponent(AgregarCompetencia1))
+                    .addComponent(quitarCompetencia))
                 .addContainerGap(187, Short.MAX_VALUE))
         );
         GrillaLayout.setVerticalGroup(
@@ -283,7 +312,7 @@ public class VProfesorModifica extends javax.swing.JFrame {
                 .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(AgregarCompetencia)
                     .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(Asignatura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(Historia)))
                 .addGap(18, 18, 18)
                 .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,7 +322,7 @@ public class VProfesorModifica extends javax.swing.JFrame {
                         .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Grabar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(AgregarCompetencia1))
+                    .addComponent(quitarCompetencia))
                 .addContainerGap(145, Short.MAX_VALUE))
         );
 
@@ -306,12 +335,22 @@ public class VProfesorModifica extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TNumeroActionPerformed
 
-    private void AsignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsignaturaActionPerformed
+    private void cAsignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cAsignaturaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_AsignaturaActionPerformed
+    }//GEN-LAST:event_cAsignaturaActionPerformed
 
     private void AgregarCompetenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarCompetenciaActionPerformed
-        // TODO add your handling code here:
+        Asignatura asi;
+        try {
+            asi = (Asignatura) controlador.consultaAsignatura(cAsignatura.getSelectedItem().toString());
+            controlador.addCompetencia(TLegajo.getText().toString(), asi.getId());
+            String []dato= {asi.getId(),asi.getNombre()};
+            modelo.addRow(dato);
+        } catch (IdInvalidoException e) {
+            e.getMessage();
+        } catch (EntidadInvalidaException e) {
+            e.getMessage();
+        }     
     }//GEN-LAST:event_AgregarCompetenciaActionPerformed
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
@@ -344,20 +383,45 @@ public class VProfesorModifica extends javax.swing.JFrame {
             evt.consume();
     }//GEN-LAST:event_TTelefonoKeyTyped
 
-    private void AgregarCompetencia1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarCompetencia1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AgregarCompetencia1ActionPerformed
+    private void quitarCompetenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitarCompetenciaActionPerformed
+        if(tablaCompetencias.getSelectedRows().length ==1){
+            try {
+                controlador.removeCompetencia(TLegajo.getText(),
+                                              tablaCompetencias.getValueAt(tablaCompetencias.getSelectedRow(), 0)
+                                              .toString());
+                modelo.removeRow(tablaCompetencias.getSelectedRow());
+            } catch (IdInvalidoException e) {
+                e.getMessage();
+            }
+        }
+    }//GEN-LAST:event_quitarCompetenciaActionPerformed
 
     private void GrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GrabarActionPerformed
-        // TODO add your handling code here:
+        if (TNombre.getText().equals(""))
+            JOptionPane.showMessageDialog(null,"Ingrese Nomnbre");
+        if (TApellido.getText().equals(""))
+            JOptionPane.showMessageDialog(null,"Ingrese Apellido");
+        if (TCalle.getText().equals(""))
+            JOptionPane.showMessageDialog(null,"Ingrese Calle");
+        if (TNumero.getText().equals(""))
+            JOptionPane.showMessageDialog(null,"Ingrese Numero");
+        if (TTelefono.getText().equals(""))
+                JOptionPane.showMessageDialog(null,"Ingrese Telefono");
+        if (TEmail.getText().equals(""))
+            JOptionPane.showMessageDialog(null,"Ingrese Mail");
+        try {
+            controlador.modificaProfesor(TLegajo.getText().toString(), TApellido.getText().toString(),
+                                       TNombre.getText().toString(), TCalle.getText().toString(),
+                                       Integer.parseInt(TNumero.getText()),TNumero.getText().toString(), TEmail.getText().toString());
+        } catch (EmailInvalidoException | IdInvalidoException e) {
+            e.getMessage();
+        }
     }//GEN-LAST:event_GrabarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AgregarCompetencia;
-    private javax.swing.JButton AgregarCompetencia1;
     private javax.swing.JLabel Apellido;
-    private javax.swing.JComboBox<String> Asignatura;
     private javax.swing.JLabel Calle;
     private javax.swing.JButton Cancelar;
     private javax.swing.JLabel Email;
@@ -377,10 +441,12 @@ public class VProfesorModifica extends javax.swing.JFrame {
     private javax.swing.JTextField TNumero;
     private javax.swing.JTextField TTelefono;
     private javax.swing.JLabel Telefono;
+    private javax.swing.JComboBox<String> cAsignatura;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton quitarCompetencia;
+    private javax.swing.JTable tablaCompetencias;
     // End of variables declaration//GEN-END:variables
 
 }
