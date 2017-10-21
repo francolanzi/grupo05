@@ -22,10 +22,10 @@ import trabajofinal.Mascaras;
  * @author Usuario
  */
 public class VAsignaturaAlta extends javax.swing.JFrame {
-    private Controlador controlador;
+    
     DefaultTableModel modelo= new DefaultTableModel();
     String[] col={"Identificador","Nombre"};
-    DefaultComboBoxModel combo= new DefaultComboBoxModel<String>();
+    DefaultComboBoxModel modeloCombo= new DefaultComboBoxModel<String>();
 
     /** Creates new form Asignatura */
     public VAsignaturaAlta() {
@@ -133,7 +133,7 @@ public class VAsignaturaAlta extends javax.swing.JFrame {
         ));
         TCorrelatividades.setViewportView(jTable1);
 
-        Asignaturas.setModel(combo);
+        Asignaturas.setModel(modeloCombo);
         Asignaturas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AsignaturasActionPerformed(evt);
@@ -229,9 +229,9 @@ public class VAsignaturaAlta extends javax.swing.JFrame {
         Iterator it =Controlador.getInstance().getAsignaturas().values().iterator();
         while (it.hasNext()){
             Asignatura asi= (Asignatura)it.next();
-            combo.addElement(asi.getNombre());
+            modeloCombo.addElement(asi.getNombre());
             System.out.println(asi.getNombre());
-            Asignaturas.setModel(combo);
+            Asignaturas.setModel(modeloCombo);
         }
         
         
@@ -241,14 +241,12 @@ public class VAsignaturaAlta extends javax.swing.JFrame {
     private void AgregarCorrelativaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarCorrelativaActionPerformed
         Asignatura asi;
         try {
-            asi = (Asignatura) controlador.consultaAsignatura(Asignaturas.getSelectedItem().toString());
-            controlador.addCorrelativa(TIdentificador.getText().toString(), asi.getId());
+            asi = (Asignatura) Controlador.getInstance().consultaAsignatura(Asignaturas.getSelectedItem().toString());
+            Controlador.getInstance().addCorrelativa(TIdentificador.getText().toString(), asi.getId());
             String []dato= {asi.getId(),asi.getNombre()};
             modelo.addRow(dato);
-        } catch (IdInvalidoException e) {
-            e.getMessage();
-        } catch (EntidadInvalidaException e) {
-            e.getMessage();
+        } catch (IdInvalidoException | EntidadInvalidaException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }//GEN-LAST:event_AgregarCorrelativaActionPerformed
 
@@ -269,74 +267,6 @@ public class VAsignaturaAlta extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_GrabarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing
-                                                                   .UIManager
-                                                                   .getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing
-                         .UIManager
-                         .setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util
-                .logging
-                .Logger
-                .getLogger(VAsignaturaAlta.class.getName())
-                .log(java.util
-                         .logging
-                         .Level
-                         .SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util
-                .logging
-                .Logger
-                .getLogger(VAsignaturaAlta.class.getName())
-                .log(java.util
-                         .logging
-                         .Level
-                         .SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util
-                .logging
-                .Logger
-                .getLogger(VAsignaturaAlta.class.getName())
-                .log(java.util
-                         .logging
-                         .Level
-                         .SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util
-                .logging
-                .Logger
-                .getLogger(VAsignaturaAlta.class.getName())
-                .log(java.util
-                         .logging
-                         .Level
-                         .SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt
-            .EventQueue
-            .invokeLater(new Runnable() {
-                public void run() {
-                    new VAsignaturaAlta().setVisible(true);
-                }
-            });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AgregarCorrelativa;

@@ -27,7 +27,7 @@ public class Mascaras
     {
         boolean retorno = periodo.length() == 7 && periodo.charAt(0) == '0' &&
         (periodo.charAt(1) == '1' || periodo.charAt(1) == '2') && periodo.charAt(2) == '-';
-        int i = 0;
+        int i = 3;
         while (retorno && i < 7)
         {
             retorno = retorno && periodo.charAt(i) >= '0' && periodo.charAt(i) <= '9';
@@ -42,7 +42,8 @@ public class Mascaras
         int i = 0;
         while (retorno && i < 5)
         {
-            retorno = retorno && hora.charAt(i) >= '0' && hora.charAt(i) <= '9';
+            if (i != 2)
+                retorno = retorno && hora.charAt(i) >= '0' && hora.charAt(i) <= '9';
             i++;
         }
         return retorno;

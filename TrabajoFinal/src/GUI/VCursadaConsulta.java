@@ -15,7 +15,7 @@ import trabajofinal.Profesor;
  * @author Usuario
  */
 public class VCursadaConsulta extends javax.swing.JFrame {
-    private Controlador controlador;
+    
     DefaultTableModel modelo1= new DefaultTableModel();
     String[] col1={"Identificador","Nombre","Apellido"};
     DefaultTableModel modelo2= new DefaultTableModel();
