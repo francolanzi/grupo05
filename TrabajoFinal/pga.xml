@@ -78,6 +78,48 @@
      </void>
     </object>
    </void>
+   <void method="put">
+    <string>ASI0001</string>
+    <object class="trabajofinal.Asignatura">
+     <void property="correlativas">
+      <object class="trabajofinal.ObserverTreeMap"/>
+     </void>
+     <void property="identificacion">
+      <string>ASI0001</string>
+     </void>
+     <void property="nombre">
+      <string>Programacion</string>
+     </void>
+    </object>
+   </void>
+   <void method="put">
+    <string>ASI0002</string>
+    <object class="trabajofinal.Asignatura">
+     <void property="correlativas">
+      <object class="trabajofinal.ObserverTreeMap"/>
+     </void>
+     <void property="identificacion">
+      <string>ASI0002</string>
+     </void>
+     <void property="nombre">
+      <string>Matematica</string>
+     </void>
+    </object>
+   </void>
+   <void method="put">
+    <string>ASI0003</string>
+    <object class="trabajofinal.Asignatura">
+     <void property="correlativas">
+      <object class="trabajofinal.ObserverTreeMap"/>
+     </void>
+     <void property="identificacion">
+      <string>ASI0003</string>
+     </void>
+     <void property="nombre">
+      <string>Quimica</string>
+     </void>
+    </object>
+   </void>
   </void>
   <void property="cursadas">
    <void method="put">
@@ -139,10 +181,42 @@
     </object>
    </void>
   </void>
+  <void property="profesores">
+   <void method="put">
+    <string>PRO0000</string>
+    <object class="trabajofinal.Profesor">
+     <void property="apellido">
+      <string>Viau</string>
+     </void>
+     <void property="domicilio">
+      <object class="trabajofinal.Domicilio">
+       <void property="calle">
+        <string>Alguna</string>
+       </void>
+       <void property="numero">
+        <int>1234</int>
+       </void>
+      </object>
+     </void>
+     <void property="email">
+      <string>javier@viau</string>
+     </void>
+     <void property="legajo">
+      <string>PRO0000</string>
+     </void>
+     <void property="nombre">
+      <string>Javier</string>
+     </void>
+     <void property="telefono">
+      <string>12345678</string>
+     </void>
+    </object>
+   </void>
+  </void>
  </object>
  <int>3</int>
- <int>1</int>
+ <int>4</int>
  <object idref="Controlador0"/>
  <int>3</int>
- <int>0</int>
+ <int>1</int>
 </java>
