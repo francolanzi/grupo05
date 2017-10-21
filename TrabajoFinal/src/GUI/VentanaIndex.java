@@ -224,7 +224,7 @@ public class VentanaIndex extends javax.swing.JFrame {
                 .addComponent(nombreAlumno)
                 .addGap(10, 10, 10)
                 .addComponent(CampoParaNombreAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addComponent(apellidoAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
                 .addComponent(CampoParaApellidoAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -268,7 +268,7 @@ public class VentanaIndex extends javax.swing.JFrame {
             .addGroup(PanelGrillaLayout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         PanelGrillaLayout.setVerticalGroup(
             PanelGrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -368,16 +368,7 @@ public class VentanaIndex extends javax.swing.JFrame {
         tablaProfesores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String []
             {
@@ -393,7 +384,7 @@ public class VentanaIndex extends javax.swing.JFrame {
             .addGroup(PPanelGrillaLayout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         PPanelGrillaLayout.setVerticalGroup(
             PPanelGrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -462,7 +453,7 @@ public class VentanaIndex extends javax.swing.JFrame {
         APanelCabecera.setLayout(APanelCabeceraLayout);
         APanelCabeceraLayout.setHorizontalGroup(
             APanelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 638, Short.MAX_VALUE)
+            .addGap(0, 599, Short.MAX_VALUE)
             .addGroup(APanelCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(APanelCabeceraLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -486,16 +477,7 @@ public class VentanaIndex extends javax.swing.JFrame {
         tablaAsignaturas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String []
             {
@@ -511,7 +493,7 @@ public class VentanaIndex extends javax.swing.JFrame {
             .addGroup(APanelGrillaLayout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         APanelGrillaLayout.setVerticalGroup(
             APanelGrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -558,7 +540,7 @@ public class VentanaIndex extends javax.swing.JFrame {
                 .addGap(103, 103, 103)
                 .addComponent(Cursada)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(CampoParaNombreCursada, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
+                .addComponent(CampoParaNombreCursada, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(CBuscar)
                 .addGap(130, 130, 130))
@@ -581,16 +563,7 @@ public class VentanaIndex extends javax.swing.JFrame {
         tablaCursadas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String []
             {
@@ -606,7 +579,7 @@ public class VentanaIndex extends javax.swing.JFrame {
             .addGroup(CPanelGrillaLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         CPanelGrillaLayout.setVerticalGroup(
             CPanelGrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -684,8 +657,14 @@ public class VentanaIndex extends javax.swing.JFrame {
     }//GEN-LAST:event_CampoParaNombreAsignaturaActionPerformed
 
     private void ABuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ABuscarActionPerformed
-        Iterator<Asignatura> asignaturas = Controlador.getInstance().ubicaAsignatura(CampoParaNombreProfesor.getText());
-        //mostrar en tabla
+        DefaultTableModel model = (DefaultTableModel) tablaAsignaturas.getModel();
+        model.setRowCount(0);
+        Iterator<Asignatura> asignaturas = Controlador.getInstance().ubicaAsignatura(CampoParaNombreAsignatura.getText());
+        while (asignaturas.hasNext())
+        {
+            Asignatura asignatura = asignaturas.next();
+            model.addRow(new Object[] {asignatura.getId(), asignatura.getNombre()});
+        }
     }//GEN-LAST:event_ABuscarActionPerformed
 
     private void CampoParaNombreCursadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoParaNombreCursadaActionPerformed
@@ -693,8 +672,15 @@ public class VentanaIndex extends javax.swing.JFrame {
     }//GEN-LAST:event_CampoParaNombreCursadaActionPerformed
 
     private void CBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBuscarActionPerformed
+        DefaultTableModel model = (DefaultTableModel) tablaCursadas.getModel();
+        model.setRowCount(0);
         Iterator<Cursada> cursadas = Controlador.getInstance().ubicaCursada(CampoParaNombreCursada.getText());
-        //mostrar en tabla
+        while (cursadas.hasNext())
+        {
+            Cursada cursada = cursadas.next();
+            model.addRow(new Object[] {cursada.getId(), cursada.getAsignatura().getNombre(), cursada.getPeriodo(),
+                                       cursada.getDia(), cursada.getHoraInicio(), cursada.getHoraFin()});
+        }
     }//GEN-LAST:event_CBuscarActionPerformed
 
     private void CampoParaNombreAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoParaNombreAlumnoActionPerformed
@@ -754,8 +740,7 @@ public class VentanaIndex extends javax.swing.JFrame {
             }
             else{
                 JOptionPane.showMessageDialog(null,"Debe seleccionar un registro"); 
-                VentanaIndex principal= new VentanaIndex();
-                principal.setVisible(true);
+                return;
             }
         }
         else if (SolapaAsignaturas.isShowing())
@@ -777,8 +762,7 @@ public class VentanaIndex extends javax.swing.JFrame {
             }
             else{
                 JOptionPane.showMessageDialog(null,"Debe seleccionar un registro"); 
-                VentanaIndex principal= new VentanaIndex();
-                principal.setVisible(true);
+                return;
             }
         }
         else if (SolapaCursadas.isShowing())
@@ -800,8 +784,7 @@ public class VentanaIndex extends javax.swing.JFrame {
             }
             else{
                 JOptionPane.showMessageDialog(null,"Debe seleccionar un registro"); 
-                VentanaIndex principal= new VentanaIndex();
-                principal.setVisible(true);
+                return;
             }
         }
         this.setVisible(false);
@@ -826,8 +809,7 @@ public class VentanaIndex extends javax.swing.JFrame {
             }
             else{
                 JOptionPane.showMessageDialog(null,"Debe seleccionar un registro"); 
-                VentanaIndex principal= new VentanaIndex();
-                principal.setVisible(true);
+                return;
             }
         }
         else if (SolapaProfesores.isShowing())
@@ -849,8 +831,7 @@ public class VentanaIndex extends javax.swing.JFrame {
             }
             else{
                 JOptionPane.showMessageDialog(null,"Debe seleccionar un registro"); 
-                VentanaIndex principal= new VentanaIndex();
-                principal.setVisible(true);
+                return;
             }
         }
         else if (SolapaAsignaturas.isShowing())
@@ -872,8 +853,7 @@ public class VentanaIndex extends javax.swing.JFrame {
             }
             else{
                 JOptionPane.showMessageDialog(null,"Debe seleccionar un registro"); 
-                VentanaIndex principal= new VentanaIndex();
-                principal.setVisible(true);
+                return;
             }
         }
         else if (SolapaCursadas.isShowing())
@@ -895,8 +875,7 @@ public class VentanaIndex extends javax.swing.JFrame {
             }
             else{
                 JOptionPane.showMessageDialog(null,"Debe seleccionar un registro"); 
-                VentanaIndex principal= new VentanaIndex();
-                principal.setVisible(true);
+                return;
             }
         }
         this.setVisible(false);
@@ -917,7 +896,7 @@ public class VentanaIndex extends javax.swing.JFrame {
                 } 
                 catch (IdInvalidoException e)
                 {
-                    e.getMessage();
+                    JOptionPane.showMessageDialog(null, e.getMessage());
                 }
             }
             else{
@@ -939,7 +918,7 @@ public class VentanaIndex extends javax.swing.JFrame {
                 }
                 catch (IdInvalidoException e)
                 {
-                    e.getMessage();
+                    JOptionPane.showMessageDialog(null,e.getMessage()); 
                 }
             }
             else{
@@ -961,7 +940,7 @@ public class VentanaIndex extends javax.swing.JFrame {
                 }
                 catch (IdInvalidoException e)
                 {
-                    e.getMessage();
+                    JOptionPane.showMessageDialog(null,e.getMessage()); 
                 }
             }
             else{
@@ -983,7 +962,7 @@ public class VentanaIndex extends javax.swing.JFrame {
                 }
                 catch (IdInvalidoException e)
                 {
-                    e.getMessage();
+                    JOptionPane.showMessageDialog(null,e.getMessage()); 
                 }
             }
             else{
@@ -1001,9 +980,9 @@ public class VentanaIndex extends javax.swing.JFrame {
     }//GEN-LAST:event_CampoParaApellidoProfesorActionPerformed
 
     private void CampoParaNombreAlumnoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CampoParaNombreAlumnoKeyTyped
-    char TipoDeTecla = evt.getKeyChar();
-    if (Character.isDigit(TipoDeTecla))
-        evt.consume();
+        char TipoDeTecla = evt.getKeyChar();
+        if (Character.isDigit(TipoDeTecla))
+            evt.consume();
     }//GEN-LAST:event_CampoParaNombreAlumnoKeyTyped
 
     private void CampoParaApellidoAlumnoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CampoParaApellidoAlumnoKeyTyped
