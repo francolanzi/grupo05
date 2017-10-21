@@ -29,6 +29,7 @@ public class VProfesorAlta extends javax.swing.JFrame {
     /** Creates new form Profesor */
     public VProfesorAlta() {
         initComponents();
+        this.addWindowListener(WindowSerializador.getInstance());
         vaciaCampos();
     }
     

@@ -24,6 +24,7 @@ public class VAlumnoConsulta extends javax.swing.JFrame {
     /** Creates new form VAlumnoConsulta */
     public VAlumnoConsulta(Alumno alumno) {
         initComponents();
+        this.addWindowListener(WindowSerializador.getInstance());
         TLegajo.setText(alumno.getId());
         TNombre.setText(alumno.getNombre());
         TApellido.setText(alumno.getApellido());

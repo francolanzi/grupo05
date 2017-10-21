@@ -34,6 +34,7 @@ public class VCursadaAlta extends javax.swing.JFrame {
     /** Creates new form Cursadas */
     public VCursadaAlta() {
         initComponents();
+        this.addWindowListener(WindowSerializador.getInstance());
         TIdentificador.setText(Mascaras.genId(Cursada.getSigIdentificacion(), Cursada.prefijo));
         CDia.setModel(new DefaultComboBoxModel<>(new String[] { "Lunes", "Martes","Miercoles","Jueves","Viernes" }));; 
     }
@@ -475,11 +476,6 @@ public class VCursadaAlta extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_CAlumnosActionPerformed
 
-    private void GrabarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_GrabarActionPerformed
-    {//GEN-HEADEREND:event_GrabarActionPerformed
-
-    }//GEN-LAST:event_GrabarActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -581,6 +577,5 @@ public class VCursadaAlta extends javax.swing.JFrame {
     private javax.swing.JButton quitarProfesor;
     private javax.swing.JTable tablaAlumnos;
     private javax.swing.JTable tablaProfesores;
-    // End of variables declaration//GEN-END:variables
 
 }

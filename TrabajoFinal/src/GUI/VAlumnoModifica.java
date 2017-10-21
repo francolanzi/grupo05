@@ -21,6 +21,7 @@ import trabajofinal.IdInvalidoException;
  * @author Usuario
  */
 public class VAlumnoModifica extends javax.swing.JFrame {
+    
     private Controlador controlador;
     DefaultTableModel modelo= new DefaultTableModel();
     String[] col={"Identificador","Nombre"};
@@ -28,6 +29,7 @@ public class VAlumnoModifica extends javax.swing.JFrame {
     /** Creates new form AltaAlumno */
     public VAlumnoModifica(Alumno alumno) {
         initComponents();
+        this.addWindowListener(WindowSerializador.getInstance());
         TLegajo.setText(alumno.getId());
         TNombre.setText(alumno.getNombre());
         TApellido.setText(alumno.getApellido());

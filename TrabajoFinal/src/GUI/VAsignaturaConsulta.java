@@ -20,6 +20,7 @@ public class VAsignaturaConsulta extends javax.swing.JFrame {
     /** Creates new form VAsignaturaConsulta */
     public VAsignaturaConsulta(Asignatura asignatura) {
         initComponents();
+        this.addWindowListener(WindowSerializador.getInstance());
         TLegajo.setText(asignatura.getId());
         TNombre.setText(asignatura.getNombre());
         setTablaCorrelatividades(asignatura);
