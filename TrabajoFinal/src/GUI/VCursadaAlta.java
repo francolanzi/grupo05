@@ -386,12 +386,8 @@ public class VCursadaAlta extends javax.swing.JFrame {
             Controlador.getInstance().addProfesorCursada(profesor.getLegajo(), TIdentificador.getText().toString());
             String []dato= {profesor.getId(),profesor.getNombre(),profesor.getApellido()};
             modelo1.addRow(dato);
-        } catch (IdInvalidoException e) {
-            e.getMessage();
-        } catch (EntidadInvalidaException e) {
-            e.getMessage();
-        } catch (HorarioNoViableException e) {
-            e.getMessage();
+        } catch (IdInvalidoException | EntidadInvalidaException | HorarioNoViableException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }//GEN-LAST:event_AgregarProfesorActionPerformed
 
@@ -474,75 +470,6 @@ public class VCursadaAlta extends javax.swing.JFrame {
             CAlumnos.addItem(alumno.getNombre());
         }
     }//GEN-LAST:event_CAlumnosActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing
-                                                                   .UIManager
-                                                                   .getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing
-                         .UIManager
-                         .setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util
-                .logging
-                .Logger
-                .getLogger(VCursadaAlta.class.getName())
-                .log(java.util
-                         .logging
-                         .Level
-                         .SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util
-                .logging
-                .Logger
-                .getLogger(VCursadaAlta.class.getName())
-                .log(java.util
-                         .logging
-                         .Level
-                         .SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util
-                .logging
-                .Logger
-                .getLogger(VCursadaAlta.class.getName())
-                .log(java.util
-                         .logging
-                         .Level
-                         .SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util
-                .logging
-                .Logger
-                .getLogger(VCursadaAlta.class.getName())
-                .log(java.util
-                         .logging
-                         .Level
-                         .SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt
-            .EventQueue
-            .invokeLater(new Runnable() {
-                public void run() {
-                    new VCursadaAlta().setVisible(true);
-                }
-            });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AgregarAlumno;

@@ -423,12 +423,8 @@ public class VCursadaModifica extends javax.swing.JFrame {
             Controlador.getInstance().addProfesorCursada(profesor.getLegajo(), TIdentificador.getText().toString());
             String []dato= {profesor.getId(),profesor.getNombre(),profesor.getApellido()};
             modelo1.addRow(dato);
-        } catch (IdInvalidoException e) {
-            e.getMessage();
-        } catch (EntidadInvalidaException e) {
-            e.getMessage();
-        } catch (HorarioNoViableException e) {
-            e.getMessage();
+        } catch (IdInvalidoException | EntidadInvalidaException | HorarioNoViableException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }//GEN-LAST:event_AgregarProfesorActionPerformed
 

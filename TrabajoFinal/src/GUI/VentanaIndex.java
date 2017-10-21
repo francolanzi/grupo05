@@ -815,7 +815,7 @@ public class VentanaIndex extends javax.swing.JFrame {
                 } 
                 catch (IdInvalidoException e)
                 {
-                    e.getMessage();
+                    JOptionPane.showMessageDialog(null, e.getMessage());
                 }
             }
             else{
@@ -837,7 +837,7 @@ public class VentanaIndex extends javax.swing.JFrame {
                 }
                 catch (IdInvalidoException e)
                 {
-                    e.getMessage();
+                    JOptionPane.showMessageDialog(null, e.getMessage());
                 }
             }
             else{
@@ -859,7 +859,7 @@ public class VentanaIndex extends javax.swing.JFrame {
                 }
                 catch (IdInvalidoException e)
                 {
-                    e.getMessage();
+                    JOptionPane.showMessageDialog(null, e.getMessage());
                 }
             }
             else{
@@ -881,7 +881,7 @@ public class VentanaIndex extends javax.swing.JFrame {
                 }
                 catch (IdInvalidoException e)
                 {
-                    e.getMessage();
+                    JOptionPane.showMessageDialog(null, e.getMessage());
                 }
             }
             else{

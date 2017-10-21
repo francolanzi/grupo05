@@ -337,7 +337,7 @@ public class VAlumnoModifica extends javax.swing.JFrame {
             String[] datos= {curs.getId(),curs.getAsignatura().toString()};
             modelo.addRow(datos);
         } catch (EntidadInvalidaException | IdInvalidoException e) {
-            e.getMessage();
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }//GEN-LAST:event_AgregarHistoriaActionPerformed
 
@@ -367,7 +367,7 @@ public class VAlumnoModifica extends javax.swing.JFrame {
                                        TNombre.getText().toString(), TCalle.getText().toString(),
                                        Integer.parseInt(TNumero.getText()), TEmail.getText().toString());
         } catch (EmailInvalidoException | IdInvalidoException e) {
-            e.getMessage();
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }//GEN-LAST:event_GrabarActionPerformed
 

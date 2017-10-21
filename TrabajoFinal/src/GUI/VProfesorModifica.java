@@ -350,10 +350,8 @@ public class VProfesorModifica extends javax.swing.JFrame {
             Controlador.getInstance().addCompetencia(TLegajo.getText().toString(), asi.getId());
             String []dato= {asi.getId(),asi.getNombre()};
             modelo.addRow(dato);
-        } catch (IdInvalidoException e) {
-            e.getMessage();
-        } catch (EntidadInvalidaException e) {
-            e.getMessage();
+        } catch (IdInvalidoException | EntidadInvalidaException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }     
     }//GEN-LAST:event_AgregarCompetenciaActionPerformed
 
@@ -395,7 +393,7 @@ public class VProfesorModifica extends javax.swing.JFrame {
                                               .toString());
                 modelo.removeRow(tablaCompetencias.getSelectedRow());
             } catch (IdInvalidoException e) {
-                e.getMessage();
+                JOptionPane.showMessageDialog(null, e.getMessage());
             }
         }
     }//GEN-LAST:event_quitarCompetenciaActionPerformed
@@ -418,7 +416,7 @@ public class VProfesorModifica extends javax.swing.JFrame {
                                        TNombre.getText().toString(), TCalle.getText().toString(),
                                        Integer.parseInt(TNumero.getText()),TNumero.getText().toString(), TEmail.getText().toString());
         } catch (EmailInvalidoException | IdInvalidoException e) {
-            e.getMessage();
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }//GEN-LAST:event_GrabarActionPerformed
 

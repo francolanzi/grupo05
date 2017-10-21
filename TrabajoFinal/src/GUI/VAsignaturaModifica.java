@@ -268,10 +268,8 @@ public class VAsignaturaModifica extends javax.swing.JFrame {
             Controlador.getInstance().addCorrelativa(TLegajo.getText().toString(), asi.getId());
             String []dato= {asi.getId(),asi.getNombre()};
             modelo.addRow(dato);
-        } catch (IdInvalidoException e) {
-            e.getMessage();
-        } catch (EntidadInvalidaException e) {
-            e.getMessage();
+        } catch (IdInvalidoException | EntidadInvalidaException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }//GEN-LAST:event_AgregarCorrelativaActionPerformed
 
