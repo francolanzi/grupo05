@@ -1,6 +1,7 @@
 
 package GUI;
 
+import java.util.Iterator;
 import java.util.Vector;
 
 import javax.swing.JOptionPane;
@@ -8,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import trabajofinal.Alumno;
+import trabajofinal.Asignatura;
 import trabajofinal.Controlador;
 
 /**
@@ -15,15 +17,32 @@ import trabajofinal.Controlador;
  * @author Usuario
  */
 public class VAlumnoConsulta extends javax.swing.JFrame {
-    private Controlador controlador;
-    DefaultTableModel historia= new DefaultTableModel();
+    DefaultTableModel modelo= new DefaultTableModel();
+    String[] col={"Identificador","Nombre"};
     
 
     /** Creates new form VAlumnoConsulta */
     public VAlumnoConsulta(Alumno alumno) {
         initComponents();
+        TLegajo.setText(alumno.getId());
+        TNombre.setText(alumno.getNombre());
+        TApellido.setText(alumno.getApellido());
+        TCalle.setText(alumno.getDomicilio().getCalle());
+        TNumero.setText(Integer.toString(alumno.getDomicilio().getNumero()));
+        TEmail.setText(alumno.getEmail());
+        setTablaHistoria(alumno); 
     }
-
+    
+        private void setTablaHistoria(Alumno alumno){
+            Iterator it=alumno.getHistoria().getIterator();
+            while (it.hasNext()){
+                Asignatura asi= (Asignatura)it.next();
+                String[] datos= {asi.getId(),asi.getNombre()};
+                modelo.addRow(datos);
+            }
+        }
+    
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -148,7 +167,7 @@ public class VAlumnoConsulta extends javax.swing.JFrame {
         Vector fila= new Vector();
 
         filas.add(fila);
-        TablaHistoria.setModel(new DefaultTableModel());
+        TablaHistoria.setModel(modelo);
         THistoria.setViewportView(TablaHistoria);
 
         Cancelar.setBackground(new java.awt.Color(0, 153, 153));

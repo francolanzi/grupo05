@@ -1,17 +1,37 @@
 
 package GUI;
 
+import java.util.Iterator;
+
+import javax.swing.table.DefaultTableModel;
+
+import trabajofinal.Alumno;
 import trabajofinal.Asignatura;
+import trabajofinal.Controlador;
 
 /**
  *
  * @author Usuario
  */
 public class VAsignaturaConsulta extends javax.swing.JFrame {
+    DefaultTableModel modelo= new DefaultTableModel();
+    String[] col={"Identificador","Nombre"};
 
     /** Creates new form VAsignaturaConsulta */
     public VAsignaturaConsulta(Asignatura asignatura) {
         initComponents();
+        TLegajo.setText(asignatura.getId());
+        TNombre.setText(asignatura.getNombre());
+        setTablaCorrelatividades(asignatura);
+    }
+    
+    private void setTablaCorrelatividades(Asignatura asignatura){
+        Iterator it=asignatura.getCorrelativasIterator();
+        while (it.hasNext()){
+            Asignatura asi= (Asignatura)it.next();
+            String[] datos= {asi.getId(),asi.getNombre()};
+            modelo.addRow(datos);
+        }
     }
 
     /** This method is called from within the constructor to
@@ -33,7 +53,7 @@ public class VAsignaturaConsulta extends javax.swing.JFrame {
         TLegajo = new javax.swing.JTextField();
         TNombre = new javax.swing.JTextField();
         TCorrelatividades = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TablaCorrelatividades = new javax.swing.JTable();
         Cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -98,7 +118,7 @@ public class VAsignaturaConsulta extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TablaCorrelatividades.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -109,7 +129,7 @@ public class VAsignaturaConsulta extends javax.swing.JFrame {
                 "Identificador", "Nombre"
             }
         ));
-        TCorrelatividades.setViewportView(jTable1);
+        TCorrelatividades.setViewportView(TablaCorrelatividades);
 
         Cancelar.setBackground(new java.awt.Color(0, 153, 153));
         Cancelar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -191,9 +211,9 @@ public class VAsignaturaConsulta extends javax.swing.JFrame {
     private javax.swing.JScrollPane TCorrelatividades;
     private javax.swing.JTextField TLegajo;
     private javax.swing.JTextField TNombre;
+    private javax.swing.JTable TablaCorrelatividades;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
 }
