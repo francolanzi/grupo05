@@ -41,7 +41,7 @@ public class VAsignaturaModifica extends javax.swing.JFrame {
         
         
     private void setCombo(Asignatura asignatura){
-        Iterator it =controlador.getAsignaturas().values().iterator();
+        Iterator it =Controlador.getInstance().getAsignaturas().values().iterator();
         while (it.hasNext()){
             Asignatura asi= (Asignatura)it.next();
             Asignaturas.addItem(asi.getNombre());
