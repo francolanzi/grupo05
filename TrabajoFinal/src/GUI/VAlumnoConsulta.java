@@ -11,16 +11,14 @@ import javax.swing.table.DefaultTableModel;
 import trabajofinal.Alumno;
 import trabajofinal.Asignatura;
 import trabajofinal.Controlador;
+import trabajofinal.Cursada;
+import trabajofinal.Profesor;
 
 /**
  *
  * @author Usuario
  */
 public class VAlumnoConsulta extends javax.swing.JFrame {
-    
-    DefaultTableModel modelo= new DefaultTableModel();
-    String[] col={"Identificador","Nombre"};
-    
 
     /** Creates new form VAlumnoConsulta */
     public VAlumnoConsulta(Alumno alumno) {
@@ -35,14 +33,16 @@ public class VAlumnoConsulta extends javax.swing.JFrame {
         setTablaHistoria(alumno); 
     }
     
-        private void setTablaHistoria(Alumno alumno){
-            Iterator it=alumno.getHistoria().getIterator();
-            while (it.hasNext()){
-                Asignatura asi= (Asignatura)it.next();
-                String[] datos= {asi.getId(),asi.getNombre()};
-                modelo.addRow(datos);
-            }
+    private void setTablaHistoria(Alumno alumno)
+    {
+        DefaultTableModel model = (DefaultTableModel) tablaHistoria.getModel();
+        Iterator<Asignatura> historia = alumno.getHistoriaIterator();
+        while (historia.hasNext())
+        {
+            Asignatura asignatura = historia.next();
+            model.addRow(new Object[] {asignatura.getId(), asignatura.getNombre()});
         }
+    }
     
     
     /** This method is called from within the constructor to
@@ -73,7 +73,7 @@ public class VAlumnoConsulta extends javax.swing.JFrame {
         Numero = new javax.swing.JLabel();
         TNumero = new javax.swing.JTextField();
         THistoria = new javax.swing.JScrollPane();
-        TablaHistoria = new javax.swing.JTable();
+        tablaHistoria = new javax.swing.JTable();
         Cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -174,8 +174,42 @@ public class VAlumnoConsulta extends javax.swing.JFrame {
         Vector fila= new Vector();
 
         filas.add(fila);
-        TablaHistoria.setModel(modelo);
-        THistoria.setViewportView(TablaHistoria);
+        tablaHistoria.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][]
+            {
+
+            },
+            new String []
+            {
+                "Identificacdor", "Nombre"
+            }
+        )
+        {
+            Class[] types = new Class []
+            {
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean []
+            {
+                true, false
+            };
+
+            public Class getColumnClass(int columnIndex)
+            {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
+                return canEdit [columnIndex];
+            }
+        });
+        THistoria.setViewportView(tablaHistoria);
+        if (tablaHistoria.getColumnModel().getColumnCount() > 0)
+        {
+            tablaHistoria.getColumnModel().getColumn(0).setHeaderValue("Identificacdor");
+            tablaHistoria.getColumnModel().getColumn(1).setHeaderValue("Nombre");
+        }
 
         Cancelar.setBackground(new java.awt.Color(0, 153, 153));
         Cancelar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -291,11 +325,11 @@ public class VAlumnoConsulta extends javax.swing.JFrame {
     private javax.swing.JTextField TLegajo;
     private javax.swing.JTextField TNombre;
     private javax.swing.JTextField TNumero;
-    private javax.swing.JTable TablaHistoria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTable tablaHistoria;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -14,29 +14,41 @@ import trabajofinal.Controlador;
 import trabajofinal.Cursada;
 import trabajofinal.EmailInvalidoException;
 import trabajofinal.EntidadInvalidaException;
+import trabajofinal.HorarioNoViableException;
 import trabajofinal.IdInvalidoException;
 import trabajofinal.Mascaras;
+import trabajofinal.Profesor;
 
 /**
  *
  * @author Usuario
  */
 public class VAsignaturaAlta extends javax.swing.JFrame {
-    
-    DefaultTableModel modelo= new DefaultTableModel();
-    String[] col={"Identificador","Nombre"};
 
     /** Creates new form Asignatura */
     public VAsignaturaAlta() {
         initComponents();
         this.addWindowListener(WindowSerializador.getInstance());
-        TIdentificador.setText(Mascaras.genId(Asignatura.getSigIdentificacion(), Asignatura.prefijo));
+        vaciaCampos();
+        cargaCorrelativas();
     }
     
     private void vaciaCampos()
     {
         TIdentificador.setText(Mascaras.genId(Asignatura.getSigIdentificacion(), Asignatura.prefijo));
         TNombre.setText("");
+        ((DefaultTableModel) tablaCorrelativas.getModel()).setRowCount(0);
+    }
+    
+    private void cargaCorrelativas()
+    {
+        Iterator<Asignatura> asignaturas = Controlador.getInstance().getAsignaturasIterator();
+        while (asignaturas.hasNext())
+        {
+            Asignatura asignatura = asignaturas.next();
+            ComboItem item = new ComboItem(asignatura.getId(), asignatura.getNombre());
+            CCorrelativa.addItem(item);
+        }
     }
 
     /** This method is called from within the constructor to
@@ -59,11 +71,12 @@ public class VAsignaturaAlta extends javax.swing.JFrame {
         TIdentificador = new javax.swing.JTextField();
         TNombre = new javax.swing.JTextField();
         TCorrelatividades = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        Asignaturas = new javax.swing.JComboBox<>();
+        tablaCorrelativas = new javax.swing.JTable();
+        CCorrelativa = new javax.swing.JComboBox<>();
         AgregarCorrelativa = new javax.swing.JButton();
         Grabar = new javax.swing.JButton();
         Cancelar = new javax.swing.JButton();
+        quitarCorrelativa = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Asignatura - Nuevo");
@@ -120,27 +133,49 @@ public class VAsignaturaAlta extends javax.swing.JFrame {
         TIdentificador.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         TIdentificador.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaCorrelativas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String []
             {
                 "Identificador", "Nombre"
             }
-        ));
-        TCorrelatividades.setViewportView(jTable1);
+        )
+        {
+            Class[] types = new Class []
+            {
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean []
+            {
+                false, false
+            };
 
-        Asignaturas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        Asignaturas.addActionListener(new java.awt.event.ActionListener()
+            public Class getColumnClass(int columnIndex)
+            {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
+                return canEdit [columnIndex];
+            }
+        });
+        TCorrelatividades.setViewportView(tablaCorrelativas);
+        if (tablaCorrelativas.getColumnModel().getColumnCount() > 0)
+        {
+            tablaCorrelativas.getColumnModel().getColumn(0).setHeaderValue("Identificador");
+            tablaCorrelativas.getColumnModel().getColumn(1).setHeaderValue("Nombre");
+        }
+
+        CCorrelativa.setModel(new javax.swing.DefaultComboBoxModel<>(new ComboItem[] {}));
+        CCorrelativa.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                AsignaturasActionPerformed(evt);
+                CCorrelativaActionPerformed(evt);
             }
         });
 
@@ -176,6 +211,15 @@ public class VAsignaturaAlta extends javax.swing.JFrame {
             }
         });
 
+        quitarCorrelativa.setText("Quitar");
+        quitarCorrelativa.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                quitarCorrelativaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout GrillaLayout = new javax.swing.GroupLayout(Grilla);
         Grilla.setLayout(GrillaLayout);
         GrillaLayout.setHorizontalGroup(
@@ -200,10 +244,12 @@ public class VAsignaturaAlta extends javax.swing.JFrame {
                                 .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(TNombre, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(TIdentificador, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Asignaturas, javax.swing.GroupLayout.Alignment.LEADING, 0, 125, Short.MAX_VALUE))
+                                    .addComponent(CCorrelativa, javax.swing.GroupLayout.Alignment.LEADING, 0, 125, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
                                 .addComponent(AgregarCorrelativa)))))
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(quitarCorrelativa)
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         GrillaLayout.setVerticalGroup(
             GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,15 +265,17 @@ public class VAsignaturaAlta extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AgregarCorrelativa)
-                    .addComponent(Asignaturas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CCorrelativa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Correlatividades))
-                .addGap(18, 18, 18)
-                .addComponent(TCorrelatividades, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TCorrelatividades, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(quitarCorrelativa))
                 .addGap(52, 52, 52)
                 .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Grabar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         getContentPane().add(Grilla, java.awt.BorderLayout.CENTER);
@@ -235,23 +283,24 @@ public class VAsignaturaAlta extends javax.swing.JFrame {
         pack();
     }//GEN-END:initComponents
 
-    private void AsignaturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsignaturasActionPerformed
-        Iterator it =Controlador.getInstance().getAsignaturas().values().iterator();
-        while (it.hasNext()){
-            Asignatura asi= (Asignatura)it.next();
-            Asignaturas.addItem(asi.getNombre());
-        }
-    }//GEN-LAST:event_AsignaturasActionPerformed
+    private void CCorrelativaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CCorrelativaActionPerformed
+    
+    }//GEN-LAST:event_CCorrelativaActionPerformed
 
     private void AgregarCorrelativaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarCorrelativaActionPerformed
-        Asignatura asi;
-        try {
-            asi = (Asignatura) Controlador.getInstance().consultaAsignatura(Asignaturas.getSelectedItem().toString());
-            Controlador.getInstance().addCorrelativa(TIdentificador.getText().toString(), asi.getId());
-            String []dato= {asi.getId(),asi.getNombre()};
-            modelo.addRow(dato);
-        } catch (IdInvalidoException | EntidadInvalidaException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+        if (CCorrelativa.getItemCount() > 0)
+        {
+            DefaultTableModel model = (DefaultTableModel) tablaCorrelativas.getModel();
+            ComboItem item = (ComboItem) CCorrelativa.getSelectedItem();
+            try
+            {
+                Asignatura correlativa = Controlador.getInstance().consultaAsignatura(item.getId());
+                model.addRow(new Object[] { correlativa.getId(), correlativa.getNombre() });
+            }
+            catch (IdInvalidoException e)
+            {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
         }
     }//GEN-LAST:event_AgregarCorrelativaActionPerformed
 
@@ -267,15 +316,42 @@ public class VAsignaturaAlta extends javax.swing.JFrame {
         else
         {
             Controlador.getInstance().altaAsignatura(TNombre.getText());
+            addCorrelativas();
             vaciaCampos();
+            cargaCorrelativas();
             JOptionPane.showMessageDialog(null, "La asignatura ha sido dada de alta exitosamente");
         }
     }//GEN-LAST:event_GrabarActionPerformed
+    
+    private void addCorrelativas()
+    {
+        DefaultTableModel model = (DefaultTableModel) tablaCorrelativas.getModel();
+        for (int i = 0; i < model.getRowCount(); i++)
+        {
+            try
+            {
+                Controlador.getInstance().addCorrelativa(TIdentificador.getText(), (String) model.getValueAt(i, 0));
+            }
+            catch (EntidadInvalidaException | IdInvalidoException e)
+            {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
+        }
+    }
+    
+    private void quitarCorrelativaActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_quitarCorrelativaActionPerformed
+    {//GEN-HEADEREND:event_quitarCorrelativaActionPerformed
+        if(tablaCorrelativas.getSelectedRows().length ==1)
+        {
+            DefaultTableModel model = (DefaultTableModel) tablaCorrelativas.getModel();
+            model.removeRow(tablaCorrelativas.getSelectedRow());
+        }
+    }//GEN-LAST:event_quitarCorrelativaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AgregarCorrelativa;
-    private javax.swing.JComboBox<String> Asignaturas;
+    private javax.swing.JComboBox<ComboItem> CCorrelativa;
     private javax.swing.JPanel Cabecera;
     private javax.swing.JButton Cancelar;
     private javax.swing.JLabel Correlatividades;
@@ -288,8 +364,9 @@ public class VAsignaturaAlta extends javax.swing.JFrame {
     private javax.swing.JTextField TNombre;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lAsignatura;
+    private javax.swing.JButton quitarCorrelativa;
+    private javax.swing.JTable tablaCorrelativas;
     // End of variables declaration//GEN-END:variables
 
 }

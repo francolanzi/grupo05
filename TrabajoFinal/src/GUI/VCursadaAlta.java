@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import trabajofinal.Alumno;
+import trabajofinal.Asignatura;
 import trabajofinal.Controlador;
 import trabajofinal.Cursada;
 import trabajofinal.EntidadInvalidaException;
@@ -24,11 +25,6 @@ import trabajofinal.Profesor;
  */
 public class VCursadaAlta extends javax.swing.JFrame
 {
-    
-    DefaultTableModel modelo1= new DefaultTableModel();
-    String[] col1={"Identificador","Nombre","Apellido"};
-    DefaultTableModel modelo2= new DefaultTableModel();
-    String[] col2={"Identificador","Nombre","Apellido"};
 
     /** Creates new form VCursadaAlta2 */
     public VCursadaAlta()
@@ -36,16 +32,52 @@ public class VCursadaAlta extends javax.swing.JFrame
         initComponents();
         this.addWindowListener(WindowSerializador.getInstance());
         vaciaCampos();
-        CDia.setModel(new DefaultComboBoxModel<>(new String[] { "Lunes", "Martes","Miercoles","Jueves","Viernes" }));
+        cargaAlumnos();
+        cargaProfesores();
+        cargaAsignaturas();
     }
     
     private void vaciaCampos()
     {
         TIdentificador.setText(Mascaras.genId(Cursada.getSigIdentificacion(), Cursada.prefijo));
         TPeriodo.setText("");
-        TAsignatura.setText("");
         THoraInicio.setText("");
         THoraFin.setText("");
+        ((DefaultTableModel) tablaProfesores.getModel()).setRowCount(0);
+        ((DefaultTableModel) tablaAlumnos.getModel()).setRowCount(0);
+    }
+    
+    private void cargaProfesores()
+    {
+        Iterator<Profesor> profesores =Controlador.getInstance().getProfesoresIterator();
+        while (profesores.hasNext())
+        {
+            Profesor profesor = profesores.next();
+            ComboItem item = new ComboItem(profesor.getId(), profesor.getNombre() + " " + profesor.getApellido());
+            CProfesores.addItem(item);
+        }
+    }
+    
+    private void cargaAlumnos()
+    {
+        Iterator<Alumno> alumnos =Controlador.getInstance().getAlumnosIterator();
+        while (alumnos.hasNext())
+        {
+            Alumno alumno = alumnos.next();
+            ComboItem item = new ComboItem(alumno.getId(), alumno.getNombre() + " " + alumno.getApellido());
+            CAlumnos.addItem(item);
+        }
+    }
+    
+    private void cargaAsignaturas()
+    {
+        Iterator<Asignatura> asignaturas = Controlador.getInstance().getAsignaturasIterator();
+        while (asignaturas.hasNext())
+        {
+            Asignatura asignatura = asignaturas.next();
+            ComboItem item = new ComboItem(asignatura.getId(), asignatura.getNombre());
+            CAsignatura.addItem(item);
+        }
     }
 
     /** This method is called from within the constructor to
@@ -68,7 +100,6 @@ public class VCursadaAlta extends javax.swing.JFrame
         Dia = new javax.swing.JLabel();
         Profesores = new javax.swing.JLabel();
         TIdentificador = new javax.swing.JTextField();
-        TAsignatura = new javax.swing.JTextField();
         TPeriodo = new javax.swing.JTextField();
         HoraFin = new javax.swing.JLabel();
         THoraFin = new javax.swing.JTextField();
@@ -88,6 +119,7 @@ public class VCursadaAlta extends javax.swing.JFrame
         tablaAlumnos = new javax.swing.JTable();
         quitarProfesor = new javax.swing.JButton();
         quitarAlumno = new javax.swing.JButton();
+        CAsignatura = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -158,10 +190,45 @@ public class VCursadaAlta extends javax.swing.JFrame
             }
         });
 
-        tablaProfesores.setModel(modelo1);
-        TProfesores.setViewportView(tablaProfesores);
+        tablaProfesores.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][]
+            {
 
-        CProfesores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+            },
+            new String []
+            {
+                "Legajo", "Nombre", "Apellido"
+            }
+        )
+        {
+            Class[] types = new Class []
+            {
+                java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean []
+            {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex)
+            {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
+                return canEdit [columnIndex];
+            }
+        });
+        TProfesores.setViewportView(tablaProfesores);
+        if (tablaProfesores.getColumnModel().getColumnCount() > 0)
+        {
+            tablaProfesores.getColumnModel().getColumn(0).setHeaderValue("Legajo");
+            tablaProfesores.getColumnModel().getColumn(1).setHeaderValue("Nombre");
+            tablaProfesores.getColumnModel().getColumn(2).setHeaderValue("Apellido");
+        }
+
+        CProfesores.setModel(new javax.swing.DefaultComboBoxModel<>(new ComboItem[] {}));
         CProfesores.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -205,7 +272,7 @@ public class VCursadaAlta extends javax.swing.JFrame
             }
         });
 
-        CDia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        CDia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo" }));
         CDia.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -217,7 +284,7 @@ public class VCursadaAlta extends javax.swing.JFrame
         Alumnos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Alumnos.setText("Alumnos");
 
-        CAlumnos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        CAlumnos.setModel(new javax.swing.DefaultComboBoxModel<>(new ComboItem[] {}));
         CAlumnos.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -235,8 +302,43 @@ public class VCursadaAlta extends javax.swing.JFrame
             }
         });
 
-        tablaAlumnos.setModel(modelo2);
+        tablaAlumnos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][]
+            {
+
+            },
+            new String []
+            {
+                "Legajo", "Nombre", "Apellido"
+            }
+        )
+        {
+            Class[] types = new Class []
+            {
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean []
+            {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex)
+            {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
+                return canEdit [columnIndex];
+            }
+        });
         TAlumnos.setViewportView(tablaAlumnos);
+        if (tablaAlumnos.getColumnModel().getColumnCount() > 0)
+        {
+            tablaAlumnos.getColumnModel().getColumn(0).setHeaderValue("Legajo");
+            tablaAlumnos.getColumnModel().getColumn(1).setHeaderValue("Nombre");
+            tablaAlumnos.getColumnModel().getColumn(2).setHeaderValue("Apellido");
+        }
 
         quitarProfesor.setText("Quitar");
         quitarProfesor.addActionListener(new java.awt.event.ActionListener()
@@ -255,6 +357,8 @@ public class VCursadaAlta extends javax.swing.JFrame
                 quitarAlumnoActionPerformed(evt);
             }
         });
+
+        CAsignatura.setModel(new javax.swing.DefaultComboBoxModel<>(new ComboItem[] {}));
 
         javax.swing.GroupLayout GrillaLayout = new javax.swing.GroupLayout(Grilla);
         Grilla.setLayout(GrillaLayout);
@@ -304,7 +408,7 @@ public class VCursadaAlta extends javax.swing.JFrame
                                         .addGroup(GrillaLayout.createSequentialGroup()
                                             .addComponent(NAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(TAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(CAsignatura, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addGroup(GrillaLayout.createSequentialGroup()
                                             .addComponent(HoraFin)
                                             .addGap(43, 43, 43)
@@ -326,7 +430,7 @@ public class VCursadaAlta extends javax.swing.JFrame
                     .addComponent(Identificador, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(NAsignatura)
-                    .addComponent(TAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Periodo)
@@ -339,7 +443,7 @@ public class VCursadaAlta extends javax.swing.JFrame
                     .addComponent(THoraInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(HoraFin)
                     .addComponent(THoraFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
+                .addGap(18, 18, 18)
                 .addGroup(GrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Profesores)
                     .addComponent(CProfesores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -382,7 +486,7 @@ public class VCursadaAlta extends javax.swing.JFrame
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 653, Short.MAX_VALUE)
+            .addGap(0, 663, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -402,57 +506,91 @@ public class VCursadaAlta extends javax.swing.JFrame
 
     private void CProfesoresActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_CProfesoresActionPerformed
     {//GEN-HEADEREND:event_CProfesoresActionPerformed
-        Iterator it =Controlador.getInstance().getProfesores().values().iterator();
-        while (it.hasNext())
-        {
-            Profesor profesor= (Profesor)it.next();
-            CProfesores.addItem(profesor.getNombre());
-        }
+        // TODO add your handling code here:
     }//GEN-LAST:event_CProfesoresActionPerformed
 
     private void AgregarProfesorActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_AgregarProfesorActionPerformed
     {//GEN-HEADEREND:event_AgregarProfesorActionPerformed
-        Profesor profesor;
-        try
+        if (CProfesores.getItemCount() > 0)
         {
-            profesor = (Profesor) Controlador.getInstance().consultaProfesor(CProfesores.getSelectedItem().toString());
-            Controlador.getInstance().addProfesorCursada(profesor.getLegajo(), TIdentificador.getText().toString());
-            String []dato= {profesor.getId(),profesor.getNombre(),profesor.getApellido()};
-            modelo1.addRow(dato);
-        } catch (IdInvalidoException | EntidadInvalidaException | HorarioNoViableException e)
-        {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            DefaultTableModel model = (DefaultTableModel) tablaProfesores.getModel();
+            ComboItem item = (ComboItem) CProfesores.getSelectedItem();
+            try
+            {
+                Profesor profesor = Controlador.getInstance().consultaProfesor(item.getId());
+                model.addRow(new Object[] { profesor.getId(), profesor.getNombre(), profesor.getApellido() });
+            }
+            catch (IdInvalidoException e)
+            {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
         }
     }//GEN-LAST:event_AgregarProfesorActionPerformed
 
     private void GrabarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_GrabarActionPerformed
     {//GEN-HEADEREND:event_GrabarActionPerformed
-        if (TAsignatura.getText().equals(""))
-        JOptionPane.showMessageDialog(null,"Ingrese Nomnbre");
+        if (CAsignatura.getItemCount() == 0)
+            JOptionPane.showMessageDialog(null,"Ingrese Asignatura");
         else if (TPeriodo.getText().equals(""))
-        JOptionPane.showMessageDialog(null,"Ingrese Periodo");
+            JOptionPane.showMessageDialog(null,"Ingrese Periodo");
         else if (CDia.getSelectedItem().equals(""))
-        JOptionPane.showMessageDialog(null,"Ingrese Dia");
+            JOptionPane.showMessageDialog(null,"Ingrese Dia");
         else if (THoraInicio.getText().equals(""))
-        JOptionPane.showMessageDialog(null,"Ingrese Hora Inicio");
+            JOptionPane.showMessageDialog(null,"Ingrese Hora Inicio");
         else if (THoraFin.getText().equals(""))
-        JOptionPane.showMessageDialog(null,"Ingrese Hora Fin");
+            JOptionPane.showMessageDialog(null,"Ingrese Hora Fin");
         else
         {
             try
             {
-                Controlador.getInstance().altaCursada(TAsignatura.getText().toString(),
-                    TPeriodo.getText().toString(), CDia.getSelectedItem().toString(),
-                    THoraInicio.getText().toString(), THoraFin.getText().toString());
+                ComboItem item = (ComboItem) CAsignatura.getSelectedItem();
+                Controlador.getInstance().altaCursada(item.getId(),
+                    TPeriodo.getText(), (String) CDia.getSelectedItem(),
+                    THoraInicio.getText(), THoraFin.getText());
+                addProfesores();
+                addAlumnos();
                 vaciaCampos();
                 JOptionPane.showMessageDialog(null, "La cursada ha sido dada de alta exitosamente");
-            } catch (HoraInvalidaException | IdInvalidoException | PeriodoInvalidoException e)
+            }
+            catch (HoraInvalidaException | IdInvalidoException | PeriodoInvalidoException e)
             {
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }
         }
     }//GEN-LAST:event_GrabarActionPerformed
-
+    
+    private void addProfesores()
+    {
+        DefaultTableModel model = (DefaultTableModel) tablaProfesores.getModel();
+        for (int i = 0; i < model.getRowCount(); i++)
+        {
+            try
+            {
+                Controlador.getInstance().addProfesorCursada((String) model.getValueAt(i, 0), TIdentificador.getText());
+            }
+            catch (EntidadInvalidaException | HorarioNoViableException | IdInvalidoException e)
+            {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
+        }
+    }
+    
+    private void addAlumnos()
+    {
+        DefaultTableModel model = (DefaultTableModel) tablaAlumnos.getModel();
+        for (int i = 0; i < model.getRowCount(); i++)
+        {
+            try
+            {
+                Controlador.getInstance().addAlumnoCursada((String) model.getValueAt(i, 0), TIdentificador.getText());
+            }
+            catch (EntidadInvalidaException | HorarioNoViableException | IdInvalidoException e)
+            {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
+        }
+    }
+    
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_CancelarActionPerformed
     {//GEN-HEADEREND:event_CancelarActionPerformed
         this.dispose();
@@ -467,26 +605,24 @@ public class VCursadaAlta extends javax.swing.JFrame
 
     private void CAlumnosActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_CAlumnosActionPerformed
     {//GEN-HEADEREND:event_CAlumnosActionPerformed
-        Iterator it =Controlador.getInstance().getAlumnos().values().iterator();
-        while (it.hasNext())
-        {
-            Alumno alumno= (Alumno)it.next();
-            CAlumnos.addItem(alumno.getNombre());
-        }
+        // TODO add your handling code here:
     }//GEN-LAST:event_CAlumnosActionPerformed
 
     private void AgregarAlumnoActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_AgregarAlumnoActionPerformed
     {//GEN-HEADEREND:event_AgregarAlumnoActionPerformed
-        Alumno alumno;
-        try
+        if (CAlumnos.getItemCount() > 0)
         {
-            alumno = (Alumno) Controlador.getInstance().consultaAlumno(CAlumnos.getSelectedItem().toString());
-            Controlador.getInstance().addAlumnoCursada(alumno.getLegajo(), TIdentificador.getText().toString());
-            String []dato= {alumno.getId(),alumno.getNombre(),alumno.getApellido()};
-            modelo2.addRow(dato);
-        } catch (IdInvalidoException | EntidadInvalidaException | HorarioNoViableException e)
-        {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            DefaultTableModel model = (DefaultTableModel) tablaAlumnos.getModel();
+            ComboItem item = (ComboItem) CAlumnos.getSelectedItem();
+            try
+            {
+                Alumno alumno = Controlador.getInstance().consultaAlumno(item.getId());
+                model.addRow(new Object[] { alumno.getId(), alumno.getNombre(), alumno.getApellido() });
+            }
+            catch (IdInvalidoException e)
+            {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
         }
     }//GEN-LAST:event_AgregarAlumnoActionPerformed
 
@@ -494,16 +630,8 @@ public class VCursadaAlta extends javax.swing.JFrame
     {//GEN-HEADEREND:event_quitarProfesorActionPerformed
         if(tablaProfesores.getSelectedRows().length ==1)
         {
-            try
-            {
-                Controlador.getInstance().removeProfesorCursada(TIdentificador.getText(),
-                    tablaProfesores.getValueAt(tablaProfesores.getSelectedRow(), 0)
-                    .toString());
-                modelo1.removeRow(tablaProfesores.getSelectedRow());
-            } catch (IdInvalidoException e)
-            {
-                JOptionPane.showMessageDialog(null, e.getMessage());
-            }
+            DefaultTableModel model = (DefaultTableModel) tablaProfesores.getModel();
+            model.removeRow(tablaProfesores.getSelectedRow());
         }
     }//GEN-LAST:event_quitarProfesorActionPerformed
 
@@ -511,16 +639,8 @@ public class VCursadaAlta extends javax.swing.JFrame
     {//GEN-HEADEREND:event_quitarAlumnoActionPerformed
         if(tablaAlumnos.getSelectedRows().length ==1)
         {
-            try
-            {
-                Controlador.getInstance().removeAlumnoCursada(TIdentificador.getText(),
-                    tablaAlumnos.getValueAt(tablaAlumnos.getSelectedRow(), 0)
-                    .toString());
-                modelo2.removeRow(tablaAlumnos.getSelectedRow());
-            } catch (IdInvalidoException e)
-            {
-                JOptionPane.showMessageDialog(null, e.getMessage());
-            }
+            DefaultTableModel model = (DefaultTableModel) tablaAlumnos.getModel();
+            model.removeRow(tablaAlumnos.getSelectedRow());
         }
     }//GEN-LAST:event_quitarAlumnoActionPerformed
 
@@ -611,9 +731,10 @@ public class VCursadaAlta extends javax.swing.JFrame
     private javax.swing.JButton AgregarAlumno;
     private javax.swing.JButton AgregarProfesor;
     private javax.swing.JLabel Alumnos;
-    private javax.swing.JComboBox<String> CAlumnos;
+    private javax.swing.JComboBox<ComboItem> CAlumnos;
+    private javax.swing.JComboBox<ComboItem> CAsignatura;
     private javax.swing.JComboBox<String> CDia;
-    private javax.swing.JComboBox<String> CProfesores;
+    private javax.swing.JComboBox<ComboItem> CProfesores;
     private javax.swing.JPanel Cabecera;
     private javax.swing.JButton Cancelar;
     private javax.swing.JLabel Dia;
@@ -626,7 +747,6 @@ public class VCursadaAlta extends javax.swing.JFrame
     private javax.swing.JLabel Periodo;
     private javax.swing.JLabel Profesores;
     private javax.swing.JScrollPane TAlumnos;
-    private javax.swing.JTextField TAsignatura;
     private javax.swing.JTextField THoraFin;
     private javax.swing.JTextField THoraInicio;
     private javax.swing.JTextField TIdentificador;

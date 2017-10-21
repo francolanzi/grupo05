@@ -115,8 +115,18 @@ public class Cursada implements Entidad, Observer
         }
         catch (IdInvalidoException e)
         {
-            throw new IdInvalidoException(e.getId(), "El alumno ingresado no existe");
+            throw new IdInvalidoException(e.getId(), "El alumno ingresado no esta en la cursada");
         }
+    }
+    
+    public Iterator<Profesor> getProfesoresIterator()
+    {
+        return this.profesores.getIterator();
+    }
+    
+    public Iterator<Alumno> getAlumnosIterator()
+    {
+        return this.alumnos.getIterator();
     }
 
     @Override
