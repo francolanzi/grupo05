@@ -14,7 +14,7 @@ public class Controlador extends Observable
     private TreeMap<String, Asignatura> asignaturas;
     private TreeMap<String, Cursada> cursadas;
     
-    public Controlador()
+    private Controlador()
     {
         this.alumnos = new TreeMap<String, Alumno>();
         this.profesores = new TreeMap<String, Profesor>();
@@ -349,15 +349,8 @@ public class Controlador extends Observable
         return this.cursadas.values().iterator();
     }
 
-    public static void setControlador(Controlador controlador)
-    {
-        Controlador.controlador = controlador;
-    }
-    
-    public static Controlador getControlador()
-    {
-        return Controlador.controlador;
-    }
+    //Getters y setters
+    //Necesarios para serializar en XML
 
     public void setAlumnos(TreeMap<String, Alumno> alumnos)
     {
