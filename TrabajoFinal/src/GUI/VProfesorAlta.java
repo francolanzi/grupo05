@@ -33,7 +33,7 @@ public class VProfesorAlta extends javax.swing.JFrame {
     
     private void vaciaCampos()
     {
-        TLegajo.setText(Mascaras.genId(Profesor.getSigLegajo(), Profesor.prefijo));
+        TLegajo.setText(Mascaras.genId(Profesor.getSigLegajo(), Profesor.PREFIJO));
         TNombre.setText("");
         TApellido.setText("");
         TCalle.setText("");
@@ -176,7 +176,7 @@ public class VProfesorAlta extends javax.swing.JFrame {
         });
 
         Numero.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Numero.setText("Número");
+        Numero.setText("Nï¿½mero");
 
         TNumero.addActionListener(new java.awt.event.ActionListener()
         {
@@ -244,7 +244,7 @@ public class VProfesorAlta extends javax.swing.JFrame {
         });
 
         Telefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Telefono.setText("Teléfono");
+        Telefono.setText("Telï¿½fono");
 
         TTelefono.addKeyListener(new java.awt.event.KeyAdapter()
         {

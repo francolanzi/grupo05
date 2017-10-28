@@ -24,7 +24,7 @@ public class VAlumnoAlta extends javax.swing.JFrame {
     
     private void vaciaCampos()
     {
-        TLegajo.setText(Mascaras.genId(Alumno.getSigLegajo(), Alumno.prefijo));
+        TLegajo.setText(Mascaras.genId(Alumno.getSigLegajo(), Alumno.PREFIJO));
         TNombre.setText("");
         TApellido.setText("");
         TCalle.setText("");
@@ -158,7 +158,7 @@ public class VAlumnoAlta extends javax.swing.JFrame {
         });
 
         Numero.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Numero.setText("Número");
+        Numero.setText("Nï¿½mero");
 
         TNumero.addActionListener(new java.awt.event.ActionListener()
         {

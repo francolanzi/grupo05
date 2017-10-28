@@ -40,7 +40,7 @@ public class VCursadaAlta extends javax.swing.JFrame
     
     private void vaciaCampos()
     {
-        TIdentificador.setText(Mascaras.genId(Cursada.getSigIdentificacion(), Cursada.prefijo));
+        TIdentificador.setText(Mascaras.genId(Cursada.getSigIdentificacion(), Cursada.PREFIJO));
         TPeriodo.setText("");
         THoraInicio.setText("");
         THoraFin.setText("");
@@ -168,10 +168,10 @@ public class VCursadaAlta extends javax.swing.JFrame
         NAsignatura.setText("Asignatura");
 
         Periodo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Periodo.setText("Período");
+        Periodo.setText("Perï¿½odo");
 
         Dia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Dia.setText("Día");
+        Dia.setText("Dï¿½a");
 
         Profesores.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Profesores.setText("Profesores");

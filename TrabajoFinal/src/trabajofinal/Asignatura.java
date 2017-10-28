@@ -7,7 +7,7 @@ public class Asignatura implements Entidad
 {
     
     private static int sigIdentificacion = 0;
-    public static final String prefijo = "ASI";
+    public static final String PREFIJO = "ASI";
     
     private String identificacion;
     private String nombre;
@@ -15,7 +15,7 @@ public class Asignatura implements Entidad
 
     public Asignatura(String nombre)
     {
-        this.identificacion = Mascaras.genId(sigIdentificacion++, prefijo);
+        this.identificacion = Mascaras.genId(sigIdentificacion++, PREFIJO);
         this.setNombre(nombre);
         this.correlativas = new ObserverTreeMap<Asignatura>();
     }
@@ -60,15 +60,6 @@ public class Asignatura implements Entidad
     {
         return identificacion;
     }
-    
-    public String getNombre() {
-        return this.nombre;
-    }
-    
-    public void setNombre(String nombre)
-    {
-        this.nombre = nombre;
-    }
 
     @Override
     public boolean equals(Object object)
@@ -98,6 +89,9 @@ public class Asignatura implements Entidad
         return result;
     }
     
+    //Constructor vacío, getters y setters
+    //Necesarios para serializar en XML
+    
     public Asignatura(){}
 
     public static void setSigIdentificacion(int sigIdentificacion)
@@ -118,6 +112,16 @@ public class Asignatura implements Entidad
     public String getIdentificacion()
     {
         return this.identificacion;
+    }
+    
+    public String getNombre()
+    {
+        return this.nombre;
+    }
+    
+    public void setNombre(String nombre)
+    {
+        this.nombre = nombre;
     }
 
     public void setCorrelativas(ObserverTreeMap<Asignatura> correlativas)

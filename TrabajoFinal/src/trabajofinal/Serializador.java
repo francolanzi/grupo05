@@ -46,6 +46,7 @@ public class Serializador
             Controlador.setControlador((Controlador) decoder.readObject());
             Cursada.setSigIdentificacion((int) decoder.readObject());
             Profesor.setSigLegajo((int) decoder.readObject());
+            decoder.close();
             return controlador;
         }
         catch (FileNotFoundException e)

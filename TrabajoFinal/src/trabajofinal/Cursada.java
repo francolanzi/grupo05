@@ -9,7 +9,7 @@ public class Cursada implements Entidad, Observer
 {
     
     private static int sigIdentificacion = 0;
-    public static final String prefijo = "CUR";
+    public static final String PREFIJO = "CUR";
     
     private String identificacion;
     private Asignatura asignatura;
@@ -24,7 +24,7 @@ public class Cursada implements Entidad, Observer
     throws PeriodoInvalidoException, HoraInvalidaException
     {
         this.modificar(periodo, dia, horaInicio, horaFin);
-        this.identificacion = Mascaras.genId(sigIdentificacion++, prefijo);
+        this.identificacion = Mascaras.genId(sigIdentificacion++, PREFIJO);
         this.asignatura = asignatura;
         this.profesores = new ObserverTreeMap<Profesor>();
         this.alumnos = new ObserverTreeMap<Alumno>();
@@ -167,6 +167,9 @@ public class Cursada implements Entidad, Observer
             }
             catch (IdInvalidoException e){}
     }
+    
+    //Constructor vacío, getters y setters
+    //Necesarios para serializar en XML
 
     public Cursada(){}
 
