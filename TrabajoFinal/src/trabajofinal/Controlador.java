@@ -224,7 +224,7 @@ public class Controlador extends Observable
         if (!this.profesores.containsKey(legajo))
             throw new IdInvalidoException(legajo, "El profesor ingresado no existe");
         if (!this.asignaturas.containsKey(identificacion))
-            throw new IdInvalidoException(identificacion, "El profesor ingresado no existe");
+            throw new IdInvalidoException(identificacion, "La asignatura ingresada no existe");
         this.profesores.get(legajo).addCompetencia(this.asignaturas.get(identificacion));
     }
     
@@ -261,9 +261,7 @@ public class Controlador extends Observable
         while (retorno && cursadas.hasNext())
         {
             Cursada otra = cursadas.next();
-            retorno = !(otra.hasAlumno(legajo) && otra.getPeriodo().equals(cursada.getPeriodo()) &&
-            otra.getDia().equals(cursada.getDia()) && otra.getHoraInicio().compareTo(cursada.getHoraFin()) < 0
-            && otra.getHoraFin().compareTo(cursada.getHoraInicio()) > 0);
+            retorno = !otra.hasAlumno(legajo) || cursada.isCompatible(otra);
         }
         return retorno;
     }
@@ -299,9 +297,7 @@ public class Controlador extends Observable
         while (retorno && cursadas.hasNext())
         {
             Cursada otra = cursadas.next();
-            retorno = !(otra.hasProfesor(legajo) && otra.getPeriodo().equals(cursada.getPeriodo()) &&
-            otra.getDia().equals(cursada.getDia()) && otra.getHoraInicio().compareTo(cursada.getHoraFin()) < 0
-            && otra.getHoraFin().compareTo(cursada.getHoraInicio()) > 0);
+            retorno = !otra.hasProfesor(legajo) || cursada.isCompatible(otra);
         }
         return retorno;
     }

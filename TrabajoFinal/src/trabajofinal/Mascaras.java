@@ -7,12 +7,7 @@ public class Mascaras
     
     public static String genId(int id, String prefijo)
     {
-        String retorno = "" + id;
-        
-        for (int i = retorno.length(); i < 4; i++)
-            retorno = "0" + retorno;
-        retorno = prefijo + retorno;
-        return retorno;
+        return String.format(prefijo + "%04d", id);
     }
     
     public static boolean emailValido(String email)

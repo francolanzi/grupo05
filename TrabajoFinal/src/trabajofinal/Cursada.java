@@ -99,7 +99,7 @@ public class Cursada implements Entidad, Observer
             throw new HoraInvalidaException(horaInicio, "La hora de inicio es invalida");
         if (!Mascaras.horaValida(horaFin))
             throw new HoraInvalidaException(horaFin, "La hora de finalizacion es invalida");
-        if (horaFin.compareTo(horaInicio) < 0)
+        if (horaFin.compareTo(horaInicio) <= 0)
             throw new HoraInvalidaException(horaFin, "La hora de finalizacion es menor a la de inicio");
         this.periodo = periodo;
         this.dia = dia;
@@ -117,6 +117,13 @@ public class Cursada implements Entidad, Observer
         {
             throw new IdInvalidoException(e.getId(), "El alumno ingresado no esta en la cursada");
         }
+    }
+    
+    public boolean isCompatible(Cursada cursada)
+    {
+        return !(this.getPeriodo().equals(cursada.getPeriodo()) && this.getDia().equals(cursada.getDia())
+        && this.getHoraInicio().compareTo(cursada.getHoraFin()) < 0
+        && this.getHoraFin().compareTo(cursada.getHoraInicio()) > 0);
     }
     
     public Iterator<Profesor> getProfesoresIterator()
