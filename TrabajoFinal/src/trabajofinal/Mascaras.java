@@ -47,7 +47,7 @@ public class Mascaras
             {
                 int horas = Integer.parseInt(hora.substring(0, 2));
                 int minutos = Integer.parseInt(hora.substring(3, 5));
-                retorno = horas >= 0 && horas <= 12 && minutos >= 0 && minutos <= 59;
+                retorno = horas >= 0 && horas <= 23 && minutos >= 0 && minutos <= 59;
             }
             catch (NumberFormatException e)
             {
