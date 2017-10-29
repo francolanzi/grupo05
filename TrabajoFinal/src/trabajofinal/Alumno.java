@@ -13,23 +13,25 @@ public class Alumno implements Entidad
     private String apellido;
     private String nombre;
     private Domicilio domicilio;
+    private String telefono;
     private String email;
     private ObserverTreeMap<Asignatura> historia;
 
-    public Alumno(String apellido, String nombre, String calle, int numero, String email) throws EmailInvalidoException
+    public Alumno(String apellido, String nombre, String calle, int numero, String telefono, String email) throws EmailInvalidoException
     {
-        this.modificar(apellido, nombre, calle, numero, email);
+        this.modificar(apellido, nombre, calle, numero, telefono, email);
         this.legajo = Mascaras.genId(sigLegajo++, PREFIJO);
         this.historia = new ObserverTreeMap<Asignatura>();
     }
 
-    public void modificar(String apellido, String nombre, String calle, int numero, String email) throws EmailInvalidoException
+    public void modificar(String apellido, String nombre, String calle, int numero, String telefono, String email) throws EmailInvalidoException
     {
         if (!Mascaras.emailValido(email))
             throw new EmailInvalidoException(email, "El email ingresado es invalido");
         this.apellido = apellido;
         this.nombre = nombre;
         this.domicilio = new Domicilio(calle, numero);
+        this.telefono = telefono;
         this.email = email;
     }
     
@@ -142,6 +144,16 @@ public class Alumno implements Entidad
     public Domicilio getDomicilio()
     {
         return this.domicilio;
+    }
+
+    public void setTelefono(String telefono)
+    {
+        this.telefono = telefono;
+    }
+
+    public String getTelefono()
+    {
+        return this.telefono;
     }
 
     public void setEmail(String email)

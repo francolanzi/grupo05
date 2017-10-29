@@ -29,10 +29,10 @@ public class Controlador extends Observable
         return controlador;
     }
     
-    public void altaAlumno(String apellido, String nombre, String calle, int numero, String email)
+    public void altaAlumno(String apellido, String nombre, String calle, int numero, String telefono, String email)
     throws EmailInvalidoException
     {
-        Alumno alumno = new Alumno(apellido, nombre, calle, numero, email);
+        Alumno alumno = new Alumno(apellido, nombre, calle, numero, telefono, email);
         this.alumnos.put(alumno.getId(), alumno);
     }
     
@@ -98,12 +98,12 @@ public class Controlador extends Observable
         notifyObservers(identificacion);
     }
     
-    public void modificaAlumno(String legajo, String apellido, String nombre, String calle, int numero, String email)
+    public void modificaAlumno(String legajo, String apellido, String nombre, String calle, int numero, String telefono, String email)
     throws IdInvalidoException, EmailInvalidoException
     {
         if(!this.alumnos.containsKey(legajo))
             throw new IdInvalidoException(legajo, "El alumno ingresado no existe");
-        this.alumnos.get(legajo).modificar(apellido, nombre, calle, numero, email);
+        this.alumnos.get(legajo).modificar(apellido, nombre, calle, numero, telefono, email);
     }
     
     public void modificaProfesor(String legajo, String apellido, String nombre, String calle, int numero, String telefono, String email)
