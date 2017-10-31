@@ -42,6 +42,7 @@ public class VAsignaturaAlta extends javax.swing.JFrame {
     
     private void cargaCorrelativas()
     {
+        CCorrelativa.removeAllItems();
         Iterator<Asignatura> asignaturas = Controlador.getInstance().getAsignaturasIterator();
         while (asignaturas.hasNext())
         {
