@@ -7,7 +7,7 @@ public class Profesor implements Entidad
 {
     
     private static int sigLegajo = 0;
-    public static final String prefijo = "PRO";
+    public static final String PREFIJO = "PRO";
     
     private String legajo;
     private String apellido;
@@ -21,7 +21,7 @@ public class Profesor implements Entidad
     throws EmailInvalidoException
     {
         this.modificar(apellido, nombre, calle, numero, telefono, email);
-        this.legajo = Mascaras.genId(sigLegajo++, prefijo);
+        this.legajo = Mascaras.genId(sigLegajo++, PREFIJO);
         this.competencias = new ObserverTreeMap<Asignatura>();
     }
     
@@ -105,6 +105,9 @@ public class Profesor implements Entidad
         result = PRIME * result + ((legajo == null)? 0: legajo.hashCode());
         return result;
     }
+    
+    //Constructor vacío, getters y setters
+    //Necesarios para serializar en XML
     
     public Profesor(){}
 

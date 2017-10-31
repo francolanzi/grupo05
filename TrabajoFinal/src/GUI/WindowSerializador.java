@@ -21,7 +21,7 @@ public class WindowSerializador extends WindowAdapter
     
     @Override
     public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-        Serializador.serializar(Controlador.getInstance());
+        Serializador.serializar();
     }
     
 }

@@ -7,17 +7,12 @@ public class Mascaras
     
     public static String genId(int id, String prefijo)
     {
-        String retorno = "" + id;
-        
-        for (int i = retorno.length(); i < 4; i++)
-            retorno = "0" + retorno;
-        retorno = prefijo + retorno;
-        return retorno;
+        return String.format(prefijo + "%04d", id);
     }
     
     public static boolean emailValido(String email)
     {
-        int i = 0, max = email.length() - 1;
+        int i = 1, max = email.length() - 1;
         while (i < max && email.charAt(i) != '@')
             i++;
         return i < max;
@@ -38,13 +33,21 @@ public class Mascaras
     
     public static boolean horaValida(String hora)
     {
-        boolean retorno = hora.length() == 5 && hora.charAt(2) == ':';
-        int i = 0;
-        while (retorno && i < 5)
+        boolean retorno;
+        if (hora.length() != 5 || hora.charAt(2) != ':')
+            retorno = false;
+        else
         {
-            if (i != 2)
-                retorno = retorno && hora.charAt(i) >= '0' && hora.charAt(i) <= '9';
-            i++;
+            try
+            {
+                int horas = Integer.parseInt(hora.substring(0, 2));
+                int minutos = Integer.parseInt(hora.substring(3, 5));
+                retorno = horas >= 0 && horas <= 23 && minutos >= 0 && minutos <= 59;
+            }
+            catch (NumberFormatException e)
+            {
+                retorno = false;
+            }
         }
         return retorno;
     }

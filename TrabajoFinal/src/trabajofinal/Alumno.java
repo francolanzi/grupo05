@@ -7,30 +7,38 @@ public class Alumno implements Entidad
 {
     
     private static int sigLegajo = 0;
-    public static final String prefijo = "ALU";
+    public static final String PREFIJO = "ALU";
     
     private String legajo;
     private String apellido;
     private String nombre;
     private Domicilio domicilio;
+    private String telefono;
     private String email;
     private ObserverTreeMap<Asignatura> historia;
 
-    public Alumno(String apellido, String nombre, String calle, int numero, String email) throws EmailInvalidoException
+    public Alumno(String apellido, String nombre, String calle, int numero, String telefono, String email) throws EmailInvalidoException
     {
-        this.modificar(apellido, nombre, calle, numero, email);
-        this.legajo = Mascaras.genId(sigLegajo++, prefijo);
+        this.modificar(apellido, nombre, calle, numero, telefono, email);
+        this.legajo = Mascaras.genId(sigLegajo++, PREFIJO);
         this.historia = new ObserverTreeMap<Asignatura>();
     }
 
-    public void modificar(String apellido, String nombre, String calle, int numero, String email) throws EmailInvalidoException
+    public void modificar(String apellido, String nombre, String calle, int numero, String telefono, String email) throws EmailInvalidoException
     {
         if (!Mascaras.emailValido(email))
             throw new EmailInvalidoException(email, "El email ingresado es invalido");
         this.apellido = apellido;
         this.nombre = nombre;
         this.domicilio = new Domicilio(calle, numero);
+        this.telefono = telefono;
         this.email = email;
+    }
+    
+    @Override
+    public String getId()
+    {
+        return this.legajo;
     }
     
     public void aprobarAsignatura(Asignatura asignatura) throws EntidadInvalidaException
@@ -82,6 +90,9 @@ public class Alumno implements Entidad
         result = PRIME * result + ((legajo == null)? 0: legajo.hashCode());
         return result;
     }
+    
+    //Constructor vacío, getters y setters
+    //Necesarios para serializar en XML
     
     public Alumno(){}
 
@@ -135,6 +146,16 @@ public class Alumno implements Entidad
         return this.domicilio;
     }
 
+    public void setTelefono(String telefono)
+    {
+        this.telefono = telefono;
+    }
+
+    public String getTelefono()
+    {
+        return this.telefono;
+    }
+
     public void setEmail(String email)
     {
         this.email = email;
@@ -153,12 +174,6 @@ public class Alumno implements Entidad
     public ObserverTreeMap<Asignatura> getHistoria()
     {
         return this.historia;
-    }
-
-    @Override
-    public String getId()
-    {
-        return this.legajo;
     }
     
 }

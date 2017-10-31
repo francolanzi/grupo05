@@ -14,7 +14,7 @@ public class Controlador extends Observable
     private TreeMap<String, Asignatura> asignaturas;
     private TreeMap<String, Cursada> cursadas;
     
-    public Controlador()
+    private Controlador()
     {
         this.alumnos = new TreeMap<String, Alumno>();
         this.profesores = new TreeMap<String, Profesor>();
@@ -29,10 +29,10 @@ public class Controlador extends Observable
         return controlador;
     }
     
-    public void altaAlumno(String apellido, String nombre, String calle, int numero, String email)
+    public void altaAlumno(String apellido, String nombre, String calle, int numero, String telefono, String email)
     throws EmailInvalidoException
     {
-        Alumno alumno = new Alumno(apellido, nombre, calle, numero, email);
+        Alumno alumno = new Alumno(apellido, nombre, calle, numero, telefono, email);
         this.alumnos.put(alumno.getId(), alumno);
     }
     
@@ -98,12 +98,12 @@ public class Controlador extends Observable
         notifyObservers(identificacion);
     }
     
-    public void modificaAlumno(String legajo, String apellido, String nombre, String calle, int numero, String email)
+    public void modificaAlumno(String legajo, String apellido, String nombre, String calle, int numero, String telefono, String email)
     throws IdInvalidoException, EmailInvalidoException
     {
         if(!this.alumnos.containsKey(legajo))
             throw new IdInvalidoException(legajo, "El alumno ingresado no existe");
-        this.alumnos.get(legajo).modificar(apellido, nombre, calle, numero, email);
+        this.alumnos.get(legajo).modificar(apellido, nombre, calle, numero, telefono, email);
     }
     
     public void modificaProfesor(String legajo, String apellido, String nombre, String calle, int numero, String telefono, String email)
@@ -224,7 +224,7 @@ public class Controlador extends Observable
         if (!this.profesores.containsKey(legajo))
             throw new IdInvalidoException(legajo, "El profesor ingresado no existe");
         if (!this.asignaturas.containsKey(identificacion))
-            throw new IdInvalidoException(identificacion, "El profesor ingresado no existe");
+            throw new IdInvalidoException(identificacion, "La asignatura ingresada no existe");
         this.profesores.get(legajo).addCompetencia(this.asignaturas.get(identificacion));
     }
     
@@ -261,9 +261,7 @@ public class Controlador extends Observable
         while (retorno && cursadas.hasNext())
         {
             Cursada otra = cursadas.next();
-            retorno = !(otra.hasAlumno(legajo) && otra.getPeriodo().equals(cursada.getPeriodo()) &&
-            otra.getDia().equals(cursada.getDia()) && otra.getHoraInicio().compareTo(cursada.getHoraFin()) < 0
-            && otra.getHoraFin().compareTo(cursada.getHoraInicio()) > 0);
+            retorno = !otra.hasAlumno(legajo) || cursada.isCompatible(otra);
         }
         return retorno;
     }
@@ -299,9 +297,7 @@ public class Controlador extends Observable
         while (retorno && cursadas.hasNext())
         {
             Cursada otra = cursadas.next();
-            retorno = !(otra.hasProfesor(legajo) && otra.getPeriodo().equals(cursada.getPeriodo()) &&
-            otra.getDia().equals(cursada.getDia()) && otra.getHoraInicio().compareTo(cursada.getHoraFin()) < 0
-            && otra.getHoraFin().compareTo(cursada.getHoraInicio()) > 0);
+            retorno = !otra.hasProfesor(legajo) || cursada.isCompatible(otra);
         }
         return retorno;
     }
@@ -349,15 +345,8 @@ public class Controlador extends Observable
         return this.cursadas.values().iterator();
     }
 
-    public static void setControlador(Controlador controlador)
-    {
-        Controlador.controlador = controlador;
-    }
-    
-    public static Controlador getControlador()
-    {
-        return Controlador.controlador;
-    }
+    //Getters y setters
+    //Necesarios para serializar en XML
 
     public void setAlumnos(TreeMap<String, Alumno> alumnos)
     {

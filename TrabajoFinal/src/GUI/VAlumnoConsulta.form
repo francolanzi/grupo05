@@ -119,22 +119,20 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="64" pref="64" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="Email" alignment="1" max="32767" attributes="0"/>
-                          <Component id="Calle" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="Legajo" alignment="0" max="32767" attributes="0"/>
-                          <Component id="Nombre" alignment="0" max="32767" attributes="0"/>
-                          <Component id="Apellido" alignment="0" max="32767" attributes="0"/>
-                      </Group>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="Email" max="32767" attributes="0"/>
+                      <Component id="Telefono" alignment="1" max="32767" attributes="0"/>
+                      <Component id="Calle" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="Legajo" alignment="0" max="32767" attributes="0"/>
+                      <Component id="Nombre" alignment="0" max="32767" attributes="0"/>
+                      <Component id="Apellido" alignment="0" max="32767" attributes="0"/>
                       <Component id="Historia" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="THistoria" alignment="0" min="-2" pref="340" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="TEmail" alignment="0" pref="112" max="32767" attributes="0"/>
+                              <Component id="TTelefono" alignment="0" pref="112" max="32767" attributes="0"/>
                               <Component id="TCalle" alignment="1" max="32767" attributes="0"/>
                               <Component id="TNombre" alignment="0" max="32767" attributes="0"/>
                               <Component id="TApellido" alignment="0" max="32767" attributes="0"/>
@@ -144,11 +142,13 @@
                           <Component id="Numero" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="TNumero" min="-2" pref="95" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                          <Component id="Cancelar" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="TEmail" min="-2" pref="112" max="-2" attributes="0"/>
+                      <Component id="THistoria" min="-2" pref="340" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="Cancelar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="42" max="32767" attributes="0"/>
+                  <EmptySpace pref="39" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -179,16 +179,27 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="Telefono" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="TTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="Email" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="TEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="Historia" min="-2" max="-2" attributes="0"/>
-                      <Component id="THistoria" min="-2" pref="92" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
+                          <Component id="Cancelar" min="-2" pref="31" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="THistoria" min="-2" pref="92" max="-2" attributes="0"/>
+                              <Component id="Historia" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
-                  <Component id="Cancelar" min="-2" pref="31" max="-2" attributes="0"/>
                   <EmptySpace pref="15" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -227,12 +238,12 @@
             <Property name="text" type="java.lang.String" value="Calle"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="Email">
+        <Component class="javax.swing.JLabel" name="Telefono">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Email"/>
+            <Property name="text" type="java.lang.String" value="Telefono"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="Historia">
@@ -269,7 +280,7 @@
             <Property name="editable" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TEmail">
+        <Component class="javax.swing.JTextField" name="TTelefono">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
           </Properties>
@@ -342,6 +353,19 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CancelarActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="Email">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Email"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="TEmail">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

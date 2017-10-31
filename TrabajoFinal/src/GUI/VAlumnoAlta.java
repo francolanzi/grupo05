@@ -24,12 +24,12 @@ public class VAlumnoAlta extends javax.swing.JFrame {
     
     private void vaciaCampos()
     {
-        TLegajo.setText(Mascaras.genId(Alumno.getSigLegajo(), Alumno.prefijo));
+        TLegajo.setText(Mascaras.genId(Alumno.getSigLegajo(), Alumno.PREFIJO));
         TNombre.setText("");
         TApellido.setText("");
         TCalle.setText("");
         TNumero.setText("");
-        TEmail.setText("");
+        TTelefono.setText("");
     }
 
     /** This method is called from within the constructor to
@@ -50,16 +50,18 @@ public class VAlumnoAlta extends javax.swing.JFrame {
         Nombre = new javax.swing.JLabel();
         Apellido = new javax.swing.JLabel();
         Calle = new javax.swing.JLabel();
-        Email = new javax.swing.JLabel();
+        Telefono = new javax.swing.JLabel();
         TLegajo = new javax.swing.JTextField();
         TNombre = new javax.swing.JTextField();
         TApellido = new javax.swing.JTextField();
         TCalle = new javax.swing.JTextField();
-        TEmail = new javax.swing.JTextField();
+        TTelefono = new javax.swing.JTextField();
         Numero = new javax.swing.JLabel();
         TNumero = new javax.swing.JTextField();
         Grabar = new javax.swing.JButton();
         Cancelar = new javax.swing.JButton();
+        Email = new javax.swing.JLabel();
+        TEmail = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Alumno - Nuevo");
@@ -119,8 +121,8 @@ public class VAlumnoAlta extends javax.swing.JFrame {
         Calle.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Calle.setText("Calle");
 
-        Email.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Email.setText("Email");
+        Telefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Telefono.setText("Telefono");
 
         TLegajo.setEditable(false);
         TLegajo.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -158,7 +160,7 @@ public class VAlumnoAlta extends javax.swing.JFrame {
         });
 
         Numero.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Numero.setText("Número");
+        Numero.setText("NÃºmero");
 
         TNumero.addActionListener(new java.awt.event.ActionListener()
         {
@@ -198,6 +200,9 @@ public class VAlumnoAlta extends javax.swing.JFrame {
             }
         });
 
+        Email.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Email.setText("Email");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -207,18 +212,20 @@ public class VAlumnoAlta extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(64, 64, 64)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(Email, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Telefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Calle, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Legajo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Nombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Apellido, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(Apellido, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Email, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(TEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+                            .addComponent(TTelefono, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
                             .addComponent(TCalle)
                             .addComponent(TNombre, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(TApellido, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TLegajo, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(TLegajo, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE))
                         .addGap(21, 21, 21)
                         .addComponent(Numero)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -254,9 +261,13 @@ public class VAlumnoAlta extends javax.swing.JFrame {
                     .addComponent(TNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(161, 161, 161)
+                .addGap(124, 124, 124)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Cancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
                     .addComponent(Grabar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -285,6 +296,8 @@ public class VAlumnoAlta extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Ingrese Calle");
         else if (TNumero.getText().equals(""))
             JOptionPane.showMessageDialog(null,"Ingrese Numero");
+        else if (TTelefono.getText().equals(""))
+            JOptionPane.showMessageDialog(null,"Ingrese Telefono");
         else if (TEmail.getText().equals(""))
             JOptionPane.showMessageDialog(null,"Ingrese Mail");
         else
@@ -292,7 +305,7 @@ public class VAlumnoAlta extends javax.swing.JFrame {
             try
             {
                 Controlador.getInstance().altaAlumno(TApellido.getText(), TNombre.getText(), TCalle.getText(),
-                    Integer.parseInt(TNumero.getText()), TEmail.getText());
+                    Integer.parseInt(TNumero.getText()), TTelefono.getText(), TEmail.getText());
                 vaciaCampos();
                 JOptionPane.showMessageDialog(null, "El alumno ha sido dado de alta exitosamente");
             }
@@ -347,6 +360,8 @@ public class VAlumnoAlta extends javax.swing.JFrame {
     private javax.swing.JTextField TLegajo;
     private javax.swing.JTextField TNombre;
     private javax.swing.JTextField TNumero;
+    private javax.swing.JTextField TTelefono;
+    private javax.swing.JLabel Telefono;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

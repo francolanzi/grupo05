@@ -52,6 +52,31 @@
           </void>
          </object>
         </void>
+        <void method="put">
+         <string>ASI0002</string>
+         <object class="trabajofinal.Asignatura" id="Asignatura2">
+          <void property="correlativas">
+           <object class="trabajofinal.ObserverTreeMap" id="ObserverTreeMap1">
+            <void property="coleccion">
+             <void method="put">
+              <string>ASI0000</string>
+              <object idref="Asignatura0"/>
+             </void>
+             <void method="put">
+              <string>ASI0001</string>
+              <object idref="Asignatura1"/>
+             </void>
+            </void>
+           </object>
+          </void>
+          <void property="identificacion">
+           <string>ASI0002</string>
+          </void>
+          <void property="nombre">
+           <string>Fisica</string>
+          </void>
+         </object>
+        </void>
        </void>
       </object>
      </void>
@@ -165,28 +190,7 @@
    </void>
    <void method="put">
     <string>ASI0002</string>
-    <object class="trabajofinal.Asignatura" id="Asignatura2">
-     <void property="correlativas">
-      <object class="trabajofinal.ObserverTreeMap" id="ObserverTreeMap1">
-       <void property="coleccion">
-        <void method="put">
-         <string>ASI0000</string>
-         <object idref="Asignatura0"/>
-        </void>
-        <void method="put">
-         <string>ASI0001</string>
-         <object idref="Asignatura1"/>
-        </void>
-       </void>
-      </object>
-     </void>
-     <void property="identificacion">
-      <string>ASI0002</string>
-     </void>
-     <void property="nombre">
-      <string>Fisica</string>
-     </void>
-    </object>
+    <object idref="Asignatura2"/>
    </void>
    <void method="put">
     <string>ASI0003</string>
@@ -391,14 +395,7 @@
     <string>CUR0002</string>
     <object class="trabajofinal.Cursada">
      <void property="alumnos">
-      <object class="trabajofinal.ObserverTreeMap" id="ObserverTreeMap9">
-       <void property="coleccion">
-        <void method="put">
-         <string>ALU0000</string>
-         <object idref="Alumno0"/>
-        </void>
-       </void>
-      </object>
+      <object class="trabajofinal.ObserverTreeMap"/>
      </void>
      <void property="asignatura">
       <object idref="Asignatura2"/>
@@ -456,7 +453,7 @@
     <string>CUR0005</string>
     <object class="trabajofinal.Cursada">
      <void property="alumnos">
-      <object class="trabajofinal.ObserverTreeMap" id="ObserverTreeMap10">
+      <object class="trabajofinal.ObserverTreeMap" id="ObserverTreeMap9">
        <void property="coleccion">
         <void method="put">
          <string>ALU0000</string>
@@ -484,7 +481,7 @@
       <string>02-2017</string>
      </void>
      <void property="profesores">
-      <object class="trabajofinal.ObserverTreeMap" id="ObserverTreeMap11">
+      <object class="trabajofinal.ObserverTreeMap" id="ObserverTreeMap10">
        <void property="coleccion">
         <void method="put">
          <string>PRO0000</string>
@@ -493,7 +490,7 @@
            <string>Viau</string>
           </void>
           <void property="competencias">
-           <object class="trabajofinal.ObserverTreeMap" id="ObserverTreeMap12">
+           <object class="trabajofinal.ObserverTreeMap" id="ObserverTreeMap11">
             <void property="coleccion">
              <void method="put">
               <string>ASI0000</string>

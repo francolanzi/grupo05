@@ -56,6 +56,9 @@ public class ObserverTreeMap<T extends Entidad> implements Observer
             this.coleccion.remove(id);
         }
     }
+    
+    //Getters y setters
+    //Necesarios para serializar en XML
 
     public void setColeccion(TreeMap<String, T> coleccion)
     {

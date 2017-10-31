@@ -35,7 +35,7 @@ public class VAsignaturaAlta extends javax.swing.JFrame {
     
     private void vaciaCampos()
     {
-        TIdentificador.setText(Mascaras.genId(Asignatura.getSigIdentificacion(), Asignatura.prefijo));
+        TIdentificador.setText(Mascaras.genId(Asignatura.getSigIdentificacion(), Asignatura.PREFIJO));
         TNombre.setText("");
         ((DefaultTableModel) tablaCorrelativas.getModel()).setRowCount(0);
     }

@@ -29,6 +29,7 @@ public class VAlumnoConsulta extends javax.swing.JFrame {
         TApellido.setText(alumno.getApellido());
         TCalle.setText(alumno.getDomicilio().getCalle());
         TNumero.setText(Integer.toString(alumno.getDomicilio().getNumero()));
+        TTelefono.setText(alumno.getTelefono());
         TEmail.setText(alumno.getEmail());
         setTablaHistoria(alumno); 
     }
@@ -63,18 +64,20 @@ public class VAlumnoConsulta extends javax.swing.JFrame {
         Nombre = new javax.swing.JLabel();
         Apellido = new javax.swing.JLabel();
         Calle = new javax.swing.JLabel();
-        Email = new javax.swing.JLabel();
+        Telefono = new javax.swing.JLabel();
         Historia = new javax.swing.JLabel();
         TLegajo = new javax.swing.JTextField();
         TNombre = new javax.swing.JTextField();
         TApellido = new javax.swing.JTextField();
         TCalle = new javax.swing.JTextField();
-        TEmail = new javax.swing.JTextField();
+        TTelefono = new javax.swing.JTextField();
         Numero = new javax.swing.JLabel();
         TNumero = new javax.swing.JTextField();
         THistoria = new javax.swing.JScrollPane();
         tablaHistoria = new javax.swing.JTable();
         Cancelar = new javax.swing.JButton();
+        Email = new javax.swing.JLabel();
+        TEmail = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Alumno - Consulta");
@@ -134,8 +137,8 @@ public class VAlumnoConsulta extends javax.swing.JFrame {
         Calle.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Calle.setText("Calle");
 
-        Email.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Email.setText("Email");
+        Telefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Telefono.setText("Telefono");
 
         Historia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Historia.setText("Historia");
@@ -156,10 +159,10 @@ public class VAlumnoConsulta extends javax.swing.JFrame {
 
         TCalle.setEditable(false);
 
-        TEmail.setEditable(false);
+        TTelefono.setEditable(false);
 
         Numero.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Numero.setText("Número");
+        Numero.setText("NÃºmero");
 
         TNumero.setEditable(false);
         TNumero.addActionListener(new java.awt.event.ActionListener()
@@ -222,26 +225,30 @@ public class VAlumnoConsulta extends javax.swing.JFrame {
             }
         });
 
+        Email.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Email.setText("Email");
+
+        TEmail.setEditable(false);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(64, 64, 64)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(Email, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Calle, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(Legajo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Nombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Apellido, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Email, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Telefono, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Calle)
+                    .addComponent(Legajo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Apellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Historia))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(THistoria, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(TEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+                            .addComponent(TTelefono, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
                             .addComponent(TCalle)
                             .addComponent(TNombre, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(TApellido, javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,10 +256,12 @@ public class VAlumnoConsulta extends javax.swing.JFrame {
                         .addGap(21, 21, 21)
                         .addComponent(Numero)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(TNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(Cancelar)
-                .addContainerGap(42, Short.MAX_VALUE))
+                        .addComponent(TNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(63, 63, 63)
+                        .addComponent(Cancelar))
+                    .addComponent(TEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(THistoria, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,14 +286,21 @@ public class VAlumnoConsulta extends javax.swing.JFrame {
                     .addComponent(TNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Historia)
-                    .addComponent(THistoria, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(91, 91, 91)
-                .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(158, 158, 158)
+                        .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(THistoria, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Historia))))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -325,6 +341,8 @@ public class VAlumnoConsulta extends javax.swing.JFrame {
     private javax.swing.JTextField TLegajo;
     private javax.swing.JTextField TNombre;
     private javax.swing.JTextField TNumero;
+    private javax.swing.JTextField TTelefono;
+    private javax.swing.JLabel Telefono;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
