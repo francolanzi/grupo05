@@ -27,7 +27,7 @@
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="Cabecera">
+    <Container class="javax.swing.JPanel" name="jPanelCabecera">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="cc" type="rgb"/>
@@ -47,11 +47,11 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                  <Component id="Cursada" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelCursada" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jLabel2" min="-2" pref="81" max="-2" attributes="0"/>
+                  <Component id="jLabelEdicion" min="-2" pref="81" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jLabel1" min="-2" pref="210" max="-2" attributes="0"/>
+                  <Component id="jLabelLogo" min="-2" pref="210" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -60,17 +60,17 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Cursada" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel2" alignment="3" max="32767" attributes="0"/>
+                      <Component id="jLabelCursada" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelEdicion" alignment="3" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
-              <Component id="jLabel1" alignment="0" pref="0" max="32767" attributes="0"/>
+              <Component id="jLabelLogo" alignment="0" pref="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="Cursada">
+        <Component class="javax.swing.JLabel" name="jLabelCursada">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="24" style="0"/>
@@ -78,14 +78,14 @@
             <Property name="text" type="java.lang.String" value="Cursada -"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="jLabelLogo">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/GUI/Imagenes/aa0c19c7-d3a7-43d8-8664-2f08e5d0ca90.png"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="jLabelEdicion">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="24" style="2"/>
@@ -98,7 +98,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="Grilla">
+    <Container class="javax.swing.JPanel" name="jPanelGrilla">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="ff" red="69" type="rgb"/>
@@ -121,68 +121,68 @@
                   <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="Identificador" alignment="0" max="32767" attributes="0"/>
-                          <Component id="Periodo" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabelIdentificador" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabelPeriodo" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="HoraInicio" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="Profesores" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="Alumnos" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelHoraInicio" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelProfesores" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelAlumnos" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="Grabar" min="-2" pref="73" max="-2" attributes="0"/>
+                          <Component id="jButtonGrabar" min="-2" pref="73" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="Cancelar" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonCancelar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="160" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="TAlumnos" min="-2" pref="340" max="-2" attributes="0"/>
+                                  <Component id="jScrollPaneAlumnos" min="-2" pref="340" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="quitarAlumno" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButtonQuitarAlumno" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="TProfesores" min="-2" pref="340" max="-2" attributes="0"/>
+                                  <Component id="jScrollPaneProfesores" min="-2" pref="340" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="quitarProfesor" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButtonQuitarProfesor" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="TPeriodo" alignment="1" pref="125" max="32767" attributes="0"/>
-                                      <Component id="THoraInicio" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="TIdentificador" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jTextFieldPeriodo" alignment="1" pref="125" max="32767" attributes="0"/>
+                                      <Component id="jTextFieldHoraInicio" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jTextFieldIdentificador" alignment="1" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="Dia" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabelDia" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                                          <Component id="CDia" max="32767" attributes="0"/>
+                                          <Component id="jComboDia" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="NAsignatura" min="-2" pref="75" max="-2" attributes="0"/>
+                                          <Component id="jLabelNAsignatura" min="-2" pref="75" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="TAsignatura" max="32767" attributes="0"/>
+                                          <Component id="jTextFieldAsignatura" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="HoraFin" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabelHoraFin" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                                          <Component id="THoraFin" min="-2" pref="125" max="-2" attributes="0"/>
+                                          <Component id="jTextFieldHoraFin" min="-2" pref="125" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="CProfesores" min="-2" pref="125" max="-2" attributes="0"/>
+                                  <Component id="jComboProfesores" min="-2" pref="125" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="AgregarProfesor" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButtonAgregarProfesor" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="CAlumnos" min="-2" pref="125" max="-2" attributes="0"/>
+                                  <Component id="jComboAlumnos" min="-2" pref="125" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="AgregarAlumno" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButtonAgregarAlumno" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace pref="27" max="32767" attributes="0"/>
@@ -196,51 +196,51 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Identificador" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="TIdentificador" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="NAsignatura" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="TAsignatura" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelIdentificador" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="jTextFieldIdentificador" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelNAsignatura" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldAsignatura" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Periodo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="TPeriodo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Dia" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="CDia" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelPeriodo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldPeriodo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelDia" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboDia" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="HoraInicio" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="THoraInicio" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="HoraFin" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="THoraFin" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelHoraInicio" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldHoraInicio" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelHoraFin" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldHoraFin" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Profesores" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="CProfesores" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="AgregarProfesor" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelProfesores" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboProfesores" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonAgregarProfesor" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="TProfesores" min="-2" pref="84" max="-2" attributes="0"/>
-                      <Component id="quitarProfesor" min="-2" max="-2" attributes="0"/>
+                      <Component id="jScrollPaneProfesores" min="-2" pref="84" max="-2" attributes="0"/>
+                      <Component id="jButtonQuitarProfesor" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="CAlumnos" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="AgregarAlumno" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Alumnos" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboAlumnos" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonAgregarAlumno" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelAlumnos" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="TAlumnos" min="-2" pref="84" max="-2" attributes="0"/>
-                      <Component id="quitarAlumno" min="-2" max="-2" attributes="0"/>
+                      <Component id="jScrollPaneAlumnos" min="-2" pref="84" max="-2" attributes="0"/>
+                      <Component id="jButtonQuitarAlumno" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="31" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Grabar" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="Cancelar" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="jButtonGrabar" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="jButtonCancelar" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
@@ -248,7 +248,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="Identificador">
+        <Component class="javax.swing.JLabel" name="jLabelIdentificador">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -256,7 +256,7 @@
             <Property name="text" type="java.lang.String" value="Identificador"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="NAsignatura">
+        <Component class="javax.swing.JLabel" name="jLabelNAsignatura">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -264,7 +264,7 @@
             <Property name="text" type="java.lang.String" value="Asignatura"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="Periodo">
+        <Component class="javax.swing.JLabel" name="jLabelPeriodo">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -272,7 +272,7 @@
             <Property name="text" type="java.lang.String" value="Per&#xed;odo"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="Dia">
+        <Component class="javax.swing.JLabel" name="jLabelDia">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -280,7 +280,7 @@
             <Property name="text" type="java.lang.String" value="D&#xed;a"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="Profesores">
+        <Component class="javax.swing.JLabel" name="jLabelProfesores">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -288,7 +288,7 @@
             <Property name="text" type="java.lang.String" value="Profesores"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TIdentificador">
+        <Component class="javax.swing.JTextField" name="jTextFieldIdentificador">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -296,9 +296,9 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TPeriodo">
+        <Component class="javax.swing.JTextField" name="jTextFieldPeriodo">
         </Component>
-        <Component class="javax.swing.JLabel" name="HoraFin">
+        <Component class="javax.swing.JLabel" name="jLabelHoraFin">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -306,19 +306,19 @@
             <Property name="text" type="java.lang.String" value="Hora Fin"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="THoraFin">
+        <Component class="javax.swing.JTextField" name="jTextFieldHoraFin">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="THoraFinActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldHoraFinActionPerformed"/>
           </Events>
         </Component>
-        <Container class="javax.swing.JScrollPane" name="TProfesores">
+        <Container class="javax.swing.JScrollPane" name="jScrollPaneProfesores">
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
           </AuxValues>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="tablaProfesores">
+            <Component class="javax.swing.JTable" name="jTableProfesores">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="3" rowCount="0">
@@ -330,17 +330,17 @@
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
+                      <Title value="Legajo"/>
                       <Editor/>
                       <Renderer/>
                     </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
+                      <Title value="Nombre"/>
                       <Editor/>
                       <Renderer/>
                     </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
+                      <Title value="Apellido"/>
                       <Editor/>
                       <Renderer/>
                     </Column>
@@ -353,28 +353,28 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JComboBox" name="CProfesores">
+        <Component class="javax.swing.JComboBox" name="jComboProfesores">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new ComboItem[] {})" type="code"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CProfesoresActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboProfesoresActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;ComboItem&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="AgregarProfesor">
+        <Component class="javax.swing.JButton" name="jButtonAgregarProfesor">
           <Properties>
             <Property name="text" type="java.lang.String" value="Agregar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AgregarProfesorActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAgregarProfesorActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="HoraInicio">
+        <Component class="javax.swing.JLabel" name="jLabelHoraInicio">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -382,9 +382,12 @@
             <Property name="text" type="java.lang.String" value="Hora Inicio"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="THoraInicio">
+        <Component class="javax.swing.JTextField" name="jTextFieldHoraInicio">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldHoraInicioActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="Grabar">
+        <Component class="javax.swing.JButton" name="jButtonGrabar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="99" red="0" type="rgb"/>
@@ -400,10 +403,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GrabarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonGrabarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="Cancelar">
+        <Component class="javax.swing.JButton" name="jButtonCancelar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="99" red="0" type="rgb"/>
@@ -414,23 +417,23 @@
             <Property name="text" type="java.lang.String" value="CANCELAR"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CancelarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCancelarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JComboBox" name="CDia">
+        <Component class="javax.swing.JComboBox" name="jComboDia">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Lunes&quot;, &quot;Martes&quot;, &quot;Miercoles&quot;, &quot;Jueves&quot;, &quot;Viernes&quot;, &quot;Sabado&quot;, &quot;Domingo&quot; })" type="code"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CDiaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboDiaActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="Alumnos">
+        <Component class="javax.swing.JLabel" name="jLabelAlumnos">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -438,35 +441,35 @@
             <Property name="text" type="java.lang.String" value="Alumnos"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="CAlumnos">
+        <Component class="javax.swing.JComboBox" name="jComboAlumnos">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new ComboItem[] {})" type="code"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CAlumnosActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboAlumnosActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;ComboItem&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="AgregarAlumno">
+        <Component class="javax.swing.JButton" name="jButtonAgregarAlumno">
           <Properties>
             <Property name="text" type="java.lang.String" value="Agregar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AgregarAlumnoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAgregarAlumnoActionPerformed"/>
           </Events>
         </Component>
-        <Container class="javax.swing.JScrollPane" name="TAlumnos">
+        <Container class="javax.swing.JScrollPane" name="jScrollPaneAlumnos">
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
           </AuxValues>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="tablaAlumnos">
+            <Component class="javax.swing.JTable" name="jTableAlumnos">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="3" rowCount="0">
@@ -478,17 +481,17 @@
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
+                      <Title value="Identificador"/>
                       <Editor/>
                       <Renderer/>
                     </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
+                      <Title value="Nombre"/>
                       <Editor/>
                       <Renderer/>
                     </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
+                      <Title value="Apellido"/>
                       <Editor/>
                       <Renderer/>
                     </Column>
@@ -501,23 +504,23 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="quitarAlumno">
+        <Component class="javax.swing.JButton" name="jButtonQuitarAlumno">
           <Properties>
             <Property name="text" type="java.lang.String" value="Quitar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quitarAlumnoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonQuitarAlumnoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="quitarProfesor">
+        <Component class="javax.swing.JButton" name="jButtonQuitarProfesor">
           <Properties>
             <Property name="text" type="java.lang.String" value="Quitar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quitarProfesorActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonQuitarProfesorActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="TAsignatura">
+        <Component class="javax.swing.JTextField" name="jTextFieldAsignatura">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
           </Properties>
