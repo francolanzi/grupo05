@@ -141,50 +141,54 @@ public class Controlador extends Observable
     
     public Iterator<Alumno> ubicaAlumno(String apellido, String nombre)
     {
-        TreeMap<String, Alumno> coleccion= new TreeMap<String, Alumno>();
-        Iterator<Alumno> iterator = alumnos.values().iterator();
-        while(iterator.hasNext()){
-            Alumno otro = iterator.next();
+        TreeMap<String, Alumno> retorno = new TreeMap<String, Alumno>();
+        Iterator<Alumno> alumnos = this.getAlumnosIterator();
+        while(alumnos.hasNext())
+        {
+            Alumno otro = alumnos.next();
             if (otro.getApellido().contains(apellido) && otro.getNombre().contains(nombre))
-                coleccion.put(otro.getId(), otro);
+                retorno.put(otro.getId(), otro);
         }
-        return coleccion.values().iterator();
+        return retorno.values().iterator();
     }
 
     public Iterator<Profesor> ubicaProfesor(String apellido, String nombre)
     {
-        TreeMap<String, Profesor> coleccion= new TreeMap<String, Profesor>();
-        Iterator<Profesor> iterator = profesores.values().iterator();
-        while(iterator.hasNext()){
-            Profesor otro = iterator.next();
+        TreeMap<String, Profesor> retorno = new TreeMap<String, Profesor>();
+        Iterator<Profesor> profesores = this.getProfesoresIterator();
+        while(profesores.hasNext())
+        {
+            Profesor otro = profesores.next();
             if (otro.getApellido().contains(apellido) && otro.getNombre().contains(nombre))
-                coleccion.put(otro.getId(), otro);
+                retorno.put(otro.getId(), otro);
         }
-        return coleccion.values().iterator();
+        return retorno.values().iterator();
     }
     
     public Iterator<Asignatura> ubicaAsignatura(String nombre)
     {
-        TreeMap<String, Asignatura> coleccion= new TreeMap<String, Asignatura>();
-        Iterator<Asignatura> iterator = asignaturas.values().iterator();
-        while(iterator.hasNext()){
-            Asignatura otro = iterator.next();
+        TreeMap<String, Asignatura> retorno = new TreeMap<String, Asignatura>();
+        Iterator<Asignatura> asignaturas = this.getAsignaturasIterator();
+        while(asignaturas.hasNext())
+        {
+            Asignatura otro = asignaturas.next();
             if (otro.getNombre().contains(nombre))
-                coleccion.put(otro.getId(), otro);
+                retorno.put(otro.getId(), otro);
         }
-        return coleccion.values().iterator();
+        return retorno.values().iterator();
     }
     
     public Iterator<Cursada> ubicaCursada(String nombre)
     {
-        TreeMap<String, Cursada> coleccion= new TreeMap<String, Cursada>();
-        Iterator<Cursada> iterator = cursadas.values().iterator();
-        while(iterator.hasNext()){
-            Cursada otro = iterator.next();
+        TreeMap<String, Cursada> retorno = new TreeMap<String, Cursada>();
+        Iterator<Cursada> cursadas = this.getCursadasIterator();
+        while(cursadas.hasNext())
+        {
+            Cursada otro = cursadas.next();
             if (otro.getAsignatura().getNombre().contains(nombre))
-                coleccion.put(otro.getId(), otro);
+                retorno.put(otro.getId(), otro);
         }
-        return coleccion.values().iterator();
+        return retorno.values().iterator();
     }
     
     public Alumno consultaAlumno(String legajo)
@@ -222,9 +226,35 @@ public class Controlador extends Observable
     public void aprobarAlumno(String legajo, String identificacion)
     throws IdInvalidoException, EntidadInvalidaException
     {
+        if (!this.alumnos.containsKey(legajo))
+            throw new IdInvalidoException(legajo, "El alumno ingresado no existe");
         if (!this.cursadas.containsKey(identificacion))
             throw new IdInvalidoException(identificacion, "La cursada ingresada no existe");
         this.cursadas.get(identificacion).aprobarAlumno(legajo);
+    }
+    
+    public void removeAsignaturaAlumno(String legajo, String identificacion)
+    throws IdInvalidoException
+    {
+        if (!this.alumnos.containsKey(legajo))
+            throw new IdInvalidoException(legajo, "El alumno ingresado no existe");
+        if (!this.asignaturas.containsKey(identificacion))
+            throw new IdInvalidoException(identificacion, "La asignatura ingresada no existe");
+        Alumno alumno = this.alumnos.get(legajo);
+        Iterator<Asignatura> historia = alumno.getHistoriaIterator();
+        boolean correlativa = true;
+        while (historia.hasNext() && !correlativa)
+            correlativa = historia.next().isCorrelativa(identificacion);
+        if (correlativa)
+            throw new IdInvalidoException(identificacion, "La asignatura no puede ser removida");
+        alumno.removeAsignatura(identificacion);
+        Iterator<Cursada> cursadas = this.getCursadasIterator();
+        while (cursadas.hasNext())
+        {
+            Cursada cursada = cursadas.next();
+            if (cursada.hasAlumno(legajo) && cursada.getAsignatura().getId().equals(identificacion))
+                cursada.removeAlumno(legajo);
+        }
     }
     
     public void addCompetencia(String legajo, String identificacion)
@@ -242,7 +272,16 @@ public class Controlador extends Observable
     {
         if (!this.profesores.containsKey(legajo))
             throw new IdInvalidoException(legajo, "El profesor ingresado no existe");
+        if (!this.asignaturas.containsKey(identificacion))
+            throw new IdInvalidoException(identificacion, "La asignatura ingresada no existe");
         this.profesores.get(legajo).removeCompetencia(identificacion);
+        Iterator<Cursada> cursadas = this.getCursadasIterator();
+        while (cursadas.hasNext())
+        {
+            Cursada cursada = cursadas.next();
+            if (cursada.hasProfesor(legajo) && cursada.getAsignatura().getId().equals(identificacion))
+                cursada.removeProfesor(legajo);
+        }
     }
     
     public void addCorrelativa(String idAsignatura, String idCorrelativa)
@@ -260,6 +299,8 @@ public class Controlador extends Observable
     {
         if (!this.asignaturas.containsKey(idAsignatura))
             throw new IdInvalidoException(idAsignatura, "La asignatura ingresada no existe");
+        if (!this.asignaturas.containsKey(idCorrelativa))
+            throw new IdInvalidoException(idCorrelativa, "La correlativa ingresada no existe");
         this.asignaturas.get(idAsignatura).removeCorrelativa(idCorrelativa);
     }
     
@@ -277,7 +318,7 @@ public class Controlador extends Observable
     
     private boolean compatibilidadHorariaAlumno(String legajo, String periodo, String dia, String horaInicio, String horaFin)
     {
-        Iterator<Cursada> cursadas = this.cursadas.values().iterator();
+        Iterator<Cursada> cursadas = this.getCursadasIterator();
         boolean retorno = true;
         while (retorno && cursadas.hasNext())
         {
@@ -289,7 +330,7 @@ public class Controlador extends Observable
     
     private boolean compatibilidadHorariaProfesor(String legajo, String periodo, String dia, String horaInicio, String horaFin)
     {
-        Iterator<Cursada> cursadas = this.cursadas.values().iterator();
+        Iterator<Cursada> cursadas = this.getCursadasIterator();
         boolean retorno = true;
         while (retorno && cursadas.hasNext())
         {
@@ -308,16 +349,16 @@ public class Controlador extends Observable
             throw new IdInvalidoException(identificacion, "La cursada ingresada no existe");
         Cursada cursada = this.cursadas.get(identificacion);
         Alumno alumno = this.alumnos.get(legajo);
-        if (!this.compatibilidadHorariaAlumno(legajo, this.cursadas.get(identificacion)))
+        if (!this.compatibilidadHorariaAlumno(legajo, cursada))
             throw new HorarioNoViableException(alumno, cursada, "El alumno no puede cursar en ese horario");
-        if (alumno.isAprobada(cursada.getAsignatura().getId()))
-            throw new EntidadInvalidaException(alumno, "El alumno ya ha aprobado la asignatura");
         cursada.addAlumno(alumno);
     }
     
     public void removeAlumnoCursada(String legajo, String identificacion)
     throws IdInvalidoException
     {
+        if (!this.alumnos.containsKey(legajo))
+            throw new IdInvalidoException(legajo, "El alumno ingresado no existe");
         if (!this.cursadas.containsKey(identificacion))
             throw new IdInvalidoException(identificacion, "La cursada ingresada no existe");
         this.cursadas.get(identificacion).removeAlumno(legajo);
@@ -340,11 +381,12 @@ public class Controlador extends Observable
     public void removeProfesorCursada(String legajo, String identificacion)
     throws IdInvalidoException
     {
+        if (!this.profesores.containsKey(legajo))
+            throw new IdInvalidoException(legajo, "El profesor ingresado no existe");
         if (!this.cursadas.containsKey(identificacion))
             throw new IdInvalidoException(identificacion, "La cursada ingresada no existe");
         this.cursadas.get(identificacion).removeProfesor(legajo);
     }
-    
     
     public Iterator<Alumno> getAlumnosIterator()
     {

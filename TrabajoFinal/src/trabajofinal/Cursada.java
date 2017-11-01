@@ -33,6 +33,8 @@ public class Cursada implements Entidad, Observer
     
     public void addAlumno(Alumno alumno) throws EntidadInvalidaException
     {
+        if (alumno.isAprobada(this.asignatura.getId()))
+            throw new EntidadInvalidaException(alumno, "El alumno ya ha aprobado la asignatura");
         boolean agregar = true;
         Iterator<Asignatura> correlativas = this.asignatura.getCorrelativasIterator();
         while (agregar && correlativas.hasNext())

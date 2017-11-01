@@ -1,4 +1,4 @@
-    package trabajofinal;
+package trabajofinal;
 
 import java.util.Iterator;
 
@@ -49,6 +49,18 @@ public class Alumno implements Entidad
         catch (EntidadInvalidaException e)
         {
             throw new EntidadInvalidaException(e.getEntidad(), "El alumno ya ha aprobado la asignatura");
+        }
+    }
+    
+    public void removeAsignatura(String identificacion) throws IdInvalidoException
+    {
+        try
+        {
+            this.historia.remove(identificacion);
+        }
+        catch (IdInvalidoException e)
+        {
+            throw new IdInvalidoException(e.getId(), "El alumno no posee aprobada la asignatura");
         }
     }
     
