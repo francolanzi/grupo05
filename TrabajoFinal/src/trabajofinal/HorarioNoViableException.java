@@ -31,12 +31,7 @@ public class HorarioNoViableException extends Exception
     
     public HorarioNoViableException(String periodo, String dia, String horaInicio, String horaFin, String mensaje)
     {
-        super(mensaje);
-        this.entidad = null;
-        this.periodo = periodo;
-        this.dia = dia;
-        this.horaInicio = horaInicio;
-        this.horaFin = horaFin;
+        this(null, periodo, dia, horaInicio, horaFin, mensaje);
     }
 
     public Entidad getEntidad()
