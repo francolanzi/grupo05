@@ -2,6 +2,8 @@ package GUI;
 
 import java.awt.event.WindowAdapter;
 
+import java.awt.event.WindowEvent;
+
 import java.io.FileNotFoundException;
 
 import javax.swing.JOptionPane;
@@ -24,7 +26,7 @@ public class WindowSerializador extends WindowAdapter
     }
     
     @Override
-    public void windowClosing(java.awt.event.WindowEvent windowEvent)
+    public void windowClosing(WindowEvent windowEvent)
     {
         try
         {
