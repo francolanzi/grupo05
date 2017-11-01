@@ -27,7 +27,7 @@
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="jPanel1">
+    <Container class="javax.swing.JPanel" name="jPanelCabecera">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="cc" type="rgb"/>
@@ -47,26 +47,26 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                  <Component id="Alumno" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelAlumno" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel2" min="-2" pref="115" max="-2" attributes="0"/>
+                  <Component id="jLabelConsulta" min="-2" pref="115" max="-2" attributes="0"/>
                   <EmptySpace pref="132" max="32767" attributes="0"/>
-                  <Component id="jLabel1" min="-2" pref="180" max="-2" attributes="0"/>
+                  <Component id="jLabelLogo" min="-2" pref="180" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jLabel1" alignment="0" pref="0" max="32767" attributes="0"/>
+              <Component id="jLabelLogo" alignment="0" pref="0" max="32767" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="jLabel2" max="32767" attributes="0"/>
+                          <Component id="jLabelConsulta" max="32767" attributes="0"/>
                           <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="Alumno" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelAlumno" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -74,7 +74,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="Alumno">
+        <Component class="javax.swing.JLabel" name="jLabelAlumno">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="24" style="0"/>
@@ -82,14 +82,14 @@
             <Property name="text" type="java.lang.String" value="Alumno - "/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="jLabelLogo">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/GUI/Imagenes/aa0c19c7-d3a7-43d8-8664-2f08e5d0ca90.png"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="jLabelConsulta">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="24" style="2"/>
@@ -102,7 +102,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="jPanel2">
+    <Container class="javax.swing.JPanel" name="jPanelGrilla">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="ff" red="69" type="rgb"/>
@@ -120,33 +120,33 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="64" pref="64" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="Email" max="32767" attributes="0"/>
-                      <Component id="Telefono" alignment="1" max="32767" attributes="0"/>
-                      <Component id="Calle" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="Legajo" alignment="0" max="32767" attributes="0"/>
-                      <Component id="Nombre" alignment="0" max="32767" attributes="0"/>
-                      <Component id="Apellido" alignment="0" max="32767" attributes="0"/>
-                      <Component id="Historia" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelEmail" max="32767" attributes="0"/>
+                      <Component id="jLabelTelefono" alignment="1" max="32767" attributes="0"/>
+                      <Component id="jLabelCalle" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelLegajo" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jLabelNombre" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jLabelApellido" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jLabelHistoria" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="TTelefono" alignment="0" pref="112" max="32767" attributes="0"/>
-                              <Component id="TCalle" alignment="1" max="32767" attributes="0"/>
-                              <Component id="TNombre" alignment="0" max="32767" attributes="0"/>
-                              <Component id="TApellido" alignment="0" max="32767" attributes="0"/>
-                              <Component id="TLegajo" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jTextFieldTelefono" alignment="0" pref="112" max="32767" attributes="0"/>
+                              <Component id="jTextFieldCalle" alignment="1" max="32767" attributes="0"/>
+                              <Component id="jTextFieldNombre" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jTextFieldApellido" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jTextFieldLegajo" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                          <Component id="Numero" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelNumero" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="TNumero" min="-2" pref="95" max="-2" attributes="0"/>
+                          <Component id="jTextFieldNumero" min="-2" pref="95" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
-                          <Component id="Cancelar" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonCancelar" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="TEmail" min="-2" pref="112" max="-2" attributes="0"/>
-                      <Component id="THistoria" min="-2" pref="340" max="-2" attributes="0"/>
+                      <Component id="jTextFieldEmail" min="-2" pref="112" max="-2" attributes="0"/>
+                      <Component id="jScrollPaneHistoria" min="-2" pref="340" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="39" max="32767" attributes="0"/>
               </Group>
@@ -157,46 +157,46 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Legajo" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="TLegajo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelLegajo" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="jTextFieldLegajo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Nombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="TNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Apellido" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="TApellido" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelApellido" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldApellido" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Calle" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="TCalle" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Numero" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="TNumero" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelCalle" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldCalle" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelNumero" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldNumero" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Telefono" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="TTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelTelefono" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="jTextFieldTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Email" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="TEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelEmail" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="jTextFieldEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
-                          <Component id="Cancelar" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="jButtonCancelar" min="-2" pref="31" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="THistoria" min="-2" pref="92" max="-2" attributes="0"/>
-                              <Component id="Historia" min="-2" max="-2" attributes="0"/>
+                              <Component id="jScrollPaneHistoria" min="-2" pref="92" max="-2" attributes="0"/>
+                              <Component id="jLabelHistoria" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -206,7 +206,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="Legajo">
+        <Component class="javax.swing.JLabel" name="jLabelLegajo">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -214,7 +214,7 @@
             <Property name="text" type="java.lang.String" value="Legajo"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="Nombre">
+        <Component class="javax.swing.JLabel" name="jLabelNombre">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -222,7 +222,7 @@
             <Property name="text" type="java.lang.String" value="Nombre"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="Apellido">
+        <Component class="javax.swing.JLabel" name="jLabelApellido">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -230,7 +230,7 @@
             <Property name="text" type="java.lang.String" value="Apellido"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="Calle">
+        <Component class="javax.swing.JLabel" name="jLabelCalle">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -238,7 +238,7 @@
             <Property name="text" type="java.lang.String" value="Calle"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="Telefono">
+        <Component class="javax.swing.JLabel" name="jLabelTelefono">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -246,7 +246,7 @@
             <Property name="text" type="java.lang.String" value="Telefono"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="Historia">
+        <Component class="javax.swing.JLabel" name="jLabelHistoria">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -254,7 +254,7 @@
             <Property name="text" type="java.lang.String" value="Historia"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TLegajo">
+        <Component class="javax.swing.JTextField" name="jTextFieldLegajo">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -262,30 +262,30 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TLegajoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldLegajoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="TNombre">
+        <Component class="javax.swing.JTextField" name="jTextFieldNombre">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TApellido">
+        <Component class="javax.swing.JTextField" name="jTextFieldApellido">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TCalle">
+        <Component class="javax.swing.JTextField" name="jTextFieldCalle">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TTelefono">
+        <Component class="javax.swing.JTextField" name="jTextFieldTelefono">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="Numero">
+        <Component class="javax.swing.JLabel" name="jLabelNumero">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -293,22 +293,22 @@
             <Property name="text" type="java.lang.String" value="N&#xfa;mero"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TNumero">
+        <Component class="javax.swing.JTextField" name="jTextFieldNumero">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TNumeroActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldNumeroActionPerformed"/>
           </Events>
         </Component>
-        <Container class="javax.swing.JScrollPane" name="THistoria">
+        <Container class="javax.swing.JScrollPane" name="jScrollPaneHistoria">
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
           </AuxValues>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="tablaHistoria">
+            <Component class="javax.swing.JTable" name="jTableHistoria">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="2" rowCount="0">
@@ -340,7 +340,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="Cancelar">
+        <Component class="javax.swing.JButton" name="jButtonCancelar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="99" red="0" type="rgb"/>
@@ -351,10 +351,10 @@
             <Property name="text" type="java.lang.String" value="SALIR"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CancelarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCancelarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="Email">
+        <Component class="javax.swing.JLabel" name="jLabelEmail">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -362,7 +362,7 @@
             <Property name="text" type="java.lang.String" value="Email"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TEmail">
+        <Component class="javax.swing.JTextField" name="jTextFieldEmail">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
           </Properties>

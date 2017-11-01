@@ -27,7 +27,7 @@
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="Cabecera">
+    <Container class="javax.swing.JPanel" name="jPanelCabecera">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="cc" type="rgb"/>
@@ -47,11 +47,11 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                  <Component id="Asignatura" min="-2" pref="139" max="-2" attributes="0"/>
+                  <Component id="jLabelAsignatura" min="-2" pref="139" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel2" min="-2" pref="81" max="-2" attributes="0"/>
+                  <Component id="jLabelEdicion" min="-2" pref="81" max="-2" attributes="0"/>
                   <EmptySpace pref="150" max="32767" attributes="0"/>
-                  <Component id="jLabel1" min="-2" pref="200" max="-2" attributes="0"/>
+                  <Component id="jLabelLogo" min="-2" pref="200" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -60,17 +60,17 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Asignatura" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel2" alignment="3" max="32767" attributes="0"/>
+                      <Component id="jLabelAsignatura" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelEdicion" alignment="3" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
-              <Component id="jLabel1" alignment="0" pref="0" max="32767" attributes="0"/>
+              <Component id="jLabelLogo" alignment="0" pref="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="Asignatura">
+        <Component class="javax.swing.JLabel" name="jLabelAsignatura">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="24" style="0"/>
@@ -78,14 +78,14 @@
             <Property name="text" type="java.lang.String" value="Asignatura -"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="jLabelLogo">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/GUI/Imagenes/aa0c19c7-d3a7-43d8-8664-2f08e5d0ca90.png"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="jLabelEdicion">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="24" style="2"/>
@@ -98,7 +98,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="Grilla">
+    <Container class="javax.swing.JPanel" name="jPanelGrilla">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="ff" red="69" type="rgb"/>
@@ -117,35 +117,35 @@
                   <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="Grabar" min="-2" pref="73" max="-2" attributes="0"/>
+                          <Component id="jButtonGrabar" min="-2" pref="73" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="Cancelar" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonCancelar" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="Legajo" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="Nombre" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jLabelLegajo" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jLabelNombre" alignment="0" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="Correlatividades" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelCorrelatividades" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="TCorrelatividades" alignment="0" min="-2" pref="340" max="-2" attributes="0"/>
+                              <Component id="jScrollPaneCorrelatividades" alignment="0" min="-2" pref="340" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="TNombre" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="TIdentificador" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="CCorrelativa" alignment="0" pref="125" max="32767" attributes="0"/>
+                                      <Component id="jTextFieldNombre" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextFieldIdentificador" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jComboCorrelativa" alignment="0" pref="125" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="AgregarCorrelativa" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButtonAgregarCorrelativa" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="quitarCorrelativa" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButtonQuitarCorrelativa" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="37" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -155,29 +155,29 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Legajo" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="TIdentificador" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelLegajo" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="jTextFieldIdentificador" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Nombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="TNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="AgregarCorrelativa" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="CCorrelativa" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Correlatividades" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonAgregarCorrelativa" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboCorrelativa" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelCorrelatividades" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="TCorrelatividades" min="-2" pref="92" max="-2" attributes="0"/>
-                      <Component id="quitarCorrelativa" min="-2" max="-2" attributes="0"/>
+                      <Component id="jScrollPaneCorrelatividades" min="-2" pref="92" max="-2" attributes="0"/>
+                      <Component id="jButtonQuitarCorrelativa" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Grabar" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="Cancelar" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="jButtonGrabar" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="jButtonCancelar" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="15" max="32767" attributes="0"/>
               </Group>
@@ -185,7 +185,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="Legajo">
+        <Component class="javax.swing.JLabel" name="jLabelLegajo">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -193,7 +193,7 @@
             <Property name="text" type="java.lang.String" value="Identificacion"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="Nombre">
+        <Component class="javax.swing.JLabel" name="jLabelNombre">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -201,7 +201,7 @@
             <Property name="text" type="java.lang.String" value="Nombre"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="Correlatividades">
+        <Component class="javax.swing.JLabel" name="jLabelCorrelatividades">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -209,7 +209,7 @@
             <Property name="text" type="java.lang.String" value="Correlativas"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TIdentificador">
+        <Component class="javax.swing.JTextField" name="jTextFieldIdentificador">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -217,19 +217,19 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TIdentificadorActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldIdentificadorActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="TNombre">
+        <Component class="javax.swing.JTextField" name="jTextFieldNombre">
         </Component>
-        <Container class="javax.swing.JScrollPane" name="TCorrelatividades">
+        <Container class="javax.swing.JScrollPane" name="jScrollPaneCorrelatividades">
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
           </AuxValues>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="tablaCorrelativas">
+            <Component class="javax.swing.JTable" name="jTableCorrelativas">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="2" rowCount="0">
@@ -258,29 +258,29 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JComboBox" name="CCorrelativa">
+        <Component class="javax.swing.JComboBox" name="jComboCorrelativa">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new ComboItem[] {})" type="code"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="CCorrelativaMouseClicked"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CCorrelativaActionPerformed"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jComboCorrelativaMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboCorrelativaActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;ComboItem&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="AgregarCorrelativa">
+        <Component class="javax.swing.JButton" name="jButtonAgregarCorrelativa">
           <Properties>
             <Property name="text" type="java.lang.String" value="Agregar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AgregarCorrelativaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAgregarCorrelativaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="Grabar">
+        <Component class="javax.swing.JButton" name="jButtonGrabar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="99" red="0" type="rgb"/>
@@ -296,10 +296,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GrabarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonGrabarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="Cancelar">
+        <Component class="javax.swing.JButton" name="jButtonCancelar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="99" red="0" type="rgb"/>
@@ -310,15 +310,15 @@
             <Property name="text" type="java.lang.String" value="CANCELAR"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CancelarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCancelarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="quitarCorrelativa">
+        <Component class="javax.swing.JButton" name="jButtonQuitarCorrelativa">
           <Properties>
             <Property name="text" type="java.lang.String" value="Quitar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quitarCorrelativaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonQuitarCorrelativaActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
