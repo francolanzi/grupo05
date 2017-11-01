@@ -177,8 +177,8 @@ public class Cursada implements Entidad, Observer
             catch (IdInvalidoException e){}
     }
     
-    //Constructor vacío, getters y setters
-    //Necesarios para serializar en XML
+/*.........................................Constructor vacío, getters y setters.........................................
+.............................................Necesarios para serializar en XML........................................*/
 
     public Cursada(){}
 

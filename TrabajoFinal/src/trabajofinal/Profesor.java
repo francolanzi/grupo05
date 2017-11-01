@@ -106,8 +106,8 @@ public class Profesor implements Entidad
         return result;
     }
     
-    //Constructor vacío, getters y setters
-    //Necesarios para serializar en XML
+/*.........................................Constructor vacío, getters y setters.........................................
+.............................................Necesarios para serializar en XML........................................*/
     
     public Profesor(){}
 

@@ -12,8 +12,8 @@ public class Domicilio
         this.numero = numero;
     }
     
-    //Constructor vacío, getters y setters
-    //Necesarios para serializar en XML
+/*.........................................Constructor vacío, getters y setters.........................................
+.............................................Necesarios para serializar en XML........................................*/
     
     public Domicilio(){}
 

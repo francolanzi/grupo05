@@ -408,8 +408,8 @@ public class Controlador extends Observable
         return this.cursadas.values().iterator();
     }
 
-    //Getters y setters
-    //Necesarios para serializar en XML
+/*...................................................Getters y setters..................................................
+.............................................Necesarios para serializar en XML........................................*/
 
     public void setAlumnos(TreeMap<String, Alumno> alumnos)
     {
