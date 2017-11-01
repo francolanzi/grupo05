@@ -176,7 +176,7 @@ public class VAlumnoConsulta extends javax.swing.JFrame
         jTextFieldTelefono.setEditable(false);
 
         jLabelNumero.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelNumero.setText("Número");
+        jLabelNumero.setText("Numero");
 
         jTextFieldNumero.setEditable(false);
         jTextFieldNumero.addActionListener(new java.awt.event.ActionListener()

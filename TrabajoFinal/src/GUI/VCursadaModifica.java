@@ -157,7 +157,7 @@ public class VCursadaModifica extends javax.swing.JFrame
 
         jLabelEdicion.setFont(new java.awt.Font("Tahoma", 2, 24)); // NOI18N
         jLabelEdicion.setForeground(new java.awt.Color(102, 102, 102));
-        jLabelEdicion.setText("Edición");
+        jLabelEdicion.setText("Edicion");
 
         javax.swing.GroupLayout jPanelCabeceraLayout = new javax.swing.GroupLayout(jPanelCabecera);
         jPanelCabecera.setLayout(jPanelCabeceraLayout);
@@ -195,10 +195,10 @@ public class VCursadaModifica extends javax.swing.JFrame
         jLabelNAsignatura.setText("Asignatura");
 
         jLabelPeriodo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelPeriodo.setText("Período");
+        jLabelPeriodo.setText("Periodo");
 
         jLabelDia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelDia.setText("Día");
+        jLabelDia.setText("Dia");
 
         jLabelProfesores.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelProfesores.setText("Profesores");

@@ -127,7 +127,7 @@ public class VAlumnoModifica extends javax.swing.JFrame
 
         jLabelEdicion.setFont(new java.awt.Font("Tahoma", 2, 24)); // NOI18N
         jLabelEdicion.setForeground(new java.awt.Color(102, 102, 102));
-        jLabelEdicion.setText("Edición");
+        jLabelEdicion.setText("Edicion");
 
         javax.swing.GroupLayout jPanelCabeceraLayout = new javax.swing.GroupLayout(jPanelCabecera);
         jPanelCabecera.setLayout(jPanelCabeceraLayout);
@@ -204,7 +204,7 @@ public class VAlumnoModifica extends javax.swing.JFrame
         });
 
         jLabelNumero.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelNumero.setText("Número");
+        jLabelNumero.setText("Numero");
 
         jTextFieldNumero.addActionListener(new java.awt.event.ActionListener()
         {
