@@ -18,43 +18,32 @@ public class Serializador
     
     private Serializador(){}
     
-    public static void serializar()
+    public static void serializar() throws FileNotFoundException
     {
-        try
-        {
-            XMLEncoder encoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(ARCH_NAME)));
-            encoder.writeObject(Controlador.getInstance().getAlumnos());
-            encoder.writeObject(Controlador.getInstance().getProfesores());
-            encoder.writeObject(Controlador.getInstance().getAsignaturas());
-            encoder.writeObject(Controlador.getInstance().getCursadas());
-            encoder.writeObject(Alumno.getSigLegajo());
-            encoder.writeObject(Profesor.getSigLegajo());
-            encoder.writeObject(Asignatura.getSigIdentificacion());
-            encoder.writeObject(Cursada.getSigIdentificacion());
-            encoder.close();
-        }
-        catch (FileNotFoundException e)
-        {
-            throw new InternalError();
-        }
+        XMLEncoder encoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(ARCH_NAME)));
+        encoder.writeObject(Controlador.getInstance().getAlumnos());
+        encoder.writeObject(Controlador.getInstance().getProfesores());
+        encoder.writeObject(Controlador.getInstance().getAsignaturas());
+        encoder.writeObject(Controlador.getInstance().getCursadas());
+        encoder.writeObject(Alumno.getSigLegajo());
+        encoder.writeObject(Profesor.getSigLegajo());
+        encoder.writeObject(Asignatura.getSigIdentificacion());
+        encoder.writeObject(Cursada.getSigIdentificacion());
+        encoder.close();
     }
     
-    public static void deserializar()
+    public static void deserializar() throws FileNotFoundException
     {
-        try
-        {
-            XMLDecoder decoder = new XMLDecoder(new BufferedInputStream(new FileInputStream(ARCH_NAME)));
-            Controlador.getInstance().setAlumnos((TreeMap<String, Alumno>) decoder.readObject());
-            Controlador.getInstance().setProfesores((TreeMap<String, Profesor>) decoder.readObject());
-            Controlador.getInstance().setAsignaturas((TreeMap<String, Asignatura>) decoder.readObject());
-            Controlador.getInstance().setCursadas((TreeMap<String, Cursada>) decoder.readObject());
-            Alumno.setSigLegajo((int) decoder.readObject());
-            Profesor.setSigLegajo((int) decoder.readObject());
-            Asignatura.setSigIdentificacion((int) decoder.readObject());
-            Cursada.setSigIdentificacion((int) decoder.readObject());
-            decoder.close();
-        }
-        catch (FileNotFoundException e){}
+        XMLDecoder decoder = new XMLDecoder(new BufferedInputStream(new FileInputStream(ARCH_NAME)));
+        Controlador.getInstance().setAlumnos((TreeMap<String, Alumno>) decoder.readObject());
+        Controlador.getInstance().setProfesores((TreeMap<String, Profesor>) decoder.readObject());
+        Controlador.getInstance().setAsignaturas((TreeMap<String, Asignatura>) decoder.readObject());
+        Controlador.getInstance().setCursadas((TreeMap<String, Cursada>) decoder.readObject());
+        Alumno.setSigLegajo((Integer) decoder.readObject());
+        Profesor.setSigLegajo((Integer) decoder.readObject());
+        Asignatura.setSigIdentificacion((Integer) decoder.readObject());
+        Cursada.setSigIdentificacion((Integer) decoder.readObject());
+        decoder.close();
     }  
     
 }

@@ -94,8 +94,6 @@ public class Controlador extends Observable
         if (!this.cursadas.containsKey(identificacion))
             throw new IdInvalidoException(identificacion, "La cursada ingresada no existe");
         this.cursadas.remove(identificacion);
-        setChanged();
-        notifyObservers(identificacion);
     }
     
     public void modificaAlumno(String legajo, String apellido, String nombre, String calle, int numero, String telefono, String email)
