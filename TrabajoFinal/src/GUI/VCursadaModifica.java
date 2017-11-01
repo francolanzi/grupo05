@@ -126,7 +126,7 @@ public class VCursadaModifica extends javax.swing.JFrame {
         TAsignatura = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cursada - Edición");
+        setTitle("Cursada - Ediciï¿½n");
         setPreferredSize(new java.awt.Dimension(800, 600));
 
         Cabecera.setBackground(new java.awt.Color(204, 255, 255));
@@ -139,7 +139,7 @@ public class VCursadaModifica extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 2, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel2.setText("Edición");
+        jLabel2.setText("Ediciï¿½n");
 
         javax.swing.GroupLayout CabeceraLayout = new javax.swing.GroupLayout(Cabecera);
         Cabecera.setLayout(CabeceraLayout);
@@ -177,10 +177,10 @@ public class VCursadaModifica extends javax.swing.JFrame {
         NAsignatura.setText("Asignatura");
 
         Periodo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Periodo.setText("Período");
+        Periodo.setText("Perï¿½odo");
 
         Dia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Dia.setText("Día");
+        Dia.setText("Dï¿½a");
 
         Profesores.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Profesores.setText("Profesores");
@@ -487,7 +487,7 @@ public class VCursadaModifica extends javax.swing.JFrame {
                 Profesor profesor = Controlador.getInstance().consultaProfesor(item.getId());
                 model.addRow(new Object[] { profesor.getId(), profesor.getNombre(), profesor.getApellido() });
             }
-            catch (IdInvalidoException | EntidadInvalidaException | HorarioNoViableException e)
+            catch (IdInvalidoException | EntidadInvalidaException e)
             {
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }
@@ -511,7 +511,7 @@ public class VCursadaModifica extends javax.swing.JFrame {
                 Alumno alumno = Controlador.getInstance().consultaAlumno(item.getId());
                 model.addRow(new Object[] { alumno.getId(), alumno.getNombre(), alumno.getApellido() });
             }
-            catch (IdInvalidoException | EntidadInvalidaException | HorarioNoViableException e)
+            catch (IdInvalidoException | EntidadInvalidaException e)
             {
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }

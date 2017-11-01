@@ -119,11 +119,11 @@ public class Cursada implements Entidad, Observer
         }
     }
     
-    public boolean isCompatible(Cursada cursada)
+    public boolean isCompatible(String periodo, String dia, String horaInicio, String horaFin)
     {
-        return !(this.getPeriodo().equals(cursada.getPeriodo()) && this.getDia().equals(cursada.getDia())
-        && this.getHoraInicio().compareTo(cursada.getHoraFin()) < 0
-        && this.getHoraFin().compareTo(cursada.getHoraInicio()) > 0);
+        return !(this.getPeriodo().equals(periodo) && this.getDia().equals(dia)
+        && this.getHoraInicio().compareTo(horaFin) < 0
+        && this.getHoraFin().compareTo(horaInicio) > 0);
     }
     
     public Iterator<Profesor> getProfesoresIterator()
