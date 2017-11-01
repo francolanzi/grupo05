@@ -108,6 +108,7 @@ public class VAlumnoModifica extends javax.swing.JFrame
         jButtonCancelar = new javax.swing.JButton();
         jTextFieldEmail = new javax.swing.JTextField();
         jLabelEmail = new javax.swing.JLabel();
+        jButtonQuitarAsignatura = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Alumno - Edición");
@@ -298,6 +299,15 @@ public class VAlumnoModifica extends javax.swing.JFrame
         jLabelEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelEmail.setText("Email");
 
+        jButtonQuitarAsignatura.setText("Quitar");
+        jButtonQuitarAsignatura.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonQuitarAsignaturaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelGrillaLayout = new javax.swing.GroupLayout(jPanelGrilla);
         jPanelGrilla.setLayout(jPanelGrillaLayout);
         jPanelGrillaLayout.setHorizontalGroup(
@@ -316,7 +326,10 @@ public class VAlumnoModifica extends javax.swing.JFrame
                             .addComponent(jLabelHistoria))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanelGrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboHistoria, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelGrillaLayout.createSequentialGroup()
+                                .addComponent(jComboHistoria, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonAprobar))
                             .addGroup(jPanelGrillaLayout.createSequentialGroup()
                                 .addGroup(jPanelGrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jTextFieldEmail)
@@ -325,17 +338,15 @@ public class VAlumnoModifica extends javax.swing.JFrame
                                     .addComponent(jTextFieldNombre, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextFieldApellido, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextFieldLegajo, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE))
-                                .addGroup(jPanelGrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanelGrillaLayout.createSequentialGroup()
-                                        .addGap(27, 27, 27)
-                                        .addComponent(jLabelNumero)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGrillaLayout.createSequentialGroup()
-                                        .addGap(130, 130, 130)
-                                        .addComponent(jButtonAprobar))))
-                            .addComponent(jScrollPaneHistoria, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(110, 110, 110))
+                                .addGap(27, 27, 27)
+                                .addComponent(jLabelNumero)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelGrillaLayout.createSequentialGroup()
+                                .addComponent(jScrollPaneHistoria, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonQuitarAsignatura)))
+                        .addGap(48, 48, 48))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGrillaLayout.createSequentialGroup()
                         .addComponent(jButtonGrabar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -377,11 +388,14 @@ public class VAlumnoModifica extends javax.swing.JFrame
                     .addComponent(jComboHistoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonAprobar))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPaneHistoria, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanelGrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonGrabar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelGrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelGrillaLayout.createSequentialGroup()
+                        .addComponent(jScrollPaneHistoria, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelGrillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonGrabar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jButtonQuitarAsignatura))
                 .addContainerGap(178, Short.MAX_VALUE))
         );
 
@@ -478,11 +492,31 @@ public class VAlumnoModifica extends javax.swing.JFrame
             evt.consume();
     }//GEN-LAST:event_jTextFieldNumeroKeyTyped
 
+    private void jButtonQuitarAsignaturaActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonQuitarAsignaturaActionPerformed
+    {//GEN-HEADEREND:event_jButtonQuitarAsignaturaActionPerformed
+        if (jTableHistoria.getSelectedRows().length == 1)
+        {
+            DefaultTableModel model = (DefaultTableModel) jTableHistoria.getModel();
+            try
+            {
+                Controlador.getInstance()
+                .removeAsignaturaAlumno(jTextFieldLegajo.getText(),
+                    (String) jTableHistoria.getValueAt(jTableHistoria.getSelectedRow(), 0));
+                model.removeRow(jTableHistoria.getSelectedRow());
+            }
+            catch (IdInvalidoException e)
+            {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
+        }
+    }//GEN-LAST:event_jButtonQuitarAsignaturaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAprobar;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonGrabar;
+    private javax.swing.JButton jButtonQuitarAsignatura;
     private javax.swing.JComboBox<ComboItem> jComboHistoria;
     private javax.swing.JLabel jLabelAlumno;
     private javax.swing.JLabel jLabelApellido;
