@@ -52,6 +52,7 @@ public class VProfesorAlta extends javax.swing.JFrame
 
     private void cargaCompetencias()
     {
+        jComboCompetencia.removeAllItems();
         Iterator<Asignatura> asignaturas = Controlador.getInstance().getAsignaturasIterator();
         while (asignaturas.hasNext())
         {

@@ -53,6 +53,7 @@ public class VProfesorConsulta extends javax.swing.JFrame
     private void setTablaCompetencias(Profesor profesor)
     {
         DefaultTableModel model = (DefaultTableModel) jTableCompetencias.getModel();
+        model.setRowCount(0);
         Iterator<Asignatura> competencias = profesor.getCompetenciasIterator();
         while (competencias.hasNext())
         {

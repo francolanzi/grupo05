@@ -36,10 +36,152 @@
   </void>
  </object>
  <object class="java.util.TreeMap"/>
- <object class="java.util.TreeMap"/>
- <object class="java.util.TreeMap"/>
+ <object class="java.util.TreeMap">
+  <void method="put">
+   <string>ASI0000</string>
+   <object class="trabajofinal.Asignatura" id="Asignatura0">
+    <void property="correlativas">
+     <object class="trabajofinal.ObserverTreeMap"/>
+    </void>
+    <void property="identificacion">
+     <string>ASI0000</string>
+    </void>
+    <void property="nombre">
+     <string>Matematica</string>
+    </void>
+   </object>
+  </void>
+  <void method="put">
+   <string>ASI0001</string>
+   <object class="trabajofinal.Asignatura" id="Asignatura1">
+    <void property="correlativas">
+     <object class="trabajofinal.ObserverTreeMap"/>
+    </void>
+    <void property="identificacion">
+     <string>ASI0001</string>
+    </void>
+    <void property="nombre">
+     <string>Quimica</string>
+    </void>
+   </object>
+  </void>
+  <void method="put">
+   <string>ASI0002</string>
+   <object class="trabajofinal.Asignatura" id="Asignatura2">
+    <void property="correlativas">
+     <object class="trabajofinal.ObserverTreeMap" id="ObserverTreeMap0">
+      <void property="coleccion">
+       <void method="put">
+        <string>ASI0000</string>
+        <object idref="Asignatura0"/>
+       </void>
+       <void method="put">
+        <string>ASI0001</string>
+        <object idref="Asignatura1"/>
+       </void>
+      </void>
+     </object>
+    </void>
+    <void property="identificacion">
+     <string>ASI0002</string>
+    </void>
+    <void property="nombre">
+     <string>Fisica</string>
+    </void>
+   </object>
+  </void>
+ </object>
+ <object class="java.util.TreeMap">
+  <void method="put">
+   <string>CUR0000</string>
+   <object class="trabajofinal.Cursada">
+    <void property="alumnos">
+     <object class="trabajofinal.ObserverTreeMap"/>
+    </void>
+    <void property="asignatura">
+     <object idref="Asignatura0"/>
+    </void>
+    <void property="dia">
+     <string>Lunes</string>
+    </void>
+    <void property="horaFin">
+     <string>10:00</string>
+    </void>
+    <void property="horaInicio">
+     <string>08:00</string>
+    </void>
+    <void property="identificacion">
+     <string>CUR0000</string>
+    </void>
+    <void property="periodo">
+     <string>01-1996</string>
+    </void>
+    <void property="profesores">
+     <object class="trabajofinal.ObserverTreeMap"/>
+    </void>
+   </object>
+  </void>
+  <void method="put">
+   <string>CUR0001</string>
+   <object class="trabajofinal.Cursada">
+    <void property="alumnos">
+     <object class="trabajofinal.ObserverTreeMap"/>
+    </void>
+    <void property="asignatura">
+     <object idref="Asignatura1"/>
+    </void>
+    <void property="dia">
+     <string>Lunes</string>
+    </void>
+    <void property="horaFin">
+     <string>12:00</string>
+    </void>
+    <void property="horaInicio">
+     <string>10:00</string>
+    </void>
+    <void property="identificacion">
+     <string>CUR0001</string>
+    </void>
+    <void property="periodo">
+     <string>01-1996</string>
+    </void>
+    <void property="profesores">
+     <object class="trabajofinal.ObserverTreeMap"/>
+    </void>
+   </object>
+  </void>
+  <void method="put">
+   <string>CUR0002</string>
+   <object class="trabajofinal.Cursada">
+    <void property="alumnos">
+     <object class="trabajofinal.ObserverTreeMap"/>
+    </void>
+    <void property="asignatura">
+     <object idref="Asignatura2"/>
+    </void>
+    <void property="dia">
+     <string>Lunes</string>
+    </void>
+    <void property="horaFin">
+     <string>10:00</string>
+    </void>
+    <void property="horaInicio">
+     <string>08:00</string>
+    </void>
+    <void property="identificacion">
+     <string>CUR0002</string>
+    </void>
+    <void property="periodo">
+     <string>01-1996</string>
+    </void>
+    <void property="profesores">
+     <object class="trabajofinal.ObserverTreeMap"/>
+    </void>
+   </object>
+  </void>
+ </object>
  <int>1</int>
  <int>0</int>
- <int>0</int>
- <int>0</int>
+ <int>3</int>
+ <int>3</int>
 </java>

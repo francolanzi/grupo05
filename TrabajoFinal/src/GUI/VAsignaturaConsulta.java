@@ -43,6 +43,7 @@ public class VAsignaturaConsulta extends javax.swing.JFrame
     private void setTablaCorrelativas(Asignatura asignatura)
     {
         DefaultTableModel model = (DefaultTableModel) jTableCorrelativas.getModel();
+        model.setRowCount(0);
         Iterator<Asignatura> correlativas = asignatura.getCorrelativasIterator();
         while (correlativas.hasNext())
         {

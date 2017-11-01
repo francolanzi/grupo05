@@ -242,7 +242,7 @@ public class Controlador extends Observable
             throw new IdInvalidoException(identificacion, "La asignatura ingresada no existe");
         Alumno alumno = this.alumnos.get(legajo);
         Iterator<Asignatura> historia = alumno.getHistoriaIterator();
-        boolean correlativa = true;
+        boolean correlativa = false;
         while (historia.hasNext() && !correlativa)
             correlativa = historia.next().isCorrelativa(identificacion);
         if (correlativa)

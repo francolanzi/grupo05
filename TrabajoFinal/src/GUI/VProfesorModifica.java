@@ -51,6 +51,7 @@ public class VProfesorModifica extends javax.swing.JFrame
     private void setTablaCompetencias(Profesor profesor)
     {
         DefaultTableModel model = (DefaultTableModel) jTableCompetencias.getModel();
+        model.setRowCount(0);
         Iterator<Asignatura> competencias = profesor.getCompetenciasIterator();
         while (competencias.hasNext())
         {
@@ -61,6 +62,7 @@ public class VProfesorModifica extends javax.swing.JFrame
 
     private void cargaCompetencias()
     {
+        jComboCompetencia.removeAllItems();
         Iterator<Asignatura> asignaturas = Controlador.getInstance().getAsignaturasIterator();
         while (asignaturas.hasNext())
         {

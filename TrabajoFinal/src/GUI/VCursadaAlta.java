@@ -55,6 +55,7 @@ public class VCursadaAlta extends javax.swing.JFrame
 
     private void cargaProfesores()
     {
+        jComboProfesores.removeAllItems();
         Iterator<Profesor> profesores = Controlador.getInstance().getProfesoresIterator();
         while (profesores.hasNext())
         {
@@ -66,6 +67,7 @@ public class VCursadaAlta extends javax.swing.JFrame
 
     private void cargaAlumnos()
     {
+        jComboAlumnos.removeAllItems();
         Iterator<Alumno> alumnos = Controlador.getInstance().getAlumnosIterator();
         while (alumnos.hasNext())
         {

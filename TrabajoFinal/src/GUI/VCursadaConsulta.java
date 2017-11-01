@@ -47,6 +47,7 @@ public class VCursadaConsulta extends javax.swing.JFrame
     private void setTablaProfesores(Cursada cursada)
     {
         DefaultTableModel model = (DefaultTableModel) jTableProfesores.getModel();
+        model.setRowCount(0);
         Iterator<Profesor> profesores = cursada.getProfesoresIterator();
         while (profesores.hasNext())
         {
@@ -58,6 +59,7 @@ public class VCursadaConsulta extends javax.swing.JFrame
     private void setTablaAlumnos(Cursada cursada)
     {
         DefaultTableModel model = (DefaultTableModel) jTableAlumnos.getModel();
+        model.setRowCount(0);
         Iterator<Alumno> alumnos = cursada.getAlumnosIterator();
         while (alumnos.hasNext())
         {

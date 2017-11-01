@@ -46,7 +46,8 @@ public class VAlumnoModifica extends javax.swing.JFrame
         jTextFieldApellido.setText(alumno.getApellido());
         jTextFieldCalle.setText(alumno.getDomicilio().getCalle());
         jTextFieldNumero.setText(Integer.toString(alumno.getDomicilio().getNumero()));
-        jTextFieldTelefono.setText(alumno.getEmail());
+        jTextFieldTelefono.setText(alumno.getTelefono());
+        jTextFieldEmail.setText(alumno.getEmail());
         setTablaHistoria(alumno);
         cargaHistoria();
     }
@@ -54,6 +55,7 @@ public class VAlumnoModifica extends javax.swing.JFrame
     private void setTablaHistoria(Alumno alumno)
     {
         DefaultTableModel model = (DefaultTableModel) jTableHistoria.getModel();
+        model.setRowCount(0);
         Iterator<Asignatura> historia = alumno.getHistoriaIterator();
         while (historia.hasNext())
         {
@@ -64,6 +66,7 @@ public class VAlumnoModifica extends javax.swing.JFrame
 
     private void cargaHistoria()
     {
+        jComboHistoria.removeAllItems();
         Iterator<Cursada> cursadas = Controlador.getInstance().getCursadasIterator();
         while (cursadas.hasNext())
         {
