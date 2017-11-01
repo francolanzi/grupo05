@@ -21,34 +21,36 @@ import trabajofinal.IdInvalidoException;
 import trabajofinal.ObserverTreeMap;
 import trabajofinal.Profesor;
 
-/**
- *
- * @author Usuario
- */
-public class VAsignaturaModifica extends javax.swing.JFrame {
+public class VAsignaturaModifica extends javax.swing.JFrame
+{
+    
     private static VAsignaturaModifica ventanaAsignaturaModifica = null;
 
 
     /** Creates new form VAsignaturaModifica */
-    private VAsignaturaModifica() {
+    private VAsignaturaModifica()
+    {
         initComponents();
+        this.addWindowListener(WindowSerializador.getInstance());
     }
-        
-    public static VAsignaturaModifica getInstancia(Asignatura asignatura){
+
+    public static VAsignaturaModifica getInstance(Asignatura asignatura)
+    {
         if (ventanaAsignaturaModifica == null)
-            ventanaAsignaturaModifica= new VAsignaturaModifica();
+            ventanaAsignaturaModifica = new VAsignaturaModifica();
         ventanaAsignaturaModifica.setComponentes(asignatura);
         return ventanaAsignaturaModifica;
     }
-    
-    public void setComponentes(Asignatura asignatura){
+
+    public void setComponentes(Asignatura asignatura)
+    {
         this.addWindowListener(WindowSerializador.getInstance());
         jTextFieldIdentificador.setText(asignatura.getId());
         jTextFieldNombre.setText(asignatura.getNombre());
         setTablaCorrelativas(asignatura);
         cargaCorrelativas();
-    }    
-        
+    }
+
     private void setTablaCorrelativas(Asignatura asignatura)
     {
         DefaultTableModel model = (DefaultTableModel) jTableCorrelativas.getModel();
@@ -56,10 +58,10 @@ public class VAsignaturaModifica extends javax.swing.JFrame {
         while (correlativas.hasNext())
         {
             Asignatura correlativa = correlativas.next();
-            model.addRow(new Object[] {correlativa.getId(), correlativa.getNombre()});
+            model.addRow(new Object[] { correlativa.getId(), correlativa.getNombre() });
         }
     }
-    
+
     private void cargaCorrelativas()
     {
         Iterator<Asignatura> asignaturas = Controlador.getInstance().getAsignaturasIterator();
@@ -98,7 +100,7 @@ public class VAsignaturaModifica extends javax.swing.JFrame {
         jButtonQuitarCorrelativa = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Asignatura - Edición");
+        setTitle("Asignatura - Ediciï¿½n");
         setPreferredSize(new java.awt.Dimension(800, 600));
 
         jPanelCabecera.setBackground(new java.awt.Color(204, 255, 255));
@@ -111,7 +113,7 @@ public class VAsignaturaModifica extends javax.swing.JFrame {
 
         jLabelEdicion.setFont(new java.awt.Font("Tahoma", 2, 24)); // NOI18N
         jLabelEdicion.setForeground(new java.awt.Color(102, 102, 102));
-        jLabelEdicion.setText("Edición");
+        jLabelEdicion.setText("Ediciï¿½n");
 
         javax.swing.GroupLayout jPanelCabeceraLayout = new javax.swing.GroupLayout(jPanelCabecera);
         jPanelCabecera.setLayout(jPanelCabeceraLayout);
@@ -318,12 +320,13 @@ public class VAsignaturaModifica extends javax.swing.JFrame {
 
     private void jButtonGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGrabarActionPerformed
         if (jTextFieldNombre.getText().equals(""))
-            JOptionPane.showMessageDialog(null,"Ingrese nombre de la Asignatura");
+            JOptionPane.showMessageDialog(null, "Ingrese nombre de la Asignatura");
         else
         {
             try
             {
-                Controlador.getInstance().modificaAsignatura(jTextFieldIdentificador.getText(), jTextFieldNombre.getText());
+                Controlador.getInstance()
+                    .modificaAsignatura(jTextFieldIdentificador.getText(), jTextFieldNombre.getText());
                 JOptionPane.showMessageDialog(null, "La asignatura ha sido modificada exitosamente");
             }
             catch (IdInvalidoException e)
@@ -339,13 +342,14 @@ public class VAsignaturaModifica extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonQuitarCorrelativaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuitarCorrelativaActionPerformed
-        if(jTableCorrelativas.getSelectedRows().length ==1)
+        if (jTableCorrelativas.getSelectedRows().length == 1)
         {
             DefaultTableModel model = (DefaultTableModel) jTableCorrelativas.getModel();
             try
             {
-                Controlador.getInstance().removeCorrelativa(jTextFieldIdentificador.getText(),
-                    (String) jTableCorrelativas.getValueAt(jTableCorrelativas.getSelectedRow(), 0));
+                Controlador.getInstance()
+                    .removeCorrelativa(jTextFieldIdentificador.getText(),
+                                       (String) jTableCorrelativas.getValueAt(jTableCorrelativas.getSelectedRow(), 0));
                 model.removeRow(jTableCorrelativas.getSelectedRow());
             }
             catch (IdInvalidoException e)

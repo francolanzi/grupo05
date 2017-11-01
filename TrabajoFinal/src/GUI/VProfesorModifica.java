@@ -14,26 +14,28 @@ import trabajofinal.EntidadInvalidaException;
 import trabajofinal.IdInvalidoException;
 import trabajofinal.Profesor;
 
-/**
- *
- * @author Usuario
- */
-public class VProfesorModifica extends javax.swing.JFrame {
-    private static VProfesorModifica ventanaProfesorModifica = null;        
+public class VProfesorModifica extends javax.swing.JFrame
+{
+    
+    private static VProfesorModifica ventanaProfesorModifica = null;
 
     /** Creates new form VProfesorModifica */
-    private VProfesorModifica() {
+    private VProfesorModifica()
+    {
         initComponents();
+        this.addWindowListener(WindowSerializador.getInstance());
     }
-    
-    public static VProfesorModifica getInstancia(Profesor profesor){
+
+    public static VProfesorModifica getInstance(Profesor profesor)
+    {
         if (ventanaProfesorModifica == null)
-            ventanaProfesorModifica= new VProfesorModifica();
+            ventanaProfesorModifica = new VProfesorModifica();
         ventanaProfesorModifica.setComponentes(profesor);
         return ventanaProfesorModifica;
     }
-    
-    public void setComponentes(Profesor profesor){
+
+    public void setComponentes(Profesor profesor)
+    {
         this.addWindowListener(WindowSerializador.getInstance());
         jTextFieldLegajo.setText(profesor.getId());
         jTextFieldNombre.setText(profesor.getNombre());
@@ -43,7 +45,7 @@ public class VProfesorModifica extends javax.swing.JFrame {
         jTextFieldTelefono.setText(profesor.getTelefono());
         jTextFieldEmail.setText(profesor.getEmail());
         setTablaCompetencias(profesor);
-        cargaCompetencias();    
+        cargaCompetencias();
     }
 
     private void setTablaCompetencias(Profesor profesor)
@@ -53,10 +55,10 @@ public class VProfesorModifica extends javax.swing.JFrame {
         while (competencias.hasNext())
         {
             Asignatura competencia = competencias.next();
-            model.addRow(new Object[] {competencia.getId(), competencia.getNombre()});
+            model.addRow(new Object[] { competencia.getId(), competencia.getNombre() });
         }
     }
-    
+
     private void cargaCompetencias()
     {
         Iterator<Asignatura> asignaturas = Controlador.getInstance().getAsignaturasIterator();
@@ -67,7 +69,7 @@ public class VProfesorModifica extends javax.swing.JFrame {
             jComboCompetencia.addItem(item);
         }
     }
-    
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -105,7 +107,7 @@ public class VProfesorModifica extends javax.swing.JFrame {
         jButtonQuitarCompetencia = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Profesor - Edición");
+        setTitle("Profesor - Ediciï¿½n");
 
         jPanelCabecera.setBackground(new java.awt.Color(204, 255, 255));
         jPanelCabecera.setPreferredSize(new java.awt.Dimension(400, 50));
@@ -117,7 +119,7 @@ public class VProfesorModifica extends javax.swing.JFrame {
 
         jLabelEdicion.setFont(new java.awt.Font("Tahoma", 2, 24)); // NOI18N
         jLabelEdicion.setForeground(new java.awt.Color(102, 102, 102));
-        jLabelEdicion.setText("Edición");
+        jLabelEdicion.setText("Ediciï¿½n");
 
         javax.swing.GroupLayout jPanelCabeceraLayout = new javax.swing.GroupLayout(jPanelCabecera);
         jPanelCabecera.setLayout(jPanelCabeceraLayout);
@@ -185,7 +187,7 @@ public class VProfesorModifica extends javax.swing.JFrame {
         });
 
         jLabelNumero.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelNumero.setText("Número");
+        jLabelNumero.setText("Nï¿½mero");
 
         jTextFieldNumero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -242,7 +244,7 @@ public class VProfesorModifica extends javax.swing.JFrame {
         });
 
         jLabelTelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelTelefono.setText("Teléfono");
+        jLabelTelefono.setText("Telï¿½fono");
 
         jTextFieldTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -403,8 +405,8 @@ public class VProfesorModifica extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jTextFieldNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreKeyTyped
-         char TipoDeTecla = evt.getKeyChar();
-         if (Character.isDigit(TipoDeTecla))
+        char TipoDeTecla = evt.getKeyChar();
+        if (Character.isDigit(TipoDeTecla))
             evt.consume();
     }//GEN-LAST:event_jTextFieldNombreKeyTyped
 
@@ -415,8 +417,8 @@ public class VProfesorModifica extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldApellidoKeyTyped
 
     private void jTextFieldNumeroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNumeroKeyTyped
-         char TipoDeTecla = evt.getKeyChar();
-         if (!Character.isDigit(TipoDeTecla))
+        char TipoDeTecla = evt.getKeyChar();
+        if (!Character.isDigit(TipoDeTecla))
             evt.consume();
     }//GEN-LAST:event_jTextFieldNumeroKeyTyped
 
@@ -427,13 +429,14 @@ public class VProfesorModifica extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldTelefonoKeyTyped
 
     private void jButtonQuitarCompetenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuitarCompetenciaActionPerformed
-        if(jTableCompetencias.getSelectedRows().length ==1)
+        if (jTableCompetencias.getSelectedRows().length == 1)
         {
             DefaultTableModel model = (DefaultTableModel) jTableCompetencias.getModel();
             try
             {
-                Controlador.getInstance().removeCompetencia(jTextFieldLegajo.getText(),
-                    (String) jTableCompetencias.getValueAt(jTableCompetencias.getSelectedRow(), 0));
+                Controlador.getInstance()
+                    .removeCompetencia(jTextFieldLegajo.getText(),
+                                       (String) jTableCompetencias.getValueAt(jTableCompetencias.getSelectedRow(), 0));
                 model.removeRow(jTableCompetencias.getSelectedRow());
             }
             catch (IdInvalidoException e)
@@ -445,25 +448,26 @@ public class VProfesorModifica extends javax.swing.JFrame {
 
     private void jButtonGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGrabarActionPerformed
         if (jTextFieldNombre.getText().equals(""))
-            JOptionPane.showMessageDialog(null,"Ingrese Nomnbre");
+            JOptionPane.showMessageDialog(null, "Ingrese Nomnbre");
         else if (jTextFieldApellido.getText().equals(""))
-            JOptionPane.showMessageDialog(null,"Ingrese Apellido");
+            JOptionPane.showMessageDialog(null, "Ingrese Apellido");
         else if (jTextFieldCalle.getText().equals(""))
-            JOptionPane.showMessageDialog(null,"Ingrese Calle");
+            JOptionPane.showMessageDialog(null, "Ingrese Calle");
         else if (jTextFieldNumero.getText().equals(""))
-            JOptionPane.showMessageDialog(null,"Ingrese Numero");
+            JOptionPane.showMessageDialog(null, "Ingrese Numero");
         else if (jTextFieldTelefono.getText().equals(""))
-                JOptionPane.showMessageDialog(null,"Ingrese Telefono");
+            JOptionPane.showMessageDialog(null, "Ingrese Telefono");
         else if (jTextFieldEmail.getText().equals(""))
-            JOptionPane.showMessageDialog(null,"Ingrese Mail");
+            JOptionPane.showMessageDialog(null, "Ingrese Mail");
         else
         {
             try
             {
-                Controlador.getInstance().modificaProfesor(jTextFieldLegajo.getText().toString(), jTextFieldApellido.getText().toString(),
-                                           jTextFieldNombre.getText().toString(), jTextFieldCalle.getText().toString(),
-                                           Integer.parseInt(jTextFieldNumero.getText()),jTextFieldNumero.getText().toString(),
-                                            jTextFieldEmail.getText().toString());
+                Controlador.getInstance()
+                    .modificaProfesor(jTextFieldLegajo.getText().toString(), jTextFieldApellido.getText().toString(),
+                                      jTextFieldNombre.getText().toString(), jTextFieldCalle.getText().toString(),
+                                      Integer.parseInt(jTextFieldNumero.getText()),
+                                      jTextFieldNumero.getText().toString(), jTextFieldEmail.getText().toString());
                 JOptionPane.showMessageDialog(null, "El profesor ha sido modificado exitosamente");
             }
             catch (EmailInvalidoException | IdInvalidoException e)

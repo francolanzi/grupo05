@@ -2,6 +2,7 @@ package GUI;
 
 public class ComboItem
 {
+    
     private String id;
     private String string;
 

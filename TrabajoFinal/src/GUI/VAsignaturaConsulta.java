@@ -11,34 +11,35 @@ import trabajofinal.Controlador;
 import trabajofinal.Cursada;
 import trabajofinal.Profesor;
 
-/**
- *
- * @author Usuario
- */
-public class VAsignaturaConsulta extends javax.swing.JFrame {
+public class VAsignaturaConsulta extends javax.swing.JFrame
+{
+    
     private static VAsignaturaConsulta ventanaAsignaturaConsulta = null;
-    
+
     /** Creates new form VAsignaturaConsulta */
-    private VAsignaturaConsulta() {
+    private VAsignaturaConsulta()
+    {
         initComponents();
+        this.addWindowListener(WindowSerializador.getInstance());
     }
-    
-    public static VAsignaturaConsulta getInstancia(Asignatura asignatura){
+
+    public static VAsignaturaConsulta getInstance(Asignatura asignatura)
+    {
         if (ventanaAsignaturaConsulta == null)
-            ventanaAsignaturaConsulta= new VAsignaturaConsulta();
+            ventanaAsignaturaConsulta = new VAsignaturaConsulta();
         ventanaAsignaturaConsulta.setComponentes(asignatura);
         return ventanaAsignaturaConsulta;
     }
-    
-    public void setComponentes(Asignatura asignatura){
+
+    public void setComponentes(Asignatura asignatura)
+    {
         this.addWindowListener(WindowSerializador.getInstance());
         jTextFieldLegajo.setText(asignatura.getId());
         jTextFieldNombre.setText(asignatura.getNombre());
         setTablaCorrelativas(asignatura);
     }
-    
-    
-    
+
+
     private void setTablaCorrelativas(Asignatura asignatura)
     {
         DefaultTableModel model = (DefaultTableModel) jTableCorrelativas.getModel();
@@ -46,7 +47,7 @@ public class VAsignaturaConsulta extends javax.swing.JFrame {
         while (correlativas.hasNext())
         {
             Asignatura correlativa = correlativas.next();
-            model.addRow(new Object[] {correlativa.getId(), correlativa.getNombre()});
+            model.addRow(new Object[] { correlativa.getId(), correlativa.getNombre() });
         }
     }
 

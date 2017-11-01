@@ -121,10 +121,21 @@ public class Controlador extends Observable
     }
     
     public void modificaCursada(String identificacion, String periodo, String dia, String horaInicio, String horaFin)
-    throws IdInvalidoException, PeriodoInvalidoException, HoraInvalidaException
+    throws IdInvalidoException, PeriodoInvalidoException, HoraInvalidaException, HorarioNoViableException
     {
         if (!this.cursadas.containsKey(identificacion))
             throw new IdInvalidoException(identificacion, "La cursada ingresada no existe");
+        Iterator<Alumno> alumnos = this.getAlumnosIterator();
+        boolean compatible = true;
+        while (alumnos.hasNext() && compatible)
+            compatible = this.compatibilidadHorariaAlumno(alumnos.next().getId(), periodo, dia, horaInicio, horaFin);
+        if (!compatible)
+            throw new HorarioNoViableException(periodo, dia, horaInicio, horaFin, "Algun alumno no puede cursar en ese horario");
+        Iterator<Profesor> profesores = this.getProfesoresIterator();
+        while (profesores.hasNext() && compatible)
+            compatible = this.compatibilidadHorariaProfesor(profesores.next().getId(), periodo, dia, horaInicio, horaFin);
+        if (!compatible)
+            throw new HorarioNoViableException(periodo, dia, horaInicio, horaFin, "Algun profesor no puede cursar en ese horario");
         this.cursadas.get(identificacion).modificar(periodo, dia, horaInicio, horaFin);
     }
     
@@ -261,7 +272,7 @@ public class Controlador extends Observable
     private boolean compatibilidadHorariaProfesor(String legajo, Cursada cursada)
     {
         return this.compatibilidadHorariaProfesor(legajo, cursada.getPeriodo(), cursada.getDia(),
-                                                cursada.getHoraInicio(), cursada.getHoraFin());
+                                                  cursada.getHoraInicio(), cursada.getHoraFin());
     }
     
     private boolean compatibilidadHorariaAlumno(String legajo, String periodo, String dia, String horaInicio, String horaFin)

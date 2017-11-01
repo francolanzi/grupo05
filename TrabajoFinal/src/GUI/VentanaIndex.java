@@ -5,6 +5,8 @@ import java.awt.Component;
 
 import java.awt.event.WindowAdapter;
 
+import java.io.FileNotFoundException;
+
 import java.util.Iterator;
 
 import javax.swing.JOptionPane;
@@ -19,22 +21,22 @@ import trabajofinal.IdInvalidoException;
 import trabajofinal.Profesor;
 import trabajofinal.Serializador;
 
-/**
- *
- * @author Usuario
- */
-public class VentanaIndex extends javax.swing.JFrame {
-    private static VentanaIndex ventanaPrincipal = null;
+public class VentanaIndex extends javax.swing.JFrame
+{
     
+    private static VentanaIndex ventanaPrincipal = null;
+
     /** Creates new form VentanIndex */
-    public VentanaIndex() {
+    public VentanaIndex()
+    {
         initComponents();
         this.addWindowListener(WindowSerializador.getInstance());
     }
-    
-    public static VentanaIndex getInstancia(){
+
+    public static VentanaIndex getInstancia()
+    {
         if (ventanaPrincipal == null)
-            ventanaPrincipal= new VentanaIndex();
+            ventanaPrincipal = new VentanaIndex();
         return ventanaPrincipal;
     }
 
@@ -667,18 +669,19 @@ public class VentanaIndex extends javax.swing.JFrame {
     private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
         if (jPanelSolapaAlumnos.isShowing())
         {
-            VAlumnoAlta.getInstancia().setVisible(true);
+            VAlumnoAlta.getInstance().setVisible(true);
         }
-        else if (jPanelSolapaProfesores.isShowing()){
-            VProfesorAlta.getInstancia().setVisible(true);
+        else if (jPanelSolapaProfesores.isShowing())
+        {
+            VProfesorAlta.getInstance().setVisible(true);
         }
         else if (jPanelSolapaAsignaturas.isShowing())
         {
-            VAsignaturaAlta.getInstancia().setVisible(true);
+            VAsignaturaAlta.getInstance().setVisible(true);
         }
         else if (jPanelSolapaCursadas.isShowing())
         {
-            VCursadaAlta.getInstancia().setVisible(true);
+            VCursadaAlta.getInstance().setVisible(true);
         }
         this.setVisible(false);
     }//GEN-LAST:event_jButtonAgregarActionPerformed
@@ -690,14 +693,15 @@ public class VentanaIndex extends javax.swing.JFrame {
     private void jButtonPBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPBuscarActionPerformed
         DefaultTableModel model = (DefaultTableModel) jTableProfesores.getModel();
         model.setRowCount(0);
-        Iterator<Profesor> profesores = Controlador.getInstance().ubicaProfesor(jTextFieldCampoParaApellidoProfesor.getText(),
-                                                                                jTextFieldCampoParaNombreProfesor.getText());
+        Iterator<Profesor> profesores =
+            Controlador.getInstance()
+            .ubicaProfesor(jTextFieldCampoParaApellidoProfesor.getText(), jTextFieldCampoParaNombreProfesor.getText());
         while (profesores.hasNext())
         {
             Profesor profesor = profesores.next();
-            model.addRow(new Object[] {profesor.getId(), profesor.getNombre(), profesor.getApellido(),
-                         profesor.getDomicilio().getCalle(), profesor.getDomicilio().getNumero(),
-                         profesor.getTelefono(), profesor.getEmail()});
+            model.addRow(new Object[] { profesor.getId(), profesor.getNombre(), profesor.getApellido(),
+                                        profesor.getDomicilio().getCalle(), profesor.getDomicilio().getNumero(),
+                                        profesor.getTelefono(), profesor.getEmail() });
         }
     }//GEN-LAST:event_jButtonPBuscarActionPerformed
 
@@ -708,11 +712,12 @@ public class VentanaIndex extends javax.swing.JFrame {
     private void jButtonABuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonABuscarActionPerformed
         DefaultTableModel model = (DefaultTableModel) jTableAsignaturas.getModel();
         model.setRowCount(0);
-        Iterator<Asignatura> asignaturas = Controlador.getInstance().ubicaAsignatura(jTextFieldCampoParaNombreAsignatura.getText());
+        Iterator<Asignatura> asignaturas =
+            Controlador.getInstance().ubicaAsignatura(jTextFieldCampoParaNombreAsignatura.getText());
         while (asignaturas.hasNext())
         {
             Asignatura asignatura = asignaturas.next();
-            model.addRow(new Object[] {asignatura.getId(), asignatura.getNombre()});
+            model.addRow(new Object[] { asignatura.getId(), asignatura.getNombre() });
         }
     }//GEN-LAST:event_jButtonABuscarActionPerformed
 
@@ -727,8 +732,8 @@ public class VentanaIndex extends javax.swing.JFrame {
         while (cursadas.hasNext())
         {
             Cursada cursada = cursadas.next();
-            model.addRow(new Object[] {cursada.getId(), cursada.getAsignatura().getNombre(), cursada.getPeriodo(),
-                                       cursada.getDia(), cursada.getHoraInicio(), cursada.getHoraFin()});
+            model.addRow(new Object[] { cursada.getId(), cursada.getAsignatura().getNombre(), cursada.getPeriodo(),
+                                        cursada.getDia(), cursada.getHoraInicio(), cursada.getHoraFin() });
         }
     }//GEN-LAST:event_jButtonCBuscarActionPerformed
 
@@ -739,14 +744,15 @@ public class VentanaIndex extends javax.swing.JFrame {
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
         DefaultTableModel model = (DefaultTableModel) jTableAlumnos.getModel();
         model.setRowCount(0);
-        Iterator<Alumno> alumnos = Controlador.getInstance().ubicaAlumno(jTextFieldCampoParaApellidoAlumno.getText(),
-                                                                         jTextFieldCampoParaNombreAlumno.getText());
+        Iterator<Alumno> alumnos =
+            Controlador.getInstance()
+            .ubicaAlumno(jTextFieldCampoParaApellidoAlumno.getText(), jTextFieldCampoParaNombreAlumno.getText());
         while (alumnos.hasNext())
         {
             Alumno alumno = alumnos.next();
-            model.addRow(new Object[] {alumno.getId(), alumno.getNombre(), alumno.getApellido(),
-                         alumno.getDomicilio().getCalle(), alumno.getDomicilio().getNumero(),
-                         alumno.getTelefono(), alumno.getEmail()});
+            model.addRow(new Object[] { alumno.getId(), alumno.getNombre(), alumno.getApellido(),
+                                        alumno.getDomicilio().getCalle(), alumno.getDomicilio().getNumero(),
+                                        alumno.getTelefono(), alumno.getEmail() });
         }
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
@@ -754,82 +760,94 @@ public class VentanaIndex extends javax.swing.JFrame {
         if (jPanelSolapaAlumnos.isShowing())
         {
             Alumno alumno;
-            if (jTableAlumnos.getSelectedRows().length == 1){
+            if (jTableAlumnos.getSelectedRows().length == 1)
+            {
                 try
                 {
                     alumno =
-                        Controlador.getInstance().consultaAlumno(jTableAlumnos.getValueAt(jTableAlumnos.getSelectedRow(), 0).toString());
-                    VAlumnoModifica.getInstancia(alumno).setVisible(true);
+                        Controlador.getInstance()
+                        .consultaAlumno(jTableAlumnos.getValueAt(jTableAlumnos.getSelectedRow(), 0).toString());
+                    VAlumnoModifica.getInstance(alumno).setVisible(true);
                 }
                 catch (IdInvalidoException e)
                 {
                     JOptionPane.showMessageDialog(null, e.getMessage());
                 }
             }
-            else{
-                JOptionPane.showMessageDialog(null,"Debe seleccionar un registro");
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar un registro");
                 return;
-            }     
+            }
         }
         else if (jPanelSolapaProfesores.isShowing())
         {
             Profesor profesor;
-            if (jTableProfesores.getSelectedRows().length ==1){
+            if (jTableProfesores.getSelectedRows().length == 1)
+            {
                 try
                 {
                     profesor =
-                        Controlador.getInstance().consultaProfesor((jTableProfesores.getValueAt(jTableProfesores.getSelectedRow(), 0)
-                                                          .toString()));
-                    VProfesorModifica.getInstancia(profesor).setVisible(true);
-                } catch (IdInvalidoException e)
+                        Controlador.getInstance()
+                        .consultaProfesor((jTableProfesores.getValueAt(jTableProfesores.getSelectedRow(), 0)
+                                           .toString()));
+                    VProfesorModifica.getInstance(profesor).setVisible(true);
+                }
+                catch (IdInvalidoException e)
                 {
-                    JOptionPane.showMessageDialog(null, e.getMessage()); 
+                    JOptionPane.showMessageDialog(null, e.getMessage());
                 }
             }
-            else{
-                JOptionPane.showMessageDialog(null,"Debe seleccionar un registro"); 
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar un registro");
                 return;
             }
         }
         else if (jPanelSolapaAsignaturas.isShowing())
         {
             Asignatura asignatura;
-            if (jTableAsignaturas.getSelectedRows().length ==1){
+            if (jTableAsignaturas.getSelectedRows().length == 1)
+            {
                 try
                 {
                     asignatura =
-                        Controlador.getInstance().consultaAsignatura(jTableAsignaturas.getValueAt(jTableAsignaturas.getSelectedRow(), 0)
-                        .toString());
-                    VAsignaturaModifica.getInstancia(asignatura).setVisible(true);
+                        Controlador.getInstance()
+                        .consultaAsignatura(jTableAsignaturas.getValueAt(jTableAsignaturas.getSelectedRow(), 0)
+                                            .toString());
+                    VAsignaturaModifica.getInstance(asignatura).setVisible(true);
                 }
                 catch (IdInvalidoException e)
                 {
                     JOptionPane.showMessageDialog(null, e.getMessage());
                 }
             }
-            else{
-                JOptionPane.showMessageDialog(null,"Debe seleccionar un registro"); 
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar un registro");
                 return;
             }
         }
         else if (jPanelSolapaCursadas.isShowing())
         {
             Cursada cursada;
-            if (jTableCursadas.getSelectedRows().length ==1){
+            if (jTableCursadas.getSelectedRows().length == 1)
+            {
                 try
                 {
                     cursada =
-                        Controlador.getInstance().consultaCursada((jTableCursadas.getValueAt(jTableCursadas.getSelectedRow(), 0)
-                        .toString()));
-                    VCursadaModifica.getInstancia(cursada).setVisible(true);
+                        Controlador.getInstance()
+                        .consultaCursada((jTableCursadas.getValueAt(jTableCursadas.getSelectedRow(), 0).toString()));
+                    VCursadaModifica.getInstance(cursada).setVisible(true);
                 }
                 catch (IdInvalidoException e)
                 {
                     JOptionPane.showMessageDialog(null, e.getMessage());
-                } 
+                }
             }
-            else{
-                JOptionPane.showMessageDialog(null,"Debe seleccionar un registro"); 
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar un registro");
                 return;
             }
         }
@@ -840,83 +858,94 @@ public class VentanaIndex extends javax.swing.JFrame {
         if (jPanelSolapaAlumnos.isShowing())
         {
             Alumno alumno;
-            if (jTableAlumnos.getSelectedRows().length == 1){
-                try 
+            if (jTableAlumnos.getSelectedRows().length == 1)
+            {
+                try
                 {
                     alumno =
-                        Controlador.getInstance().consultaAlumno(jTableAlumnos.getValueAt(jTableAlumnos.getSelectedRow(), 0).toString());
-                    VAlumnoConsulta.getInstancia(alumno).setVisible(true);
-                } 
+                        Controlador.getInstance()
+                        .consultaAlumno(jTableAlumnos.getValueAt(jTableAlumnos.getSelectedRow(), 0).toString());
+                    VAlumnoConsulta.getInstance(alumno).setVisible(true);
+                }
                 catch (IdInvalidoException e)
                 {
                     JOptionPane.showMessageDialog(null, e.getMessage());
                 }
             }
-            else{
-                JOptionPane.showMessageDialog(null,"Debe seleccionar un registro"); 
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar un registro");
                 return;
             }
         }
         else if (jPanelSolapaProfesores.isShowing())
         {
             Profesor profesor;
-            if (jTableProfesores.getSelectedRows().length == 1){
+            if (jTableProfesores.getSelectedRows().length == 1)
+            {
                 try
                 {
                     profesor =
-                        Controlador.getInstance().consultaProfesor((jTableProfesores.getValueAt(jTableProfesores.getSelectedRow(), 0)
-                        .toString()));
-                    VProfesorConsulta.getInstancia(profesor).setVisible(true);
+                        Controlador.getInstance()
+                        .consultaProfesor((jTableProfesores.getValueAt(jTableProfesores.getSelectedRow(), 0)
+                                           .toString()));
+                    VProfesorConsulta.getInstance(profesor).setVisible(true);
                 }
                 catch (IdInvalidoException e)
                 {
                     JOptionPane.showMessageDialog(null, e.getMessage());
                 }
             }
-            else{
-                JOptionPane.showMessageDialog(null,"Debe seleccionar un registro"); 
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar un registro");
                 return;
             }
         }
         else if (jPanelSolapaAsignaturas.isShowing())
         {
             Asignatura asignatura;
-            if (jTableAsignaturas.getSelectedRows().length == 1){
+            if (jTableAsignaturas.getSelectedRows().length == 1)
+            {
                 try
                 {
-                    asignatura=
-                        Controlador.getInstance().consultaAsignatura(jTableAsignaturas.getValueAt(jTableAsignaturas.getSelectedRow(), 0)
-                        .toString());
-                    VAsignaturaConsulta.getInstancia(asignatura).setVisible(true);
+                    asignatura =
+                        Controlador.getInstance()
+                        .consultaAsignatura(jTableAsignaturas.getValueAt(jTableAsignaturas.getSelectedRow(), 0)
+                                            .toString());
+                    VAsignaturaConsulta.getInstance(asignatura).setVisible(true);
                 }
                 catch (IdInvalidoException e)
                 {
                     JOptionPane.showMessageDialog(null, e.getMessage());
                 }
             }
-            else{
-                JOptionPane.showMessageDialog(null,"Debe seleccionar un registro"); 
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar un registro");
                 return;
             }
         }
         else if (jPanelSolapaCursadas.isShowing())
         {
             Cursada cursada;
-            if (jTableCursadas.getSelectedRows().length == 1){
+            if (jTableCursadas.getSelectedRows().length == 1)
+            {
                 try
                 {
                     cursada =
-                        Controlador.getInstance().consultaCursada((jTableCursadas.getValueAt(jTableCursadas.getSelectedRow(), 0)
-                        .toString()));
-                    VCursadaConsulta.getInstancia(cursada).setVisible(true);
+                        Controlador.getInstance()
+                        .consultaCursada((jTableCursadas.getValueAt(jTableCursadas.getSelectedRow(), 0).toString()));
+                    VCursadaConsulta.getInstance(cursada).setVisible(true);
                 }
                 catch (IdInvalidoException e)
                 {
                     JOptionPane.showMessageDialog(null, e.getMessage());
                 }
             }
-            else{
-                JOptionPane.showMessageDialog(null,"Debe seleccionar un registro"); 
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar un registro");
                 return;
             }
         }
@@ -927,88 +956,104 @@ public class VentanaIndex extends javax.swing.JFrame {
         if (jPanelSolapaAlumnos.isShowing())
         {
             Alumno alumno;
-            if (jTableAlumnos.getSelectedRows().length == 1){
-               try 
+            if (jTableAlumnos.getSelectedRows().length == 1)
+            {
+                try
                 {
-                   alumno =
-                       Controlador.getInstance().consultaAlumno(jTableAlumnos.getValueAt(jTableAlumnos.getSelectedRow(), 0).toString());
-                    int seleccion= JOptionPane.showConfirmDialog(null,"�Esta seguro de eliminar?");
+                    alumno =
+                        Controlador.getInstance()
+                        .consultaAlumno(jTableAlumnos.getValueAt(jTableAlumnos.getSelectedRow(), 0).toString());
+                    int seleccion = JOptionPane.showConfirmDialog(null, "�Esta seguro de eliminar?");
                     if (seleccion == JOptionPane.OK_OPTION)
-                        Controlador.getInstance().bajaAlumno(jTableAlumnos.getValueAt(jTableAlumnos.getSelectedRow(), 0).toString());
-                } 
+                        Controlador.getInstance()
+                            .bajaAlumno(jTableAlumnos.getValueAt(jTableAlumnos.getSelectedRow(), 0).toString());
+                }
                 catch (IdInvalidoException e)
                 {
                     JOptionPane.showMessageDialog(null, e.getMessage());
                 }
             }
-            else{
-                JOptionPane.showMessageDialog(null,"Debe seleccionar un registro"); 
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar un registro");
             }
         }
         else if (jPanelSolapaProfesores.isShowing())
         {
             Profesor profesor;
-            if (jTableProfesores.getSelectedRows().length == 1){
+            if (jTableProfesores.getSelectedRows().length == 1)
+            {
                 try
                 {
                     profesor =
-                        Controlador.getInstance().consultaProfesor((jTableProfesores.getValueAt(jTableProfesores.getSelectedRow(), 0)
-                        .toString()));
-                    int seleccion= JOptionPane.showConfirmDialog(null,"�Esta seguro de eliminar?");
+                        Controlador.getInstance()
+                        .consultaProfesor((jTableProfesores.getValueAt(jTableProfesores.getSelectedRow(), 0)
+                                           .toString()));
+                    int seleccion = JOptionPane.showConfirmDialog(null, "�Esta seguro de eliminar?");
                     if (seleccion == JOptionPane.OK_OPTION)
-                        Controlador.getInstance().bajaProfesor(jTableProfesores.getValueAt(jTableProfesores.getSelectedRow(), 0).toString());
+                        Controlador.getInstance()
+                            .bajaProfesor(jTableProfesores.getValueAt(jTableProfesores.getSelectedRow(), 0).toString());
                 }
                 catch (IdInvalidoException e)
                 {
-                    JOptionPane.showMessageDialog(null,e.getMessage()); 
+                    JOptionPane.showMessageDialog(null, e.getMessage());
                 }
             }
-            else{
-                JOptionPane.showMessageDialog(null,"Debe seleccionar un registro"); 
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar un registro");
             }
         }
         else if (jPanelSolapaAsignaturas.isShowing())
         {
             Asignatura asignatura;
-            if (jTableAsignaturas.getSelectedRows().length == 1){
+            if (jTableAsignaturas.getSelectedRows().length == 1)
+            {
                 try
                 {
-                    asignatura=
-                        Controlador.getInstance().consultaAsignatura(jTableAsignaturas.getValueAt(jTableAsignaturas.getSelectedRow(), 0)
-                        .toString());
-                    int seleccion= JOptionPane.showConfirmDialog(null,"�Esta seguro de eliminar?");
+                    asignatura =
+                        Controlador.getInstance()
+                        .consultaAsignatura(jTableAsignaturas.getValueAt(jTableAsignaturas.getSelectedRow(), 0)
+                                            .toString());
+                    int seleccion = JOptionPane.showConfirmDialog(null, "�Esta seguro de eliminar?");
                     if (seleccion == JOptionPane.OK_OPTION)
-                         Controlador.getInstance().bajaAsignatura(jTableAsignaturas.getValueAt(jTableAsignaturas.getSelectedRow(), 0).toString());
+                        Controlador.getInstance()
+                            .bajaAsignatura(jTableAsignaturas.getValueAt(jTableAsignaturas.getSelectedRow(), 0)
+                                            .toString());
                 }
                 catch (IdInvalidoException e)
                 {
-                    JOptionPane.showMessageDialog(null,e.getMessage()); 
+                    JOptionPane.showMessageDialog(null, e.getMessage());
                 }
             }
-            else{
-                JOptionPane.showMessageDialog(null,"Debe seleccionar un registro"); 
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar un registro");
             }
         }
         else if (jPanelSolapaCursadas.isShowing())
         {
             Cursada cursada;
-            if (jTableCursadas.getSelectedRows().length == 1){
+            if (jTableCursadas.getSelectedRows().length == 1)
+            {
                 try
                 {
                     cursada =
-                        Controlador.getInstance().consultaCursada((jTableCursadas.getValueAt(jTableCursadas.getSelectedRow(), 0)
-                        .toString()));
-                    int seleccion= JOptionPane.showConfirmDialog(null,"�Esta seguro de eliminar?");
+                        Controlador.getInstance()
+                        .consultaCursada((jTableCursadas.getValueAt(jTableCursadas.getSelectedRow(), 0).toString()));
+                    int seleccion = JOptionPane.showConfirmDialog(null, "�Esta seguro de eliminar?");
                     if (seleccion == JOptionPane.OK_OPTION)
-                        Controlador.getInstance().bajaCursada(jTableCursadas.getValueAt(jTableCursadas.getSelectedRow(), 0).toString());
+                        Controlador.getInstance()
+                            .bajaCursada(jTableCursadas.getValueAt(jTableCursadas.getSelectedRow(), 0).toString());
                 }
                 catch (IdInvalidoException e)
                 {
-                    JOptionPane.showMessageDialog(null,e.getMessage()); 
+                    JOptionPane.showMessageDialog(null, e.getMessage());
                 }
             }
-            else{
-                JOptionPane.showMessageDialog(null,"Debe seleccionar un registro"); 
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar un registro");
             }
         }
     }//GEN-LAST:event_jButtonEliminarActionPerformed
@@ -1058,25 +1103,37 @@ public class VentanaIndex extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])
+    {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
-        Serializador.deserializar();
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing
-                                                                   .UIManager
-                                                                   .getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+        try
+        {
+            Serializador.deserializar();
+        }
+        catch (FileNotFoundException e)
+        {
+        }
+        try
+        {
+            for (javax.swing.UIManager.LookAndFeelInfo info: javax.swing
+                                                                  .UIManager
+                                                                  .getInstalledLookAndFeels())
+            {
+                if ("Nimbus".equals(info.getName()))
+                {
                     javax.swing
                          .UIManager
                          .setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
+        }
+        catch (ClassNotFoundException ex)
+        {
             java.util
                 .logging
                 .Logger
@@ -1085,7 +1142,9 @@ public class VentanaIndex extends javax.swing.JFrame {
                          .logging
                          .Level
                          .SEVERE, null, ex);
-        } catch (InstantiationException ex) {
+        }
+        catch (InstantiationException ex)
+        {
             java.util
                 .logging
                 .Logger
@@ -1094,7 +1153,9 @@ public class VentanaIndex extends javax.swing.JFrame {
                          .logging
                          .Level
                          .SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
+        }
+        catch (IllegalAccessException ex)
+        {
             java.util
                 .logging
                 .Logger
@@ -1103,7 +1164,9 @@ public class VentanaIndex extends javax.swing.JFrame {
                          .logging
                          .Level
                          .SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        }
+        catch (javax.swing.UnsupportedLookAndFeelException ex)
+        {
             java.util
                 .logging
                 .Logger
@@ -1118,8 +1181,10 @@ public class VentanaIndex extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt
             .EventQueue
-            .invokeLater(new Runnable() {
-                public void run() {
+            .invokeLater(new Runnable()
+            {
+                public void run()
+                {
                     new VentanaIndex().setVisible(true);
                 }
             });

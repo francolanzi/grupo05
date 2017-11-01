@@ -19,34 +19,34 @@ import trabajofinal.IdInvalidoException;
 import trabajofinal.Mascaras;
 import trabajofinal.Profesor;
 
-/**
- *
- * @author Usuario
- */
-public class VAsignaturaAlta extends javax.swing.JFrame {
-    private static VAsignaturaAlta ventanaAsignaturaAlta = null;
+public class VAsignaturaAlta extends javax.swing.JFrame
+{
     
+    private static VAsignaturaAlta ventanaAsignaturaAlta = null;
+
     /** Creates new form Asignatura */
-    private VAsignaturaAlta() {
+    private VAsignaturaAlta()
+    {
         initComponents();
         this.addWindowListener(WindowSerializador.getInstance());
         vaciaCampos();
         cargaCorrelativas();
     }
-    
-    public static VAsignaturaAlta getInstancia(){
+
+    public static VAsignaturaAlta getInstance()
+    {
         if (ventanaAsignaturaAlta == null)
-            ventanaAsignaturaAlta= new VAsignaturaAlta();
+            ventanaAsignaturaAlta = new VAsignaturaAlta();
         return ventanaAsignaturaAlta;
     }
-    
+
     private void vaciaCampos()
     {
         jTextFieldIdentificador.setText(Mascaras.genId(Asignatura.getSigIdentificacion(), Asignatura.PREFIJO));
         jTextFieldNombre.setText("");
         ((DefaultTableModel) jTableCorrelativas.getModel()).setRowCount(0);
     }
-    
+
     private void cargaCorrelativas()
     {
         jComboCorrelativa.removeAllItems();
@@ -311,7 +311,7 @@ public class VAsignaturaAlta extends javax.swing.JFrame {
 
     private void jButtonGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGrabarActionPerformed
         if (jTextFieldNombre.getText().equals(""))
-            JOptionPane.showMessageDialog(null,"Ingrese Nombre");
+            JOptionPane.showMessageDialog(null, "Ingrese Nombre");
         else
         {
             Controlador.getInstance().altaAsignatura(jTextFieldNombre.getText());
@@ -329,7 +329,8 @@ public class VAsignaturaAlta extends javax.swing.JFrame {
         {
             try
             {
-                Controlador.getInstance().addCorrelativa(jTextFieldIdentificador.getText(), (String) model.getValueAt(i, 0));
+                Controlador.getInstance()
+                    .addCorrelativa(jTextFieldIdentificador.getText(), (String) model.getValueAt(i, 0));
             }
             catch (EntidadInvalidaException | IdInvalidoException e)
             {
@@ -340,7 +341,7 @@ public class VAsignaturaAlta extends javax.swing.JFrame {
     
     private void jButtonQuitarCorrelativaActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonQuitarCorrelativaActionPerformed
     {//GEN-HEADEREND:event_jButtonQuitarCorrelativaActionPerformed
-        if(jTableCorrelativas.getSelectedRows().length ==1)
+        if (jTableCorrelativas.getSelectedRows().length == 1)
         {
             DefaultTableModel model = (DefaultTableModel) jTableCorrelativas.getModel();
             model.removeRow(jTableCorrelativas.getSelectedRow());

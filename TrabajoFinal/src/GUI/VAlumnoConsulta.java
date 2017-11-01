@@ -14,26 +14,28 @@ import trabajofinal.Controlador;
 import trabajofinal.Cursada;
 import trabajofinal.Profesor;
 
-/**
- *
- * @author Usuario
- */
-public class VAlumnoConsulta extends javax.swing.JFrame {
+public class VAlumnoConsulta extends javax.swing.JFrame
+{
+    
     private static VAlumnoConsulta ventanaAlumnoConsulta = null;
 
     /** Creates new form VAlumnoConsulta */
-    private VAlumnoConsulta() {
+    private VAlumnoConsulta()
+    {
         initComponents();
+        this.addWindowListener(WindowSerializador.getInstance());
     }
-    
-    public static VAlumnoConsulta getInstancia(Alumno alumno){
+
+    public static VAlumnoConsulta getInstance(Alumno alumno)
+    {
         if (ventanaAlumnoConsulta == null)
-            ventanaAlumnoConsulta= new VAlumnoConsulta();
+            ventanaAlumnoConsulta = new VAlumnoConsulta();
         ventanaAlumnoConsulta.setComponentes(alumno);
         return ventanaAlumnoConsulta;
     }
-    
-    public void setComponentes(Alumno alumno){
+
+    public void setComponentes(Alumno alumno)
+    {
         this.addWindowListener(WindowSerializador.getInstance());
         jTextFieldLegajo.setText(alumno.getId());
         jTextFieldNombre.setText(alumno.getNombre());
@@ -42,9 +44,9 @@ public class VAlumnoConsulta extends javax.swing.JFrame {
         jTextFieldNumero.setText(Integer.toString(alumno.getDomicilio().getNumero()));
         jTextFieldTelefono.setText(alumno.getTelefono());
         jTextFieldEmail.setText(alumno.getEmail());
-        setTablaHistoria(alumno); 
+        setTablaHistoria(alumno);
     }
-        
+
     private void setTablaHistoria(Alumno alumno)
     {
         DefaultTableModel model = (DefaultTableModel) jTableHistoria.getModel();
@@ -52,11 +54,11 @@ public class VAlumnoConsulta extends javax.swing.JFrame {
         while (historia.hasNext())
         {
             Asignatura asignatura = historia.next();
-            model.addRow(new Object[] {asignatura.getId(), asignatura.getNombre()});
+            model.addRow(new Object[] { asignatura.getId(), asignatura.getNombre() });
         }
     }
-    
-    
+
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -170,7 +172,7 @@ public class VAlumnoConsulta extends javax.swing.JFrame {
         jTextFieldTelefono.setEditable(false);
 
         jLabelNumero.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelNumero.setText("Número");
+        jLabelNumero.setText("Nï¿½mero");
 
         jTextFieldNumero.setEditable(false);
         jTextFieldNumero.addActionListener(new java.awt.event.ActionListener() {

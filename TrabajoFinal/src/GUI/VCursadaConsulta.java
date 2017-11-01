@@ -11,26 +11,28 @@ import trabajofinal.Controlador;
 import trabajofinal.Cursada;
 import trabajofinal.Profesor;
 
-/**
- *
- * @author Usuario
- */
-public class VCursadaConsulta extends javax.swing.JFrame {
+public class VCursadaConsulta extends javax.swing.JFrame
+{
+    
     private static VCursadaConsulta ventanaCursadaConsulta = null;
 
     /** Creates new form VCursadaConsulta */
-    private VCursadaConsulta() {
+    private VCursadaConsulta()
+    {
         initComponents();
+        this.addWindowListener(WindowSerializador.getInstance());
     }
-    
-    public static VCursadaConsulta getInstancia(Cursada cursada){
+
+    public static VCursadaConsulta getInstance(Cursada cursada)
+    {
         if (ventanaCursadaConsulta == null)
-            ventanaCursadaConsulta= new VCursadaConsulta();
+            ventanaCursadaConsulta = new VCursadaConsulta();
         ventanaCursadaConsulta.setComponentes(cursada);
         return ventanaCursadaConsulta;
     }
-    
-    public void setComponentes(Cursada cursada){
+
+    public void setComponentes(Cursada cursada)
+    {
         this.addWindowListener(WindowSerializador.getInstance());
         jTextFieldIdentificador.setText(cursada.getId());
         jTextFieldAsignatura.setText(cursada.getAsignatura().getNombre());
@@ -38,10 +40,10 @@ public class VCursadaConsulta extends javax.swing.JFrame {
         jTextFieldDia.setText(cursada.getDia());
         jTextFieldHoraInicio.setText(cursada.getHoraInicio());
         jTextFieldHoraFin.setText(cursada.getHoraFin());
-        setTablaProfesores(cursada); 
-        setTablaAlumnos(cursada); 
+        setTablaProfesores(cursada);
+        setTablaAlumnos(cursada);
     }
-    
+
     private void setTablaProfesores(Cursada cursada)
     {
         DefaultTableModel model = (DefaultTableModel) jTableProfesores.getModel();
@@ -49,10 +51,10 @@ public class VCursadaConsulta extends javax.swing.JFrame {
         while (profesores.hasNext())
         {
             Profesor profesor = profesores.next();
-            model.addRow(new Object[] {profesor.getId(), profesor.getNombre(), profesor.getApellido()});
+            model.addRow(new Object[] { profesor.getId(), profesor.getNombre(), profesor.getApellido() });
         }
     }
-    
+
     private void setTablaAlumnos(Cursada cursada)
     {
         DefaultTableModel model = (DefaultTableModel) jTableAlumnos.getModel();
@@ -60,7 +62,7 @@ public class VCursadaConsulta extends javax.swing.JFrame {
         while (alumnos.hasNext())
         {
             Alumno alumno = alumnos.next();
-            model.addRow(new Object[] {alumno.getId(), alumno.getNombre(), alumno.getApellido()});
+            model.addRow(new Object[] { alumno.getId(), alumno.getNombre(), alumno.getApellido() });
         }
     }
 
@@ -149,10 +151,10 @@ public class VCursadaConsulta extends javax.swing.JFrame {
         jLabelNAsignatura.setText("Asignatura");
 
         jLabelPeriodo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelPeriodo.setText("Período");
+        jLabelPeriodo.setText("Perï¿½odo");
 
         jLabelDia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelDia.setText("Día");
+        jLabelDia.setText("Dï¿½a");
 
         jLabelProfesores.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelProfesores.setText("Profesores");

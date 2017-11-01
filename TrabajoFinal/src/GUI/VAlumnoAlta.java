@@ -9,26 +9,26 @@ import trabajofinal.EmailInvalidoException;
 import trabajofinal.EntidadInvalidaException;
 import trabajofinal.Mascaras;
 
-/**
- *
- * @author Usuario
- */
-public class VAlumnoAlta extends javax.swing.JFrame { 
+public class VAlumnoAlta extends javax.swing.JFrame
+{
+    
     private static VAlumnoAlta ventanaAlumnoAlta = null;
 
     /** Creates new form VAlumnoAlta */
-    private VAlumnoAlta() {
+    private VAlumnoAlta()
+    {
         initComponents();
         this.addWindowListener(WindowSerializador.getInstance());
         vaciaCampos();
     }
-    
-    public static VAlumnoAlta getInstancia(){
+
+    public static VAlumnoAlta getInstance()
+    {
         if (ventanaAlumnoAlta == null)
-            ventanaAlumnoAlta= new VAlumnoAlta();
+            ventanaAlumnoAlta = new VAlumnoAlta();
         return ventanaAlumnoAlta;
     }
-    
+
     private void vaciaCampos()
     {
         jTextFieldLegajo.setText(Mascaras.genId(Alumno.getSigLegajo(), Alumno.PREFIJO));
@@ -157,7 +157,7 @@ public class VAlumnoAlta extends javax.swing.JFrame {
         });
 
         jLabelNumero.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelNumero.setText("Número");
+        jLabelNumero.setText("Nï¿½mero");
 
         jTextFieldNumero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -278,23 +278,25 @@ public class VAlumnoAlta extends javax.swing.JFrame {
     
     private void jButtonGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGrabarActionPerformed
         if (jTextFieldNombre.getText().equals(""))
-            JOptionPane.showMessageDialog(null,"Ingrese Nombre");
+            JOptionPane.showMessageDialog(null, "Ingrese Nombre");
         else if (jTextFieldApellido.getText().equals(""))
-            JOptionPane.showMessageDialog(null,"Ingrese Apellido");
+            JOptionPane.showMessageDialog(null, "Ingrese Apellido");
         else if (jTextFieldCalle.getText().equals(""))
-            JOptionPane.showMessageDialog(null,"Ingrese Calle");
+            JOptionPane.showMessageDialog(null, "Ingrese Calle");
         else if (jTextFieldNumero.getText().equals(""))
-            JOptionPane.showMessageDialog(null,"Ingrese Numero");
+            JOptionPane.showMessageDialog(null, "Ingrese Numero");
         else if (jTextFieldTelefono.getText().equals(""))
-            JOptionPane.showMessageDialog(null,"Ingrese Telefono");
+            JOptionPane.showMessageDialog(null, "Ingrese Telefono");
         else if (jTextFieldEmail.getText().equals(""))
-            JOptionPane.showMessageDialog(null,"Ingrese Mail");
+            JOptionPane.showMessageDialog(null, "Ingrese Mail");
         else
         {
             try
             {
-                Controlador.getInstance().altaAlumno(jTextFieldApellido.getText(), jTextFieldNombre.getText(), jTextFieldCalle.getText(),
-                    Integer.parseInt(jTextFieldNumero.getText()), jTextFieldTelefono.getText(), jTextFieldEmail.getText());
+                Controlador.getInstance()
+                    .altaAlumno(jTextFieldApellido.getText(), jTextFieldNombre.getText(), jTextFieldCalle.getText(),
+                                Integer.parseInt(jTextFieldNumero.getText()), jTextFieldTelefono.getText(),
+                                jTextFieldEmail.getText());
                 vaciaCampos();
                 JOptionPane.showMessageDialog(null, "El alumno ha sido dado de alta exitosamente");
             }

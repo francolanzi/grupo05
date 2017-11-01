@@ -17,28 +17,27 @@ import trabajofinal.IdInvalidoException;
 import trabajofinal.Mascaras;
 import trabajofinal.Profesor;
 
-/**
- *
- * @author Usuario
- */
-public class VProfesorAlta extends javax.swing.JFrame {
+public class VProfesorAlta extends javax.swing.JFrame
+{
+    
     private static VProfesorAlta ventanaProfesorAlta = null;
 
-
     /** Creates new form Profesor */
-    private VProfesorAlta() {
+    private VProfesorAlta()
+    {
         initComponents();
         this.addWindowListener(WindowSerializador.getInstance());
         vaciaCampos();
         cargaCompetencias();
     }
-    
-    public static VProfesorAlta getInstancia(){
+
+    public static VProfesorAlta getInstance()
+    {
         if (ventanaProfesorAlta == null)
-            ventanaProfesorAlta= new VProfesorAlta();
+            ventanaProfesorAlta = new VProfesorAlta();
         return ventanaProfesorAlta;
     }
-    
+
     private void vaciaCampos()
     {
         jTextFieldLegajo.setText(Mascaras.genId(Profesor.getSigLegajo(), Profesor.PREFIJO));
@@ -50,7 +49,7 @@ public class VProfesorAlta extends javax.swing.JFrame {
         jTextFieldEmail.setText("");
         ((DefaultTableModel) jTableCompetencias.getModel()).setRowCount(0);
     }
-    
+
     private void cargaCompetencias()
     {
         Iterator<Asignatura> asignaturas = Controlador.getInstance().getAsignaturasIterator();
@@ -178,7 +177,7 @@ public class VProfesorAlta extends javax.swing.JFrame {
         });
 
         jLabelNumero.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelNumero.setText("Número");
+        jLabelNumero.setText("Nï¿½mero");
 
         jTextFieldNumero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -235,7 +234,7 @@ public class VProfesorAlta extends javax.swing.JFrame {
         });
 
         jLabelTelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelTelefono.setText("Teléfono");
+        jLabelTelefono.setText("Telï¿½fono");
 
         jTextFieldTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -430,7 +429,7 @@ public class VProfesorAlta extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldTelefonoKeyTyped
 
     private void jButtonQuitarCompetenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuitarCompetenciaActionPerformed
-        if(jTableCompetencias.getSelectedRows().length ==1)
+        if (jTableCompetencias.getSelectedRows().length == 1)
         {
             DefaultTableModel model = (DefaultTableModel) jTableCompetencias.getModel();
             model.removeRow(jTableCompetencias.getSelectedRow());
@@ -440,23 +439,25 @@ public class VProfesorAlta extends javax.swing.JFrame {
     private void jButtonGrabarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonGrabarActionPerformed
     {//GEN-HEADEREND:event_jButtonGrabarActionPerformed
         if (jTextFieldNombre.getText().equals(""))
-            JOptionPane.showMessageDialog(null,"Ingrese Nombre");
+            JOptionPane.showMessageDialog(null, "Ingrese Nombre");
         else if (jTextFieldApellido.getText().equals(""))
-            JOptionPane.showMessageDialog(null,"Ingrese Apellido");
+            JOptionPane.showMessageDialog(null, "Ingrese Apellido");
         else if (jTextFieldCalle.getText().equals(""))
-            JOptionPane.showMessageDialog(null,"Ingrese Calle");
+            JOptionPane.showMessageDialog(null, "Ingrese Calle");
         else if (jTextFieldNumero.getText().equals(""))
-            JOptionPane.showMessageDialog(null,"Ingrese Numero");
+            JOptionPane.showMessageDialog(null, "Ingrese Numero");
         else if (jTextFieldTelefono.getText().equals(""))
-            JOptionPane.showMessageDialog(null,"Ingrese Telefono");
+            JOptionPane.showMessageDialog(null, "Ingrese Telefono");
         else if (jTextFieldEmail.getText().equals(""))
-            JOptionPane.showMessageDialog(null,"Ingrese Mail");
+            JOptionPane.showMessageDialog(null, "Ingrese Mail");
         else
         {
             try
             {
-                Controlador.getInstance().altaProfesor(jTextFieldApellido.getText(), jTextFieldNombre.getText(), jTextFieldCalle.getText(),
-                    Integer.parseInt(jTextFieldNumero.getText()), jTextFieldTelefono.getText(), jTextFieldEmail.getText());
+                Controlador.getInstance()
+                    .altaProfesor(jTextFieldApellido.getText(), jTextFieldNombre.getText(), jTextFieldCalle.getText(),
+                                  Integer.parseInt(jTextFieldNumero.getText()), jTextFieldTelefono.getText(),
+                                  jTextFieldEmail.getText());
                 addCompetencias();
                 vaciaCampos();
                 JOptionPane.showMessageDialog(null, "El profesor ha sido dado de alta exitosamente");

@@ -10,29 +10,34 @@ import trabajofinal.Asignatura;
 import trabajofinal.Cursada;
 import trabajofinal.Profesor;
 
-/**
- *
- * @author Usuario
- */
-public class VProfesorConsulta extends javax.swing.JFrame {
+public class VProfesorConsulta extends javax.swing.JFrame
+{
+    
     private static VProfesorConsulta ventanaProfesorConsulta = null;
 
-    DefaultTableModel modelo= new DefaultTableModel();
-    String[] col={"Identificador","Nombre"};
+    DefaultTableModel modelo = new DefaultTableModel();
+    String[] col =
+    {
+        "Identificador", "Nombre"
+    };
 
     /** Creates new form VProfesorConsulta */
-    private VProfesorConsulta() {
+    private VProfesorConsulta()
+    {
         initComponents();
+        this.addWindowListener(WindowSerializador.getInstance());
     }
 
-    public static VProfesorConsulta getInstancia(Profesor profesor){
+    public static VProfesorConsulta getInstance(Profesor profesor)
+    {
         if (ventanaProfesorConsulta == null)
-            ventanaProfesorConsulta= new VProfesorConsulta();
+            ventanaProfesorConsulta = new VProfesorConsulta();
         ventanaProfesorConsulta.setComponentes(profesor);
         return ventanaProfesorConsulta;
     }
-    
-    public void setComponentes(Profesor profesor){
+
+    public void setComponentes(Profesor profesor)
+    {
         this.addWindowListener(WindowSerializador.getInstance());
         jTextFieldLegajo.setText(profesor.getId());
         jTextFieldNombre.setText(profesor.getNombre());
@@ -52,10 +57,10 @@ public class VProfesorConsulta extends javax.swing.JFrame {
         while (competencias.hasNext())
         {
             Asignatura competencia = competencias.next();
-            model.addRow(new Object[] {competencia.getId(), competencia.getNombre()});
+            model.addRow(new Object[] { competencia.getId(), competencia.getNombre() });
         }
     }
-    
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -166,7 +171,7 @@ public class VProfesorConsulta extends javax.swing.JFrame {
         jTextFieldEmail.setEditable(false);
 
         jLabelNumero.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelNumero.setText("Número");
+        jLabelNumero.setText("Nï¿½mero");
 
         jTextFieldNumero.setEditable(false);
         jTextFieldNumero.addActionListener(new java.awt.event.ActionListener() {
@@ -205,7 +210,7 @@ public class VProfesorConsulta extends javax.swing.JFrame {
         }
 
         jLabelTelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelTelefono.setText("Teléfono");
+        jLabelTelefono.setText("Telï¿½fono");
 
         jTextFieldTelefono.setEditable(false);
         jTextFieldTelefono.addActionListener(new java.awt.event.ActionListener() {

@@ -19,28 +19,29 @@ import trabajofinal.IdInvalidoException;
 import trabajofinal.PeriodoInvalidoException;
 import trabajofinal.Profesor;
 
-/**
- *
- * @author Usuario
- */
-public class VCursadaModifica extends javax.swing.JFrame {
+public class VCursadaModifica extends javax.swing.JFrame
+{
+    
     private static VCursadaModifica ventanaCursadaModifica = null;
 
-
     /** Creates new form VCursadaModifica */
-    private VCursadaModifica() {
+    private VCursadaModifica()
+    {
         initComponents();
+        this.addWindowListener(WindowSerializador.getInstance());
     }
-    
-    
-    public static VCursadaModifica getInstancia(Cursada cursada){
+
+
+    public static VCursadaModifica getInstance(Cursada cursada)
+    {
         if (ventanaCursadaModifica == null)
-            ventanaCursadaModifica= new VCursadaModifica();
+            ventanaCursadaModifica = new VCursadaModifica();
         ventanaCursadaModifica.setComponentes(cursada);
         return ventanaCursadaModifica;
     }
-    
-    public void setComponentes(Cursada cursada){
+
+    public void setComponentes(Cursada cursada)
+    {
         jTextFieldIdentificador.setText(cursada.getId());
         jTextFieldAsignatura.setText(cursada.getAsignatura().getNombre());
         jTextFieldPeriodo.setText(cursada.getPeriodo());
@@ -52,7 +53,7 @@ public class VCursadaModifica extends javax.swing.JFrame {
         cargaAlumnos();
         cargaProfesores();
     }
-    
+
     private void setTablaProfesores(Cursada cursada)
     {
         DefaultTableModel model = (DefaultTableModel) jTableProfesores.getModel();
@@ -60,10 +61,10 @@ public class VCursadaModifica extends javax.swing.JFrame {
         while (profesores.hasNext())
         {
             Profesor profesor = profesores.next();
-            model.addRow(new Object[] {profesor.getId(), profesor.getNombre(), profesor.getApellido()});
+            model.addRow(new Object[] { profesor.getId(), profesor.getNombre(), profesor.getApellido() });
         }
     }
-    
+
     private void setTablaAlumnos(Cursada cursada)
     {
         DefaultTableModel model = (DefaultTableModel) jTableAlumnos.getModel();
@@ -71,13 +72,13 @@ public class VCursadaModifica extends javax.swing.JFrame {
         while (alumnos.hasNext())
         {
             Alumno alumno = alumnos.next();
-            model.addRow(new Object[] {alumno.getId(), alumno.getNombre(), alumno.getApellido()});
+            model.addRow(new Object[] { alumno.getId(), alumno.getNombre(), alumno.getApellido() });
         }
     }
-    
+
     private void cargaProfesores()
     {
-        Iterator<Profesor> profesores =Controlador.getInstance().getProfesoresIterator();
+        Iterator<Profesor> profesores = Controlador.getInstance().getProfesoresIterator();
         while (profesores.hasNext())
         {
             Profesor profesor = profesores.next();
@@ -85,10 +86,10 @@ public class VCursadaModifica extends javax.swing.JFrame {
             jComboProfesores.addItem(item);
         }
     }
-    
+
     private void cargaAlumnos()
     {
-        Iterator<Alumno> alumnos =Controlador.getInstance().getAlumnosIterator();
+        Iterator<Alumno> alumnos = Controlador.getInstance().getAlumnosIterator();
         while (alumnos.hasNext())
         {
             Alumno alumno = alumnos.next();
@@ -151,7 +152,7 @@ public class VCursadaModifica extends javax.swing.JFrame {
 
         jLabelEdicion.setFont(new java.awt.Font("Tahoma", 2, 24)); // NOI18N
         jLabelEdicion.setForeground(new java.awt.Color(102, 102, 102));
-        jLabelEdicion.setText("Edición");
+        jLabelEdicion.setText("Ediciï¿½n");
 
         javax.swing.GroupLayout jPanelCabeceraLayout = new javax.swing.GroupLayout(jPanelCabecera);
         jPanelCabecera.setLayout(jPanelCabeceraLayout);
@@ -189,10 +190,10 @@ public class VCursadaModifica extends javax.swing.JFrame {
         jLabelNAsignatura.setText("Asignatura");
 
         jLabelPeriodo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelPeriodo.setText("Período");
+        jLabelPeriodo.setText("Perï¿½odo");
 
         jLabelDia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelDia.setText("Día");
+        jLabelDia.setText("Dï¿½a");
 
         jLabelProfesores.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelProfesores.setText("Profesores");
@@ -481,7 +482,7 @@ public class VCursadaModifica extends javax.swing.JFrame {
                 Profesor profesor = Controlador.getInstance().consultaProfesor(item.getId());
                 model.addRow(new Object[] { profesor.getId(), profesor.getNombre(), profesor.getApellido() });
             }
-            catch (IdInvalidoException | EntidadInvalidaException e)
+            catch (IdInvalidoException | EntidadInvalidaException | HorarioNoViableException e)
             {
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }
@@ -504,7 +505,7 @@ public class VCursadaModifica extends javax.swing.JFrame {
                 Alumno alumno = Controlador.getInstance().consultaAlumno(item.getId());
                 model.addRow(new Object[] { alumno.getId(), alumno.getNombre(), alumno.getApellido() });
             }
-            catch (IdInvalidoException | EntidadInvalidaException e)
+            catch (IdInvalidoException | EntidadInvalidaException | HorarioNoViableException e)
             {
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }
@@ -512,14 +513,14 @@ public class VCursadaModifica extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAgregarAlumnoActionPerformed
 
     private void jButtonQuitarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuitarAlumnoActionPerformed
-        if(jTableAlumnos.getSelectedRows().length ==1)
+        if (jTableAlumnos.getSelectedRows().length == 1)
         {
             DefaultTableModel model = (DefaultTableModel) jTableAlumnos.getModel();
             try
             {
                 Controlador.getInstance()
                     .removeAlumnoCursada((String) jTableAlumnos.getValueAt(jTableAlumnos.getSelectedRow(), 0),
-                    jTextFieldIdentificador.getText());
+                                         jTextFieldIdentificador.getText());
                 model.removeRow(jTableAlumnos.getSelectedRow());
             }
             catch (IdInvalidoException e)
@@ -530,14 +531,14 @@ public class VCursadaModifica extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonQuitarAlumnoActionPerformed
 
     private void jButtonQuitarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuitarProfesorActionPerformed
-        if(jTableProfesores.getSelectedRows().length ==1)
+        if (jTableProfesores.getSelectedRows().length == 1)
         {
             DefaultTableModel model = (DefaultTableModel) jTableProfesores.getModel();
             try
             {
                 Controlador.getInstance()
                     .removeProfesorCursada((String) jTableProfesores.getValueAt(jTableProfesores.getSelectedRow(), 0),
-                    jTextFieldIdentificador.getText());
+                                           jTextFieldIdentificador.getText());
                 model.removeRow(jTableProfesores.getSelectedRow());
             }
             catch (IdInvalidoException e)
@@ -553,23 +554,24 @@ public class VCursadaModifica extends javax.swing.JFrame {
 
     private void jButtonGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGrabarActionPerformed
         if (jTextFieldPeriodo.getText().equals(""))
-            JOptionPane.showMessageDialog(null,"Ingrese Periodo");
+            JOptionPane.showMessageDialog(null, "Ingrese Periodo");
         else if (jComboDia.getSelectedItem().equals(""))
-            JOptionPane.showMessageDialog(null,"Ingrese Dia");
+            JOptionPane.showMessageDialog(null, "Ingrese Dia");
         else if (jTextFieldHoraInicio.getText().equals(""))
-            JOptionPane.showMessageDialog(null,"Ingrese Hora Inicio");
+            JOptionPane.showMessageDialog(null, "Ingrese Hora Inicio");
         else if (jTextFieldHoraFin.getText().equals(""))
-            JOptionPane.showMessageDialog(null,"Ingrese Hora Fin");
+            JOptionPane.showMessageDialog(null, "Ingrese Hora Fin");
         else
         {
             try
             {
-                Controlador.getInstance().modificaCursada(jTextFieldIdentificador.getText(),
-                                           jTextFieldPeriodo.getText(), (String) jComboDia.getSelectedItem(),
-                                           jTextFieldHoraInicio.getText(), jTextFieldHoraFin.getText());
+                Controlador.getInstance()
+                    .modificaCursada(jTextFieldIdentificador.getText(), jTextFieldPeriodo.getText(),
+                                     (String) jComboDia.getSelectedItem(), jTextFieldHoraInicio.getText(),
+                                     jTextFieldHoraFin.getText());
                 JOptionPane.showMessageDialog(null, "La cursada ha sido modificada exitosamente");
             }
-            catch (HoraInvalidaException | IdInvalidoException | PeriodoInvalidoException e)
+            catch (HoraInvalidaException | IdInvalidoException | PeriodoInvalidoException | HorarioNoViableException e)
             {
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }
