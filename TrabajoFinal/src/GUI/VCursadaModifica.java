@@ -138,7 +138,7 @@ public class VCursadaModifica extends javax.swing.JFrame {
         jTextFieldAsignatura = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cursada - Edición");
+        setTitle("Cursada - Ediciï¿½n");
         setPreferredSize(new java.awt.Dimension(800, 600));
 
         jPanelCabecera.setBackground(new java.awt.Color(204, 255, 255));
@@ -481,7 +481,7 @@ public class VCursadaModifica extends javax.swing.JFrame {
                 Profesor profesor = Controlador.getInstance().consultaProfesor(item.getId());
                 model.addRow(new Object[] { profesor.getId(), profesor.getNombre(), profesor.getApellido() });
             }
-            catch (IdInvalidoException | EntidadInvalidaException | HorarioNoViableException e)
+            catch (IdInvalidoException | EntidadInvalidaException e)
             {
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }
@@ -504,7 +504,7 @@ public class VCursadaModifica extends javax.swing.JFrame {
                 Alumno alumno = Controlador.getInstance().consultaAlumno(item.getId());
                 model.addRow(new Object[] { alumno.getId(), alumno.getNombre(), alumno.getApellido() });
             }
-            catch (IdInvalidoException | EntidadInvalidaException | HorarioNoViableException e)
+            catch (IdInvalidoException | EntidadInvalidaException e)
             {
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }

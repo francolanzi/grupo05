@@ -550,7 +550,7 @@ public class VCursadaAlta extends javax.swing.JFrame
             {
                 Controlador.getInstance().addProfesorCursada((String) model.getValueAt(i, 0), jTextFieldIdentificador.getText());
             }
-            catch (EntidadInvalidaException | HorarioNoViableException | IdInvalidoException e)
+            catch (EntidadInvalidaException | IdInvalidoException | HorarioNoViableException e)
             {
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }
@@ -566,7 +566,7 @@ public class VCursadaAlta extends javax.swing.JFrame
             {
                 Controlador.getInstance().addAlumnoCursada((String) model.getValueAt(i, 0), jTextFieldIdentificador.getText());
             }
-            catch (EntidadInvalidaException | HorarioNoViableException | IdInvalidoException e)
+            catch (EntidadInvalidaException | IdInvalidoException | HorarioNoViableException e)
             {
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }

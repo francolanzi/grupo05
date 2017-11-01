@@ -4,26 +4,39 @@ public class HorarioNoViableException extends Exception
 {
     
     private Entidad entidad;
-    private Cursada cursada;
+    private String periodo;
+    private String dia;
+    private String horaInicio;
+    private String horaFin;
     
     public HorarioNoViableException(Entidad entidad, Cursada cursada, String mensaje)
     {
+        this(entidad, cursada.getPeriodo(), cursada.getDia(), cursada.getHoraInicio(), cursada.getHoraFin(), mensaje);
+    }
+
+    public HorarioNoViableException(Entidad entidad, String periodo, String dia, String horaInicio, String horaFin, String mensaje)
+    {
         super(mensaje);
         this.entidad = entidad;
-        this.cursada = cursada;
+        this.periodo = periodo;
+        this.dia = dia;
+        this.horaInicio = horaInicio;
+        this.horaFin = horaFin;
     }
-
-    public HorarioNoViableException(Entidad entidad, Cursada cursada)
+    
+    public HorarioNoViableException(Cursada cursada, String mensaje)
     {
-        this.entidad = entidad;
-        this.cursada = cursada;
+        this(cursada.getPeriodo(), cursada.getDia(), cursada.getHoraInicio(), cursada.getHoraFin(), mensaje);
     }
-
-    public HorarioNoViableException(){}
-
-    public void setEntidad(Entidad entidad)
+    
+    public HorarioNoViableException(String periodo, String dia, String horaInicio, String horaFin, String mensaje)
     {
-        this.entidad = entidad;
+        super(mensaje);
+        this.entidad = null;
+        this.periodo = periodo;
+        this.dia = dia;
+        this.horaInicio = horaInicio;
+        this.horaFin = horaFin;
     }
 
     public Entidad getEntidad()
@@ -31,14 +44,24 @@ public class HorarioNoViableException extends Exception
         return this.entidad;
     }
 
-    public void setCursada(Cursada cursada)
+    public String getPeriodo()
     {
-        this.cursada = cursada;
+        return this.periodo;
     }
 
-    public Cursada getCursada()
+    public String getDia()
     {
-        return this.cursada;
+        return this.dia;
+    }
+
+    public String getHoraInicio()
+    {
+        return this.horaInicio;
+    }
+
+    public String getHoraFin()
+    {
+        return this.horaFin;
     }
 
 }

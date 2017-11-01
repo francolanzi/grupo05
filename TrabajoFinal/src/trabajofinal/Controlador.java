@@ -254,12 +254,36 @@ public class Controlador extends Observable
     
     private boolean compatibilidadHorariaAlumno(String legajo, Cursada cursada)
     {
+        return this.compatibilidadHorariaAlumno(legajo, cursada.getPeriodo(), cursada.getDia(),
+                                                cursada.getHoraInicio(), cursada.getHoraFin());
+    }
+    
+    private boolean compatibilidadHorariaProfesor(String legajo, Cursada cursada)
+    {
+        return this.compatibilidadHorariaProfesor(legajo, cursada.getPeriodo(), cursada.getDia(),
+                                                cursada.getHoraInicio(), cursada.getHoraFin());
+    }
+    
+    private boolean compatibilidadHorariaAlumno(String legajo, String periodo, String dia, String horaInicio, String horaFin)
+    {
         Iterator<Cursada> cursadas = this.cursadas.values().iterator();
         boolean retorno = true;
         while (retorno && cursadas.hasNext())
         {
-            Cursada otra = cursadas.next();
-            retorno = !otra.hasAlumno(legajo) || cursada.isCompatible(otra);
+            Cursada cursada = cursadas.next();
+            retorno = !cursada.hasAlumno(legajo) || cursada.isCompatible(periodo, dia, horaInicio, horaFin);
+        }
+        return retorno;
+    }
+    
+    private boolean compatibilidadHorariaProfesor(String legajo, String periodo, String dia, String horaInicio, String horaFin)
+    {
+        Iterator<Cursada> cursadas = this.cursadas.values().iterator();
+        boolean retorno = true;
+        while (retorno && cursadas.hasNext())
+        {
+            Cursada cursada = cursadas.next();
+            retorno = !cursada.hasProfesor(legajo) || cursada.isCompatible(periodo, dia, horaInicio, horaFin);
         }
         return retorno;
     }
@@ -286,18 +310,6 @@ public class Controlador extends Observable
         if (!this.cursadas.containsKey(identificacion))
             throw new IdInvalidoException(identificacion, "La cursada ingresada no existe");
         this.cursadas.get(identificacion).removeAlumno(legajo);
-    }
-    
-    private boolean compatibilidadHorariaProfesor(String legajo, Cursada cursada)
-    {
-        Iterator<Cursada> cursadas = this.cursadas.values().iterator();
-        boolean retorno = true;
-        while (retorno && cursadas.hasNext())
-        {
-            Cursada otra = cursadas.next();
-            retorno = !otra.hasProfesor(legajo) || cursada.isCompatible(otra);
-        }
-        return retorno;
     }
     
     public void addProfesorCursada(String legajo, String identificacion)
