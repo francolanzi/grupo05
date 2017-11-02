@@ -613,6 +613,8 @@ public class VCursadaModifica extends javax.swing.JFrame
                                      (String) jComboDia.getSelectedItem(), jTextFieldHoraInicio.getText(),
                                      jTextFieldHoraFin.getText());
                 JOptionPane.showMessageDialog(null, "La cursada ha sido modificada exitosamente");
+                VentanaIndex.getInstancia().setVisible(true);
+                this.setVisible(false);
             }
             catch (HoraInvalidaException | IdInvalidoException | PeriodoInvalidoException | HorarioNoViableException e)
             {

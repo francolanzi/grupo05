@@ -1,9 +1,8 @@
 
 package GUI;
 
-import java.awt.Component;
 
-import java.awt.event.WindowAdapter;
+
 
 import java.io.FileNotFoundException;
 
@@ -27,7 +26,7 @@ public class VentanaIndex extends javax.swing.JFrame
     private static VentanaIndex ventanaPrincipal = null;
 
     /** Creates new form VentanIndex */
-    public VentanaIndex()
+    private VentanaIndex()
     {
         initComponents();
         this.addWindowListener(WindowSerializador.getInstance());
@@ -963,7 +962,7 @@ public class VentanaIndex extends javax.swing.JFrame
                     alumno =
                         Controlador.getInstance()
                         .consultaAlumno(jTableAlumnos.getValueAt(jTableAlumnos.getSelectedRow(), 0).toString());
-                    int seleccion = JOptionPane.showConfirmDialog(null, "ï¿½Esta seguro de eliminar?");
+                    int seleccion = JOptionPane.showConfirmDialog(null, "¿Esta seguro de eliminar?");
                     if (seleccion == JOptionPane.OK_OPTION)
                         Controlador.getInstance()
                             .bajaAlumno(jTableAlumnos.getValueAt(jTableAlumnos.getSelectedRow(), 0).toString());
@@ -989,7 +988,7 @@ public class VentanaIndex extends javax.swing.JFrame
                         Controlador.getInstance()
                         .consultaProfesor((jTableProfesores.getValueAt(jTableProfesores.getSelectedRow(), 0)
                                            .toString()));
-                    int seleccion = JOptionPane.showConfirmDialog(null, "ï¿½Esta seguro de eliminar?");
+                    int seleccion = JOptionPane.showConfirmDialog(null, "¿Esta seguro de eliminar?");
                     if (seleccion == JOptionPane.OK_OPTION)
                         Controlador.getInstance()
                             .bajaProfesor(jTableProfesores.getValueAt(jTableProfesores.getSelectedRow(), 0).toString());
@@ -1015,7 +1014,7 @@ public class VentanaIndex extends javax.swing.JFrame
                         Controlador.getInstance()
                         .consultaAsignatura(jTableAsignaturas.getValueAt(jTableAsignaturas.getSelectedRow(), 0)
                                             .toString());
-                    int seleccion = JOptionPane.showConfirmDialog(null, "ï¿½Esta seguro de eliminar?");
+                    int seleccion = JOptionPane.showConfirmDialog(null, "¿Esta seguro de eliminar?");
                     if (seleccion == JOptionPane.OK_OPTION)
                         Controlador.getInstance()
                             .bajaAsignatura(jTableAsignaturas.getValueAt(jTableAsignaturas.getSelectedRow(), 0)
@@ -1041,7 +1040,7 @@ public class VentanaIndex extends javax.swing.JFrame
                     cursada =
                         Controlador.getInstance()
                         .consultaCursada((jTableCursadas.getValueAt(jTableCursadas.getSelectedRow(), 0).toString()));
-                    int seleccion = JOptionPane.showConfirmDialog(null, "ï¿½Esta seguro de eliminar?");
+                    int seleccion = JOptionPane.showConfirmDialog(null, "¿Esta seguro de eliminar?");
                     if (seleccion == JOptionPane.OK_OPTION)
                         Controlador.getInstance()
                             .bajaCursada(jTableCursadas.getValueAt(jTableCursadas.getSelectedRow(), 0).toString());

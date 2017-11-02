@@ -432,6 +432,7 @@ public class VProfesorAlta extends javax.swing.JFrame
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         VentanaIndex.getInstancia().setVisible(true);
         this.setVisible(false);
+        vaciaCampos();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jTextFieldNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreKeyTyped
