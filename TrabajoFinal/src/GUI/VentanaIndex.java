@@ -962,10 +962,12 @@ public class VentanaIndex extends javax.swing.JFrame
                     alumno =
                         Controlador.getInstance()
                         .consultaAlumno(jTableAlumnos.getValueAt(jTableAlumnos.getSelectedRow(), 0).toString());
+                    VAlumnoConsulta.getInstance(alumno).setVisible(true);
                     int seleccion = JOptionPane.showConfirmDialog(null, "¿Esta seguro de eliminar?");
                     if (seleccion == JOptionPane.OK_OPTION)
                         Controlador.getInstance()
                             .bajaAlumno(jTableAlumnos.getValueAt(jTableAlumnos.getSelectedRow(), 0).toString());
+                    VAlumnoConsulta.getInstance(alumno).setVisible(false);
                 }
                 catch (IdInvalidoException e)
                 {
@@ -988,10 +990,12 @@ public class VentanaIndex extends javax.swing.JFrame
                         Controlador.getInstance()
                         .consultaProfesor((jTableProfesores.getValueAt(jTableProfesores.getSelectedRow(), 0)
                                            .toString()));
+                    VProfesorConsulta.getInstance(profesor).setVisible(true);
                     int seleccion = JOptionPane.showConfirmDialog(null, "¿Esta seguro de eliminar?");
                     if (seleccion == JOptionPane.OK_OPTION)
                         Controlador.getInstance()
                             .bajaProfesor(jTableProfesores.getValueAt(jTableProfesores.getSelectedRow(), 0).toString());
+                    VProfesorConsulta.getInstance(profesor).setVisible(false);
                 }
                 catch (IdInvalidoException e)
                 {
@@ -1014,11 +1018,13 @@ public class VentanaIndex extends javax.swing.JFrame
                         Controlador.getInstance()
                         .consultaAsignatura(jTableAsignaturas.getValueAt(jTableAsignaturas.getSelectedRow(), 0)
                                             .toString());
+                    VAsignaturaConsulta.getInstance(asignatura).setVisible(true);
                     int seleccion = JOptionPane.showConfirmDialog(null, "¿Esta seguro de eliminar?");
                     if (seleccion == JOptionPane.OK_OPTION)
                         Controlador.getInstance()
                             .bajaAsignatura(jTableAsignaturas.getValueAt(jTableAsignaturas.getSelectedRow(), 0)
                                             .toString());
+                    VAsignaturaConsulta.getInstance(asignatura).setVisible(false);
                 }
                 catch (IdInvalidoException e)
                 {
@@ -1040,10 +1046,12 @@ public class VentanaIndex extends javax.swing.JFrame
                     cursada =
                         Controlador.getInstance()
                         .consultaCursada((jTableCursadas.getValueAt(jTableCursadas.getSelectedRow(), 0).toString()));
+                    VCursadaConsulta.getInstance(cursada).setVisible(true);
                     int seleccion = JOptionPane.showConfirmDialog(null, "¿Esta seguro de eliminar?");
                     if (seleccion == JOptionPane.OK_OPTION)
                         Controlador.getInstance()
                             .bajaCursada(jTableCursadas.getValueAt(jTableCursadas.getSelectedRow(), 0).toString());
+                    VCursadaConsulta.getInstance(cursada).setVisible(false);
                 }
                 catch (IdInvalidoException e)
                 {

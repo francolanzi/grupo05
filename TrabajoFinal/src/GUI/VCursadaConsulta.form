@@ -146,11 +146,11 @@
                                       <Component id="jTextFieldIdentificador" alignment="1" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabelNAsignatura" min="-2" pref="75" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jTextFieldAsignatura" min="-2" pref="125" max="-2" attributes="0"/>
+                                          <Component id="jTextFieldAsignatura" pref="125" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
@@ -158,9 +158,9 @@
                                               <Component id="jLabelDia" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jTextFieldHoraFin" min="-2" pref="125" max="-2" attributes="0"/>
-                                              <Component id="jTextFieldDia" min="-2" pref="125" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="jTextFieldHoraFin" pref="125" max="32767" attributes="0"/>
+                                              <Component id="jTextFieldDia" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -180,14 +180,14 @@
                       <Component id="jLabelIdentificador" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                       <Component id="jTextFieldIdentificador" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelNAsignatura" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldAsignatura" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
+                      <Component id="jTextFieldAsignatura" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabelPeriodo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextFieldPeriodo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelDia" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldDia" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
+                      <Component id="jTextFieldDia" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -206,7 +206,7 @@
                       <Component id="jScrollPaneAlumnos" min="-2" pref="84" max="-2" attributes="0"/>
                       <Component id="jLabelAlumnos" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="107" max="32767" attributes="0"/>
+                  <EmptySpace pref="95" max="32767" attributes="0"/>
                   <Component id="jButtonCancelar" min="-2" pref="31" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
