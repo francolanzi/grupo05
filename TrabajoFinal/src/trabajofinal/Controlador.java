@@ -39,6 +39,10 @@ public class Controlador extends Observable
             controlador = new Controlador();
         return controlador;
     }
+    
+    //...........................................INSPECCION...........................................
+    //Si bien en las altas es posible resumir las dos sentencias en una sola, instanciar a la entidad
+    //antes de agregarla perimite que esta genere su id y ademas facilita la lectura del codigo
 
     /**
      * Agrega un nuevo alumno al sistema
@@ -119,6 +123,10 @@ public class Controlador extends Observable
         Cursada cursada = new Cursada(this.asignaturas.get(identificacion), periodo, dia, horaInicio, horaFin);
         this.cursadas.put(cursada.getId(), cursada);
     }
+    
+    //...............................................INSPECCION...............................................
+    //El hecho de que el metodo remove del TreeMap retorne null no garantiza que no habia un objeto almacenado
+    //con esa clave, ya que tambien puede significar que el objeto almacenado con esa clave sea null
 
     /**
      * Elimina un alumno del sistema

@@ -36,6 +36,10 @@ public class Mascaras
             i++;
         return i < max;
     }
+    
+    //................................................INSPECCION................................................
+    //El hecho de que las longitudes de la hora y el periodo sean constantes no brinda ninguna facilidad, ya que
+    //si se modificaran implicaria que se modifico la mascara, por lo que el algoritmo tambien deberia cambiar
 
     /**
      * Valida que el periodo cumpla con la mascara CC-AAAA

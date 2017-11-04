@@ -36,6 +36,9 @@ public class Alumno implements Entidad
         this.legajo = Mascaras.genId(sigLegajo++, PREFIJO);
         this.historia = new ObserverTreeMap<Asignatura>();
     }
+    
+    //...........................................INSPECCION...........................................
+    //La verificacion del email se realiza dentro de la clase para asegurar la integridad de la misma
 
     /**
      * Modifica los atributos de alumno

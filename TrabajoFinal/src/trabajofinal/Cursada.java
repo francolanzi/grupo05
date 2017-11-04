@@ -45,6 +45,9 @@ public class Cursada implements Entidad, Observer
         Controlador.getInstance().addObserver(this);
     }
     
+    //...................................................INSPECCION...................................................
+    //Las verificaciones del periodo y la hora se realizan dentro de la clase para asegurar la integridad de la misma
+    
     public void modificar(String periodo, String dia, String horaInicio, String horaFin)
     throws PeriodoInvalidoException, HoraInvalidaException
     {

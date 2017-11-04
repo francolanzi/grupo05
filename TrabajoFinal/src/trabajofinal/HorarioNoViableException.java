@@ -3,6 +3,11 @@ package trabajofinal;
 public class HorarioNoViableException extends Exception
 {
     
+    //..........................................INSPECCION..........................................
+    //Si bien en la interfaz la informacion de las excepciones es irrelevante, salvo por elmensaje,
+    //es necesario que brinden dicha informacion ya que podrian llegar hasta una zona del codigo
+    //donde sea importante conocer los detalles sobre lo que dio origen a la excepcion
+    
     private Entidad entidad;
     private String periodo;
     private String dia;
