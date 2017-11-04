@@ -2,14 +2,33 @@ package trabajofinal;
 
 public class Mascaras
 {
-    
+
+    /**
+     * Constructor privado de la clase Mascaras
+     * <br>
+     * La clase no puede ser instanciada
+     * <br>
+     * Se utiliza para generar y validar mascaras
+     */
     private Mascaras(){}
-    
+
+    /**
+     * Genera un id con un prefijo y un numero
+     * <b>Pre:</b> prefijo e id son validos
+     * @param id Numero del id
+     * @param prefijo Prefijo del id
+     * @return Id con la mascara AAA9999
+     */
     public static String genId(int id, String prefijo)
     {
         return String.format(prefijo + "%04d", id);
     }
-    
+
+    /**
+     * Valida que el email cumpla con la mascara AAAAAA@AAAAAA
+     * @param email Email a validar
+     * @return true si el email cumple con la mascara, false en caso contrario
+     */
     public static boolean emailValido(String email)
     {
         int i = 1, max = email.length() - 1;
@@ -17,7 +36,12 @@ public class Mascaras
             i++;
         return i < max;
     }
-    
+
+    /**
+     * Valida que el periodo cumpla con la mascara CC-AAAA
+     * @param periodo Periodo a validar
+     * @return true si el periodo cumple con la mascara, false en caso contrario
+     */
     public static boolean periodoValido(String periodo)
     {
         boolean retorno = periodo.length() == 7 && periodo.charAt(0) == '0' &&
@@ -30,7 +54,12 @@ public class Mascaras
         }
         return retorno;
     }
-    
+
+    /**
+     * Valida que la hora exista y cumpla con la mascara 99:99
+     * @param hora Hora a validar
+     * @return true si la hora es valida, false en caso contrario
+     */
     public static boolean horaValida(String hora)
     {
         boolean retorno;

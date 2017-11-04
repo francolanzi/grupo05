@@ -20,6 +20,20 @@ public class Cursada implements Entidad, Observer
     private ObserverTreeMap<Profesor> profesores;
     private ObserverTreeMap<Alumno> alumnos;
 
+    /**
+     * Constructor de la clase Cursada
+     * <br>
+     * <b>Pre:</b> asignatura y dia son validos
+     * <br>
+     * <b>Post:</b> se ha creado una nueva cursada con una nueva identificacion unica
+     * @param asignatura Asignatura de la cursada
+     * @param periodo Periodo de la cursada
+     * @param dia Dia de la cursada
+     * @param horaInicio Hora de inicio de la cursada
+     * @param horaFin Hora de finalizacion de la cursada
+     * @throws PeriodoInvalidoException El periodo no cumple con la mascara CC-AAAA
+     * @throws HoraInvalidaException La hora no existe o no cumple con la mascara 99:99
+     */
     public Cursada(Asignatura asignatura, String periodo, String dia, String horaInicio, String horaFin)
     throws PeriodoInvalidoException, HoraInvalidaException
     {
@@ -31,67 +45,6 @@ public class Cursada implements Entidad, Observer
         Controlador.getInstance().addObserver(this);
     }
     
-    public void addAlumno(Alumno alumno) throws EntidadInvalidaException
-    {
-        if (alumno.isAprobada(this.asignatura.getId()))
-            throw new EntidadInvalidaException(alumno, "El alumno ya ha aprobado la asignatura");
-        boolean agregar = true;
-        Iterator<Asignatura> correlativas = this.asignatura.getCorrelativasIterator();
-        while (agregar && correlativas.hasNext())
-            agregar = alumno.isAprobada(correlativas.next().getId());
-        if (!agregar)
-            throw new EntidadInvalidaException(alumno, "El alumno no esta habilitado a cursar la materia");
-        this.alumnos.add(alumno);
-    }
-    
-    public void addProfesor(Profesor profesor)
-    throws EntidadInvalidaException
-    {
-        if (!profesor.isCompetente(this.asignatura.getId()))
-            throw new EntidadInvalidaException(profesor, "El profesor no es competente");
-        this.profesores.add(profesor);
-    }
-    
-    public void removeAlumno(String legajo) throws IdInvalidoException
-    {
-        try
-        {
-            this.alumnos.remove(legajo);
-        }
-        catch (IdInvalidoException e)
-        {
-            throw new IdInvalidoException(e.getId(), "El alumno no esta en la cursada");
-        }
-    }
-    
-    public void removeProfesor(String legajo) throws IdInvalidoException
-    {
-        try
-        {
-            this.profesores.remove(legajo);
-        }
-        catch (IdInvalidoException e)
-        {
-            throw new IdInvalidoException(e.getId(), "El profesor no esta en la cursada");
-        }
-    }
-
-    @Override
-    public String getId()
-    {
-        return this.identificacion;
-    }
-    
-    public boolean hasAlumno(String legajo)
-    {
-        return this.alumnos.contains(legajo);
-    }
-    
-    public boolean hasProfesor(String legajo)
-    {
-        return this.profesores.contains(legajo);
-    }
-
     public void modificar(String periodo, String dia, String horaInicio, String horaFin)
     throws PeriodoInvalidoException, HoraInvalidaException
     {
@@ -109,6 +62,118 @@ public class Cursada implements Entidad, Observer
         this.horaFin = horaFin;
     }
     
+    @Override
+    public String getId()
+    {
+        return this.identificacion;
+    }
+
+    /**
+     * Agrega un alumno a la cursada
+     * <br>
+     * <b>Pre:</b> el alumno es valido
+     * <br>
+     * <b>Post:</b> el alumno ha sido agregado a la cursada
+     * @param alumno Alumno a agregar
+     * @throws EntidadInvalidaException El alumno ya ha aprobado la asignatura o no esta habilitado a cursarla
+     */
+    public void addAlumno(Alumno alumno) throws EntidadInvalidaException
+    {
+        if (alumno.isAprobada(this.asignatura.getId()))
+            throw new EntidadInvalidaException(alumno, "El alumno ya ha aprobado la asignatura");
+        boolean agregar = true;
+        Iterator<Asignatura> correlativas = this.asignatura.getCorrelativasIterator();
+        while (agregar && correlativas.hasNext())
+            agregar = alumno.isAprobada(correlativas.next().getId());
+        if (!agregar)
+            throw new EntidadInvalidaException(alumno, "El alumno no esta habilitado a cursar la asignatura");
+        this.alumnos.add(alumno);
+    }
+
+    /**
+     * Agregar un profesor a la cursada
+     * <br>
+     * <b>Pre:</b> el profesor es valido
+     * <br>
+     * <b>Post:</b> el profesor ha sido agregado a la cursada
+     * @param profesor Profesor a agregar
+     * @throws EntidadInvalidaException El profesor no es competente para la asignatura
+     */
+    public void addProfesor(Profesor profesor)
+    throws EntidadInvalidaException
+    {
+        if (!profesor.isCompetente(this.asignatura.getId()))
+            throw new EntidadInvalidaException(profesor, "El profesor no es competente");
+        this.profesores.add(profesor);
+    }
+
+    /**
+     * Elimina un alumno de la cursada
+     * <br>
+     * <b>Post:</b> el alumno ha sido eliminado de la cursada
+     * @param legajo Legajo del alumno a eliminar
+     * @throws IdInvalidoException El alumno no esta en la cursada
+     */
+    public void removeAlumno(String legajo) throws IdInvalidoException
+    {
+        try
+        {
+            this.alumnos.remove(legajo);
+        }
+        catch (IdInvalidoException e)
+        {
+            throw new IdInvalidoException(e.getId(), "El alumno no esta en la cursada");
+        }
+    }
+
+    /**
+     * Elimina a un profesor de la cursada
+     * <br>
+     * <b>Post:</b> el profesor ha sido eliminado de la cursada
+     * @param legajo Legajo del profesor a eliminar
+     * @throws IdInvalidoException El profesor no esta en la cursada
+     */
+    public void removeProfesor(String legajo) throws IdInvalidoException
+    {
+        try
+        {
+            this.profesores.remove(legajo);
+        }
+        catch (IdInvalidoException e)
+        {
+            throw new IdInvalidoException(e.getId(), "El profesor no esta en la cursada");
+        }
+    }
+
+    /**
+     * Verifica si un alumno pertenece a la cursada
+     * @param legajo Legajo del alumno
+     * @return true si el alumno pertence a la cursada, false en caso contrario
+     */
+    public boolean hasAlumno(String legajo)
+    {
+        return this.alumnos.contains(legajo);
+    }
+
+    /**
+     * Verifica si un profesor pertenece a la cursada
+     * @param legajo Legajo del profesor
+     * @return true si el profesor pertenece a la cursada, false en caso contrario
+     */
+    public boolean hasProfesor(String legajo)
+    {
+        return this.profesores.contains(legajo);
+    }
+
+    /**
+     * Agrega la asignatura a la historia de un alumno y lo elimina de la cursada
+     * <br>
+     * <b>Post:</b> la asignatura ha sido agregada a la historia del alumno
+     * y el alumno ha sido eliminado de la cursada
+     * @param legajo Legajo del alumno a aprobar
+     * @throws IdInvalidoException El alumno no esta en la cursada
+     * @throws EntidadInvalidaException La asignatura ya se encuentra en la historia del alumno
+     */
     public void aprobarAlumno(String legajo) throws IdInvalidoException, EntidadInvalidaException
     {
         try
@@ -120,19 +185,29 @@ public class Cursada implements Entidad, Observer
             throw new IdInvalidoException(e.getId(), "El alumno ingresado no esta en la cursada");
         }
     }
-    
+
+    /**
+     * Verifica si la cursada no se superpone con otra
+     * <br>
+     * <b>Pre:</b> periodo, dia, horaInicio y horaFin son validos
+     * @param periodo Periodo de la otra cursada
+     * @param dia Dia de la otra cursada
+     * @param horaInicio Hora de inicio de la otra cursada
+     * @param horaFin Hora de finalizacion de la otra cursada
+     * @return true si las cursadas no se superponen, false en caso contrario
+     */
     public boolean isCompatible(String periodo, String dia, String horaInicio, String horaFin)
     {
         return !(this.getPeriodo().equals(periodo) && this.getDia().equals(dia)
         && this.getHoraInicio().compareTo(horaFin) < 0
         && this.getHoraFin().compareTo(horaInicio) > 0);
     }
-    
+
     public Iterator<Profesor> getProfesoresIterator()
     {
         return this.profesores.getIterator();
     }
-    
+
     public Iterator<Alumno> getAlumnosIterator()
     {
         return this.alumnos.getIterator();

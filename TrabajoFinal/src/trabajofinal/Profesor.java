@@ -17,6 +17,20 @@ public class Profesor implements Entidad
     private String email;
     private ObserverTreeMap<Asignatura> competencias;
 
+    /**
+     * Constructor de la clase Profesor
+     * <br>
+     * <b>Pre:</b> apellido, nombre, calle, numero y telefono son validos
+     * <br>
+     * <b>Post:</b> se ha creado un nuevo profesor con un legajo unico
+     * @param apellido Apellido del profesor
+     * @param nombre Nombre del profesor
+     * @param calle Calle del domicilio del profesor
+     * @param numero Numero del domicilio del profesor
+     * @param telefono Telefono del profesor
+     * @param email Email del profesor
+     * @throws EmailInvalidoException El email no cumple con la mascara AAAAAA@AAAAAA
+     */
     public Profesor(String apellido, String nombre, String calle, int numero, String telefono, String email)
     throws EmailInvalidoException
     {
@@ -24,7 +38,47 @@ public class Profesor implements Entidad
         this.legajo = Mascaras.genId(sigLegajo++, PREFIJO);
         this.competencias = new ObserverTreeMap<Asignatura>();
     }
+
+    /**
+     * Modifica los atributos del profesor
+     * <br>
+     * <b>Pre:</b> apellido, nombre, calle, numero y telefono son validos
+     * <br>
+     * <b>Post:</b> los atributos del profesor han sido modificados
+     * @param apellido Apellido del profesor
+     * @param nombre Nombre del profesor
+     * @param calle Calle del domicilio del profesor
+     * @param numero Numero del domicilio del profesor
+     * @param telefono Telefono del profesor
+     * @param email Email del profesor
+     * @throws EmailInvalidoException El email no cumple con la mascara AAAAAA@AAAAAA
+     */
+    public void modificar(String apellido, String nombre, String calle, int numero, String telefono, String email) throws EmailInvalidoException
+    {
+        if (!Mascaras.emailValido(email))
+            throw new EmailInvalidoException(email, "El email ingresado es invalido");
+        this.apellido = apellido;
+        this.nombre = nombre;
+        this.domicilio = new Domicilio(calle, numero);
+        this.telefono = telefono;
+        this.email = email;
+    }
     
+    @Override
+    public String getId()
+    {
+        return legajo;
+    }
+
+    /**
+     * Agrega una asignatura a las competencias al profesor
+     * <br>
+     * <b>Pre:</b> la asignatura es valida
+     * <br>
+     * <b>Post:</b> la asignatura ha sido agregada a las competencias del profesor
+     * @param competencia Asignatura a agregar
+     * @throws EntidadInvalidaException La asignatura ya se encuentra en las competencias del profesor
+     */
     public void addCompetencia(Asignatura competencia)
     throws EntidadInvalidaException
     {
@@ -38,6 +92,13 @@ public class Profesor implements Entidad
         }
     }
     
+    /**
+     * Elimina una asignatura de las competencias del profesor
+     * <br>
+     * <b>Post:</b> la asignatura ha sido eliminada de las competencias del profesor
+     * @param identificacion Identificacion de la asignatura a eliminar
+     * @throws IdInvalidoException La asignatura no se encuentra en las competencias del profesor
+     */
     public void removeCompetencia(String identificacion)
     throws IdInvalidoException
     {
@@ -51,31 +112,19 @@ public class Profesor implements Entidad
         }
     }
 
-    @Override
-    public String getId()
-    {
-        return legajo;
-    }
-    
+    /**
+     * Verifica si una asignatura esta en las competencias del profesor
+     * @param identificacion Identificacion de la asignatura a verificar
+     * @return true si el profesor es competente, false en caso contrario
+     */
     public boolean isCompetente(String identificacion)
     {
         return this.competencias.contains(identificacion);
     }
-    
+
     public Iterator<Asignatura> getCompetenciasIterator()
     {
         return this.competencias.getIterator();
-    }
-    
-    public void modificar(String apellido, String nombre, String calle, int numero, String telefono, String email) throws EmailInvalidoException
-    {
-        if (!Mascaras.emailValido(email))
-            throw new EmailInvalidoException(email, "El email ingresado es invalido");
-        this.apellido = apellido;
-        this.nombre = nombre;
-        this.domicilio = new Domicilio(calle, numero);
-        this.telefono = telefono;
-        this.email = email;
     }
 
     @Override

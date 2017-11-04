@@ -13,6 +13,13 @@ public class Asignatura implements Entidad
     private String nombre;
     private ObserverTreeMap<Asignatura> correlativas;
 
+    /**
+     * Constructor de la clase Asignatura
+     * <br>
+     * <b>Pre:</b> el nombre es valido
+     * <b>Post:</b> se ha creado una nueva asignatura con una nueva identificacion unica
+     * @param nombre Nombre de la asignatura
+     */
     public Asignatura(String nombre)
     {
         this.identificacion = Mascaras.genId(sigIdentificacion++, PREFIJO);
@@ -20,6 +27,20 @@ public class Asignatura implements Entidad
         this.correlativas = new ObserverTreeMap<Asignatura>();
     }
     
+    @Override
+    public String getId()
+    {
+        return identificacion;
+    }
+
+    /**
+     * Agrega una correlativa a la asignatura
+     * <b>Pre:</b> la correlativa es valida
+     * <br>
+     * <b>Post:</b> la correlativa ha sido agregada a la asignatura
+     * @param correlativa Asignatura a agregar como correlativa
+     * @throws EntidadInvalidaException La asignatura ya posee la correlativa
+     */
     public void addCorrelativa(Asignatura correlativa) throws EntidadInvalidaException
     {
         try
@@ -31,7 +52,14 @@ public class Asignatura implements Entidad
             throw new EntidadInvalidaException(e.getEntidad(), "La asignatura ya posee la correlativa");
         }
     }
-    
+
+    /**
+     * Elimina una correlativa de la asignatura
+     * <br>
+     * <b>Post:</b> la correlativa ha sido eliminada de la asignatura
+     * @param identificacion Identificacion de la correlativa a eliminar
+     * @throws IdInvalidoException La asignatura no posee la correlativa
+     */
     public void removeCorrelativa(String identificacion)
     throws IdInvalidoException
     {
@@ -44,21 +72,20 @@ public class Asignatura implements Entidad
             throw new IdInvalidoException(e.getId(), "La asignatura no posee la correlativa");
         }
     }
-    
+
+    /**
+     * Verifica si una asignatura es correlativa de esta
+     * @param identificacion Identificacion de la correlativa
+     * @return true si la asignatura es correlativa, false en caso contrario
+     */
     public boolean isCorrelativa(String identificacion)
     {
         return this.correlativas.contains(identificacion);
     }
-    
+
     public Iterator<Asignatura> getCorrelativasIterator()
     {
         return this.correlativas.getIterator();
-    }
-
-    @Override
-    public String getId()
-    {
-        return identificacion;
     }
 
     @Override

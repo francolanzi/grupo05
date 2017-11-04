@@ -16,6 +16,20 @@ public class Alumno implements Entidad
     private String email;
     private ObserverTreeMap<Asignatura> historia;
 
+    /**
+     * Constructor de la clase Alumno
+     * <br>
+     * <b>Pre:</b> apellido, nombre, calle, numero y telefono son validos
+     * <br>
+     * <b>Post:</b> se ha creado un nuevo alumno con un nuevo legajo unico
+     * @param apellido Apellido del alumno
+     * @param nombre Nombre del alumno
+     * @param calle Calle de la direccion del alumno
+     * @param numero Numero de la direccion del alumno
+     * @param telefono Telefono del alumno
+     * @param email Email del alumno
+     * @throws EmailInvalidoException El email no cumple con la mascara AAAAAA@AAAAAA
+     */
     public Alumno(String apellido, String nombre, String calle, int numero, String telefono, String email) throws EmailInvalidoException
     {
         this.modificar(apellido, nombre, calle, numero, telefono, email);
@@ -23,6 +37,20 @@ public class Alumno implements Entidad
         this.historia = new ObserverTreeMap<Asignatura>();
     }
 
+    /**
+     * Modifica los atributos de alumno
+     * <br>
+     * <b>Pre:</b> apellido, nombre, calle, numero y telefono son validos
+     * <br>
+     * <b>Post:</b> los atributos del alumno han sido modificados
+     * @param apellido Apellido del alumno
+     * @param nombre Nombre del alumno
+     * @param calle Calle de la direccion del alumno
+     * @param numero Numero de la direccion del alumno
+     * @param telefono Telefono del alumno
+     * @param email Email del alumno
+     * @throws EmailInvalidoException El email no cumple con la mascara AAAAAA@AAAAAA
+     */
     public void modificar(String apellido, String nombre, String calle, int numero, String telefono, String email) throws EmailInvalidoException
     {
         if (!Mascaras.emailValido(email))
@@ -39,7 +67,16 @@ public class Alumno implements Entidad
     {
         return this.legajo;
     }
-    
+
+    /**
+     * Agrega una asignatura a la historia del alumno
+     * <br>
+     * <b>Pre:</b> la asignatura es valida
+     * <br>
+     * <b>Post:</b> la asignatura ha sido agregada a la historia del alumno
+     * @param asignatura Asignatura a agregar
+     * @throws EntidadInvalidaException La asignatura ya se encuentra en la historia del alumno
+     */
     public void aprobarAsignatura(Asignatura asignatura) throws EntidadInvalidaException
     {
         try
@@ -51,7 +88,14 @@ public class Alumno implements Entidad
             throw new EntidadInvalidaException(e.getEntidad(), "El alumno ya ha aprobado la asignatura");
         }
     }
-    
+
+    /**
+     * Elimina una asignatura de la historia del alumno
+     * <br>
+     * <b>Post:</b> la asignatura ha sido eliminada de la historia del alumno
+     * @param identificacion Identificacion de la asignatura a eliminar
+     * @throws IdInvalidoException La asignatura no se encuentra en la historia del alumno
+     */
     public void removeAsignatura(String identificacion) throws IdInvalidoException
     {
         try
@@ -63,12 +107,17 @@ public class Alumno implements Entidad
             throw new IdInvalidoException(e.getId(), "El alumno no posee aprobada la asignatura");
         }
     }
-    
+
+    /**
+     * Verifica si una asignatura esta en la historia del alumno
+     * @param identificacion Identificacion de la asignatura a verificar
+     * @return true si la asignatura ha sido aprobada, false en caso contrario
+     */
     public boolean isAprobada(String identificacion)
     {
         return this.historia.contains(identificacion);
     }
-    
+
     public Iterator<Asignatura> getHistoriaIterator()
     {
         return this.historia.getIterator();
