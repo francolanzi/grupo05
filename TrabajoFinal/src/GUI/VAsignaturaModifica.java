@@ -353,6 +353,8 @@ public class VAsignaturaModifica extends javax.swing.JFrame
                 Controlador.getInstance()
                     .modificaAsignatura(jTextFieldIdentificador.getText(), jTextFieldNombre.getText());
                 JOptionPane.showMessageDialog(null, "La asignatura ha sido modificada exitosamente");
+                VentanaIndex.getInstancia().setVisible(true);
+                this.setVisible(false);
             }
             catch (IdInvalidoException e)
             {

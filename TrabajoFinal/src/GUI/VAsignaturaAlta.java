@@ -307,6 +307,7 @@ public class VAsignaturaAlta extends javax.swing.JFrame
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         VentanaIndex.getInstancia().setVisible(true);
         this.setVisible(false);
+        vaciaCampos();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGrabarActionPerformed

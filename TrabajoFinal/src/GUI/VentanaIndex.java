@@ -1,9 +1,8 @@
 
 package GUI;
 
-import java.awt.Component;
 
-import java.awt.event.WindowAdapter;
+
 
 import java.io.FileNotFoundException;
 
@@ -27,7 +26,7 @@ public class VentanaIndex extends javax.swing.JFrame
     private static VentanaIndex ventanaPrincipal = null;
 
     /** Creates new form VentanIndex */
-    public VentanaIndex()
+    private VentanaIndex()
     {
         initComponents();
         this.addWindowListener(WindowSerializador.getInstance());
@@ -963,10 +962,12 @@ public class VentanaIndex extends javax.swing.JFrame
                     alumno =
                         Controlador.getInstance()
                         .consultaAlumno(jTableAlumnos.getValueAt(jTableAlumnos.getSelectedRow(), 0).toString());
-                    int seleccion = JOptionPane.showConfirmDialog(null, "ï¿½Esta seguro de eliminar?");
+                    VAlumnoConsulta.getInstance(alumno).setVisible(true);
+                    int seleccion = JOptionPane.showConfirmDialog(null, "¿Esta seguro de eliminar?");
                     if (seleccion == JOptionPane.OK_OPTION)
                         Controlador.getInstance()
                             .bajaAlumno(jTableAlumnos.getValueAt(jTableAlumnos.getSelectedRow(), 0).toString());
+                    VAlumnoConsulta.getInstance(alumno).setVisible(false);
                 }
                 catch (IdInvalidoException e)
                 {
@@ -989,10 +990,12 @@ public class VentanaIndex extends javax.swing.JFrame
                         Controlador.getInstance()
                         .consultaProfesor((jTableProfesores.getValueAt(jTableProfesores.getSelectedRow(), 0)
                                            .toString()));
-                    int seleccion = JOptionPane.showConfirmDialog(null, "ï¿½Esta seguro de eliminar?");
+                    VProfesorConsulta.getInstance(profesor).setVisible(true);
+                    int seleccion = JOptionPane.showConfirmDialog(null, "¿Esta seguro de eliminar?");
                     if (seleccion == JOptionPane.OK_OPTION)
                         Controlador.getInstance()
                             .bajaProfesor(jTableProfesores.getValueAt(jTableProfesores.getSelectedRow(), 0).toString());
+                    VProfesorConsulta.getInstance(profesor).setVisible(false);
                 }
                 catch (IdInvalidoException e)
                 {
@@ -1015,11 +1018,13 @@ public class VentanaIndex extends javax.swing.JFrame
                         Controlador.getInstance()
                         .consultaAsignatura(jTableAsignaturas.getValueAt(jTableAsignaturas.getSelectedRow(), 0)
                                             .toString());
-                    int seleccion = JOptionPane.showConfirmDialog(null, "ï¿½Esta seguro de eliminar?");
+                    VAsignaturaConsulta.getInstance(asignatura).setVisible(true);
+                    int seleccion = JOptionPane.showConfirmDialog(null, "¿Esta seguro de eliminar?");
                     if (seleccion == JOptionPane.OK_OPTION)
                         Controlador.getInstance()
                             .bajaAsignatura(jTableAsignaturas.getValueAt(jTableAsignaturas.getSelectedRow(), 0)
                                             .toString());
+                    VAsignaturaConsulta.getInstance(asignatura).setVisible(false);
                 }
                 catch (IdInvalidoException e)
                 {
@@ -1041,10 +1046,12 @@ public class VentanaIndex extends javax.swing.JFrame
                     cursada =
                         Controlador.getInstance()
                         .consultaCursada((jTableCursadas.getValueAt(jTableCursadas.getSelectedRow(), 0).toString()));
-                    int seleccion = JOptionPane.showConfirmDialog(null, "ï¿½Esta seguro de eliminar?");
+                    VCursadaConsulta.getInstance(cursada).setVisible(true);
+                    int seleccion = JOptionPane.showConfirmDialog(null, "¿Esta seguro de eliminar?");
                     if (seleccion == JOptionPane.OK_OPTION)
                         Controlador.getInstance()
                             .bajaCursada(jTableCursadas.getValueAt(jTableCursadas.getSelectedRow(), 0).toString());
+                    VCursadaConsulta.getInstance(cursada).setVisible(false);
                 }
                 catch (IdInvalidoException e)
                 {

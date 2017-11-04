@@ -616,6 +616,7 @@ public class VCursadaAlta extends javax.swing.JFrame
     {//GEN-HEADEREND:event_jButtonCancelarActionPerformed
         VentanaIndex.getInstancia().setVisible(true);
         this.setVisible(false);
+        vaciaCampos();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jComboDiaActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jComboDiaActionPerformed

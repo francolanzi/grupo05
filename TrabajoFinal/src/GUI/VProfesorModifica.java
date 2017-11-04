@@ -500,6 +500,8 @@ public class VProfesorModifica extends javax.swing.JFrame
                                       Integer.parseInt(jTextFieldNumero.getText()),
                                       jTextFieldNumero.getText().toString(), jTextFieldEmail.getText().toString());
                 JOptionPane.showMessageDialog(null, "El profesor ha sido modificado exitosamente");
+                VentanaIndex.getInstancia().setVisible(true);
+                this.setVisible(false);
             }
             catch (EmailInvalidoException | IdInvalidoException e)
             {
