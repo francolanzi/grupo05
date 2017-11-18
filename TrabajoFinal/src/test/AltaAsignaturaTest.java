@@ -22,7 +22,7 @@ public class AltaAsignaturaTest
     }
     
     @Test
-    public void testValoresCorrectos()
+    public void testNombreCorrecto()
     {
         Controlador.getInstance().altaAsignatura("mateA");
     }

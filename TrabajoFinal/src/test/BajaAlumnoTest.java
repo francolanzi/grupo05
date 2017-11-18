@@ -5,6 +5,7 @@ import java.util.TreeMap;
 import model.Alumno;
 import model.Controlador;
 import model.EmailInvalidoException;
+
 import model.IdInvalidoException;
 
 import static org.junit.Assert.*;
@@ -12,7 +13,7 @@ import org.junit.Before;
 import org.junit.After;
 import org.junit.Test;
 
-public class ConsultaAlumnoTest
+public class BajaAlumnoTest
 {
     
     private Alumno alumno;
@@ -39,13 +40,18 @@ public class ConsultaAlumnoTest
     {
         try
         {
-            Alumno otro = Controlador.getInstance().consultaAlumno("ALU0001");
-            assertEquals("El alumno no es el esperado", alumno, otro);
+            Controlador.getInstance().bajaAlumno("ALU0001");
         }
         catch (IdInvalidoException e)
         {
             fail("IdInvalidoException no debio ser lanzada");
         }
+        try
+        {
+            Alumno otro = Controlador.getInstance().consultaAlumno("ALU0001");
+            assertNotEquals("El alumno debio haber sido eliminado", alumno, otro);
+        }
+        catch (IdInvalidoException e){}
     }
     
     @Test
@@ -53,29 +59,18 @@ public class ConsultaAlumnoTest
     {
         try
         {
-            Controlador.getInstance().consultaAlumno(null);
+            Controlador.getInstance().bajaAlumno(null);
             fail("Debio lanzarse IdInvalidoException");
         }
         catch (IdInvalidoException e){}
     }
     
     @Test
-    public void testLegajoVacio()
+    public void testLegajoInvalido()
     {
         try
         {
-            Controlador.getInstance().consultaAlumno("");
-            fail("Debio lanzarse IdInvalidoException");
-        }
-        catch (IdInvalidoException e){}
-    }
-    
-    @Test
-    public void testLegajInvalido()
-    {
-        try
-        {
-            Controlador.getInstance().consultaAlumno("XXXXXX");
+            Controlador.getInstance().bajaAlumno("adadada");
             fail("Debio lanzarse IdInvalidoException");
         }
         catch (IdInvalidoException e){}
@@ -86,7 +81,7 @@ public class ConsultaAlumnoTest
     {
         try
         {
-            Controlador.getInstance().consultaAlumno("ALU2222");
+            Controlador.getInstance().bajaAlumno("ALU0003");
             fail("Debio lanzarse IdInvalidoException");
         }
         catch (IdInvalidoException e){}
