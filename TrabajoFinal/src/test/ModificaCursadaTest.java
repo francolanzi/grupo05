@@ -28,6 +28,7 @@ public class ModificaCursadaTest
         TreeMap<String, Asignatura> asignaturas = new TreeMap<String, Asignatura>();
         asignaturas.put("ASI0001", asignatura);
         Controlador.getInstance().setAsignaturas(asignaturas);
+        
         try
         {
             cursada = new Cursada(asignatura, "02-2017", "MIERCOLES", "18:00", "20:00");

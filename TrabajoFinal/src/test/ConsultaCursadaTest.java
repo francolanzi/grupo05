@@ -26,6 +26,7 @@ public class ConsultaCursadaTest
         TreeMap<String, Asignatura> asignaturas = new TreeMap<String, Asignatura>();
         asignaturas.put("ASI0001", asignatura);
         Controlador.getInstance().setAsignaturas(asignaturas);
+        
         try
         {
             cursada = new Cursada(asignatura, "01-2017", "LUNES", "10:00", "12:00");
