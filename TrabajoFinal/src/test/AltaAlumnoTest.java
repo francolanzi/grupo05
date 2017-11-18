@@ -13,7 +13,7 @@ import org.junit.Before;
 import org.junit.After;
 import org.junit.Test;
 
-public class AlumnoTest
+public class AltaAlumnoTest
 {
     
     private Alumno alumno;
@@ -21,25 +21,13 @@ public class AlumnoTest
     @Before
     public void setUp()
     {
-        try
-        {
-            alumno = new Alumno("Pico", "Juan", "Falucho", 3433, "2235357381", "jjj@jjj.com");
-        }
-        catch (EmailInvalidoException e)
-        {
-            throw new InternalError();
-        }
-        alumno.setLegajo("ALU0001");
         TreeMap<String, Alumno> alumnos = new TreeMap<String, Alumno>();
-        alumnos.put("ALU0001", alumno);
         Controlador.getInstance().setAlumnos(alumnos);
     }
     
     @Test
-    public void testAltaAlumno()
+    public void testValoresCorrectos()
     {
-        
-        //Clases correctas
         try
         {
             Controlador.getInstance().altaAlumno("Pico", "Juan", "Falucho", 3433, "2235357381", "jjj@jjj.com");
@@ -48,8 +36,11 @@ public class AlumnoTest
         {
             fail("El alumno debio ser creado correctamente");
         }
-        
-        //Valores limites
+    }
+    
+    @Test
+    public void testValoresLimites()
+    {
         try
         {
             Controlador.getInstance().altaAlumno("Pico", "Juan", "Falucho", 1, "2", "j@j");
@@ -58,143 +49,160 @@ public class AlumnoTest
         {
             fail("El alumno debio ser creado correctamente");
         }
-        
-        //El email no contiene @
+    }
+    
+    @Test
+    public void testEmailSinArroba()
+    {
         try
         {
             Controlador.getInstance().altaAlumno("Pico", "Juan", "Falucho", 3433, "2235357381", "jjjjjjjj.com");
             fail("Debio lanzarse EmailInvalidoException");
         }
         catch (EmailInvalidoException e){}
-        
-        //El email no contiene carcateres antes de @
+    }
+    
+    @Test
+    public void testEmailSinCaracteresAntes()
+    {
         try
         {
             Controlador.getInstance().altaAlumno("Pico", "Juan", "Falucho", 3433, "2235357381", "@jjj.com");
             fail("Debio lanzarse EmailInvalidoException");
         }
         catch (EmailInvalidoException e){}
-        
-        //El email no contiene carcateres despues de @
+    }
+    
+    @Test
+    public void testEmailSinCaracteresDespues()
+    {
         try
         {
             Controlador.getInstance().altaAlumno("Pico", "Juan", "Falucho", 3433, "2235357381", "jjjj@");
             fail("Debio lanzarse EmailInvalidoException");
         }
         catch (EmailInvalidoException e){}
-        
-        //El email no contiene carcateres antes de @ y solo uno despues
+    }
+    
+    @Test
+    public void testEmailUnCaracterDespues()
+    {
         try
         {
             Controlador.getInstance().altaAlumno("Pico", "Juan", "Falucho", 3433, "2235357381", "@j");
             fail("Debio lanzarse EmailInvalidoException");
         }
         catch (EmailInvalidoException e){}
-        
-        //El nombre es null
+    }
+    
+    @Test
+    public void testNombreNull()
+    {
         try
         {
             Controlador.getInstance().altaAlumno("Pico", null, "Falucho", 3433, "2235357381", "jjjj@jjjj.com");
             fail("El alumno no debio ser creado");
         }
         catch (EmailInvalidoException e){}
-        
-        //El nombre es vacio
+    }
+    
+    @Test
+    public void testNombreVacio()
+    {
         try
         {
             Controlador.getInstance().altaAlumno("Pico", "", "Falucho", 3433, "2235357381", "jjjj@jjjj.com");
             fail("El alumno no debio ser creado");
         }
         catch (EmailInvalidoException e){}
-        
-        //El apellido es null
+    }
+    
+    @Test
+    public void testApellidoNull()
+    {
         try
         {
             Controlador.getInstance().altaAlumno(null, "Juan", "Falucho", 3433, "2235357381", "jjjj@jjjj.com");
             fail("El alumno no debio ser creado");
         }
         catch (EmailInvalidoException e){}
-        
-        //El apellido es vacio
+    }
+    
+    @Test
+    public void testApellidoVacio()
+    {
         try
         {
             Controlador.getInstance().altaAlumno("", "Juan", "Falucho", 3433, "2235357381", "jjjj@jjjj.com");
             fail("El alumno no debio ser creado");
         }
         catch (EmailInvalidoException e){}
-        
-        //La calle es null
+    }
+    
+    @Test
+    public void testCalleNull()
+    {
         try
         {
             Controlador.getInstance().altaAlumno("Pico", "Juan", null, 3433, "2235357381", "jjjj@jjjj.com");
             fail("El alumno no debio ser creado");
         }
         catch (EmailInvalidoException e){}
-        
-        //La calle es vacia
+    }
+    
+    @Test
+    public void testCalleVacia()
+    {
         try
         {
             Controlador.getInstance().altaAlumno("Pico", "Juan", "", 3433, "2235357381", "jjjj@jjjj.com");
             fail("El alumno no debio ser creado");
         }
         catch (EmailInvalidoException e){}
-        
-        //El numero es negativo
+    }
+    
+    @Test
+    public void testNumeroNegativo()
+    {
         try
         {
             Controlador.getInstance().altaAlumno("Pico", "Juan", "Falucho", -1233, "2235357381", "jjjj@jjjj.com");
             fail("El alumno no debio ser creado");
         }
         catch (EmailInvalidoException e){}
-        
-        //El numero es -1
+    }
+    
+    @Test
+    public void testNumeroValorLimite()
+    {
         try
         {
             Controlador.getInstance().altaAlumno("Pico", "Juan", "Falucho", -1, "2235357381", "jjjj@jjjj.com");
             fail("El alumno no debio ser creado");
         }
         catch (EmailInvalidoException e){}
-        
-        //El telefono es null
+    }
+    
+    @Test
+    public void testTelefonoNull()
+    {
         try
         {
             Controlador.getInstance().altaAlumno("Pico", "Juan", "Falucho", 3433, null, "jjjj@jjjj.com");
             fail("El alumno no debio ser creado");
         }
         catch (EmailInvalidoException e){}
-        
-        //El telefono es vacio
+    }
+    
+    @Test
+    public void testTelefonoVacio()
+    {
         try
         {
             Controlador.getInstance().altaAlumno("Pico", "Juan", "Falucho", 3433, "", "jjjj@jjjj.com");
             fail("El alumno no debio ser creado");
         }
         catch (EmailInvalidoException e){}
-
-    }
-    
-    @Test
-    public void testUbicaAlumno()
-    {
-        Iterator<Alumno> alumnos;
-        
-        //Alumno existente en la coleccion
-        alumnos = Controlador.getInstance().ubicaAlumno("Pico", "Juan");
-        assertEquals("El alumno no es el esperado", alumno, alumnos.next());
-        assertFalse("Deberia haber un solo alumno", alumnos.hasNext());
-        
-        //Alumno inexistente en la coleccion
-        alumnos = Controlador.getInstance().ubicaAlumno("Ponce", "Emanuel");
-        assertFalse("El iterator deberia estar vacio", alumnos.hasNext());
-        
-        //El nombre es null
-        alumnos = Controlador.getInstance().ubicaAlumno("Pico", null);
-        fail("La busqueda debio fallar");
-        
-        //El apellido es null
-        alumnos = Controlador.getInstance().ubicaAlumno(null, "Juan");
-        fail("La busqueda debio fallar");
-        
     }
     
 }
