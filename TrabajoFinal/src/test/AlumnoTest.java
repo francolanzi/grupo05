@@ -1,5 +1,6 @@
 package test;
 
+import java.util.Iterator;
 import java.util.TreeMap;
 
 import model.Alumno;
@@ -15,15 +16,27 @@ import org.junit.Test;
 public class AlumnoTest
 {
     
+    private Alumno alumno;
+    
     @Before
     public void setUp()
     {
+        try
+        {
+            alumno = new Alumno("Pico", "Juan", "Falucho", 3433, "2235357381", "jjj@jjj.com");
+        }
+        catch (EmailInvalidoException e)
+        {
+            throw new InternalError();
+        }
+        alumno.setLegajo("ALU0001");
         TreeMap<String, Alumno> alumnos = new TreeMap<String, Alumno>();
+        alumnos.put("ALU0001", alumno);
         Controlador.getInstance().setAlumnos(alumnos);
     }
     
     @Test
-    public void altaAlumno()
+    public void testAltaAlumno()
     {
         
         //Clases correctas
@@ -158,6 +171,30 @@ public class AlumnoTest
         }
         catch (EmailInvalidoException e){}
 
+    }
+    
+    @Test
+    public void testUbicaAlumno()
+    {
+        Iterator<Alumno> alumnos;
+        
+        //Alumno existente en la coleccion
+        alumnos = Controlador.getInstance().ubicaAlumno("Pico", "Juan");
+        assertEquals("El alumno no es el esperado", alumno, alumnos.next());
+        assertFalse("Deberia haber un solo alumno", alumnos.hasNext());
+        
+        //Alumno inexistente en la coleccion
+        alumnos = Controlador.getInstance().ubicaAlumno("Ponce", "Emanuel");
+        assertFalse("El iterator deberia estar vacio", alumnos.hasNext())
+        
+        //El nombre es null
+        alumnos = Controlador.getInstance().ubicaAlumno("Pico", null);
+        fail("La busqueda debio fallar");
+        
+        //El apellido es null
+        alumnos = Controlador.getInstance().ubicaAlumno(null, "Juan");
+        fail("La busqueda debio fallar");
+        
     }
     
 }
