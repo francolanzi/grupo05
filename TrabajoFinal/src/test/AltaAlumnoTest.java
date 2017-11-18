@@ -5,7 +5,6 @@ import java.util.TreeMap;
 
 import model.Alumno;
 import model.Controlador;
-
 import model.EmailInvalidoException;
 
 import static org.junit.Assert.*;
@@ -103,7 +102,10 @@ public class AltaAlumnoTest
             Controlador.getInstance().altaAlumno("Pico", null, "Falucho", 3433, "2235357381", "jjjj@jjjj.com");
             fail("El alumno no debio ser creado");
         }
-        catch (EmailInvalidoException e){}
+        catch (EmailInvalidoException e)
+        {
+            fail("EmailInvalidoException no debio ser lanzada");
+        }
     }
     
     @Test
@@ -114,7 +116,10 @@ public class AltaAlumnoTest
             Controlador.getInstance().altaAlumno("Pico", "", "Falucho", 3433, "2235357381", "jjjj@jjjj.com");
             fail("El alumno no debio ser creado");
         }
-        catch (EmailInvalidoException e){}
+        catch (EmailInvalidoException e)
+        {
+            fail("EmailInvalidoException no debio ser lanzada");
+        }
     }
     
     @Test
@@ -125,7 +130,10 @@ public class AltaAlumnoTest
             Controlador.getInstance().altaAlumno(null, "Juan", "Falucho", 3433, "2235357381", "jjjj@jjjj.com");
             fail("El alumno no debio ser creado");
         }
-        catch (EmailInvalidoException e){}
+        catch (EmailInvalidoException e)
+        {
+            fail("EmailInvalidoException no debio ser lanzada");
+        }
     }
     
     @Test
@@ -136,7 +144,10 @@ public class AltaAlumnoTest
             Controlador.getInstance().altaAlumno("", "Juan", "Falucho", 3433, "2235357381", "jjjj@jjjj.com");
             fail("El alumno no debio ser creado");
         }
-        catch (EmailInvalidoException e){}
+        catch (EmailInvalidoException e)
+        {
+            fail("EmailInvalidoException no debio ser lanzada");
+        }
     }
     
     @Test
@@ -147,7 +158,10 @@ public class AltaAlumnoTest
             Controlador.getInstance().altaAlumno("Pico", "Juan", null, 3433, "2235357381", "jjjj@jjjj.com");
             fail("El alumno no debio ser creado");
         }
-        catch (EmailInvalidoException e){}
+        catch (EmailInvalidoException e)
+        {
+            fail("EmailInvalidoException no debio ser lanzada");
+        }
     }
     
     @Test
@@ -158,7 +172,10 @@ public class AltaAlumnoTest
             Controlador.getInstance().altaAlumno("Pico", "Juan", "", 3433, "2235357381", "jjjj@jjjj.com");
             fail("El alumno no debio ser creado");
         }
-        catch (EmailInvalidoException e){}
+        catch (EmailInvalidoException e)
+        {
+            fail("EmailInvalidoException no debio ser lanzada");
+        }
     }
     
     @Test
@@ -169,7 +186,10 @@ public class AltaAlumnoTest
             Controlador.getInstance().altaAlumno("Pico", "Juan", "Falucho", -1233, "2235357381", "jjjj@jjjj.com");
             fail("El alumno no debio ser creado");
         }
-        catch (EmailInvalidoException e){}
+        catch (EmailInvalidoException e)
+        {
+            fail("EmailInvalidoException no debio ser lanzada");
+        }
     }
     
     @Test
@@ -180,7 +200,10 @@ public class AltaAlumnoTest
             Controlador.getInstance().altaAlumno("Pico", "Juan", "Falucho", -1, "2235357381", "jjjj@jjjj.com");
             fail("El alumno no debio ser creado");
         }
-        catch (EmailInvalidoException e){}
+        catch (EmailInvalidoException e)
+        {
+            fail("EmailInvalidoException no debio ser lanzada");
+        }
     }
     
     @Test
@@ -191,7 +214,10 @@ public class AltaAlumnoTest
             Controlador.getInstance().altaAlumno("Pico", "Juan", "Falucho", 3433, null, "jjjj@jjjj.com");
             fail("El alumno no debio ser creado");
         }
-        catch (EmailInvalidoException e){}
+        catch (EmailInvalidoException e)
+        {
+            fail("EmailInvalidoException no debio ser lanzada");
+        }
     }
     
     @Test
@@ -202,7 +228,10 @@ public class AltaAlumnoTest
             Controlador.getInstance().altaAlumno("Pico", "Juan", "Falucho", 3433, "", "jjjj@jjjj.com");
             fail("El alumno no debio ser creado");
         }
-        catch (EmailInvalidoException e){}
+        catch (EmailInvalidoException e)
+        {
+            fail("EmailInvalidoException no debio ser lanzada");
+        }
     }
     
 }

@@ -6,7 +6,6 @@ import model.Alumno;
 import model.Profesor;
 import model.Controlador;
 import model.EmailInvalidoException;
-
 import model.IdInvalidoException;
 
 import static org.junit.Assert.*;
