@@ -5,12 +5,10 @@ import java.util.TreeMap;
 import model.Alumno;
 import model.Controlador;
 import model.EmailInvalidoException;
-
 import model.IdInvalidoException;
 
 import static org.junit.Assert.*;
 import org.junit.Before;
-import org.junit.After;
 import org.junit.Test;
 
 public class ModificaAlumnoTest
