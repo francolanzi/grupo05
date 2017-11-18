@@ -20,10 +20,11 @@ import org.junit.Test;
 public class AprobarAlumnoTest
 {
     
+    private Alumno alumno;
+    
     @Before
     public void setUp()
     {
-        Alumno alumno;
         try
         {
             alumno = new Alumno("Pico", "Juan", "Falucho", 3433, "2235357381", "jjj@jjj.com");
@@ -73,8 +74,7 @@ public class AprobarAlumnoTest
         try
         {
             Controlador.getInstance().aprobarAlumno("ALU0001", "CUR0001");
-            boolean aprobada = Controlador.getInstance().consultaAlumno("ALU0001").isAprobada("ASI0001");
-            assertTrue("El alumno debio aprobar la asignatura", aprobada);
+            assertTrue("El alumno debio aprobar la asignatura", alumno.isAprobada("ASI0001"));
         }
         catch (IdInvalidoException e)
         {
