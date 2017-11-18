@@ -52,14 +52,14 @@ public class UbicaAlumnoTest
     @Test
     public void testNombreNull()
     {
-        Iterator<Alumno> alumnos = Controlador.getInstance().ubicaAlumno("Pico", null);
+        Controlador.getInstance().ubicaAlumno("Pico", null);
         fail("La busqueda debio fallar");
     }
     
     @Test
     public void testApellidoNull()
     {
-        Iterator<Alumno> alumnos = Controlador.getInstance().ubicaAlumno(null, "Juan");
+        Controlador.getInstance().ubicaAlumno(null, "Juan");
         fail("La busqueda debio fallar");
     }
     
