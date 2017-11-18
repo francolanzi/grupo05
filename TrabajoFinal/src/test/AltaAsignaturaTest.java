@@ -41,12 +41,16 @@ public class AltaAsignaturaTest
     }
     
     @Test
-    public void testIdentificacionUnica()
+    public void testIdentificacionUnicaValida()
     {
         Controlador.getInstance().altaAsignatura("mateA");
         Controlador.getInstance().altaAsignatura("mateB");
         Iterator<Asignatura> asignaturas = Controlador.getInstance().getAsignaturasIterator();
-        assertNotEquals("Las asignaturas no deberian tener la misma identificacion", asignaturas.next().getId(), asignaturas.next().getId());
+        String idenficacion1 = asignaturas.next().getId();
+        String idenficacion2 = asignaturas.next().getId();
+        assertTrue("La identificacion deberia ser valida", IdValido.idValido("ASI", idenficacion1));
+        assertTrue("La identificacion deberia ser valida", IdValido.idValido("ASI", idenficacion2));
+        assertNotEquals("Las asignaturas no deberian tener la misma identificacion", idenficacion1, idenficacion2);
     }
     
 }

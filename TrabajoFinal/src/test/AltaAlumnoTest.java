@@ -94,7 +94,7 @@ public class AltaAlumnoTest
     }
     
     @Test
-    public void testLegajoUnico()
+    public void testLegajoUnicoValido()
     {
         try
         {
@@ -106,7 +106,11 @@ public class AltaAlumnoTest
             fail("EmailInvalidoException no debio ser lanzada");
         }
         Iterator<Alumno> alumnos = Controlador.getInstance().getAlumnosIterator();
-        assertNotEquals("Los alumnos no deberian tener el mismo legajo", alumnos.next().getId(), alumnos.next().getId());
+        String legajo1 = alumnos.next().getId();
+        String legajo2 = alumnos.next().getId();
+        assertTrue("El legajo deberia ser valido", IdValido.idValido("ALU", legajo1));
+        assertTrue("El legajo deberia ser valido", IdValido.idValido("ALU", legajo2));
+        assertNotEquals("Los alumnos no deberian tener el mismo legajo", legajo1, legajo2);
     }
     
     @Test
