@@ -4,25 +4,40 @@ import java.util.TreeMap;
 
 import model.Asignatura;
 import model.Controlador;
+import model.Cursada;
+import model.HoraInvalidaException;
 import model.IdInvalidoException;
+import model.PeriodoInvalidoException;
 
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-public class ConsultaAsignaturaTest
+public class ConsultaCursadaTest
 {
     
-    private Asignatura asignatura;
+    private Cursada cursada;
     
     @Before
     public void setUp()
     {
-        asignatura = new Asignatura("mateA");
+        Asignatura asignatura = new Asignatura("mateA");
         asignatura.setIdentificacion("ASI0001");
         TreeMap<String, Asignatura> asignaturas = new TreeMap<String, Asignatura>();
         asignaturas.put("ASI0001", asignatura);
         Controlador.getInstance().setAsignaturas(asignaturas);
+        try
+        {
+            cursada = new Cursada(asignatura, "01-2017", "LUNES", "10:00", "12:00");
+        }
+        catch (HoraInvalidaException | PeriodoInvalidoException e)
+        {
+            throw new InternalError();
+        }
+        cursada.setIdentificacion("CUR0001");
+        TreeMap<String, Cursada> cursadas = new TreeMap<String, Cursada>();
+        cursadas.put("CUR0001", cursada);
+        Controlador.getInstance().setCursadas(cursadas);
     }
     
     @Test
@@ -30,8 +45,8 @@ public class ConsultaAsignaturaTest
     {
         try
         {
-            Asignatura otra = Controlador.getInstance().consultaAsignatura("ASI0001");
-            assertEquals("La asignatura no es la esperada", asignatura, otra);
+            Cursada otra = Controlador.getInstance().consultaCursada("CUR0001");
+            assertEquals("La asignatura no es la esperada", cursada, otra);
         }
         catch (IdInvalidoException e)
         {
@@ -44,7 +59,7 @@ public class ConsultaAsignaturaTest
     {
         try
         {
-            Controlador.getInstance().consultaAsignatura(null);
+            Controlador.getInstance().consultaCursada(null);
             fail("Debio lanzarse IdInvalidoException");
         }
         catch (IdInvalidoException e){}
@@ -55,7 +70,7 @@ public class ConsultaAsignaturaTest
     {
         try
         {
-            Controlador.getInstance().consultaAsignatura("");
+            Controlador.getInstance().consultaCursada("");
             fail("Debio lanzarse IdInvalidoException");
         }
         catch (IdInvalidoException e){}
@@ -66,7 +81,7 @@ public class ConsultaAsignaturaTest
     {
         try
         {
-            Controlador.getInstance().consultaAsignatura("XXXXXX");
+            Controlador.getInstance().consultaCursada("XXXXXX");
             fail("Debio lanzarse IdInvalidoException");
         }
         catch (IdInvalidoException e){}
@@ -77,7 +92,7 @@ public class ConsultaAsignaturaTest
     {
         try
         {
-            Controlador.getInstance().consultaAsignatura("ASI2222");
+            Controlador.getInstance().consultaCursada("CUR2222");
             fail("Debio lanzarse IdInvalidoException");
         }
         catch (IdInvalidoException e){}
