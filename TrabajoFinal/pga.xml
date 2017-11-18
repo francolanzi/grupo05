@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="1.8.0_60" class="java.beans.XMLDecoder">
+<java version="1.8.0_131" class="java.beans.XMLDecoder">
  <object class="java.util.TreeMap">
   <void method="put">
    <string>ALU0000</string>
-   <object class="trabajofinal.Alumno">
+   <object class="model.Alumno">
     <void property="apellido">
      <string>Lanzillotta</string>
     </void>
     <void property="domicilio">
-     <object class="trabajofinal.Domicilio">
+     <object class="model.Domicilio">
       <void property="calle">
        <string>Chubut</string>
       </void>
@@ -21,7 +21,7 @@
      <string>franco.lanzi96@gmail.com</string>
     </void>
     <void property="historia">
-     <object class="trabajofinal.ObserverTreeMap"/>
+     <object class="model.ObserverTreeMap"/>
     </void>
     <void property="legajo">
      <string>ALU0000</string>
@@ -39,9 +39,9 @@
  <object class="java.util.TreeMap">
   <void method="put">
    <string>ASI0000</string>
-   <object class="trabajofinal.Asignatura" id="Asignatura0">
+   <object class="model.Asignatura" id="Asignatura0">
     <void property="correlativas">
-     <object class="trabajofinal.ObserverTreeMap"/>
+     <object class="model.ObserverTreeMap"/>
     </void>
     <void property="identificacion">
      <string>ASI0000</string>
@@ -53,9 +53,9 @@
   </void>
   <void method="put">
    <string>ASI0001</string>
-   <object class="trabajofinal.Asignatura" id="Asignatura1">
+   <object class="model.Asignatura" id="Asignatura1">
     <void property="correlativas">
-     <object class="trabajofinal.ObserverTreeMap"/>
+     <object class="model.ObserverTreeMap"/>
     </void>
     <void property="identificacion">
      <string>ASI0001</string>
@@ -67,9 +67,9 @@
   </void>
   <void method="put">
    <string>ASI0002</string>
-   <object class="trabajofinal.Asignatura" id="Asignatura2">
+   <object class="model.Asignatura" id="Asignatura2">
     <void property="correlativas">
-     <object class="trabajofinal.ObserverTreeMap" id="ObserverTreeMap0">
+     <object class="model.ObserverTreeMap" id="ObserverTreeMap0">
       <void property="coleccion">
        <void method="put">
         <string>ASI0000</string>
@@ -94,9 +94,9 @@
  <object class="java.util.TreeMap">
   <void method="put">
    <string>CUR0000</string>
-   <object class="trabajofinal.Cursada">
+   <object class="model.Cursada">
     <void property="alumnos">
-     <object class="trabajofinal.ObserverTreeMap"/>
+     <object class="model.ObserverTreeMap"/>
     </void>
     <void property="asignatura">
      <object idref="Asignatura0"/>
@@ -117,15 +117,15 @@
      <string>01-1996</string>
     </void>
     <void property="profesores">
-     <object class="trabajofinal.ObserverTreeMap"/>
+     <object class="model.ObserverTreeMap"/>
     </void>
    </object>
   </void>
   <void method="put">
    <string>CUR0001</string>
-   <object class="trabajofinal.Cursada">
+   <object class="model.Cursada">
     <void property="alumnos">
-     <object class="trabajofinal.ObserverTreeMap"/>
+     <object class="model.ObserverTreeMap"/>
     </void>
     <void property="asignatura">
      <object idref="Asignatura1"/>
@@ -146,15 +146,15 @@
      <string>01-1996</string>
     </void>
     <void property="profesores">
-     <object class="trabajofinal.ObserverTreeMap"/>
+     <object class="model.ObserverTreeMap"/>
     </void>
    </object>
   </void>
   <void method="put">
    <string>CUR0002</string>
-   <object class="trabajofinal.Cursada">
+   <object class="model.Cursada">
     <void property="alumnos">
-     <object class="trabajofinal.ObserverTreeMap"/>
+     <object class="model.ObserverTreeMap"/>
     </void>
     <void property="asignatura">
      <object idref="Asignatura2"/>
@@ -175,7 +175,7 @@
      <string>01-1996</string>
     </void>
     <void property="profesores">
-     <object class="trabajofinal.ObserverTreeMap"/>
+     <object class="model.ObserverTreeMap"/>
     </void>
    </object>
   </void>

@@ -93,7 +93,7 @@
          <hash n="Default">
             <value n="custom" v="false"/>
             <value n="name" v="Default"/>
-            <url n="targetURL" path="src/GUI/VentanaIndex.java"/>
+            <url n="targetURL" path="src/view/VentanaIndex.java"/>
          </hash>
       </hash>
    </hash>
