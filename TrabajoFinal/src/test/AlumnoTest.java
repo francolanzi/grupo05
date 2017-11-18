@@ -185,7 +185,7 @@ public class AlumnoTest
         
         //Alumno inexistente en la coleccion
         alumnos = Controlador.getInstance().ubicaAlumno("Ponce", "Emanuel");
-        assertFalse("El iterator deberia estar vacio", alumnos.hasNext())
+        assertFalse("El iterator deberia estar vacio", alumnos.hasNext());
         
         //El nombre es null
         alumnos = Controlador.getInstance().ubicaAlumno("Pico", null);
