@@ -32,7 +32,7 @@ public class AltaAlumnoTest
         }
         catch (EmailInvalidoException e)
         {
-            fail("El alumno debio ser creado correctamente");
+            fail("EmailInvalidoException no debio ser lanzada");
         }
     }
     

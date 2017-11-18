@@ -19,9 +19,9 @@ public class UbicaAsignaturaTest
     public void setUp()
     {
         asignatura = new Asignatura("mateA");
-        asignatura.setIdentificacion("ALU0001");
+        asignatura.setIdentificacion("ASI0001");
         TreeMap<String, Asignatura> asignaturas = new TreeMap<String, Asignatura>();
-        asignaturas.put("ALU0001", asignatura);
+        asignaturas.put("ASI0001", asignatura);
         Controlador.getInstance().setAsignaturas(asignaturas);
     }
     

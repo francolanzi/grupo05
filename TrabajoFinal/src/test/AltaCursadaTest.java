@@ -21,13 +21,13 @@ public class AltaCursadaTest
     @Before
     public void setUp()
     {
-        TreeMap<String, Cursada> cursadas = new TreeMap<String, Cursada>();
-        Controlador.getInstance().setCursadas(cursadas);
         Asignatura asignatura = new Asignatura("mateA");
-        asignatura.setIdentificacion("ALU0001");
+        asignatura.setIdentificacion("ASI0001");
         TreeMap<String, Asignatura> asignaturas = new TreeMap<String, Asignatura>();
         asignaturas.put("ASI0001", asignatura);
         Controlador.getInstance().setAsignaturas(asignaturas);
+        TreeMap<String, Cursada> cursadas = new TreeMap<String, Cursada>();
+        Controlador.getInstance().setCursadas(cursadas);
     }
     
     @Test
@@ -37,9 +37,17 @@ public class AltaCursadaTest
         {
             Controlador.getInstance().altaCursada("ASI0001", "01-2017", "LUNES", "10:00", "12:00");
         }
-        catch (HoraInvalidaException | IdInvalidoException | PeriodoInvalidoException e)
+        catch (IdInvalidoException e)
         {
-            fail("La cursada debio ser creada correctamente");
+            fail("IdInvalidoException no debio ser lanzada");
+        }
+        catch (PeriodoInvalidoException e)
+        {
+            fail("PeriodoInvalidoException no debio ser lanzada");
+        }
+        catch (HoraInvalidaException e)
+        {
+            fail("HoraInvalidaException no debio ser lanzada");
         }
     }
     
