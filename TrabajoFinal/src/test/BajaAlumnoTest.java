@@ -5,7 +5,6 @@ import java.util.TreeMap;
 import model.Alumno;
 import model.Controlador;
 import model.EmailInvalidoException;
-
 import model.IdInvalidoException;
 
 import static org.junit.Assert.*;
