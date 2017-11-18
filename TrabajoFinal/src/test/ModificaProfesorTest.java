@@ -2,7 +2,6 @@ package test;
 
 import java.util.TreeMap;
 
-import model.Alumno;
 import model.Profesor;
 import model.Controlador;
 import model.EmailInvalidoException;
@@ -30,9 +29,9 @@ public class ModificaProfesorTest
         {
             throw new InternalError();
         }
-        profesor.setLegajo("ALU0001");
+        profesor.setLegajo("PRO0001");
         TreeMap<String, Profesor> profesores = new TreeMap<String, Profesor>();
-        profesores.put("ALU0001", profesor);
+        profesores.put("PRO0001", profesor);
         Controlador.getInstance().setProfesores(profesores);
     }
     
@@ -41,7 +40,7 @@ public class ModificaProfesorTest
     {
         try
         {
-            Controlador.getInstance().modificaProfesor("ALU0001", "Pico", "Juan", "Falucho", 3433, "2235357381", "jjjj@jjjj.com");
+            Controlador.getInstance().modificaProfesor("PRO0001", "Pico", "Juan", "Falucho", 3433, "2235357381", "jjjj@jjjj.com");
         }
         catch (EmailInvalidoException | IdInvalidoException e)
         {
@@ -54,7 +53,7 @@ public class ModificaProfesorTest
     {
         try
         {
-            Controlador.getInstance().modificaProfesor("ALU0001", "Pico", "Juan", "Falucho", 3433, "2235357381", "jjjjjjjj.com");
+            Controlador.getInstance().modificaProfesor("PRO0001", "Pico", "Juan", "Falucho", 3433, "2235357381", "jjjjjjjj.com");
             fail("Debio lanzarse EmailInvalidoException");
         }
         catch (IdInvalidoException e)
@@ -69,7 +68,7 @@ public class ModificaProfesorTest
     {
         try
         {
-            Controlador.getInstance().modificaProfesor("ALU0001", "Pico", "Juan", "Falucho", 3433, "2235357381", "@jjj.com");
+            Controlador.getInstance().modificaProfesor("PRO0001", "Pico", "Juan", "Falucho", 3433, "2235357381", "@jjj.com");
             fail("Debio lanzarse EmailInvalidoException");
         }
         catch (IdInvalidoException e)
@@ -84,7 +83,7 @@ public class ModificaProfesorTest
     {
         try
         {
-            Controlador.getInstance().modificaProfesor("ALU0001", "Pico", "Juan", "Falucho", 3433, "2235357381", "jjjj@");
+            Controlador.getInstance().modificaProfesor("PRO0001", "Pico", "Juan", "Falucho", 3433, "2235357381", "jjjj@");
             fail("Debio lanzarse EmailInvalidoException");
         }
         catch (IdInvalidoException e)
@@ -129,7 +128,7 @@ public class ModificaProfesorTest
     {
         try
         {
-            Controlador.getInstance().modificaProfesor("ALU2323", "Pico", "Juan", "Falucho", 3433, "2235357381", "jjjj@jjjj.com");
+            Controlador.getInstance().modificaProfesor("PRO2323", "Pico", "Juan", "Falucho", 3433, "2235357381", "jjjj@jjjj.com");
             fail("Debio lanzarse IdInvalidoException");
         }
         catch (IdInvalidoException e){}
@@ -144,7 +143,7 @@ public class ModificaProfesorTest
     {
         try
         {
-            Controlador.getInstance().modificaProfesor("ALU0001", "Pico", null, "Falucho", 3433, "2235357381", "jjjj@jjjj.com");
+            Controlador.getInstance().modificaProfesor("PRO0001", "Pico", null, "Falucho", 3433, "2235357381", "jjjj@jjjj.com");
             fail("El profesor no debio ser modificado");
         }
         catch (IdInvalidoException e)
@@ -162,7 +161,7 @@ public class ModificaProfesorTest
     {
         try
         {
-            Controlador.getInstance().modificaProfesor("ALU0001", "Pico", "", "Falucho", 3433, "2235357381", "jjjj@jjjj.com");
+            Controlador.getInstance().modificaProfesor("PRO0001", "Pico", "", "Falucho", 3433, "2235357381", "jjjj@jjjj.com");
             fail("El profesor no debio ser modificado");
         }
         catch (IdInvalidoException e)
@@ -180,7 +179,7 @@ public class ModificaProfesorTest
     {
         try
         {
-            Controlador.getInstance().modificaProfesor("ALU0001", null, "Juan", "Falucho", 3433, "2235357381", "jjjj@jjjj.com");
+            Controlador.getInstance().modificaProfesor("PRO0001", null, "Juan", "Falucho", 3433, "2235357381", "jjjj@jjjj.com");
             fail("El profesor no debio ser modificado");
         }
         catch (IdInvalidoException e)
@@ -198,7 +197,7 @@ public class ModificaProfesorTest
     {
         try
         {
-            Controlador.getInstance().modificaProfesor("ALU0001", "", "Juan", "Falucho", 3433, "2235357381", "jjjj@jjjj.com");
+            Controlador.getInstance().modificaProfesor("PRO0001", "", "Juan", "Falucho", 3433, "2235357381", "jjjj@jjjj.com");
             fail("El profesor no debio ser modificado");
         }
         catch (IdInvalidoException e)
@@ -216,7 +215,7 @@ public class ModificaProfesorTest
     {
         try
         {
-            Controlador.getInstance().modificaProfesor("ALU0001", "Pico", "Juan", null, 3433, "2235357381", "jjjj@jjjj.com");
+            Controlador.getInstance().modificaProfesor("PRO0001", "Pico", "Juan", null, 3433, "2235357381", "jjjj@jjjj.com");
             fail("El profesor no debio ser modificado");
         }
         catch (IdInvalidoException e)
@@ -234,7 +233,7 @@ public class ModificaProfesorTest
     {
         try
         {
-            Controlador.getInstance().modificaProfesor("ALU0001", "Pico", "Juan", "", 3433, "2235357381", "jjjj@jjjj.com");
+            Controlador.getInstance().modificaProfesor("PRO0001", "Pico", "Juan", "", 3433, "2235357381", "jjjj@jjjj.com");
             fail("El profesor no debio ser modificado");
         }
         catch (IdInvalidoException e)
@@ -252,7 +251,7 @@ public class ModificaProfesorTest
     {
         try
         {
-            Controlador.getInstance().modificaProfesor("ALU0001", "Pico", "Juan", "Falucho", -1, "2235357381", "jjjj@jjjj.com");
+            Controlador.getInstance().modificaProfesor("PRO0001", "Pico", "Juan", "Falucho", -1, "2235357381", "jjjj@jjjj.com");
             fail("El profesor no debio ser modificado");
         }
         catch (IdInvalidoException e)
@@ -270,7 +269,7 @@ public class ModificaProfesorTest
     {
         try
         {
-            Controlador.getInstance().modificaProfesor("ALU0001", "Pico", "Juan", "Falucho", 3433, null, "jjjj@jjjj.com");
+            Controlador.getInstance().modificaProfesor("PRO0001", "Pico", "Juan", "Falucho", 3433, null, "jjjj@jjjj.com");
             fail("El profesor no debio ser modificado");
         }
         catch (IdInvalidoException e)
@@ -288,7 +287,7 @@ public class ModificaProfesorTest
     {
         try
         {
-            Controlador.getInstance().modificaProfesor("ALU0001", "Pico", "Juan", "Falucho", 3433, "", "jjjj@jjjj.com");
+            Controlador.getInstance().modificaProfesor("PRO0001", "Pico", "Juan", "Falucho", 3433, "", "jjjj@jjjj.com");
             fail("El profesor no debio ser modificado");
         }
         catch (IdInvalidoException e)

@@ -2,7 +2,6 @@ package test;
 
 import java.util.TreeMap;
 
-import model.Alumno;
 import model.Profesor;
 import model.Controlador;
 import model.EmailInvalidoException;

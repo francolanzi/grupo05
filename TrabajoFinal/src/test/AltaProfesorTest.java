@@ -95,6 +95,22 @@ public class AltaProfesorTest
     }
     
     @Test
+    public void testLegajoUnico()
+    {
+        try
+        {
+            Controlador.getInstance().altaProfesor("Pico", "Juan", "Falucho", 3433, "2235357381", "jjj@jjj.com");
+            Controlador.getInstance().altaProfesor("Ponce", "Emanuel", "Colon", 1234, "2236543210", "eee@eee.com");
+        }
+        catch (EmailInvalidoException e)
+        {
+            fail("EmailInvalidoException no debio ser lanzada");
+        }
+        Iterator<Profesor> profesores = Controlador.getInstance().getProfesoresIterator();
+        assertNotEquals("Los profesores no deberian tener el mismo legajo", profesores.next().getId(), profesores.next().getId());
+    }
+    
+    @Test
     public void testNombreNull()
     {
         try
