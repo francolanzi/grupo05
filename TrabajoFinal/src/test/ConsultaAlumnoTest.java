@@ -70,7 +70,7 @@ public class ConsultaAlumnoTest
     }
     
     @Test
-    public void testLegajInvalido()
+    public void testLegajoInvalido()
     {
         try
         {
