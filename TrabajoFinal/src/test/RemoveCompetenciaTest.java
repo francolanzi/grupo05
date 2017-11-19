@@ -134,7 +134,7 @@ public class RemoveCompetenciaTest
     }
     
     @Test
-    public void testIdCompentenciaNoAgregada()
+    public void testCompentenciaNoAgregada()
     {
         try
         {

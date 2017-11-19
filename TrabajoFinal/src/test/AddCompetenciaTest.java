@@ -162,7 +162,7 @@ public class AddCompetenciaTest
     }
     
     @Test
-    public void testIdCompentenciaAgregada()
+    public void testCompentenciaYaAgregada()
     {
         try
         {

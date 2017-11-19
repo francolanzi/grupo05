@@ -148,7 +148,7 @@ public class RemoveAsignaturaAlumnoTest
     }
     
     @Test
-    public void testIdAsignaturaConCorrelativas()
+    public void testAsignaturaConCorrelativas()
     {
         try
         {

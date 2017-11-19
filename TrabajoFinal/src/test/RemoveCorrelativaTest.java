@@ -122,7 +122,7 @@ public class RemoveCorrelativaTest
     }
     
     @Test
-    public void testIdCorrelativaNoAgregada()
+    public void testCorrelativaNoAgregada()
     {
         try
         {

@@ -151,7 +151,7 @@ public class AddCorrelativaTest
     }
     
     @Test
-    public void testIdCorrelativaAgregada()
+    public void testCorrelativaYaAgregada()
     {
         try
         {
