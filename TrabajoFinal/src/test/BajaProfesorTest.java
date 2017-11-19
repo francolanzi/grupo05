@@ -14,11 +14,10 @@ import org.junit.Test;
 public class BajaProfesorTest
 {
     
-    private Profesor profesor;
-    
     @Before
     public void setUp()
     {
+        Profesor profesor;
         try
         {
             profesor = new Profesor("Pico", "Juan", "Falucho", 3433, "2235357381", "jjj@jjj.com");
@@ -47,7 +46,7 @@ public class BajaProfesorTest
         try
         {
             Profesor otro = Controlador.getInstance().consultaProfesor("PRO0001");
-            assertNotEquals("El profesor debio haber sido eliminado", profesor, otro);
+            fail("El profesor debio haber sido eliminado");
         }
         catch (IdInvalidoException e){}
     }

@@ -14,11 +14,10 @@ import org.junit.Test;
 public class BajaAlumnoTest
 {
     
-    private Alumno alumno;
-    
     @Before
     public void setUp()
     {
+        Alumno alumno;
         try
         {
             alumno = new Alumno("Pico", "Juan", "Falucho", 3433, "2235357381", "jjj@jjj.com");
@@ -46,8 +45,8 @@ public class BajaAlumnoTest
         }
         try
         {
-            Alumno otro = Controlador.getInstance().consultaAlumno("ALU0001");
-            assertNotEquals("El alumno debio haber sido eliminado", alumno, otro);
+            Controlador.getInstance().consultaAlumno("ALU0001");
+            fail("El alumno debio haber sido eliminado");
         }
         catch (IdInvalidoException e){}
     }

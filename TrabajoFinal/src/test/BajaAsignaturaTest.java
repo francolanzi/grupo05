@@ -13,12 +13,10 @@ import org.junit.Test;
 public class BajaAsignaturaTest
 {
     
-    private Asignatura asignatura;
-    
     @Before
     public void setUp()
     {
-        asignatura = new Asignatura("mateA");
+        Asignatura asignatura = new Asignatura("mateA");
         asignatura.setIdentificacion("ASI0001");
         TreeMap<String, Asignatura> asignaturas = new TreeMap<String, Asignatura>();
         asignaturas.put("ASI0001", asignatura);
@@ -38,8 +36,8 @@ public class BajaAsignaturaTest
         }
         try
         {
-            Asignatura otra = Controlador.getInstance().consultaAsignatura("ASI0001");
-            assertNotEquals("La asignatura debio haber sido eliminada", asignatura, otra);
+            Controlador.getInstance().consultaAsignatura("ASI0001");
+            fail("La asignatura debio haber sido eliminada");
         }
         catch (IdInvalidoException e){}
     }

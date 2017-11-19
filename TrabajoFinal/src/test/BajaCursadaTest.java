@@ -17,8 +17,6 @@ import org.junit.Test;
 public class BajaCursadaTest
 {
     
-    private Cursada cursada;
-    
     @Before
     public void setUp()
     {
@@ -28,6 +26,7 @@ public class BajaCursadaTest
         asignaturas.put("ASI0001", asignatura);
         Controlador.getInstance().setAsignaturas(asignaturas);
         
+        Cursada cursada;
         try
         {
             cursada = new Cursada(asignatura, "01-2017", "LUNES", "10:00", "12:00");
@@ -55,8 +54,8 @@ public class BajaCursadaTest
         }
         try
         {
-            Cursada otra = Controlador.getInstance().consultaCursada("CUR0001");
-            assertNotEquals("La cursada debio haber sido eliminada", cursada, otra);
+            Controlador.getInstance().consultaCursada("CUR0001");
+            fail("La cursada debio haber sido eliminada");
         }
         catch (IdInvalidoException e){}
     }
