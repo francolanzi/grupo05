@@ -25,13 +25,13 @@ public class RemoveAsignaturaAlumnoTest
     @Before
     public void setUp()
     {
-        Asignatura asignatura0 = new Asignatura("mateA");
-        asignatura0.setIdentificacion("ASI0000");
-        Asignatura asignatura1 = new Asignatura("mateB");
+        Asignatura asignatura1 = new Asignatura("mateA");
         asignatura1.setIdentificacion("ASI0001");
+        Asignatura asignatura2 = new Asignatura("mateB");
+        asignatura2.setIdentificacion("ASI0002");
         try
         {
-            asignatura1.addCorrelativa(asignatura0);
+            asignatura2.addCorrelativa(asignatura1);
         }
         catch (EntidadInvalidaException e)
         {
@@ -39,8 +39,8 @@ public class RemoveAsignaturaAlumnoTest
         }
         
         TreeMap<String, Asignatura> asignaturas = new TreeMap<String, Asignatura>();
-        asignaturas.put("ASI0000", asignatura0);
         asignaturas.put("ASI0001", asignatura1);
+        asignaturas.put("ASI0002", asignatura2);
         Controlador.getInstance().setAsignaturas(asignaturas);
         
         try
@@ -54,8 +54,8 @@ public class RemoveAsignaturaAlumnoTest
         alumno.setLegajo("ALU0001");
         try
         {
-            alumno.aprobarAsignatura(asignatura0);
             alumno.aprobarAsignatura(asignatura1);
+            alumno.aprobarAsignatura(asignatura2);
         }
         catch (EntidadInvalidaException e)
         {
@@ -72,8 +72,8 @@ public class RemoveAsignaturaAlumnoTest
     {
         try
         {
-            Controlador.getInstance().removeAsignaturaAlumno("ALU0001", "ASI0001");
-            assertFalse("La asignatura debio haber sido eliminada", alumno.isAprobada("ASI0001"));
+            Controlador.getInstance().removeAsignaturaAlumno("ALU0001", "ASI0002");
+            assertFalse("La asignatura debio haber sido eliminada", alumno.isAprobada("ASI0002"));
         }
         catch (IdInvalidoException e)
         {
@@ -86,7 +86,7 @@ public class RemoveAsignaturaAlumnoTest
     {
         try
         {
-            Controlador.getInstance().removeAsignaturaAlumno(null, "ASI0001");
+            Controlador.getInstance().removeAsignaturaAlumno(null, "ASI0002");
             fail("Debio lanzarse IdInvalidoException");
         }
         catch (IdInvalidoException e){}
@@ -97,7 +97,7 @@ public class RemoveAsignaturaAlumnoTest
     {
         try
         {
-            Controlador.getInstance().removeAsignaturaAlumno("", "ASI0001");
+            Controlador.getInstance().removeAsignaturaAlumno("", "ASI0002");
             fail("Debio lanzarse IdInvalidoException");
         }
         catch (IdInvalidoException e){}
@@ -108,7 +108,7 @@ public class RemoveAsignaturaAlumnoTest
     {
         try
         {
-            Controlador.getInstance().removeAsignaturaAlumno("ALU2222", "ASI0001");
+            Controlador.getInstance().removeAsignaturaAlumno("ALU2222", "ASI0002");
             fail("Debio lanzarse IdInvalidoException");
         }
         catch (IdInvalidoException e){}
@@ -152,7 +152,7 @@ public class RemoveAsignaturaAlumnoTest
     {
         try
         {
-            Controlador.getInstance().removeAsignaturaAlumno("ALU0001", "ASI0000");
+            Controlador.getInstance().removeAsignaturaAlumno("ALU0001", "ASI0001");
             fail("Debio lanzarse IdInvalidoException");
         }
         catch (IdInvalidoException e){}
