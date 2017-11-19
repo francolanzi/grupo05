@@ -28,7 +28,7 @@ public class AltaAlumnoTest
     {
         try
         {
-            Controlador.getInstance().altaAlumno("Pico", "Juan", "Falucho", 3433, "2235357381", "jjj@jjj.com");
+            Controlador.getInstance().altaAlumno("Pico", "Juan", "Falucho", 3433, "2235357381", "jjjj@jjjj.com");
         }
         catch (EmailInvalidoException e)
         {
@@ -65,7 +65,7 @@ public class AltaAlumnoTest
     {
         try
         {
-            Controlador.getInstance().altaAlumno("Pico", "Juan", "Falucho", 3433, "2235357381", "@jjj.com");
+            Controlador.getInstance().altaAlumno("Pico", "Juan", "Falucho", 3433, "2235357381", "@jjjj.com");
             fail("Debio lanzarse EmailInvalidoException");
         }
         catch (EmailInvalidoException e){}
@@ -98,8 +98,8 @@ public class AltaAlumnoTest
     {
         try
         {
-            Controlador.getInstance().altaAlumno("Pico", "Juan", "Falucho", 3433, "2235357381", "jjj@jjj.com");
-            Controlador.getInstance().altaAlumno("Ponce", "Emanuel", "Colon", 1234, "2236543210", "eee@eee.com");
+            Controlador.getInstance().altaAlumno("Pico", "Juan", "Falucho", 3433, "2235357381", "jjjj@jjjj.com");
+            Controlador.getInstance().altaAlumno("Ponce", "Emanuel", "Colon", 1234, "2236543210", "eeee@eeee.com");
         }
         catch (EmailInvalidoException e)
         {

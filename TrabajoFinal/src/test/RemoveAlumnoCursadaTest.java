@@ -29,8 +29,8 @@ public class RemoveAlumnoCursadaTest
         Alumno alumno1, alumno2;
         try
         {
-            alumno1 = new Alumno("Pico", "Juan", "Falucho", 3433, "2235357381", "jjj@jjj.com");
-            alumno2 = new Alumno("Ponce", "Emanuel", "Colon", 1234, "2236543210", "eee@eee.com");
+            alumno1 = new Alumno("Pico", "Juan", "Falucho", 3433, "2235357381", "jjjj@jjjj.com");
+            alumno2 = new Alumno("Ponce", "Emanuel", "Colon", 1234, "2236543210", "eeee@eeee.com");
         }
         catch (EmailInvalidoException e)
         {

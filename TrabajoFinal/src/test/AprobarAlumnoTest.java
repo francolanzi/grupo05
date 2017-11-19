@@ -71,7 +71,7 @@ public class AprobarAlumnoTest
     }
     
     @Test
-    public void testValoresValidos()
+    public void testValoresCorrectos()
     {
         try
         {

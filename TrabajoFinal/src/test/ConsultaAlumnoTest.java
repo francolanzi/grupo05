@@ -21,7 +21,7 @@ public class ConsultaAlumnoTest
     {
         try
         {
-            alumno = new Alumno("Pico", "Juan", "Falucho", 3433, "2235357381", "jjj@jjj.com");
+            alumno = new Alumno("Pico", "Juan", "Falucho", 3433, "2235357381", "jjjj@jjjj.com");
         }
         catch (EmailInvalidoException e)
         {

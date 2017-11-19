@@ -94,7 +94,7 @@ public class ModificaCursadaTest
     }
     
     @Test
-    public void testIdentificacionVacio()
+    public void testIdentificacionVacia()
     {
         try
         {

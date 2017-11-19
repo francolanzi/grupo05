@@ -34,8 +34,8 @@ public class RemoveProfesorCursadaTest
         Profesor profesor1, profesor2;
         try
         {
-            profesor1 = new Profesor("Pico", "Juan", "Falucho", 3433, "2235357381", "jjj@jjj.com");
-            profesor2 = new Profesor("Ponce", "Emanuel", "Colon", 1234, "2236543210", "eee@eee.com");
+            profesor1 = new Profesor("Pico", "Juan", "Falucho", 3433, "2235357381", "jjjj@jjjj.com");
+            profesor2 = new Profesor("Ponce", "Emanuel", "Colon", 1234, "2236543210", "eeee@eeee.com");
         }
         catch (EmailInvalidoException e)
         {

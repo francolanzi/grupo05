@@ -95,7 +95,7 @@ public class ModificaAsignaturaTest
     {
         try
         {
-            Controlador.getInstance().modificaAsignatura("ASI2322", "mateA");
+            Controlador.getInstance().modificaAsignatura("ASI2323", "mateA");
             fail("Debio lanzarse IdInvalidoException");
         }
         catch (IdInvalidoException e){}

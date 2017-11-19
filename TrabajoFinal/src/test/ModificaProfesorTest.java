@@ -21,7 +21,7 @@ public class ModificaProfesorTest
     {
         try
         {
-            profesor = new Profesor("Ponce", "Emanuel", "Colon", 1234, "2236543210", "eee@eee.com");
+            profesor = new Profesor("Ponce", "Emanuel", "Colon", 1234, "2236543210", "eeee@eeee.com");
         }
         catch (EmailInvalidoException e)
         {
@@ -67,7 +67,7 @@ public class ModificaProfesorTest
     {
         try
         {
-            Controlador.getInstance().modificaProfesor("PRO0001", "Pico", "Juan", "Falucho", 3433, "2235357381", "@jjj.com");
+            Controlador.getInstance().modificaProfesor("PRO0001", "Pico", "Juan", "Falucho", 3433, "2235357381", "@jjjj.com");
             fail("Debio lanzarse EmailInvalidoException");
         }
         catch (IdInvalidoException e)
