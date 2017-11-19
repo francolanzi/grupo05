@@ -28,6 +28,7 @@ public class UbicaAlumnoTest
             throw new InternalError();
         }
         alumno.setLegajo("ALU0001");
+        
         TreeMap<String, Alumno> alumnos = new TreeMap<String, Alumno>();
         alumnos.put("ALU0001", alumno);
         Controlador.getInstance().setAlumnos(alumnos);
@@ -56,10 +57,26 @@ public class UbicaAlumnoTest
     }
     
     @Test
+    public void testNombreVacio()
+    {
+        Iterator<Alumno> alumnos = Controlador.getInstance().ubicaAlumno("Pico", "");
+        assertEquals("El alumno no es el esperado", alumno, alumnos.next());
+        assertFalse("Deberia haber un solo alumno", alumnos.hasNext());
+    }
+    
+    @Test
     public void testApellidoNull()
     {
         Controlador.getInstance().ubicaAlumno(null, "Juan");
         fail("La busqueda debio fallar");
+    }
+    
+    @Test
+    public void testApellidoVacio()
+    {
+        Iterator<Alumno> alumnos = Controlador.getInstance().ubicaAlumno("", "Juan");
+        assertEquals("El alumno no es el esperado", alumno, alumnos.next());
+        assertFalse("Deberia haber un solo alumno", alumnos.hasNext());
     }
     
 }

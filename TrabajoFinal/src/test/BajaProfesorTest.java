@@ -27,6 +27,7 @@ public class BajaProfesorTest
             throw new InternalError();
         }
         profesor.setLegajo("PRO0001");
+        
         TreeMap<String, Profesor> profesores = new TreeMap<String, Profesor>();
         profesores.put("PRO0001", profesor);
         Controlador.getInstance().setProfesores(profesores);

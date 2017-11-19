@@ -34,12 +34,14 @@ public class AprobarAlumnoTest
             throw new InternalError();
         }
         alumno.setLegajo("ALU0001");
+        
         TreeMap<String, Alumno> alumnos = new TreeMap<String, Alumno>();
         alumnos.put("ALU0001", alumno);
         Controlador.getInstance().setAlumnos(alumnos);
         
         Asignatura asignatura = new Asignatura("mateA");
         asignatura.setIdentificacion("ASI0001");
+        
         TreeMap<String, Asignatura> asignaturas = new TreeMap<String, Asignatura>();
         asignaturas.put("ASI0001", asignatura);
         Controlador.getInstance().setAsignaturas(asignaturas);
@@ -54,18 +56,18 @@ public class AprobarAlumnoTest
             throw new InternalError();
         }
         cursada.setIdentificacion("CUR0001");
-        TreeMap<String, Cursada> cursadas = new TreeMap<String, Cursada>();
-        cursadas.put("CUR0001", cursada);
-        Controlador.getInstance().setCursadas(cursadas);
-
         try
         {
-            Controlador.getInstance().addAlumnoCursada("ALU0001", "CUR0001");
+            cursada.addAlumno(alumno);
         }
-        catch (EntidadInvalidaException | HorarioNoViableException | IdInvalidoException e)
+        catch (EntidadInvalidaException e)
         {
             throw new InternalError();
         }
+
+        TreeMap<String, Cursada> cursadas = new TreeMap<String, Cursada>();
+        cursadas.put("CUR0001", cursada);
+        Controlador.getInstance().setCursadas(cursadas);
     }
     
     @Test

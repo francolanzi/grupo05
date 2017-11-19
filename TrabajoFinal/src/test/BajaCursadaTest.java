@@ -22,6 +22,7 @@ public class BajaCursadaTest
     {
         Asignatura asignatura = new Asignatura("mateA");
         asignatura.setIdentificacion("ASI0001");
+        
         TreeMap<String, Asignatura> asignaturas = new TreeMap<String, Asignatura>();
         asignaturas.put("ASI0001", asignatura);
         Controlador.getInstance().setAsignaturas(asignaturas);
@@ -36,6 +37,7 @@ public class BajaCursadaTest
             throw new InternalError();
         }
         cursada.setIdentificacion("CUR0001");
+        
         TreeMap<String, Cursada> cursadas = new TreeMap<String, Cursada>();
         cursadas.put("CUR0001", cursada);
         Controlador.getInstance().setCursadas(cursadas);

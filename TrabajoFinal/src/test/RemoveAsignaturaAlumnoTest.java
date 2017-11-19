@@ -25,14 +25,13 @@ public class RemoveAsignaturaAlumnoTest
     @Before
     public void setUp()
     {
-        Asignatura asignatura = new Asignatura("mateA");
-        asignatura.setIdentificacion("ASI0000");
-        
-        Asignatura otra = new Asignatura("mateB");
-        otra.setIdentificacion("ASI0001");
+        Asignatura asignatura0 = new Asignatura("mateA");
+        asignatura0.setIdentificacion("ASI0000");
+        Asignatura asignatura1 = new Asignatura("mateB");
+        asignatura1.setIdentificacion("ASI0001");
         try
         {
-            otra.addCorrelativa(asignatura);
+            asignatura1.addCorrelativa(asignatura0);
         }
         catch (EntidadInvalidaException e)
         {
@@ -40,8 +39,8 @@ public class RemoveAsignaturaAlumnoTest
         }
         
         TreeMap<String, Asignatura> asignaturas = new TreeMap<String, Asignatura>();
-        asignaturas.put("ASI0000", asignatura);
-        asignaturas.put("ASI0001", otra);
+        asignaturas.put("ASI0000", asignatura0);
+        asignaturas.put("ASI0001", asignatura1);
         Controlador.getInstance().setAsignaturas(asignaturas);
         
         try
@@ -55,13 +54,14 @@ public class RemoveAsignaturaAlumnoTest
         alumno.setLegajo("ALU0001");
         try
         {
-            alumno.aprobarAsignatura(asignatura);
-            alumno.aprobarAsignatura(otra);
+            alumno.aprobarAsignatura(asignatura0);
+            alumno.aprobarAsignatura(asignatura1);
         }
         catch (EntidadInvalidaException e)
         {
             throw new InternalError();
         }
+        
         TreeMap<String, Alumno> alumnos = new TreeMap<String, Alumno>();
         alumnos.put("ALU0001", alumno);
         Controlador.getInstance().setAlumnos(alumnos);

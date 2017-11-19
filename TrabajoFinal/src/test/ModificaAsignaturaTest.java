@@ -21,6 +21,7 @@ public class ModificaAsignaturaTest
     {
         asignatura = new Asignatura("mateB");
         asignatura.setIdentificacion("ASI0001");
+        
         TreeMap<String, Asignatura> asignaturas = new TreeMap<String, Asignatura>();
         asignaturas.put("ASI0001", asignatura);
         Controlador.getInstance().setAsignaturas(asignaturas);

@@ -21,23 +21,24 @@ public class RemoveCorrelativaTest
     public void setUp()
     {
         asignatura = new Asignatura("mateC");
-        asignatura.setIdentificacion("ASI0002");
-        Asignatura otra = new Asignatura("mateB");
-        otra.setIdentificacion("ASI0001");
+        asignatura.setIdentificacion("ASI0000");
+        Asignatura asignatura1 = new Asignatura("mateA");
+        asignatura1.setIdentificacion("ASI0001");
+        Asignatura asignatura2 = new Asignatura("mateB");
+        asignatura2.setIdentificacion("ASI0002");
         try
         {
-            asignatura.addCorrelativa(otra);
+            asignatura.addCorrelativa(asignatura2);
         }
         catch (EntidadInvalidaException e)
         {
             throw new InternalError();
         }
+        
         TreeMap<String, Asignatura> asignaturas = new TreeMap<String, Asignatura>();
-        asignaturas.put("ASI0002", asignatura);
-        asignaturas.put("ASI0001", otra);
-        otra = new Asignatura("mateA");
-        otra.setIdentificacion("ASI0000");
-        asignaturas.put("ASI0000", otra);
+        asignaturas.put("ASI0000", asignatura);
+        asignaturas.put("ASI0001", asignatura1);
+        asignaturas.put("ASI0002", asignatura2);
         Controlador.getInstance().setAsignaturas(asignaturas);
     }
     
@@ -46,7 +47,7 @@ public class RemoveCorrelativaTest
     {
         try
         {
-            Controlador.getInstance().removeCorrelativa("ASI0002", "ASI0001");
+            Controlador.getInstance().removeCorrelativa("ASI0000", "ASI0002");
             assertFalse("La correlativa debio haber sido eliminada", asignatura.isCorrelativa("ASI0001"));
         }
         catch (IdInvalidoException e)
@@ -60,7 +61,7 @@ public class RemoveCorrelativaTest
     {
         try
         {
-            Controlador.getInstance().removeCorrelativa(null, "ASI0001");
+            Controlador.getInstance().removeCorrelativa(null, "ASI0002");
             fail("Debio lanzarse IdInvalidoException");
         }
         catch (IdInvalidoException e){}
@@ -71,7 +72,7 @@ public class RemoveCorrelativaTest
     {
         try
         {
-            Controlador.getInstance().removeCorrelativa("", "ASI0001");
+            Controlador.getInstance().removeCorrelativa("", "ASI0002");
             fail("Debio lanzarse IdInvalidoException");
         }
         catch (IdInvalidoException e){}
@@ -82,7 +83,7 @@ public class RemoveCorrelativaTest
     {
         try
         {
-            Controlador.getInstance().removeCorrelativa("ASI2222", "ASI0001");
+            Controlador.getInstance().removeCorrelativa("ASI2222", "ASI0002");
             fail("Debio lanzarse IdInvalidoException");
         }
         catch (IdInvalidoException e){}
@@ -93,7 +94,7 @@ public class RemoveCorrelativaTest
     {
         try
         {
-            Controlador.getInstance().removeCorrelativa("ASI0002", null);
+            Controlador.getInstance().removeCorrelativa("ASI0000", null);
             fail("Debio lanzarse IdInvalidoException");
         }
         catch (IdInvalidoException e){}
@@ -104,7 +105,7 @@ public class RemoveCorrelativaTest
     {
         try
         {
-            Controlador.getInstance().removeCorrelativa("ASI0002", "");
+            Controlador.getInstance().removeCorrelativa("ASI0000", "");
             fail("Debio lanzarse IdInvalidoException");
         }
         catch (IdInvalidoException e){}
@@ -115,7 +116,7 @@ public class RemoveCorrelativaTest
     {
         try
         {
-            Controlador.getInstance().removeCorrelativa("ASI0002", "ASI2222");
+            Controlador.getInstance().removeCorrelativa("ASI0000", "ASI2222");
             fail("Debio lanzarse IdInvalidoException");
         }
         catch (IdInvalidoException e){}
@@ -126,7 +127,7 @@ public class RemoveCorrelativaTest
     {
         try
         {
-            Controlador.getInstance().removeCorrelativa("ASI0002", "ASI0000");
+            Controlador.getInstance().removeCorrelativa("ASI0000", "ASI0001");
             fail("Debio lanzarse IdInvalidoException");
         }
         catch (IdInvalidoException e){}

@@ -21,10 +21,15 @@ public class RemoveCompetenciaTest
     @Before
     public void setUp()
     {
-        Asignatura asignatura = new Asignatura("mateA");
-        asignatura.setIdentificacion("ASI0001");
+        Asignatura asignatura1 = new Asignatura("mateA");
+        asignatura1.setIdentificacion("ASI0001");
+        Asignatura asignatura2 = new Asignatura("mateB");
+        asignatura2.setIdentificacion("ASI0002");
+        
         TreeMap<String, Asignatura> asignaturas = new TreeMap<String, Asignatura>();
-        asignaturas.put("ASI0001", asignatura);
+        asignaturas.put("ASI0001", asignatura1);
+        asignaturas.put("ASI0002", asignatura2);
+        Controlador.getInstance().setAsignaturas(asignaturas);
         
         try
         {
@@ -37,20 +42,16 @@ public class RemoveCompetenciaTest
         profesor.setLegajo("PRO0001");
         try
         {
-            profesor.addCompetencia(asignatura);
+            profesor.addCompetencia(asignatura1);
         }
         catch (EntidadInvalidaException e)
         {
             throw new InternalError();
         }
+        
         TreeMap<String, Profesor> profesores = new TreeMap<String, Profesor>();
         profesores.put("PRO0001", profesor);
         Controlador.getInstance().setProfesores(profesores);
-        
-        asignatura = new Asignatura("mateB");
-        asignatura.setIdentificacion("ASI0002");
-        asignaturas.put("ASI0002", asignatura);
-        Controlador.getInstance().setAsignaturas(asignaturas);
     }
     
     @Test
