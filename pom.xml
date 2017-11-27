@@ -20,4 +20,12 @@
   <modules>
     <module>TrabajoFinal</module>
   </modules>
+  <dependencies>
+    <dependency>
+      <groupId>TrabajoFinal</groupId>
+      <artifactId>TrabajoFinal</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <type>jar</type>
+    </dependency>
+  </dependencies>
 </project>
