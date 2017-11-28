@@ -14,8 +14,6 @@ import org.junit.Test;
 public class AltaAlumnoTest
 {
     
-    private Alumno alumno;
-    
     @Before
     public void setUp()
     {

@@ -1,6 +1,5 @@
 package test;
 
-import java.util.Iterator;
 import java.util.TreeMap;
 
 import model.Asignatura;

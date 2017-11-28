@@ -9,7 +9,6 @@ import model.Cursada;
 import model.EmailInvalidoException;
 import model.EntidadInvalidaException;
 import model.HoraInvalidaException;
-import model.HorarioNoViableException;
 import model.IdInvalidoException;
 import model.PeriodoInvalidoException;
 

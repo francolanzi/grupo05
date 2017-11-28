@@ -20,6 +20,7 @@ import model.IdInvalidoException;
 import model.Profesor;
 import model.Serializador;
 
+@SuppressWarnings("serial")
 public class VentanaIndex extends javax.swing.JFrame
 {
     

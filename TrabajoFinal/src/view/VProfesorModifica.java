@@ -3,7 +3,6 @@ package view;
 
 import java.util.Iterator;
 
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,6 +13,7 @@ import model.EntidadInvalidaException;
 import model.IdInvalidoException;
 import model.Profesor;
 
+@SuppressWarnings("serial")
 public class VProfesorModifica extends javax.swing.JFrame
 {
     

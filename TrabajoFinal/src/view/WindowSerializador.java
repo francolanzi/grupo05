@@ -8,7 +8,6 @@ import java.io.FileNotFoundException;
 
 import javax.swing.JOptionPane;
 
-import model.Controlador;
 import model.Serializador;
 
 public class WindowSerializador extends WindowAdapter

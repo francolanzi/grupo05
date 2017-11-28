@@ -7,16 +7,15 @@ import javax.swing.JOptionPane;
 
 import javax.swing.table.DefaultTableModel;
 
-import model.Alumno;
 import model.Asignatura;
 import model.Controlador;
 import model.EmailInvalidoException;
 import model.EntidadInvalidaException;
-import model.HorarioNoViableException;
 import model.IdInvalidoException;
 import model.Mascaras;
 import model.Profesor;
 
+@SuppressWarnings("serial")
 public class VProfesorAlta extends javax.swing.JFrame
 {
     

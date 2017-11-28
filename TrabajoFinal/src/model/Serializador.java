@@ -32,7 +32,8 @@ public class Serializador
         encoder.close();
     }
     
-    public static void deserializar() throws FileNotFoundException
+    @SuppressWarnings("unchecked")
+	public static void deserializar() throws FileNotFoundException
     {
         XMLDecoder decoder = new XMLDecoder(new BufferedInputStream(new FileInputStream(ARCH_NAME)));
         Controlador.getInstance().setAlumnos((TreeMap<String, Alumno>) decoder.readObject());

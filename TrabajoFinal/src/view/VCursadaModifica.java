@@ -3,15 +3,12 @@ package view;
 
 import java.util.Iterator;
 
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import model.Alumno;
-import model.Asignatura;
 import model.Controlador;
 import model.Cursada;
-import model.EmailInvalidoException;
 import model.EntidadInvalidaException;
 import model.HoraInvalidaException;
 import model.HorarioNoViableException;
@@ -19,6 +16,7 @@ import model.IdInvalidoException;
 import model.PeriodoInvalidoException;
 import model.Profesor;
 
+@SuppressWarnings("serial")
 public class VCursadaModifica extends javax.swing.JFrame
 {
     

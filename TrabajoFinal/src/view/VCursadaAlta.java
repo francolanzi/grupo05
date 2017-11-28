@@ -3,7 +3,6 @@ package view;
 
 import java.util.Iterator;
 
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -20,6 +19,7 @@ import model.Mascaras;
 import model.PeriodoInvalidoException;
 import model.Profesor;
 
+@SuppressWarnings("serial")
 public class VCursadaAlta extends javax.swing.JFrame
 {
     

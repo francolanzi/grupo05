@@ -13,11 +13,9 @@ import model.Controlador;
 import model.Cursada;
 import model.EmailInvalidoException;
 import model.EntidadInvalidaException;
-import model.HorarioNoViableException;
 import model.IdInvalidoException;
-import model.IdInvalidoException;
-import model.Profesor;
 
+@SuppressWarnings("serial")
 public class VAlumnoModifica extends javax.swing.JFrame
 {
     

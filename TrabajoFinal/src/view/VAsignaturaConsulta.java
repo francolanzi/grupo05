@@ -5,12 +5,9 @@ import java.util.Iterator;
 
 import javax.swing.table.DefaultTableModel;
 
-import model.Alumno;
 import model.Asignatura;
-import model.Controlador;
-import model.Cursada;
-import model.Profesor;
 
+@SuppressWarnings("serial")
 public class VAsignaturaConsulta extends javax.swing.JFrame
 {
     

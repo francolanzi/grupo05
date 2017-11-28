@@ -4,16 +4,12 @@ package view;
 import java.util.Iterator;
 import java.util.Vector;
 
-import javax.swing.JOptionPane;
-
 import javax.swing.table.DefaultTableModel;
 
 import model.Alumno;
 import model.Asignatura;
-import model.Controlador;
-import model.Cursada;
-import model.Profesor;
 
+@SuppressWarnings("serial")
 public class VAlumnoConsulta extends javax.swing.JFrame
 {
     

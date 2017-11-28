@@ -3,7 +3,6 @@ package model;
 import java.util.Iterator;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.TreeMap;
 
 public class Cursada implements Entidad, Observer
 {

@@ -1,5 +1,6 @@
 package model;
 
+@SuppressWarnings("serial")
 public class EntidadInvalidaException extends Exception
 {
     

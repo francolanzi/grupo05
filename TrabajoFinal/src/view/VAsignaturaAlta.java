@@ -3,7 +3,6 @@ package view;
 
 import java.util.Iterator;
 
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 import javax.swing.table.DefaultTableModel;
@@ -11,14 +10,11 @@ import javax.swing.table.DefaultTableModel;
 
 import model.Asignatura;
 import model.Controlador;
-import model.Cursada;
-import model.EmailInvalidoException;
 import model.EntidadInvalidaException;
-import model.HorarioNoViableException;
 import model.IdInvalidoException;
 import model.Mascaras;
-import model.Profesor;
 
+@SuppressWarnings("serial")
 public class VAsignaturaAlta extends javax.swing.JFrame
 {
     

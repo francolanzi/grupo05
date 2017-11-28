@@ -46,7 +46,7 @@ public class BajaProfesorTest
         }
         try
         {
-            Profesor otro = Controlador.getInstance().consultaProfesor("PRO0001");
+            Controlador.getInstance().consultaProfesor("PRO0001");
             fail("El profesor debio haber sido eliminado");
         }
         catch (IdInvalidoException e){}

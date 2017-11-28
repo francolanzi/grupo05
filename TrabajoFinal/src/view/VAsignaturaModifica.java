@@ -1,13 +1,7 @@
 
 package view;
 
-import java.util.ArrayList;
-
 import java.util.Iterator;
-import java.util.Map;
-import java.util.TreeMap;
-
-import javax.swing.DefaultComboBoxModel;
 
 import javax.swing.JOptionPane;
 
@@ -16,11 +10,9 @@ import javax.swing.table.DefaultTableModel;
 import model.Asignatura;
 import model.Controlador;
 import model.EntidadInvalidaException;
-import model.HorarioNoViableException;
 import model.IdInvalidoException;
-import model.ObserverTreeMap;
-import model.Profesor;
 
+@SuppressWarnings("serial")
 public class VAsignaturaModifica extends javax.swing.JFrame
 {
     
