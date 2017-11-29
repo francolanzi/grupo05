@@ -6,7 +6,6 @@ import model.Alumno;
 import model.Asignatura;
 import model.Controlador;
 
-import model.Cursada;
 import model.EmailInvalidoException;
 
 import model.EntidadInvalidaException;
