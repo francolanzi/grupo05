@@ -12,7 +12,7 @@ import model.HoraInvalidaException;
 import model.PeriodoInvalidoException;
 import model.Profesor;
 
-public class SetUp
+public abstract class AbstractTest
 {
     
     private Alumno alumnos[];
@@ -20,7 +20,7 @@ public class SetUp
     private Asignatura asignaturas[];
     private Cursada cursadas[];
     
-    public SetUp()
+    public AbstractTest()
     {
         this.alumnos = new Alumno[6];
         this.profesores = new Profesor[7];
@@ -97,6 +97,8 @@ public class SetUp
     
     public void escenario1()
     {
+        this.entidades();
+        
         TreeMap<String, Alumno> alumnos = new TreeMap<String, Alumno>();
         TreeMap<String, Profesor> profesores = new TreeMap<String, Profesor>();
         TreeMap<String, Asignatura> asignaturas = new TreeMap<String, Asignatura>();
@@ -110,6 +112,8 @@ public class SetUp
     
     public void escenario2()
     {
+        this.entidades();
+        
         TreeMap<String, Alumno> alumnos = new TreeMap<String, Alumno>();
         TreeMap<String, Profesor> profesores = new TreeMap<String, Profesor>();
         TreeMap<String, Asignatura> asignaturas = new TreeMap<String, Asignatura>();
