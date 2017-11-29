@@ -246,9 +246,39 @@ public class CursadaTest extends AbstractTest{
             assertFalse("La cursada no es compatible", super.cursada(1).isCompatible("01-2016", "Martes", "21:00", "23:00"));
     }
     
+    @Test
+    public void testEquals1(){
+        assertTrue("Deberian ser iguales", super.profesor(1).equals(super.profesor(1)));
+    }
     
+    @Test
+    public void testEquals2(){
+        assertFalse("Deberian ser iguales", super.profesor(1).equals(super.alumno(1)));
+    }
     
+    @Test
+    public void testEquals3(){
+        assertFalse("No deberian ser iguales", super.profesor(5).equals(super.profesor(1)));
+    }
     
+    @Test
+    public void testEquals4(){
+        assertFalse("No deberian ser iguales", super.profesor(1).equals(super.profesor(2)));
+    }
     
+    @Test
+    public void testEquals5(){
+        assertTrue("Deberian ser iguales", super.profesor(1).equals(super.profesor(4)));
+    }
+    
+    @Test
+    public void testHasCode1(){
+        assertEquals("El hash code no es el esperado", super.profesor(5).hashCode(), 37);
+    }
+    
+    @Test
+    public void testHasCode2(){
+        assertEquals("El hash code no es el esperado", super.profesor(1).hashCode(), 37 + super.profesor(1).getId().hashCode());
+    }
     
 }
