@@ -248,37 +248,37 @@ public class CursadaTest extends AbstractTest{
     
     @Test
     public void testEquals1(){
-        assertTrue("Deberian ser iguales", super.profesor(1).equals(super.profesor(1)));
+        assertTrue("Deberian ser iguales", super.cursada(1).equals(super.cursada(1)));
     }
     
     @Test
     public void testEquals2(){
-        assertFalse("Deberian ser iguales", super.profesor(1).equals(super.alumno(1)));
+        assertFalse("Deberian ser iguales", super.cursada(1).equals(super.profesor(1)));
     }
     
     @Test
     public void testEquals3(){
-        assertFalse("No deberian ser iguales", super.profesor(5).equals(super.profesor(1)));
+        assertFalse("No deberian ser iguales", super.cursada(5).equals(super.cursada(1)));
     }
     
     @Test
     public void testEquals4(){
-        assertFalse("No deberian ser iguales", super.profesor(1).equals(super.profesor(2)));
+        assertFalse("No deberian ser iguales", super.cursada(1).equals(super.cursada(2)));
     }
     
     @Test
     public void testEquals5(){
-        assertTrue("Deberian ser iguales", super.profesor(1).equals(super.profesor(4)));
+        assertTrue("Deberian ser iguales", super.cursada(1).equals(super.cursada(4)));
     }
     
     @Test
     public void testHasCode1(){
-        assertEquals("El hash code no es el esperado", super.profesor(5).hashCode(), 37);
+        assertEquals("El hash code no es el esperado", super.cursada(5).hashCode(), 37);
     }
     
     @Test
     public void testHasCode2(){
-        assertEquals("El hash code no es el esperado", super.profesor(1).hashCode(), 37 + super.profesor(1).getId().hashCode());
+        assertEquals("El hash code no es el esperado", super.cursada(1).hashCode(), 37 + super.cursada(1).getId().hashCode());
     }
     
 }
