@@ -1,5 +1,6 @@
 package coverage;
 
+import model.Controlador;
 import model.Cursada;
 import model.EmailInvalidoException;
 import model.EntidadInvalidaException;
@@ -281,4 +282,27 @@ public class CursadaTest extends AbstractTest{
         assertEquals("El hash code no es el esperado", super.cursada(1).hashCode(), 37 + super.cursada(1).getId().hashCode());
     }
     
+    @Test
+    public void testUpdate1()
+    {
+        try
+        {
+            super.cursada(1).update(Controlador.getInstance(), "ASI9999");
+            fail("Debio lanzarse IdInvalidoException");
+        }
+        catch (IdInvalidoException e){}
+    }
+    
+    @Test
+    public void testUpdate2()
+    {
+        try
+        {
+            super.cursada(1).update(Controlador.getInstance(), "ASI0000");
+            assertFalse("Se deberia eliminar la cursada",Controlador.getInstance().getCursadas().containsKey(super.cursada(1).getId()));
+        }
+        catch (IdInvalidoException e){
+            fail("IdInvalidoException no debio ser lanzada");
+        }
+    }
 }
