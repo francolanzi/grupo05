@@ -12,7 +12,7 @@ import model.HoraInvalidaException;
 import model.PeriodoInvalidoException;
 import model.Profesor;
 
-public class Escenario
+public class SetUp
 {
     
     private Alumno alumnos[];
@@ -20,13 +20,16 @@ public class Escenario
     private Asignatura asignaturas[];
     private Cursada cursadas[];
     
-    public Escenario()
+    public SetUp()
     {
         this.alumnos = new Alumno[6];
         this.profesores = new Profesor[7];
         this.asignaturas = new Asignatura[6];
         this.cursadas = new Cursada[10];
-        
+    }
+    
+    public void entidades()
+    {
         this.alumnos[1] = this.nuevoAlumno("ALU0000", "Son", "Goku", "DBZ", 1234, "161718", "songoku@cc.com");
         this.alumnos[2] = this.nuevoAlumno("ALU0001", "Son", "Gohan", "DBZ", 1234, "161718", "songohan@cc.com");
         this.alumnos[3] = this.nuevoAlumno("ALU0000", "Black", "Goku", "Futuro alterno", 666, "767", "blackgoku@cc.com");
@@ -72,27 +75,27 @@ public class Escenario
         this.addProfesor(8, 1);
     }
     
-    public Alumno getAlumno(int i)
+    public Alumno alumno(int i)
     {
         return this.alumnos[i];
     }
     
-    public Profesor getProfesor(int i)
+    public Profesor profesor(int i)
     {
         return this.profesores[i];
     }
     
-    public Asignatura getAsignatura(int i)
+    public Asignatura asignatura(int i)
     {
         return this.asignaturas[i];
     }
     
-    public Cursada getCursada(int i)
+    public Cursada cursada(int i)
     {
         return this.cursadas[i];
     }
     
-    public void setUp1()
+    public void escenario1()
     {
         TreeMap<String, Alumno> alumnos = new TreeMap<String, Alumno>();
         TreeMap<String, Profesor> profesores = new TreeMap<String, Profesor>();
@@ -105,7 +108,7 @@ public class Escenario
         Controlador.getInstance().setCursadas(cursadas);
     }
     
-    public void setUp2()
+    public void escenario2()
     {
         TreeMap<String, Alumno> alumnos = new TreeMap<String, Alumno>();
         TreeMap<String, Profesor> profesores = new TreeMap<String, Profesor>();
