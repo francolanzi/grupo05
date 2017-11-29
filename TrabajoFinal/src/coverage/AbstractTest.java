@@ -69,6 +69,8 @@ public abstract class AbstractTest
         this.addCompetencia(3, 2);
         this.addCompetencia(6, 1);
         
+        this.addCorrelativa(3, 2);
+        
         this.addAlumno(1, 2);
         this.addAlumno(7, 2);
         this.addProfesor(1, 1);
@@ -205,6 +207,18 @@ public abstract class AbstractTest
         Asignatura asignatura = new Asignatura(nombre);
         asignatura.setIdentificacion(identificacion);
         return asignatura;
+    }
+    
+    private void addCorrelativa(int asignatura, int correlativa)
+    {
+        try
+        {
+            this.asignaturas[asignatura].addCorrelativa(this.asignaturas[correlativa]);
+        }
+        catch (EntidadInvalidaException e)
+        {
+            throw new InternalError();
+        }
     }
     
     private Cursada nuevaCursada(String identificacion, int asignatura, String periodo, String dia, String horaInicio, String horaFin)
