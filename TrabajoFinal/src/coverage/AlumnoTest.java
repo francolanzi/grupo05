@@ -139,19 +139,19 @@ public class AlumnoTest extends AbstractTest
     @Test
     public void testEquals5()
     {
-        assertFalse("Deberian ser iguales", super.alumno(1).equals(super.alumno(3)));
+        assertTrue("Deberian ser iguales", super.alumno(1).equals(super.alumno(3)));
     }
     
     @Test
     public void testHashCode1()
     {
-        assertEquals("El hash code no es el esperado", super.alumno(4), 37);
+        assertEquals("El hash code no es el esperado", super.alumno(4).hashCode(), 37);
     }
     
     @Test
     public void testHashCode2()
     {
-        assertEquals("El hash code no es el esperado", super.alumno(1), 37 + ("ALU0000").hashCode());
+        assertEquals("El hash code no es el esperado", super.alumno(1).hashCode(), 37 + ("ALU0000").hashCode());
     }
     
 }
