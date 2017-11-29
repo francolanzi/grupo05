@@ -36,12 +36,12 @@ public abstract class AbstractTest
         this.alumnos[4] = this.nuevoAlumno(null, "Chi Chi", "Milk", "DBZ", 1234, "161718", "milk@cc.com");
         this.alumnos[5] = this.nuevoAlumno("ALU0003", "Del​ ​Potro", "​Juan​ ​Martin", "Mar​ ​Del​ ​Plata", 7600, "155604998", "jm@dp.com");
         
-        this.profesores[1] = this.nuevoProfesor("PRO000", "Whis", "Angel", "TemploBeerus", 1234, "070707", "angelwhis@cc.com");
-        this.profesores[2] = this.nuevoProfesor("PRO001", "Vados", "Angel", "TemploChampa", 1234, "060606", "angelvados@cc.com");
-        this.profesores[3] = this.nuevoProfesor("PRO002", "Pitt", "Brad", "USA", 9999, "4911111", "bradpitt@cc.com");
-        this.profesores[4] = this.nuevoProfesor("PRO000", "Zeno", "Dios", "TemploZeno", 1234, "101010", "zeno@cc.com");
+        this.profesores[1] = this.nuevoProfesor("PRO0000", "Whis", "Angel", "TemploBeerus", 1234, "070707", "angelwhis@cc.com");
+        this.profesores[2] = this.nuevoProfesor("PRO0001", "Vados", "Angel", "TemploChampa", 1234, "060606", "angelvados@cc.com");
+        this.profesores[3] = this.nuevoProfesor("PRO0002", "Pitt", "Brad", "USA", 9999, "4911111", "bradpitt@cc.com");
+        this.profesores[4] = this.nuevoProfesor("PRO0000", "Zeno", "Dios", "TemploZeno", 1234, "101010", "zeno@cc.com");
         this.profesores[5] = this.nuevoProfesor(null, "Putin", "Vladimir", "Mother Russia", 12345, "08001010", "putinv@na.com");
-        this.profesores[6] = this.nuevoProfesor("PRO004", "Daniels", "Jack", "Whiskey", 90, "1981", "jackdaniels@jd.com");
+        this.profesores[6] = this.nuevoProfesor("PRO0004", "Daniels", "Jack", "Whiskey", 90, "1981", "jackdaniels@jd.com");
         
         this.asignaturas[1] = this.nuevaAsignatura("ASI0000", "Introduccion al Ki");
         this.asignaturas[2] = this.nuevaAsignatura("ASI0001", "Defensa Contra las Artes Oscuras");
