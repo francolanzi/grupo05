@@ -26,7 +26,7 @@ public class AlumnoTest extends AbstractTest
     {
         try
         {
-            new Alumno("Son", "Goku", "DBZ", 1234, "161718", "songoku@cc.com");
+            assertNotNull("El alumno no deberia ser null", new Alumno("Son", "Goku", "DBZ", 1234, "161718", "songoku@cc.com"));
         }
         catch (EmailInvalidoException e)
         {
@@ -51,6 +51,12 @@ public class AlumnoTest extends AbstractTest
         try
         {
             super.alumno(1).modificar("Son", "Gohan", "DBZ", 1234, "161718", "songohan@cc.com");
+            assertEquals("El apellido no se modifico correctamente", "Son", super.alumno(1).getApellido());
+            assertEquals("El nombre no se modifico correctamente", "Gohan", super.alumno(1).getNombre());
+            assertEquals("La calle no se modifico correctamente", "DBZ", super.alumno(1).getDomicilio().getCalle());
+            assertEquals("El numero no se modifico correctamente", 1234, super.alumno(1).getDomicilio().getNumero());
+            assertEquals("El telefono no se modifico correctamente", "161718", super.alumno(1).getTelefono());
+            assertEquals("El email no se modifico correctamente", "songohan@cc.com", super.alumno(1).getEmail());
         }
         catch (EmailInvalidoException e)
         {
@@ -75,6 +81,7 @@ public class AlumnoTest extends AbstractTest
         try
         {
             super.alumno(2).aprobarAsignatura(super.asignatura(1));
+            assertTrue("El alumno debio aprobar la asignatura", super.alumno(2).isAprobada(super.asignatura(1).getId()));
         }
         catch (EntidadInvalidaException e)
         {
@@ -99,6 +106,7 @@ public class AlumnoTest extends AbstractTest
         try
         {
             super.alumno(1).removeAsignatura("ASI0000");
+            assertFalse("La asignatura debio ser removida", super.alumno(1).isAprobada("ASI0000"));
         }
         catch (IdInvalidoException e)
         {
