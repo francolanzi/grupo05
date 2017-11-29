@@ -112,4 +112,46 @@ public class AlumnoTest extends AbstractTest
         assertTrue("El alumno deberia tener aprobada la asignatura", super.alumno(1).isAprobada("ASI0000"));
     }
     
+    @Test
+    public void testEquals1()
+    {
+        assertTrue("Deberian ser iguales", super.alumno(1).equals(super.alumno(1)));
+    }
+    
+    @Test
+    public void testEquals2()
+    {
+        assertFalse("No deberian ser iguales", super.alumno(1).equals(super.profesor(1)));
+    }
+    
+    @Test
+    public void testEquals3()
+    {
+        assertFalse("No deberian ser iguales", super.alumno(4).equals(super.alumno(2)));
+    }
+    
+    @Test
+    public void testEquals4()
+    {
+        assertFalse("No deberian ser iguales", super.alumno(1).equals(super.alumno(2)));
+    }
+    
+    @Test
+    public void testEquals5()
+    {
+        assertFalse("Deberian ser iguales", super.alumno(1).equals(super.alumno(3)));
+    }
+    
+    @Test
+    public void testHashCode1()
+    {
+        assertEquals("El hash code no es el esperado", super.alumno(4), 37);
+    }
+    
+    @Test
+    public void testHashCode2()
+    {
+        assertEquals("El hash code no es el esperado", super.alumno(1), 37 + ("ALU0000").hashCode());
+    }
+    
 }
