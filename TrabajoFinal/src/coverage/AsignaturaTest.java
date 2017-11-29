@@ -22,7 +22,9 @@ public class AsignaturaTest extends AbstractTest
     @Test
     public void testConstructor()
     {
-        assertNotNull("La asignatura no deberia ser null", new Asignatura("Introduccion al Nen"));
+        Asignatura asignatura = new Asignatura("Introduccion al Nen");
+        assertNotNull("La asignatura no deberia ser null", asignatura);
+        assertEquals("El nombre no es correcto", "Introduccion al Nen", asignatura.getNombre());
     }
     
     @Test
