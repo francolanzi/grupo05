@@ -157,7 +157,7 @@ public class ProfesorTest extends AbstractTest
     @Test
     public void testHashCode2()
     {
-        assertEquals("El hash code no es el esperado", super.profesor(1).hashCode(), 37 + ("PRO0000").hashCode());
+        assertEquals("El hash code no es el esperado", super.profesor(1).hashCode(), 37 + super.profesor(1).getId().hashCode());
     }
     
 }

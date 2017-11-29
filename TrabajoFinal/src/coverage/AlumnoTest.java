@@ -159,7 +159,7 @@ public class AlumnoTest extends AbstractTest
     @Test
     public void testHashCode2()
     {
-        assertEquals("El hash code no es el esperado", super.alumno(1).hashCode(), 37 + ("ALU0000").hashCode());
+        assertEquals("El hash code no es el esperado", super.alumno(1).hashCode(), 37 + super.alumno(1).getId().hashCode());
     }
     
 }
