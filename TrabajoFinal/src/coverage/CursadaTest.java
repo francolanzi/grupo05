@@ -158,7 +158,7 @@ public class CursadaTest extends AbstractTest
         try
         {
             super.cursada(3).addAlumno(super.alumno(2));
-            assertTrue("El alumno debio ser agregado", super.cursada(3).hasAlumno(super.alumno(2).getLegajo()));
+            assertTrue("El alumno debio ser agregado", super.cursada(3).hasAlumno("ALU0001"));
         }
         catch (EntidadInvalidaException e)
         {
@@ -183,7 +183,7 @@ public class CursadaTest extends AbstractTest
         try
         {
             super.cursada(1).addProfesor(super.profesor(3));
-            assertTrue("El profesor debio ser agregado", super.cursada(1).hasProfesor(super.profesor(3).getLegajo()));
+            assertTrue("El profesor debio ser agregado", super.cursada(1).hasProfesor("PRO0002"));
         }
         catch (EntidadInvalidaException e)
         {
@@ -273,9 +273,9 @@ public class CursadaTest extends AbstractTest
     {
         try
         {
-            super.cursada(1).aprobarAlumno(super.alumno(2).getId());
-            assertFalse("El alumno no deberia a la cursada", super.cursada(1).hasAlumno(super.alumno(2).getId()));
-            assertTrue("El alumno debio aprobar la asignatura", super.alumno(2).isAprobada(super.cursada(1).getAsignatura().getId()));
+            super.cursada(1).aprobarAlumno("ALU0001");
+            assertFalse("El alumno no deberia a la cursada", super.cursada(1).hasAlumno("ALU0001"));
+            assertTrue("El alumno debio aprobar la asignatura", super.alumno(2).isAprobada("ASI0000"));
         }
         catch (IdInvalidoException e)
         {
@@ -339,6 +339,6 @@ public class CursadaTest extends AbstractTest
     public void testUpdate()
     {
         super.cursada(1).update(Controlador.getInstance(), "ASI0000");
-        assertFalse("Se deberia eliminar la cursada", Controlador.getInstance().getCursadas().containsKey(super.cursada(1).getId()));
+        assertFalse("Se deberia eliminar la cursada", Controlador.getInstance().getCursadas().containsKey("CUR0000"));
     }
 }

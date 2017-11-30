@@ -44,7 +44,7 @@ public class AsignaturaTest extends AbstractTest
         try
         {
             super.asignatura(1).addCorrelativa(super.asignatura(2));
-            assertTrue("La correlativa debio ser agregada", super.asignatura(1).isCorrelativa(super.asignatura(2).getId()));
+            assertTrue("La correlativa debio ser agregada", super.asignatura(1).isCorrelativa("ASI0001"));
         }
         catch (EntidadInvalidaException e)
         {

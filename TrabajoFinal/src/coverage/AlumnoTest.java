@@ -88,7 +88,7 @@ public class AlumnoTest extends AbstractTest
         try
         {
             super.alumno(2).aprobarAsignatura(super.asignatura(1));
-            assertTrue("El alumno debio aprobar la asignatura", super.alumno(2).isAprobada(super.asignatura(1).getId()));
+            assertTrue("El alumno debio aprobar la asignatura", super.alumno(2).isAprobada("ASI0000"));
         }
         catch (EntidadInvalidaException e)
         {
