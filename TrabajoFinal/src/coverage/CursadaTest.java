@@ -282,6 +282,7 @@ public class CursadaTest extends AbstractTest{
         assertEquals("El hash code no es el esperado", super.cursada(1).hashCode(), 37 + super.cursada(1).getId().hashCode());
     }
     
+    /*
     @Test
     public void testUpdate1()
     {
@@ -305,4 +306,5 @@ public class CursadaTest extends AbstractTest{
             fail("IdInvalidoException no debio ser lanzada");
         }
     }
+*/
 }
