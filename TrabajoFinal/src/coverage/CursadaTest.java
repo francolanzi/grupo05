@@ -158,7 +158,7 @@ public class CursadaTest extends AbstractTest
         try
         {
             super.cursada(3).addAlumno(super.alumno(2));
-            assertTrue("El alumno no se agrego a la cursada correctamente", super.cursada(3).hasAlumno(super.alumno(2).getLegajo()));
+            assertTrue("El alumno debio ser agregado", super.cursada(3).hasAlumno(super.alumno(2).getLegajo()));
         }
         catch (EntidadInvalidaException e)
         {
@@ -183,7 +183,7 @@ public class CursadaTest extends AbstractTest
         try
         {
             super.cursada(1).addProfesor(super.profesor(3));
-            assertTrue("El profesor no se agrego a la cursada correctamente", super.cursada(1).hasProfesor(super.profesor(3).getLegajo()));
+            assertTrue("El profesor debio ser agregado", super.cursada(1).hasProfesor(super.profesor(3).getLegajo()));
         }
         catch (EntidadInvalidaException e)
         {
@@ -244,13 +244,13 @@ public class CursadaTest extends AbstractTest
     @Test
     public void testHasAlumno()
     {
-        assertFalse("El alumno no pertenece a la cursada", super.cursada(1).hasAlumno("ALU0000"));
+        assertFalse("El alumno no deberia pertenecer a la cursada", super.cursada(1).hasAlumno("ALU0000"));
     }
 
     @Test
     public void testHasProfesor()
     {
-        assertTrue("El profesor pertenece a la cursada", super.cursada(1).hasProfesor("PRO0000"));
+        assertTrue("El profesor deberia pertenecer a la cursada", super.cursada(1).hasProfesor("PRO0000"));
     }
 
     @Test
@@ -274,8 +274,8 @@ public class CursadaTest extends AbstractTest
         try
         {
             super.cursada(1).aprobarAlumno(super.alumno(2).getId());
-            assertFalse("El alumno ya no pertenece a la cursada", super.cursada(1).hasAlumno(super.alumno(2).getId()));
-            assertTrue("El alumno debe tener la materia aprobada", super.alumno(2).isAprobada(super.cursada(1).getAsignatura().getId()));
+            assertFalse("El alumno no deberia a la cursada", super.cursada(1).hasAlumno(super.alumno(2).getId()));
+            assertTrue("El alumno debio aprobar la asignatura", super.alumno(2).isAprobada(super.cursada(1).getAsignatura().getId()));
         }
         catch (IdInvalidoException e)
         {
@@ -290,7 +290,7 @@ public class CursadaTest extends AbstractTest
     @Test
     public void testIsCompatible()
     {
-        assertFalse("La cursada no es compatible", super.cursada(1).isCompatible("01-2016", "Martes", "21:00", "23:00"));
+        assertFalse("La cursada no deberia ser compatible", super.cursada(1).isCompatible("01-2016", "Martes", "21:00", "23:00"));
     }
 
     @Test
