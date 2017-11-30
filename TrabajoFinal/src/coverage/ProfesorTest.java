@@ -55,13 +55,13 @@ public class ProfesorTest extends AbstractTest
     {
         try
         {
-            super.profesor(1).modificar("Whis", "Angel", "TemploBeerus", 1234, "070707", "angelwhis@cc.com");
-            assertEquals("El apellido no se modifico correctamente", "Whis", super.profesor(1).getApellido());
-            assertEquals("El nombre no se modifico correctamente", "Angel", super.profesor(1).getNombre());
-            assertEquals("La calle no se modifico correctamente", "TemploBeerus", super.profesor(1).getDomicilio().getCalle());
-            assertEquals("El numero no se modifico correctamente", 1234, super.profesor(1).getDomicilio().getNumero());
-            assertEquals("El telefono no se modifico correctamente", "070707", super.profesor(1).getTelefono());
-            assertEquals("El email no se modifico correctamente", "angelwhis@cc.com", super.profesor(1).getEmail());
+            super.profesor(1).modificar("Wfis", "Antel", "TemploGeerus", 1434, "071707", "antelwfis@cc.com");
+            assertEquals("El apellido no se modifico correctamente", "Wfis", super.profesor(1).getApellido());
+            assertEquals("El nombre no se modifico correctamente", "Antel", super.profesor(1).getNombre());
+            assertEquals("La calle no se modifico correctamente", "TemploGeerus", super.profesor(1).getDomicilio().getCalle());
+            assertEquals("El numero no se modifico correctamente", 1434, super.profesor(1).getDomicilio().getNumero());
+            assertEquals("El telefono no se modifico correctamente", "071707", super.profesor(1).getTelefono());
+            assertEquals("El email no se modifico correctamente", "antelwfis@cc.com", super.profesor(1).getEmail());
         }
         catch (EmailInvalidoException e)
         {

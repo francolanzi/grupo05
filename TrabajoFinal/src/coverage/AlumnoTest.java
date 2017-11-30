@@ -57,13 +57,13 @@ public class AlumnoTest extends AbstractTest
     {
         try
         {
-            super.alumno(1).modificar("Son", "Gohan", "DBZ", 1234, "161718", "songohan@cc.com");
-            assertEquals("El apellido no se modifico correctamente", "Son", super.alumno(1).getApellido());
-            assertEquals("El nombre no se modifico correctamente", "Gohan", super.alumno(1).getNombre());
-            assertEquals("La calle no se modifico correctamente", "DBZ", super.alumno(1).getDomicilio().getCalle());
-            assertEquals("El numero no se modifico correctamente", 1234, super.alumno(1).getDomicilio().getNumero());
-            assertEquals("El telefono no se modifico correctamente", "161718", super.alumno(1).getTelefono());
-            assertEquals("El email no se modifico correctamente", "songohan@cc.com", super.alumno(1).getEmail());
+            super.alumno(1).modificar("Sona", "Goten", "DBZS", 12345, "16171819", "songoten@cc.com");
+            assertEquals("El apellido no se modifico correctamente", "Sona", super.alumno(1).getApellido());
+            assertEquals("El nombre no se modifico correctamente", "Goten", super.alumno(1).getNombre());
+            assertEquals("La calle no se modifico correctamente", "DBZS", super.alumno(1).getDomicilio().getCalle());
+            assertEquals("El numero no se modifico correctamente", 12345, super.alumno(1).getDomicilio().getNumero());
+            assertEquals("El telefono no se modifico correctamente", "16171819", super.alumno(1).getTelefono());
+            assertEquals("El email no se modifico correctamente", "songoten@cc.com", super.alumno(1).getEmail());
         }
         catch (EmailInvalidoException e)
         {
@@ -88,7 +88,7 @@ public class AlumnoTest extends AbstractTest
         try
         {
             super.alumno(2).aprobarAsignatura(super.asignatura(1));
-            assertTrue("El alumno debio aprobar la asignatura", super.alumno(2).isAprobada(super.asignatura(1).getId()));
+            assertTrue("El alumno debio aprobar la asignatura", super.alumno(2).isAprobada("ASI0000"));
         }
         catch (EntidadInvalidaException e)
         {
