@@ -341,5 +341,5 @@ public class CursadaTest extends AbstractTest
         super.cursada(1).update(Controlador.getInstance(), "ASI0000");
         assertFalse("Se deberia eliminar la cursada", Controlador.getInstance().getCursadas().containsKey("CUR0000"));
     }
-*/
+
 }
