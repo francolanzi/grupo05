@@ -57,8 +57,8 @@ public class AlumnoTest extends AbstractTest
     {
         try
         {
-            super.alumno(1).modificar("Son", "Gohan", "DBZ", 1234, "161718", "songohan@cc.com");
-            assertEquals("El apellido no se modifico correctamente", "Son", super.alumno(1).getApellido());
+            super.alumno(1).modificar("Sona", "Gohan", "DBZ", 1234, "161718", "songohan@cc.com");
+            assertEquals("El apellido no se modifico correctamente", "Sona", super.alumno(1).getApellido());
             assertEquals("El nombre no se modifico correctamente", "Gohan", super.alumno(1).getNombre());
             assertEquals("La calle no se modifico correctamente", "DBZ", super.alumno(1).getDomicilio().getCalle());
             assertEquals("El numero no se modifico correctamente", 1234, super.alumno(1).getDomicilio().getNumero());
