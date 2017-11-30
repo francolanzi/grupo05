@@ -293,7 +293,7 @@ public class ControladorTest1 extends AbstractTest
     {
         try
         {
-            Controlador.getInstance().addCompetencia("PRO0000", "CUR0000");
+            Controlador.getInstance().addCompetencia("PRO0000", "ASI0000");
             fail("Debio lanzarse IdInvalidoException");
         }
         catch (IdInvalidoException e){}
