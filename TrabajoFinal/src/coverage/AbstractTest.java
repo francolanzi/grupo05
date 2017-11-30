@@ -75,6 +75,8 @@ public abstract class AbstractTest
         this.addAlumno(7, 2);
         this.addProfesor(1, 1);
         this.addProfesor(8, 1);
+        
+        Controlador.getInstance().deleteObserver(this.cursadas[5]);
     }
     
     public Alumno alumno(int i)
