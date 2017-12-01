@@ -2,12 +2,10 @@ package coverage;
 
 import model.Controlador;
 import model.Cursada;
-import model.EmailInvalidoException;
 import model.EntidadInvalidaException;
 import model.HoraInvalidaException;
 import model.IdInvalidoException;
 import model.PeriodoInvalidoException;
-import model.Profesor;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
