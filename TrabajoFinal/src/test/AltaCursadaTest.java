@@ -3,6 +3,7 @@ package test;
 import java.util.Iterator;
 import java.util.TreeMap;
 
+import model.Alumno;
 import model.Asignatura;
 import model.Controlador;
 import model.Cursada;
@@ -18,10 +19,12 @@ import org.junit.Test;
 public class AltaCursadaTest
 {
     
+    private Asignatura asignatura;
+    
     @Before
     public void setUp()
     {
-        Asignatura asignatura = new Asignatura("mateA");
+        asignatura = new Asignatura("mateA");
         asignatura.setIdentificacion("ASI0001");
         
         TreeMap<String, Asignatura> asignaturas = new TreeMap<String, Asignatura>();
@@ -38,6 +41,15 @@ public class AltaCursadaTest
         try
         {
             Controlador.getInstance().altaCursada("ASI0001", "01-2017", "LUNES", "10:00", "12:00");
+            Iterator<Cursada> cursadas = Controlador.getInstance().ubicaCursada("mateA");
+            Cursada cursada = cursadas.next();
+            assertFalse("Deberia haber una unica cursada", cursadas.hasNext());
+            assertNotNull("La cursada no deberia ser null", cursada);
+            assertEquals("La asignatura no es correcta", asignatura, cursada.getAsignatura());
+            assertEquals("El periodo no es correcto", "01-2017", cursada.getPeriodo());
+            assertEquals("El dia no es correcto", "LUNES", cursada.getDia());
+            assertEquals("La hora de inicio no es correcta", "10:00", cursada.getHoraInicio());
+            assertEquals("La hora de finalizacion no es correcta", "12:00", cursada.getHoraFin());
         }
         catch (IdInvalidoException e)
         {

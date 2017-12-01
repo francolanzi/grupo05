@@ -40,6 +40,13 @@ public class ModificaProfesorTest
         try
         {
             Controlador.getInstance().modificaProfesor("PRO0001", "Pico", "Juan", "Falucho", 3433, "2235357381", "jjjj@jjjj.com");
+            Profesor profesor = Controlador.getInstance().consultaProfesor("PRO0001");
+            assertEquals("El apellido no se modifico correctamente", "Pico", profesor.getApellido());
+            assertEquals("El nombre no se modifico correctamente", "Juan", profesor.getNombre());
+            assertEquals("La calle no se modifico correctamente", "Falucho", profesor.getDomicilio().getCalle());
+            assertEquals("El numero no se modifico correctamente", 3433, profesor.getDomicilio().getNumero());
+            assertEquals("El telefono no se modifico correctamente", "2235357381", profesor.getTelefono());
+            assertEquals("El email no se modifico correctamente", "jjjj@jjjj.com", profesor.getEmail());
         }
         catch (EmailInvalidoException | IdInvalidoException e)
         {

@@ -46,7 +46,7 @@ public class ControladorTest1 extends AbstractTest
             assertNotNull("El alumno no deberia ser null", alumno);
             assertEquals("El apellido no es correcto", "Son", alumno.getApellido());
             assertEquals("El nombre no es correcto", "Goku", alumno.getNombre());
-            assertEquals("La calle no es correcto", "DBZ", alumno.getDomicilio().getCalle());
+            assertEquals("La calle no es correcta", "DBZ", alumno.getDomicilio().getCalle());
             assertEquals("El numero no es correcto", 1234, alumno.getDomicilio().getNumero());
             assertEquals("El telefono no es correcto", "767666666", alumno.getTelefono());
             assertEquals("El email no es correcto", "songoku@capsulecorp.com", alumno.getEmail());
@@ -69,7 +69,7 @@ public class ControladorTest1 extends AbstractTest
             assertNotNull("El profesor no deberia ser null", profesor);
             assertEquals("El apellido no es correcto", "Son", profesor.getApellido());
             assertEquals("El nombre no es correcto", "Goku", profesor.getNombre());
-            assertEquals("La calle no es correcto", "DBZ", profesor.getDomicilio().getCalle());
+            assertEquals("La calle no es correcta", "DBZ", profesor.getDomicilio().getCalle());
             assertEquals("El numero no es correcto", 1234, profesor.getDomicilio().getNumero());
             assertEquals("El telefono no es correcto", "767666666", profesor.getTelefono());
             assertEquals("El email no es correcto", "songoku@capsulecorp.com", profesor.getEmail());

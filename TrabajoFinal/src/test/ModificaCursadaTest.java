@@ -50,6 +50,11 @@ public class ModificaCursadaTest
         try
         {
             Controlador.getInstance().modificaCursada("CUR0001", "01-2017", "LUNES", "10:00", "12:00");
+            Cursada cursada = Controlador.getInstance().consultaCursada("CUR0001");
+            assertEquals("El periodo no se modifico correctamente", "01-2017", cursada.getPeriodo());
+            assertEquals("El dia no se modifico correctamente", "LUNES", cursada.getDia());
+            assertEquals("La hora de inicio no se modifico correctamente", "10:00", cursada.getHoraInicio());
+            assertEquals("La hora de finalizacion no se modifico correctamente", "12:00", cursada.getHoraFin());
         }
         catch (IdInvalidoException e)
         {

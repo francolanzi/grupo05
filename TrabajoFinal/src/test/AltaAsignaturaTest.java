@@ -24,6 +24,11 @@ public class AltaAsignaturaTest
     public void testNombreCorrecto()
     {
         Controlador.getInstance().altaAsignatura("mateA");
+        Iterator<Asignatura> asignaturas = Controlador.getInstance().ubicaAsignatura("mateA");
+        Asignatura asignatura = asignaturas.next();
+        assertFalse("Deberia haber una unica asignatura", asignaturas.hasNext());
+        assertNotNull("La asignatura no deberia ser null", asignatura);
+        assertEquals("El nombre no es correcto", "mateA", asignatura.getNombre());
     }
     
     @Test
