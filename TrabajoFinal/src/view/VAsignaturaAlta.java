@@ -90,7 +90,7 @@ public class VAsignaturaAlta extends javax.swing.JFrame
         jLabelAsignatura.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabelAsignatura.setText("Asignatura -");
 
-        jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Imagenes/aa0c19c7-d3a7-43d8-8664-2f08e5d0ca90.png"))); // NOI18N
+        jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/images/pga.png")));
 
         jLabelNuevo.setFont(new java.awt.Font("Tahoma", 2, 24)); // NOI18N
         jLabelNuevo.setForeground(new java.awt.Color(102, 102, 102));
@@ -116,7 +116,7 @@ public class VAsignaturaAlta extends javax.swing.JFrame
                     .addComponent(jLabelAsignatura)
                     .addComponent(jLabelNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jLabelLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanelCabecera, java.awt.BorderLayout.PAGE_START);

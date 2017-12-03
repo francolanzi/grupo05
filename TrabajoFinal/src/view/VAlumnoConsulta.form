@@ -84,8 +84,8 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelLogo">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/GUI/Imagenes/aa0c19c7-d3a7-43d8-8664-2f08e5d0ca90.png"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.ImageIcon(getClass().getResource(&quot;/view/images/pga.png&quot;))" type="code"/>
             </Property>
           </Properties>
         </Component>
