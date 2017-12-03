@@ -27,6 +27,16 @@ public class AltaProfesorTest
         try
         {
             Controlador.getInstance().altaProfesor("Pico", "Juan", "Falucho", 3433, "2235357381", "jjjj@jjjj.com");
+            Iterator<Profesor> profesores = Controlador.getInstance().ubicaProfesor("Pico", "Juan");
+            Profesor profesor = profesores.next();
+            assertFalse("Deberia haber un unico alumno", profesores.hasNext());
+            assertNotNull("El profesor no deberia ser null", profesor);
+            assertEquals("El apellido no es correcto", "Pico", profesor.getApellido());
+            assertEquals("El nombre no es correcto", "Juan", profesor.getNombre());
+            assertEquals("La calle no es correcta", "Falucho", profesor.getDomicilio().getCalle());
+            assertEquals("El numero no es correcto", 3433, profesor.getDomicilio().getNumero());
+            assertEquals("El telefono no es correcto", "2235357381", profesor.getTelefono());
+            assertEquals("El email no es correcto", "jjjj@jjjj.com", profesor.getEmail());
         }
         catch (EmailInvalidoException e)
         {

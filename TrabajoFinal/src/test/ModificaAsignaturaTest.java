@@ -33,6 +33,8 @@ public class ModificaAsignaturaTest
         try
         {
             Controlador.getInstance().modificaAsignatura("ASI0001", "mateA");
+            Asignatura asignatura = Controlador.getInstance().consultaAsignatura("ASI0001");
+            assertEquals("El nombre no se modifico correctamente", "mateA", asignatura.getNombre());
         }
         catch (IdInvalidoException e)
         {

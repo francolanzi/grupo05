@@ -30,7 +30,7 @@ public class AlumnoTest extends AbstractTest
             assertNotNull("El alumno no deberia ser null", alumno);
             assertEquals("El apellido no es correcto", "Son", alumno.getApellido());
             assertEquals("El nombre no es correcto", "Goku", alumno.getNombre());
-            assertEquals("La calle no es correcto", "DBZ", alumno.getDomicilio().getCalle());
+            assertEquals("La calle no es correcta", "DBZ", alumno.getDomicilio().getCalle());
             assertEquals("El numero no es correcto", 1234, alumno.getDomicilio().getNumero());
             assertEquals("El telefono no es correcto", "161718", alumno.getTelefono());
             assertEquals("El email no es correcto", "songoku@cc.com", alumno.getEmail());

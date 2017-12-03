@@ -28,7 +28,7 @@ public class ProfesorTest extends AbstractTest
             assertNotNull("El profesor no deberia ser null", profesor);
             assertEquals("El apellido no es correcto", "Whis", profesor.getApellido());
             assertEquals("El nombre no es correcto", "Angel", profesor.getNombre());
-            assertEquals("La calle no es correcto", "TemploBeerus", profesor.getDomicilio().getCalle());
+            assertEquals("La calle no es correcta", "TemploBeerus", profesor.getDomicilio().getCalle());
             assertEquals("El numero no es correcto", 1234, profesor.getDomicilio().getNumero());
             assertEquals("El telefono no es correcto", "070707", profesor.getTelefono());
             assertEquals("El email no es correcto", "angelwhis@cc.com", profesor.getEmail());
